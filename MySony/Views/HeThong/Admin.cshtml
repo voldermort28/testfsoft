@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
         @Html.AntiForgeryToken()
-        @(Html.Kendo().Grid<MySony.Models.admin>()
+        @(Html.Kendo().Grid<MyProject.Models.admin>()
         .Name("grid")
         .Columns(columns =>
         {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MySony.Models
+namespace MyProject.Models
 {
     using System;
     using System.Collections.Generic;
@@ -16,14 +16,10 @@ namespace MySony.Models
     {
         public admin()
         {
-            this.RS_Category = new HashSet<RS_Category>();
-            this.RS_Category1 = new HashSet<RS_Category>();
-            this.RS_FAQ = new HashSet<RS_FAQ>();
-            this.RS_FAQ1 = new HashSet<RS_FAQ>();
             this.RS_Menu = new HashSet<RS_Menu>();
             this.RS_Menu1 = new HashSet<RS_Menu>();
-            this.RS_Video = new HashSet<RS_Video>();
-            this.RS_Video1 = new HashSet<RS_Video>();
+            this.RS_Branch = new HashSet<RS_Branch>();
+            this.RS_Branch1 = new HashSet<RS_Branch>();
         }
     
         public int admin_id { get; set; }
@@ -32,15 +28,12 @@ namespace MySony.Models
         public Nullable<int> admin_type { get; set; }
         public Nullable<int> status_id { get; set; }
         public string admincodereg { get; set; }
+        public string description { get; set; }
     
         public virtual status status { get; set; }
-        public virtual ICollection<RS_Category> RS_Category { get; set; }
-        public virtual ICollection<RS_Category> RS_Category1 { get; set; }
-        public virtual ICollection<RS_FAQ> RS_FAQ { get; set; }
-        public virtual ICollection<RS_FAQ> RS_FAQ1 { get; set; }
         public virtual ICollection<RS_Menu> RS_Menu { get; set; }
         public virtual ICollection<RS_Menu> RS_Menu1 { get; set; }
-        public virtual ICollection<RS_Video> RS_Video { get; set; }
-        public virtual ICollection<RS_Video> RS_Video1 { get; set; }
+        public virtual ICollection<RS_Branch> RS_Branch { get; set; }
+        public virtual ICollection<RS_Branch> RS_Branch1 { get; set; }
     }
 }

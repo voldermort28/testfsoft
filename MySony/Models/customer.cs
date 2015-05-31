@@ -7,18 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MySony.Models
+namespace MyProject.Models
 {
     using System;
     using System.Collections.Generic;
     
     public partial class customer
     {
-        public customer()
-        {
-            this.orders = new HashSet<order>();
-        }
-    
         public int customer_id { get; set; }
         public string email { get; set; }
         public string password { get; set; }
@@ -46,7 +41,6 @@ namespace MySony.Models
         public Nullable<bool> IsPending { get; set; }
     
         public virtual city city { get; set; }
-        public virtual ICollection<order> orders { get; set; }
         public virtual district district { get; set; }
         public virtual education education { get; set; }
         public virtual job job { get; set; }

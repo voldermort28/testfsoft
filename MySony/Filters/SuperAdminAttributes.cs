@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
-using MySony.Functions;
+using MyProject.Functions;
 
-namespace MySony.Filters
+namespace MyProject.Filters
 {
     public class SuperAdminAttributes
     {

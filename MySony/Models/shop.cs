@@ -7,28 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MySony.Models
+namespace MyProject.Models
 {
     using System;
     using System.Collections.Generic;
     
     public partial class shop
     {
-        public shop()
-        {
-            this.orders = new HashSet<order>();
-        }
-    
         public int shop_id { get; set; }
         public string name { get; set; }
         public Nullable<int> city_id { get; set; }
         public Nullable<int> shoptype_id { get; set; }
         public Nullable<int> status_id { get; set; }
         public Nullable<int> branch_id { get; set; }
-        public Nullable<int> order_no { get; set; }
     
         public virtual city city { get; set; }
-        public virtual ICollection<order> orders { get; set; }
         public virtual RS_Branch RS_Branch { get; set; }
         public virtual shoptype shoptype { get; set; }
         public virtual status status { get; set; }

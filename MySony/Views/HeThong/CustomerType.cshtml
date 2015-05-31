@@ -1,4 +1,4 @@
-﻿@using MySony.Functions
+﻿@using MyProject.Functions
 @{
     ViewBag.Title = "Nguồn đăng ký";
     Layout = "~/Views/Shared/_AdmLayout.cshtml";
@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="row">
         @Html.AntiForgeryToken()
-        @(Html.Kendo().Grid<MySony.Models.customertype>()
+        @(Html.Kendo().Grid<MyProject.Models.customertype>()
         .Name("grid")
         .Columns(columns =>
         {

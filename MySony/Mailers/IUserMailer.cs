@@ -1,8 +1,8 @@
 using Mvc.Mailer;
-using MySony.Models;
-using MySony.ViewModels;
+using MyProject.Models;
+using MyProject.ViewModels;
 
-namespace MySony.Mailers
+namespace MyProject.Mailers
 { 
     public interface IUserMailer
     {

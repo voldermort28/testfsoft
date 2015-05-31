@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MySony.Models
+namespace MyProject.Models
 {
     using System;
     using System.Collections.Generic;
@@ -24,11 +24,8 @@ namespace MySony.Models
             this.districts = new HashSet<district>();
             this.educations = new HashSet<education>();
             this.jobs = new HashSet<job>();
-            this.orders = new HashSet<order>();
             this.products = new HashSet<product>();
             this.RS_Branch = new HashSet<RS_Branch>();
-            this.RS_mail_template = new HashSet<RS_mail_template>();
-            this.serials = new HashSet<serial>();
             this.shops = new HashSet<shop>();
             this.shoptypes = new HashSet<shoptype>();
         }
@@ -44,11 +41,8 @@ namespace MySony.Models
         public virtual ICollection<district> districts { get; set; }
         public virtual ICollection<education> educations { get; set; }
         public virtual ICollection<job> jobs { get; set; }
-        public virtual ICollection<order> orders { get; set; }
         public virtual ICollection<product> products { get; set; }
         public virtual ICollection<RS_Branch> RS_Branch { get; set; }
-        public virtual ICollection<RS_mail_template> RS_mail_template { get; set; }
-        public virtual ICollection<serial> serials { get; set; }
         public virtual ICollection<shop> shops { get; set; }
         public virtual ICollection<shoptype> shoptypes { get; set; }
     }

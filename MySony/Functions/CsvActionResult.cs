@@ -5,7 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MySony.Functions
+namespace MyProject.Functions
 {
     public sealed class CsvActionResult : FileResult
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MySony.Models
+namespace MyProject.Models
 {
     using System;
     using System.Collections.Generic;
@@ -17,9 +17,7 @@ namespace MySony.Models
         public city()
         {
             this.districts = new HashSet<district>();
-            this.orders = new HashSet<order>();
             this.RS_Branch = new HashSet<RS_Branch>();
-            this.RS_mail_template = new HashSet<RS_mail_template>();
             this.shops = new HashSet<shop>();
             this.customers = new HashSet<customer>();
         }
@@ -31,9 +29,7 @@ namespace MySony.Models
     
         public virtual status status { get; set; }
         public virtual ICollection<district> districts { get; set; }
-        public virtual ICollection<order> orders { get; set; }
         public virtual ICollection<RS_Branch> RS_Branch { get; set; }
-        public virtual ICollection<RS_mail_template> RS_mail_template { get; set; }
         public virtual ICollection<shop> shops { get; set; }
         public virtual ICollection<customer> customers { get; set; }
     }

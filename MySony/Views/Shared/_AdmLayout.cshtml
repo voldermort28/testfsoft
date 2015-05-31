@@ -1,4 +1,4 @@
-﻿@using MySony.Functions
+﻿@using MyProject.Functions
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,6 @@
     <title>@ViewBag.Title</title>
         @{
         var culture = System.Globalization.CultureInfo.CurrentCulture.ToString();
-        var item_color = "";
         
 }
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
@@ -38,15 +37,14 @@
                         
                         <div class="navbar-header aside-md dk site-logo">
                             <a class="btn btn-link visible-xs site-m-menu-toggle" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a>
-                            <a href="/" class="navbar-brand"> <img src="/static/images/logo.png" class="m-r-sm" alt="scale" height="17" width="100" /> </a>
+                            <a href="/" class="navbar-brand"> <img src="" class="m-r-sm" alt="logo" height="17" width="100" /> </a>
                         </div>
                         <div class="page-header-logo">
                             <div class="customer-logo">
-                                <img src="/static/images/figures/cus-logo.png" alt="...">
+                                <img src="" alt="...">
                             </div>
                             <div class="navbar-header site-logan">
-                                Chúng tôi trồng cây Dịch vụ
-                                <span>bạn hái quả Chăm sóc</span>
+                                 
                             </div>
                         </div>
                     </header>
@@ -58,7 +56,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                @Html.ActionLink("Sony", "Index", "HeThong", null, new { @class = "navbar-brand" })
+                                @Html.ActionLink("Hệ Thống", "Index", "HeThong", null, new { @class = "navbar-brand" })
                             </div>
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
@@ -95,18 +93,14 @@
                                             <li>@Html.ActionLink("Thành phố", "City", "HeThong")</li>
                                             <li>@Html.ActionLink("Quận huyện", "District", "HeThong")</li>
                                             <li>@Html.ActionLink("Nguồn đăng ký", "CustomerType", "HeThong")</li>
-                                            @*<li>@Html.ActionLink("Trình độ học vấn", "Education", "HeThong")</li>
-                                            <li>@Html.ActionLink("Nghề nghiệp", "Job", "HeThong")</li>
-                                            <li>@Html.ActionLink("Menu", "Menu", "HeThong")</li>*@
+                                          
                                             <li>@Html.ActionLink("Trạng thái", "Status", "HeThong")</li>
                                         </ul>
                                     </li>
                                     <li class="dropdown showsuperAdmin">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="showMenuTool">Công cụ<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            
-                                            <li>@Html.ActionLink("Quản lý mẫu mail", "MailTemplate", "HeThong")</li>
-                                            <li>@Html.ActionLink("Quản lý landing", "RSConfig", "HeThong")</li>
+                                             
                                             <li>@Html.ActionLink("Tài khoản admin", "Admin", "HeThong")</li>
                                             <li>@Html.ActionLink("Log", "ViewLog", "HeThong")</li>
                                         </ul>
@@ -128,20 +122,12 @@
                                             <div class="block block-landing-footer-menu">
                                                 <div class="block-content">
                                                     <ul class="menu">
+                                                         
                                                         <li>
-                                                            <a href="/Clause/">Điều khoản sử dụng</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/Privacy/">Quyền riêng tư</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="http://www.sony.com.vn/section/bookserviceappointment"> Đăng ký dịch vụ Bảo hành tại nhà</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://www.sony.com.vn/section/contactus">Liên hệ</a>
+                                                            <a href="">Liên hệ</a>
                                                         </li>
                                                         <li class="global clearfix" style="padding-left:20px">
-                                                            <a href="http://sony.net" target="_blank">Global home</a>
+                                                            <a href="" target="_blank">Global home</a>
                                                         </li>
                                                          
                                                     </ul>
@@ -151,7 +137,7 @@
                                         <div class="col-md-6">
                                             <div class="block block-landing-footer-copyright">
                                                 <div class="block-content">
-                                                    @DateTime.Now.Year © Bản quyền thuộc sở hữu Công ty Sony Electronics Vietnam
+                                                    @DateTime.Now.Year © Bản quyền 
                                                 </div>
                                             </div>
                                         </div>

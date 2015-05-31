@@ -1,4 +1,4 @@
-﻿@model MySony.Models.customer
+﻿@model MyProject.Models.customer
 @{
     ViewBag.Title = "Thông tin khách hàng";
     Layout = "~/Views/Shared/_AdmLayout.cshtml";
@@ -117,7 +117,7 @@
             <button id="btnSaveProduct" class="btn btn-success pull-right">Cập nhật</button>    
         </div>        
         <div style="clear:both"></div>
-        @(Html.Kendo().Grid<MySony.ViewModels.CustomerProductVM>()
+        @(Html.Kendo().Grid<MyProject.ViewModels.CustomerProductVM>()
               .Name("grid")
               .Columns(columns =>
               {

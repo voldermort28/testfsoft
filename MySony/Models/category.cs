@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MySony.Models
+namespace MyProject.Models
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,6 @@ namespace MySony.Models
     {
         public category()
         {
-            this.orders = new HashSet<order>();
             this.products = new HashSet<product>();
         }
     
@@ -31,7 +30,6 @@ namespace MySony.Models
         public Nullable<int> RS_base_warranty_months { get; set; }
     
         public virtual status status { get; set; }
-        public virtual ICollection<order> orders { get; set; }
         public virtual ICollection<product> products { get; set; }
     }
 }

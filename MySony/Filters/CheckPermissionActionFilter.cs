@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MySony.Filters
+namespace MyProject.Filters
 {
     public class CheckPermissionActionFilter : ActionFilterAttribute, IActionFilter
     {

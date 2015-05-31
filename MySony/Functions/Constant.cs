@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MySony.Functions
+namespace MyProject.Functions
 {
     public class Constant
     {

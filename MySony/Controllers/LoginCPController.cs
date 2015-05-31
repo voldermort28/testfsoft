@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
 using System.Web.Security;
-using MySony.Functions;
-using MySony.Mailers;
-using MySony.Models;
+using MyProject.Functions;
+using MyProject.Mailers;
+using MyProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace MySony.Controllers
+namespace MyProject.Controllers
 {
    // [OutputCache(Duration = 60 * 60, VaryByParam = "none")]
     public class LoginCPController : Controller
@@ -26,7 +26,7 @@ namespace MySony.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(string txtUsername, string txtPassword, string returnUrl = "/HeThong")
         {
-            using (var db = new MySonyEntities())
+            using (var db = new MyDatabaseEntities())
             {
                 string username = txtUsername.Trim().ToLower();
                 var obj = db.admins.FirstOrDefault(x => x.email.ToLower() == username);
@@ -72,7 +72,7 @@ namespace MySony.Controllers
             {
                 return Json(new { result = "Lỗi ", msg = "Mã bảo vệ không hợp lệ" });
             }
-            using (var db = new MySonyEntities())
+            using (var db = new MyDatabaseEntities())
             {            
                 // validate email
                 if (!Common.ValidateEmail(email)) return Json(new { result = "Lỗi ", msg = "Email không hợp lệ" });
@@ -124,58 +124,7 @@ namespace MySony.Controllers
         [HttpGet]
         public ActionResult RenewPassAdmin(string token)
         {
-            using (var db = new MySonyEntities())
-            {
-                ViewBag.result = "ERROR";
-                string[] para = token.Split('!');
-                string customercode = para[0];
-                string timecode = para[1];
-                long longtime = long.Parse(timecode);
-                var time = new DateTime(longtime);
-                var pa =
-                    db.resethistories.Where(
-                        a =>
-                            a.customercodereg == customercode && a.longsenttime == timecode &&
-                            a.status_id == Constant.StatusActive).OrderByDescending(a => a.senttime).FirstOrDefault();
-                if (pa == null)
-                {
-                    ViewBag.msg = "Link tạo mới mật khẩu không hợp lệ";
-                }
-                else
-                {
-                    if (DateTime.Compare(DateTime.Parse(pa.expiredtime.ToString()), DateTime.Now) < 0)
-                    {
-                        pa.status_id = 2;
-                        db.SaveChanges();
-                        ViewBag.msg = "Link tạo mới mật khẩu hết hạn sử dụng";
-                    }
-                    else
-                    {
-
-                        var user = db.admins.FirstOrDefault(x => x.admincodereg == customercode);
-
-                        if (user == null)
-                        {
-                            ViewBag.msg = "Tài khoản không tồn tại";
-                        }
-                        else
-                        {
-                            if (user.status_id == 2)
-                            {
-                                ViewBag.msg = "Tài khoản này đã bị khóa, vui lòng liên hệ quản trị site";
-                            }
-                        else
-                        {
-                            ViewBag.result = "OK";
-                            ViewBag.email = Common.Base64Encode(Common.Encrypt(user.email));
-                            ViewBag.longtime = timecode;
-                            ViewBag.msg = "";
-                        }
-                        }
-                    }
-                }
-                return View();
-            }
+            return View();
         }
 
         [HttpPost]
@@ -194,18 +143,13 @@ namespace MySony.Controllers
                 return Json(new { result = "ERROR", msg = "Mật khẩu trùng email" });
             }
 
-            using (var db = new MySonyEntities())
+            using (var db = new MyDatabaseEntities())
             {
                 var user = db.admins.FirstOrDefault(x => x.email == deccryptEmail);
                 if (user == null) ViewBag.msg = "Tài khoản không tồn tại";
                 if (user != null)
                 {
-                    // check Historry Change Password
-                    var objHisPass = CheckPassword.CheckOldPass(db, user.admin_id, Common.MaHoa(password));
-                    if (!objHisPass)
-                    {
-                        return Json(new { result = "ERROR", msg = Constant.SameHistoryOldPass });
-                    }
+                   
 
                     user.password = Common.MaHoa(password);
                     var pa =

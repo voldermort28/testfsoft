@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MySony.Filters
+namespace MyProject.Filters
 {
     public class AuthorizeIPAddressAttribute : ActionFilterAttribute
     {

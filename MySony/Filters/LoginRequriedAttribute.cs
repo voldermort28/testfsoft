@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using MySony.Functions;
+using MyProject.Functions;
 
-namespace MySony.Filters
+namespace MyProject.Filters
 {
     public class LoginRequriedAttribute : AuthorizeAttribute
     {

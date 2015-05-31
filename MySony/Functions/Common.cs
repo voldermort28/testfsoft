@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
 using DocumentFormat.OpenXml.Bibliography;
-using MySony.Models;
+using MyProject.Models;
 using System.Web;
 using System.Data;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Web.Script.Serialization;
 using System.Configuration;
 using System.Web.SessionState;
 
-namespace MySony.Functions
+namespace MyProject.Functions
 {
      public class ReCaptcharVerify
     {
@@ -50,7 +50,7 @@ namespace MySony.Functions
     public class Common
     {
         // default keyword
-        public const String passPhrase = "mysony@2014";
+        public const String passPhrase = "myadmin@2014";
         // This constant string is used as a "salt" value for the PasswordDeriveBytes function calls.
         // This size of the IV (in bytes) must = (keysize / 8).  Default keysize is 256, so the IV must be
         // 32 bytes long.  Using a 16 character string here gives us 32 bytes when converted to a byte array.
@@ -132,11 +132,7 @@ namespace MySony.Functions
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
         
-        /// <summary>
-        /// Hàm mã hóa của mysony cũ
-        /// </summary>
-        /// <param name="Pass"></param>
-        /// <returns></returns>
+        
         public static string MaHoa(string Pass)
         {
             string results = "";
@@ -189,7 +185,7 @@ namespace MySony.Functions
         public static String GetCurrentUserName()
         {
             var userid = Convert.ToInt32(HttpContext.Current.Session["UserID"]); 
-            using (MySony.Models.MySonyEntities db  = new MySonyEntities())
+            using (MyProject.Models.MyDatabaseEntities db  = new MyDatabaseEntities())
             {
                 var u = db.customers.Find(userid);
                 if (u != null)
@@ -205,7 +201,7 @@ namespace MySony.Functions
         public static String GetUserName()
         {
             var userid = Convert.ToInt32(HttpContext.Current.Session["UserID"]);
-            using (var db = new MySonyEntities())
+            using (var db = new MyDatabaseEntities())
             {
                 var u = db.customers.Find(userid);
                 if (u != null)
@@ -229,7 +225,7 @@ namespace MySony.Functions
         /// <param name="content">Log content</param>
         public static void WriteLog(string content)
         {
-            using (MySonyEntities db = new MySonyEntities())
+            using (MyDatabaseEntities db = new MyDatabaseEntities())
             {
                 db.LogErrors.Add(new LogError()
                 {
@@ -365,7 +361,7 @@ namespace MySony.Functions
             return b;
         }
 
-        public static bool CheckCity(MySonyEntities db, int cityId)
+        public static bool CheckCity(MyDatabaseEntities db, int cityId)
         {
             bool b = false;
             try
@@ -383,7 +379,7 @@ namespace MySony.Functions
             return b;
         }
 
-        public static bool CheckShop(MySonyEntities db, int shopId)
+        public static bool CheckShop(MyDatabaseEntities db, int shopId)
         {
             bool b = false;
             try
@@ -401,7 +397,7 @@ namespace MySony.Functions
             return b;
         }
 
-        public static bool CheckShopByCity(MySonyEntities db, int  cityId ,int shopId)
+        public static bool CheckShopByCity(MyDatabaseEntities db, int  cityId ,int shopId)
         {
             bool b = false;
             try
@@ -441,7 +437,7 @@ namespace MySony.Functions
             bool status;
             try
             {
-                using (var db = new MySonyEntities())
+                using (var db = new MyDatabaseEntities())
                 {
                     var adminId = (int)HttpContext.Current.Session["admss"];
                     var adminEmail = (string)HttpContext.Current.Session["admssemail"];
@@ -502,48 +498,9 @@ namespace MySony.Functions
             return result5;
         }
 
-        public static int SendMailRegister(MySonyEntities db, customer cus, int cityID, String urlActive = "#")
-        {
-            try
-            {
-               // load mail template from db
-                RS_mail_template mailTemp = db.RS_mail_template.Where(x => x.CityID == cityID && x.status.name.ToUpper() == "ACTIVE").FirstOrDefault();
-                if (mailTemp == null)
-                {
-                    mailTemp = db.RS_mail_template.Where(x => (x.CityID == null || x.CityID <= 0) && x.status.name.ToUpper() == "ACTIVE").FirstOrDefault();
-                }
-               // create mail msg
-
-                MailMessage m = new MailMessage("mysony@mysony.sony.com.vn", cus.email);
-                m.Subject = mailTemp.Subject;
-                m.Body = mailTemp.Content
-                    .Replace("[URL_ACTIVATE]", urlActive)
-                    .Replace("[FIRST_NAME]", cus.firstname)
-                    .Replace("[LAST_NAME]", cus.lastname);
-                m.IsBodyHtml = true;
-                
-                // create smtp and send mail
-                SmtpClient sc = new SmtpClient();
-                sc.Send(m);
-                //SmtpClient sc = new SmtpClient();
-                //var credential = new System.Net.Configuration.SmtpSection().Network;
-                //sc.Host = credential.Host;
-                //sc.Port = credential.Port;
-                //sc.EnableSsl = credential.EnableSsl;
-                //var username = credential.UserName;
-                //var password = credential.Password;
-                //sc.Credentials = credential
-                return 1;
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-        }
-
+        
         public static Boolean VerifyCaptcha(String responseCaptchar, String ip)
-        {
-            Boolean b = false;
+        { 
             String secret = ConfigurationManager.AppSettings["recaptcha_secret"];//"6LdncgATAAAAAGQ7JX2P-rb1D0ZNe438qy6g1XB-";
             String url = String.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}&remoteip={2}",secret,responseCaptchar,ip);
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);

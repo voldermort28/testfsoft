@@ -1,9 +1,9 @@
 ﻿using Mvc.Mailer;
-using MySony.Mailers;
-using MySony.Models;
-using MySony.ViewModels;
+using MyProject.Mailers;
+using MyProject.Models;
+using MyProject.ViewModels;
 
-namespace MySony.Mailers
+namespace MyProject.Mailers
 { 
     public class UserMailer : MailerBase, IUserMailer 	
 	{
@@ -28,7 +28,7 @@ namespace MySony.Mailers
             //ViewBag.Data = someObject;
             return Populate(x =>
             {
-                x.Subject = "MySony Style Up - Xác nhận đăng ký tham gia chương trình “Touch & Try”";
+                x.Subject = "MyProject Style Up - Xác nhận đăng ký tham gia chương trình “Touch & Try”";
                 x.ViewName = "TouchTryEmail";
                 x.To.Add((string)CurrentHttpContext.Session["emailTouchTry"]);
             });

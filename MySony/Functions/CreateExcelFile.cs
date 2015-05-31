@@ -13,7 +13,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml;
 
-namespace MySony.Functions
+namespace MyProject.Functions
 {
     //
     //  November 2013

@@ -1,4 +1,4 @@
-﻿@model MySony.ViewModels.SerialVm
+﻿@model MyProject.ViewModels.SerialVm
 @{
     ViewBag.Title = "Danh sách khách hàng";
     Layout = "~/Views/Shared/_AdmLayout.cshtml";
@@ -45,7 +45,7 @@
                 <div class="col-md-4 btn-addcustomer"><a href="/Hethong/ProfileEditor" class="btn btn-default pull-right">Thêm mới</a></div>
             </div>
         </div>
-        @(Html.Kendo().Grid<MySony.ViewModels.ProfileVM>()
+        @(Html.Kendo().Grid<MyProject.ViewModels.ProfileVM>()
         .Name("grid")
         .Columns(columns =>
         {

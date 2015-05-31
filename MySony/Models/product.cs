@@ -7,18 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MySony.Models
+namespace MyProject.Models
 {
     using System;
     using System.Collections.Generic;
     
     public partial class product
     {
-        public product()
-        {
-            this.orders = new HashSet<order>();
-        }
-    
         public int product_id { get; set; }
         public Nullable<int> category_id { get; set; }
         public string productcode { get; set; }
@@ -26,7 +21,6 @@ namespace MySony.Models
         public Nullable<int> status_id { get; set; }
     
         public virtual category category { get; set; }
-        public virtual ICollection<order> orders { get; set; }
         public virtual status status { get; set; }
     }
 }

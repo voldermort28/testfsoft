@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MySony.Models
+namespace MyProject.Models
 {
     using System;
     using System.Collections.Generic;
@@ -28,6 +28,8 @@ namespace MySony.Models
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<int> ModifiedBy { get; set; }
     
+        public virtual admin admin { get; set; }
+        public virtual admin admin1 { get; set; }
         public virtual city city { get; set; }
         public virtual status status { get; set; }
         public virtual ICollection<shop> shops { get; set; }

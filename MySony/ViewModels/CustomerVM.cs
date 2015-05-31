@@ -4,10 +4,10 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using MySony.Functions;
-using MySony.Models;
+using MyProject.Functions;
+using MyProject.Models;
 
-namespace MySony.ViewModels
+namespace MyProject.ViewModels
 {
     public class CustomerVM : customer
     {        
