@@ -1,0 +1,7 @@
+﻿@(Html.Kendo().DropDownList()
+    .Name("shoptype_id")
+    .OptionLabel("--Select--")
+    .DataTextField("name")
+    .DataValueField("shoptype_id")
+    .BindTo((System.Collections.IEnumerable)ViewData["shoptypes"])
+)

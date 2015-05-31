@@ -1,0 +1,290 @@
+﻿@using MySony.Functions
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+        @{
+        var culture = System.Globalization.CultureInfo.CurrentCulture.ToString();
+        var item_color = "";
+        
+}
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/Site.css" rel="stylesheet" />
+    <link href="/Content/kendo/kendo.common-bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/kendo/kendo.bootstrap.min.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/app.v1.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/sony.style.css" type="text/css" />    
+    <link rel="stylesheet" href="/static/css/screen.css" type="text/css" />      
+    <link rel="stylesheet" href="/static/js/chosen/chosen.css" type="text/css" />
+    <link href="/static/css/admin.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/respond.min.js"></script>
+    <script src="/Scripts/kendo/kendo.all.min.js"></script>
+    <script src="/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+    <script src="/static/js/chosen/chosen.jquery.min.js"></script>
+    <script src="@Url.Content("~/Scripts/cultures/kendo.culture." + culture + ".min.js")"></script>
+    <script>kendo.culture("@culture");</script>
+</head>
+<body class="admin">
+    <section class="vbox site-wrapper page-user dark-green">
+        <section>
+            <section class="hbox stretch">
+                <section id="content">
+                    <header class="header header-md navbar bg site-header-top">
+                        
+                        <div class="navbar-header aside-md dk site-logo">
+                            <a class="btn btn-link visible-xs site-m-menu-toggle" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a>
+                            <a href="/" class="navbar-brand"> <img src="/static/images/logo.png" class="m-r-sm" alt="scale" height="17" width="100" /> </a>
+                        </div>
+                        <div class="page-header-logo">
+                            <div class="customer-logo">
+                                <img src="/static/images/figures/cus-logo.png" alt="...">
+                            </div>
+                            <div class="navbar-header site-logan">
+                                Chúng tôi trồng cây Dịch vụ
+                                <span>bạn hái quả Chăm sóc</span>
+                            </div>
+                        </div>
+                    </header>
+                    <section class="vbox page-user-content-box">
+                        <div class="page-header padder page-contrains">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                @Html.ActionLink("Sony", "Index", "HeThong", null, new { @class = "navbar-brand" })
+                            </div>
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li id ="showMenuCustomer">@Html.ActionLink("Khách hàng", "Profiles", "HeThong")</li>
+                                    <li class="dropdown showsuperAdmin" >
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="showMenuCMS">CMS<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>@Html.ActionLink("Danh mục", "Category", "HeThong")</li>
+                                            <li>@Html.ActionLink("Bài viết", "Article", "HeThong")</li>
+                                            <li>@Html.ActionLink("Video", "Video", "HeThong")</li>
+                                            <li>@Html.ActionLink("Image", "RSImages", "HeThong")</li>
+                                            <li>@Html.ActionLink("FAQ", "FAQ", "HeThong")</li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown showsuperAdmin">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="showMenuShop">Thông tin cửa hàng<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>@Html.ActionLink("DS cửa hàng", "Shop", "HeThong")</li>
+                                            <li>@Html.ActionLink("Chi nhánh", "Branch", "HeThong")</li>
+                                            <li>@Html.ActionLink("Loại cửa hàng", "ShopType", "HeThong")</li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown showsuperAdmin">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="showMenuProduct">Thông tin sản phẩm<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>@Html.ActionLink("Loại sản phẩm", "ProductCategory", "HeThong")</li>
+                                            <li>@Html.ActionLink("Sản phẩm", "Product", "HeThong")</li>
+                                            <li>@Html.ActionLink("Serial", "Serial", "HeThong")</li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown showsuperAdmin">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="showMenuSystem">Cấu hình chung<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>@Html.ActionLink("Thành phố", "City", "HeThong")</li>
+                                            <li>@Html.ActionLink("Quận huyện", "District", "HeThong")</li>
+                                            <li>@Html.ActionLink("Nguồn đăng ký", "CustomerType", "HeThong")</li>
+                                            @*<li>@Html.ActionLink("Trình độ học vấn", "Education", "HeThong")</li>
+                                            <li>@Html.ActionLink("Nghề nghiệp", "Job", "HeThong")</li>
+                                            <li>@Html.ActionLink("Menu", "Menu", "HeThong")</li>*@
+                                            <li>@Html.ActionLink("Trạng thái", "Status", "HeThong")</li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown showsuperAdmin">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="showMenuTool">Công cụ<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            
+                                            <li>@Html.ActionLink("Quản lý mẫu mail", "MailTemplate", "HeThong")</li>
+                                            <li>@Html.ActionLink("Quản lý landing", "RSConfig", "HeThong")</li>
+                                            <li>@Html.ActionLink("Tài khoản admin", "Admin", "HeThong")</li>
+                                            <li>@Html.ActionLink("Log", "ViewLog", "HeThong")</li>
+                                        </ul>
+                                    </li>
+                                    <li>@Html.ActionLink("Đăng xuất", "Logout", "LoginCP")</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <section class="scrollable">
+                            <div class="page page-main-content">
+                                <div class="page-content padder page-contrains">
+                                    <div class="page-form-wrapper">
+                                        @RenderBody()                                        
+                                    </div>
+                                </div>
+                                <div class="page-footer padder">
+                                    <div class="row m-t">
+                                        <div class="col-md-6">
+                                            <div class="block block-landing-footer-menu">
+                                                <div class="block-content">
+                                                    <ul class="menu">
+                                                        <li>
+                                                            <a href="/Clause/">Điều khoản sử dụng</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/Privacy/">Quyền riêng tư</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://www.sony.com.vn/section/bookserviceappointment"> Đăng ký dịch vụ Bảo hành tại nhà</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://www.sony.com.vn/section/contactus">Liên hệ</a>
+                                                        </li>
+                                                        <li class="global clearfix" style="padding-left:20px">
+                                                            <a href="http://sony.net" target="_blank">Global home</a>
+                                                        </li>
+                                                         
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="block block-landing-footer-copyright">
+                                                <div class="block-content">
+                                                    @DateTime.Now.Year © Bản quyền thuộc sở hữu Công ty Sony Electronics Vietnam
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End content-->
+                        </section>
+                    </section>
+                    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+                </section>
+            </section>
+        </section>
+    </section>
+    <!--ajax loading screen-->
+    <div id="ajax_loader" style="background-color: rgba(255, 255, 255, 0.5); z-index: 9999; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; display: none;" class="">
+        <img src="/static/images/loading.gif" style="position: fixed; left: 50%; top: 50%;" class="">
+    </div>
+    <!--alert modal-->
+    <div class="modal fade" id="modalNotice" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content clearfix">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    @MvcHtmlString.Create(@TempData["Notice"] as string)
+                </div>
+            </div>
+        </div>
+    </div><!--end-->
+    <script>
+    // Setup CSRF safety for AJAX:
+    $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+        if (options.type.toUpperCase() === "POST") {
+            var token = $("input[name^=__RequestVerificationToken]").first();
+            if (!token.length) return;
+            var tokenName = token.attr("name");
+            if (options.contentType.indexOf('application/json') === 0) {
+                options.url += ((options.url.indexOf("?") === -1) ? "?" : "&") + token.serialize();
+            } else if (typeof options.data === 'string' && options.data.indexOf(tokenName) === -1) {
+                options.data += (options.data ? "&" : "") + token.serialize();
+            }
+        }
+    });
+    // for ajax loading
+    $(document).ajaxStop(function () {
+        $('#ajax_loader').hide();
+    });
+    $(document).ajaxStart(function () {
+        $('#ajax_loader').show();
+    });
+    $(document).ready(function () {
+        var idMenu = sessionStorage.item_color;
+        if (idMenu !== '') {
+            $("#" + idMenu).css("background-color", "#000055");
+        }
+        sessionStorage.item_color = '';
+        // show menu
+        
+        
+
+
+    });
+
+    $('.dropdown-menu li').click(function() {
+        sessionStorage.item_color = $(this).parents('.dropdown').find('.dropdown-toggle').attr('id');
+    });
+
+
+</script>
+    @{
+        // Show modal
+        var isShow = TempData["ShowPopup"] as Nullable<Boolean>;
+        if (isShow == true)
+        {
+            <script>
+                $(function () {
+                    $("#modalNotice").modal("show");
+                });
+            </script>
+        }
+        // show butoon export data customer
+        var isShowMenu = Common.ChekSuperAdmin();
+        if (isShowMenu == true)
+        {
+            <script>
+                $(function () {
+                    $(".showsuperAdmin").show();
+
+                    $("#btnExport").show();
+                });
+            </script>
+        }
+        else
+        {
+            <script>
+                $(function () {                    
+                    $(".showsuperAdmin").hide();
+                    $(".showsuperAdmin").html('');
+                    $("#btnExport").hide();
+                });
+            </script>         
+        }
+
+        // show button add new customer
+        if (Common.GetAdminType() == 3 || Common.GetAdminType() == 0)
+        {
+            <script>
+                $(function () {
+                    $(".btn-addcustomer").hide();
+                    $(".btn-addcustomer").html('');
+                    $(".btn-profile-customer").hide();
+                    $(".btn-profile-customer").html('');
+                    $(".btn-save-product").hide();
+                    $(".btn-save-product").html('');
+                });
+            </script>
+            
+        } 
+         // show button add new customer
+        if (Common.GetAdminType() != 1 )
+        {
+            
+            <script>
+                $(function () {
+                    var grdView = $('#grid').data('kendoGrid');
+                    grdView.hideColumn("status_id"); //By Using Columns Name.
+
+                    $("#btnDeletePhysical").hide();                    
+                });
+            </script>
+            
+        } 
+}    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

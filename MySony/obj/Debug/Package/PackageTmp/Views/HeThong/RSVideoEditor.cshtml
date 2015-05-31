@@ -1,0 +1,99 @@
+﻿@using DocumentFormat.OpenXml.Wordprocessing
+@model MySony.Models.RS_Video
+@{
+    ViewBag.Title = "Image";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    @using (Html.BeginForm("SaveRSVideo", "HeThong"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.ID)        
+        <table class="table table-condensed">
+            <tr>
+                <td class="col1"><label>Tiêu đề</label></td>
+                <td class="col2">@Html.TextBoxFor(x => x.Title, new { id = "txtTitle", maxlength = 200, @class = "form-control", style = "width:1000px;", required = "required" })</td>
+            </tr>
+            <tr>
+                <td class="col1"><label>Mô tả ngắn</label></td>
+                <td>@Html.TextAreaFor(x => x.Descript, new { id = "txtDescript",maxlength = 400 , @class = "form-control", required = "required" })</td>
+            </tr>
+            <tr>
+                <td class="col1"><label>Url</label></td>
+                <td class="col2">@Html.TextBoxFor(x => x.Source, new { id = "txtSource",maxlength = 200, @class = "form-control" })</td>
+                <td class="col1"><label>Tình trạng</label></td>
+                <td>@Html.CheckBoxFor(m => m.IsActive)</td>
+                <td class="col1"><label>Nổi bật</label></td>
+                <td>@Html.CheckBoxFor(m => m.IsHighlight)</td>
+            </tr>
+            <tr>                
+                <td class="col1"><label>Ngày phát hành</label></td>
+                <td>@Html.TextBoxFor(x => x.PublishDate, new { id = "txtPublishDate",maxlength = 20, @class = "form-control" })</td>
+            </tr>
+            <tr style="display: none">
+                <td class="col1"><label>Ngày Tạo</label></td>
+                <td class="col2">@Html.TextBoxFor(m => m.Created)</td>
+                <td class="col1"><label>Người Tạo</label></td>
+                <td>@Html.TextBoxFor(m => m.CreatedBy)</td>
+            </tr>
+
+            <tr>
+                <td class="col1"><label>Hình bài viết</label></td>
+                <!--<td>@Html.TextBoxFor(x => x.Thumb, new { id = "txtLinkImage", @class = "form-control" })</td> -->
+            </tr>
+        </table>
+        @(Html.Kendo().EditorFor(x => x.Thumb)
+                .Name("Thumb")
+            .Encode(false)
+            .HtmlAttributes(new { style = "height:520px" })
+            .Tools(tools => tools.Clear().InsertImage())
+            .ImageBrowser(imageBrowser => imageBrowser
+            .Image("~/Galleries/{0}")
+            .Read("Read", "ImageBrowser")
+            .Create("Create", "ImageBrowser")
+            .Destroy("Destroy", "ImageBrowser")
+            .Upload("Upload", "ImageBrowser")
+            .Thumbnail("Thumbnail", "ImageBrowser")
+            )
+        )
+
+        <div class="btn-group pull-right">
+            <input type="submit" class="btn btn-primary" id="btnSave" value="Lưu" />
+            <button type="button" class="btn btn-warning" id="btnCancel">Hủy</button>
+            <button type="button" class="btn btn-danger" id="btnDelete">Xóa</button>
+        </div>
+    }
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            // Set editor body is read only
+
+            Date.prototype.yyyymmdd = function () {
+
+                var yyyy = this.getFullYear().toString();
+                var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based         
+                var dd = this.getDate().toString();
+
+                return (dd[1] ? dd : "0" + dd[0]) + '/' + (mm[1] ? mm : "0" + mm[0]) + '/' + yyyy;
+            };
+
+            var d = new Date();
+            if ($('#txtPublishDate').val() == '') {
+                $('#txtPublishDate').val(d.yyyymmdd());
+            }
+
+            $('#btnCancel').click(function () {
+                window.location.href = '/HeThong/Video';
+            });
+            $('#btnDelete').click(function () {
+                if (confirm('Are you sure?')) {
+                    if ($('#ID').val() == 0) window.location.href = '/HeThong/video';
+                    $.post('/HeThong/DeleteRSVideo', { Id: $('#ID').val() }, function () {
+                        window.location.href = '/HeThong/video';
+                    });
+                }
+            });
+        });
+    </script>
+}

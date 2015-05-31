@@ -1,0 +1,266 @@
+﻿@using MySony.Functions
+
+<section class="vbox site-wrapper landing-page">
+    <section>
+        <section class="hbox stretch">
+            <!-- .aside -->
+            <aside class="bg-dark aside-lg hidden-print box-shadow sidebar-first" id="nav">
+                <section class="vbox">
+                    <section class="w-f scrollable">
+                        <div class=" " data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railopacity="0.2">
+                            <nav class="nav-primary hidden-xs sidebar-user-nav">
+                                <ul class="nav nav-main" data-ride="collapse">
+                                    <li class="customer-logo desktop hidden-xs">
+                                        <img src="/static/images/figures/cus-logo-desk.png" alt="..." height="110" width="130" />
+                                    </li>
+                                    <li class="customer-logo hidden-md hidden-lg">
+                                        <img src="/static/images/figures/cus-logo.png" alt="..." height="100" width="100">
+                                    </li>
+                                    <li>
+                                        <div class="clearfix wrapper dk nav-user hidden-md hidden-lg user-menus">
+                                            <div class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <span class="thumb-u-avatar pull-left">
+                                                        <img src="/static/images/figures/avatar.png" alt="...">
+                                                    </span>
+
+                                                    <b class="caret"></b>
+                                                </a>
+                                                <ul class="dropdown-menu animated fadeInRight">
+                                                    <li>
+                                                        <span class="arrow top hidden-nav-xs"></span><a href="#">Settings</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Profile</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#"> <span class="badge bg-danger pull-right">3</span> Notifications </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Help</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" data-toggle="ajaxModal">Logout</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!--End Sidebar user menu-->
+                            <!-- nav -->
+                            <nav class="nav-primary hidden-xs site-system-menu">
+                                <ul class="nav nav-main" data-ride="collapse">
+                                    <li class="">
+                                        <a href="#" class="bg-green active"> <i class="icon"> </i> <span>Home</span> </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/Benefit/" class="bg-dark-green"> <i class="icon"> </i> <span>Quyền lợi của thành viên</span> </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#" class="bg-blue"> <i class="icon"> </i> <span>Gói bảo hành mở rộng</span> </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#" class="bg-red"> <i class="icon"> </i> <span>Chương trình khuyến mãi</span> </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#" class="bg-orange"> <i class="icon"> </i> <span>Cuộc thi & giải trí</span> </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#" class="bg-yellow"> <i class="icon"> </i> <span>Khoá huấn luyện miễn phí</span> </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#" class="bg-lilac"> <i class="icon"> </i> <span>Hỏi & đáp</span> </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!--End site nav-->
+                            <ul class="nav-primary hidden-xs sidebar-footer-nav">
+                                <li>
+                                    <a href="/Clause/">Điều khoản sử dụng</a>
+                                </li>
+                                <li>
+                                    <a href="/Privacy/">Quyền riêng tư</a>
+                                </li>
+                                <li>
+                                    <a target="_blank"  href="https://www.sony.com.vn/section/contactus">Liên hệ</a>
+                                </li>
+                                <li class="global clearfix" style="padding-left:20px">
+                                    <a href="http://sony.net" target="_blank">Global home</a>
+                                </li>
+                                <li>
+                                    @DateTime.Now.Year © Bản quyền thuộc sở hữu <br /> Công ty Sony Electronics Việt Nam
+                                </li>
+                            </ul>
+                            <!--End site links-->
+                        </div>
+                    </section>
+                </section>
+            </aside>
+            <!-- /.aside -->
+            <section id="content">
+                <header class="header header-md navbar site-header-top">
+                    <div class="navbar-header aside-md dk site-logo">
+                        <a class="btn btn-link visible-xs site-m-menu-toggle" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a>
+                        <a href="#" class="navbar-brand"> <img src="/static/images/logo.png" class="m-r-sm" alt="scale" height="17" width="100" /> </a>
+                        <a id="search-form-button" class="btn btn-link visible-xs mobile-search-form" href="#mobile-search-form"> <i class="fa fa-search"></i> </a>
+                    </div>
+                    <div id="mobile-search-form" class="pull-right site-search">
+                        <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs" role="search">
+                            <div class="form-group">
+
+                            </div>
+                        </form>
+                    </div>
+                </header>
+
+                <section class="vbox bg-white">
+                    <section class="scrollable">
+                        <div class="page page-landing-page">
+                            <div class="page-header padder page-contrains ">
+                                <div class="block block-landing-header-logo">
+                                    <div class="row">
+                                        <div class="col-md-4 col-md-offset-1 only-desktop">
+                                            <div class="reg-tree">
+                                                <img src="/static/images/figures/landing-reg.png" alt="..." height="216" width="360" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="customer-logo">
+                                                <img src="/static/images/figures/cus-logo.png" alt="..." height="100" width="100" />
+                                            </div>
+                                            <div class="site-logan">
+                                                Chúng tôi trồng cây Dịch vụ
+                                                <span>bạn hái quả <b>Chăm sóc</b></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-content padder page-contrains">
+                                <div class="row m-t">
+                                    <div class="col-md-6 page-landing-left">
+                                        @*<div class="block block-landing-figure-box">
+                                                <div class="block-content">
+                                                    <div class="figure-wrapper">
+                                                        <div class="figure-image red">
+                                                            <a href="#"><img src="/static/images/figures/landing-page.jpg" alt=" "></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-details">
+                                                        <div class="post-title">mùa hè</div>
+                                                        <div class="post-desc">tận hưởng</div>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+                                        @Html.Raw(@ViewBag.LandingContent)
+                                    </div>
+
+                                    <div class="col-md-6 page-landing-right">
+                                        <form id="frmLogin" role="form" class="form form-landing-infos" onsubmit="return false;" autocomplete="off">
+                                            <div class="form-markup benefits">
+                                                Hãy đăng ký thành viên <b>MySony</b> và tận hưởng nhiều <b>ưu đãi hấp dẫn</b>
+                                            </div>
+                                            <div class="form-markup links">
+                                                <section class="row text-center">
+                                                    <div class="col-xs-4 r-l" id="benefit" style="cursor:pointer">
+                                                        <img src="/static/images/figures/landing-benefit-member.png" height="18" width="25" alt="">
+                                                        <p class="font-bold">
+                                                            Quyền lợi  <br /> My Sony
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-xs-4" id="news" style="cursor:pointer">
+                                                        <img src="/static/images/figures/landing-benefit-promotion.png" height="18" width="25" alt="">
+                                                        <p class="font-bold">
+                                                            Tin tức và <br /> khuyến mãi
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-xs-4 r-r" id="check" style="cursor:pointer">
+                                                        <img src="/static/images/figures/landing-benefit-qa.png" height="18" width="25" alt="">
+                                                        <p class="font-bold">
+                                                            Kiểm tra hàng <br /> chính hãng
+                                                        </p>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            <h2>Đăng nhập</h2>
+                                            <div class="form-group form-email">
+                                                <input id="txtEmail" type="email" class="form-control input-md no-border" placeholder="Email đăng nhập" required>
+                                            </div>
+                                            <div class="form-group form-password">
+                                                <input id="txtPass" type="password" class="form-control input-md no-border" placeholder="Mật khẩu" required>
+                                            </div>
+                                            @if (Common.NeedVerifyHuman())
+                                            {
+                                                <div class="g-recaptcha form-group" data-sitekey='@System.Configuration.ConfigurationManager.AppSettings["recaptcha_sitekey"]'></div>
+                                            }
+                                            <div class="form-markup forgot-pass text-right">
+                                                <a href="/Register/ForgetPass/">Quên mật khẩu?</a>
+                                            </div>
+                                            <div class="form-actions row">
+                                                <div class="col-xs-4">
+                                                    <button id="btnRegister" type="button" class="btn btn-s-md btn-danger">
+                                                        Đăng ký
+                                                    </button>
+                                                </div>
+                                                <div class="col-xs-8">
+                                                    <button type="submit" id="btnLogin" class="btn btn-s-md btn-dark">
+                                                        Đăng nhập
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-footer padder">
+                                <div class="row m-t">
+                                    <div class="col-md-6">
+                                        <div class="block block-landing-footer-menu">
+                                            <div class="block-content">
+                                                <ul class="menu">
+                                                    <li class="clearfix"><a href="/Clause/">Điều khoản sử dụng</a></li>
+                                                    <li><a href="/Privacy/">Quyền riêng tư</a></li>
+                                                    <li><a href="https://www.sony.com.vn/section/contactus">Liên hệ</a></li>
+                                                    <li class="global clearfix"><a href="http://sony.net">Global home</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="block block-landing-footer-copyright">
+                                            <div class="block-content">
+                                                @DateTime.Now.Year © Bản quyền thuộc sở hữu Công ty Sony Electronics Vietnam
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                        <!--End content-->
+                    </section>
+                </section>
+                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+            </section>
+        </section>
+    </section>
+</section>
+
+<!-- my modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog login">
+        <div class="modal-content clearfix">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="font-thin h1">&times;</span><span class="sr-only font-thin">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                <div style="line-height:20px" id="msg">msg</div>
+            </div>
+        </div>
+    </div>
+</div>

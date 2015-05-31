@@ -1,0 +1,234 @@
+﻿@model MySony.ViewModels.ManageCustomerViewModel
+@{
+    ViewBag.Title = "Index";
+    ViewBag.IsMyProfile = "active";
+    Layout="~/Views/Shared/_UserCPLayout.cshtml";
+}
+<section class="scrollable">
+    <div class="page page-main-content">
+        <div class="page-content padder page-contrains">
+            <div class="page-form-wrapper">
+                <div class="form form-persional-infos">
+                    <div class="form-message success" style="display: none;" id="message">
+                        <span id="dialog_title_span"></span>
+                    </div>
+                    <div class="form-markup form-title">
+                        Thông tin của tôi
+                    </div>                   
+                    <section class="row">
+                        <div class="col-xs-12 col-sm-5 col-md-5 r-l">
+                            <div class="form-group form-group-email">
+                                <label>Email đăng nhập</label>
+                                <div class="form-control">
+                                    @Model.email
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <div class="form-group form-group-last-name">
+                                <label>Họ</label>
+                                <div class="form-control">
+                                    @Model.firstname
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-md-3 r-r">
+                            <div class="form-group form-group-first-name">
+                                <label>Tên</label>
+                                <div class="form-control">
+                                    @Model.lastname
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="row">
+                        <div class="col-xs-6 col-sm-5 col-md-5 r-l col-xs-right-0">
+                            <div class="form-group form-group-gender">
+                                <label>Giới tính</label>
+                                <div class="form-control">
+                                    @if (@Model.sex==true)
+                                    {
+                                        <a>Nam</a>
+                                    }
+                                    else
+                                    {
+                                         <a>Nữ</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-xs-left-0">
+                            <div class="form-group form-group-birthday">
+                                <label>Ngày sinh</label>                                
+                                <div class="form-control">
+                                    @try
+                                    {
+                                        if (Model.birthday != null)
+                                        {
+                                            @Model.birthday.Value.ToString("dd/MM/yyyy")
+                                        }
+                                    }
+                                    catch (Exception)
+                                    {
+  
+                                        <a></a>
+                                    }
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-md-3 r-r hidden-xs">
+                            <div class="form-group form-group-change-password">
+                                <a class="btn btn-s-md btn-danger button" id="test" href="#change-password-form" title="Đổi mật khẩu">
+                                    Đổi mật khẩu
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="row">
+                        <div class="col-xs-6 col-sm-5 col-md-5 r-l col-xs-right-0">
+                            <div class="form-group form-group-cellphone">
+                                <label>Điện thoại di động</label>
+                                <div class="form-control">
+                                    @Model.mobilephone
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-7 col-md-7 col-xs-left-0">
+                            <div class="form-group form-group-homephone">
+                                <label>Điện thoại nhà</label>
+                                <div class="form-control">
+                                    @Model.homephone
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="row">
+                        <div class="col-xs-12 col-sm-5 col-md-5 r-l">
+                            <div class="form-group form-group-address">
+                                <label>Địa chỉ liên lạc</label>
+                                <div class="form-control">
+                                    @Model.address
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-xs-right-0">
+                            <div class="form-group form-group-ward">
+                                <label>Quận/Huyện</label>
+                                <div class="form-control">
+                                    @Model.DistrictName
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 col-md-3 r-r col-xs-left-0">
+                            <div class="form-group form-group-city">
+                                <label>Thành phố</label>
+                                <div class="form-control">
+                                    @Model.CityName
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="form-markup user-infos-note">
+                        Trong trường hợp quý khách muốn thay đổi thông tin cá nhân, <br /> vui lòng liên hệ Phòng Thông Tin Khách Hàng 1800 588 885 (miễn cước cuộc gọi) hoặc 1900 561 561, email: <a href="mailto:SEV.CIC@ap.sony.com">SEV.CIC@ap.sony.com</a>.
+                    </div>
+                </div>
+                <!-- Change password form -->
+                <div id="change-password-form">
+                    <form role="form" id="frmChangePass" onsubmit="return false;" class="form form-persional-infos" data-parsley-validate autocomplete="off">
+                        @Html.AntiForgeryToken()
+                        <section class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group form-group-email">
+                                    <label>Mật khẩu cũ <span class="form-require">*</span></label>
+                                    <input type="password" id="txtCurrentPass" class="form-control required" data-parsley-minlength="6" data-parsley-notblank="true" data-parsley-required="true" data-parsley-regexp="^(?=.*[a-z])(?=.*\d)">
+                                </div>
+                            </div>
+                        </section>
+                        <section class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group form-group-email">
+                                    <label>Mật khẩu mới <span class="form-require">*</span></label>
+                                    <input type="password" id="txtNewPass" class="form-control" data-parsley-trigger="change"  data-parsley-minlength="6" data-parsley-notblank="true" data-parsley-required="true" data-parsley-pattern="^(?=.*[a-z])(?=.*\d)" placeholder="VD: abc123" required>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group form-group-phone">
+                                    <label>Xác nhận mật khẩu mới <span class="form-require">*</span></label>
+                                    <input type="password" id="txtConfirmPass" class="form-control" data-parsley-equalto="#txtNewPass" data-parsley-minlength="6" data-parsley-notblank="true" data-parsley-required="true">
+                                </div>
+                            </div>
+                        </section>
+                        <div class="form-actions text-right">
+                            <a id="closefromfancy"></a>
+                            <button type="submit" id="btnChangePass" class="btn btn-s-md btn-dark button">
+                                Lưu lại
+                            </button>
+                        </div>
+                    </form>
+</div>                                 
+            </div>
+        </div>
+        <div class="page-footer padder">
+            <div class="row m-t">
+                <div class="col-md-6">
+                    <div class="block block-landing-footer-menu">
+                        <div class="block-content">
+                            <ul class="menu">
+                                <li><a href="/Clause/">Điều khoản sử dụng</a></li>
+                                <li><a href="/Privacy/">Quyền riêng tư</a></li>
+                                <li>
+                                    <a href="https://www.sony.com.vn/section/contactus">Liên hệ</a>
+                                </li>
+                                <li class="global clearfix" style="padding-left:20px">
+                                    <a href="http://sony.net" target="_blank">Global home11</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="block block-landing-footer-copyright">
+                        <div class="block-content">
+                            @DateTime.Now.Year © Bản quyền thuộc sở hữu Công ty Sony Electronics Vietnam
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End content-->
+</section>
+@section scripts{
+    <script>
+        $('#frmChangePass').parsley().subscribe('parsley:form:validate', function (formInstance) {
+            if (formInstance.isValid()) {
+                $.post('/UserCP/ChangePassword',
+                {
+                    currentPass: $('#txtCurrentPass').val(),
+                    newPass: $('#txtNewPass').val(),
+                    confirmPass: $('#txtConfirmPass').val()
+                },
+                function (res) {
+                    ShowPopup(res.msg);
+                    switch(res.result) {
+                        case 0:                                
+                            document.getElementById('closefromfancy').click();                            
+                            break;                            
+                    } 
+                        
+                    $("#change-password-form").attr("type", "display: none;");                       
+                    if (res.result == true) {
+                        $("#dialog_title_span").css("color", "#ffffff");
+                    } else {
+                        $("#dialog_title_span").css("color", "red");
+                    }
+                    $('#dialog_title_span').text(res.msg);
+                    $("#message").show();
+                });
+            }  
+        });       
+    </script>
+}

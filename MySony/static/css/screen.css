@@ -1,0 +1,11 @@
+.btn-dark {
+    background: #253743 !important;
+    border-color: #253743;
+}
+
+.global a {
+    background: #5d5d5d none repeat scroll 0 0;
+    border-radius: 20px;
+    font-size: 10px;
+    padding: 3px 15px;
+}

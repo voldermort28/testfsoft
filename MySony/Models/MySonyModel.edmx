@@ -1,0 +1,3042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MySonyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="admin_type" Type="int" />
+          <Property Name="status_id" Type="int" />
+          <Property Name="admincodereg" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="modelImage" Type="nvarchar(max)" />
+          <Property Name="serialImage" Type="nvarchar(max)" />
+          <Property Name="nameImage" Type="nvarchar(max)" />
+          <Property Name="status_id" Type="int" />
+          <Property Name="viewModelImage" Type="nvarchar(max)" />
+          <Property Name="viewSerialImage" Type="nvarchar(max)" />
+          <Property Name="RS_base_warranty_months" Type="int" />
+        </EntityType>
+        <EntityType Name="cities">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="porder" Type="int" />
+          <Property Name="status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="firstname" Type="nvarchar(max)" />
+          <Property Name="lastname" Type="nvarchar(max)" />
+          <Property Name="sex" Type="bit" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="homephone" Type="nvarchar(max)" />
+          <Property Name="mobilephone" Type="nvarchar(max)" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="district_id" Type="int" />
+          <Property Name="city_id" Type="int" />
+          <Property Name="identitycard" Type="nvarchar(max)" />
+          <Property Name="job_id" Type="int" />
+          <Property Name="education_id" Type="int" />
+          <Property Name="status_id" Type="int" />
+          <Property Name="customertype_id" Type="int" />
+          <Property Name="customercodereg" Type="nvarchar(max)" />
+          <Property Name="datereg" Type="datetime" />
+          <Property Name="status_active" Type="int" />
+          <Property Name="modifieddate" Type="datetime" />
+          <Property Name="RM" Type="nvarchar(max)" />
+          <Property Name="RM1" Type="nvarchar(max)" />
+          <Property Name="RM2" Type="nvarchar(max)" />
+          <Property Name="IsPending" Type="bit" />
+        </EntityType>
+        <EntityType Name="customerlock">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="timelock" Type="nvarchar(max)" />
+          <Property Name="status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="customertype">
+          <Key>
+            <PropertyRef Name="customertype_id" />
+          </Key>
+          <Property Name="customertype_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="districts">
+          <Key>
+            <PropertyRef Name="district_id" />
+          </Key>
+          <Property Name="district_id" Type="int" Nullable="false" />
+          <Property Name="city_id" Type="int" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="education">
+          <Key>
+            <PropertyRef Name="education_id" />
+          </Key>
+          <Property Name="education_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="jobs">
+          <Key>
+            <PropertyRef Name="job_id" />
+          </Key>
+          <Property Name="job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="LogError">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Created" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'mysony2.dbo.Model' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Model">
+          <Property Name="8D" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="catagory_id" Type="int" />
+          <Property Name="customer_id" Type="int" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="serial" Type="nvarchar(max)" />
+          <Property Name="date" Type="date" />
+          <Property Name="city_id" Type="int" />
+          <Property Name="shop_id" Type="int" />
+          <Property Name="status_id" Type="int" />
+          <Property Name="regdate" Type="datetime" />
+          <Property Name="modifieddate" Type="datetime" />
+          <Property Name="cardnumber" Type="nvarchar(max)" />
+          <Property Name="smssentdate" Type="datetime" />
+          <Property Name="RM" Type="nvarchar(max)" />
+          <Property Name="RM1" Type="nvarchar(max)" />
+          <Property Name="RM2" Type="nvarchar(max)" />
+          <Property Name="WarrantyStart" Type="datetime" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="WarrantyEnd" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PassChange">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="int" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="datechange" Type="datetime" />
+          <Property Name="RM" Type="nvarchar(max)" />
+          <Property Name="RM1" Type="nvarchar(max)" />
+          <Property Name="RM2" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_id" Type="int" />
+          <Property Name="productcode" Type="nvarchar(max)" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="resethistory">
+          <Key>
+            <PropertyRef Name="para_id" />
+          </Key>
+          <Property Name="para_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customercodereg" Type="nvarchar(max)" />
+          <Property Name="senttime" Type="datetime" />
+          <Property Name="expiredtime" Type="datetime" />
+          <Property Name="longsenttime" Type="nvarchar(max)" />
+          <Property Name="status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="RS_Article">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Thumbnail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Brief" Type="ntext" />
+          <Property Name="ArticleContent" Type="ntext" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsTop" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="PublishDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderNo" Type="int" />
+        </EntityType>
+        <EntityType Name="RS_Branch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="city_id" Type="int" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="RS_Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="Tags" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="RS_Config">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BannerHome" Type="nvarchar" MaxLength="100" />
+          <Property Name="BackgroundLanding" Type="nvarchar" MaxLength="100" />
+          <Property Name="LandingContent" Type="ntext" />
+        </EntityType>
+        <EntityType Name="RS_FAQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="ntext" Nullable="false" />
+          <Property Name="Answer" Type="ntext" Nullable="false" />
+          <Property Name="OrderNo" Type="int" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="RS_Images">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Descript" Type="nvarchar" MaxLength="500" />
+          <Property Name="LinkImage" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="Url" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="RS_mail_template">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="500" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Created" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RS_Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="CssClass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar" MaxLength="100" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="RS_Video">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Brief" Type="ntext" />
+          <Property Name="Descript" Type="nvarchar" MaxLength="500" />
+          <Property Name="Thumb" Type="nvarchar" MaxLength="200" />
+          <Property Name="Source" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsHighlight" Type="bit" Nullable="false" />
+          <Property Name="PublishDate" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="serial">
+          <Key>
+            <PropertyRef Name="serial_id" />
+          </Key>
+          <Property Name="serial_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="modelname" Type="nvarchar(max)" />
+          <Property Name="serialnumber" Type="nvarchar(max)" />
+          <Property Name="productcode" Type="nvarchar(max)" />
+          <Property Name="warrantycardnumber" Type="nvarchar(max)" />
+          <Property Name="partcode" Type="nvarchar(max)" />
+          <Property Name="manufacturingdate" Type="date" />
+          <Property Name="batterynumber" Type="nvarchar(max)" />
+          <Property Name="adapternumber" Type="nvarchar(max)" />
+          <Property Name="alphalenumber" Type="nvarchar(max)" />
+          <Property Name="period" Type="decimal" Precision="3" Scale="1" />
+          <Property Name="expireddate" Type="date" />
+          <Property Name="RM" Type="nvarchar(max)" />
+          <Property Name="RM1" Type="nvarchar(max)" />
+          <Property Name="RM2" Type="nvarchar(max)" />
+          <Property Name="dateimport" Type="datetime" />
+          <Property Name="status_id" Type="int" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="shops">
+          <Key>
+            <PropertyRef Name="shop_id" />
+          </Key>
+          <Property Name="shop_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="city_id" Type="int" />
+          <Property Name="shoptype_id" Type="int" />
+          <Property Name="status_id" Type="int" />
+          <Property Name="order_no" Type="int" />
+          <Property Name="branch_id" Type="int" />
+        </EntityType>
+        <EntityType Name="shoptype">
+          <Key>
+            <PropertyRef Name="shoptype_id" />
+          </Key>
+          <Property Name="shoptype_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_admin_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="admin" Type="Self.admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="admin">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categories_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="categories" Type="Self.categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="categories">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cities_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="cities" Type="Self.cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="cities">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_districts_cities">
+          <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
+          <End Role="districts" Type="Self.districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cities">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="districts">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_districts_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="districts" Type="Self.districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="districts">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_education_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="education" Type="Self.education" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="education">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jobs_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="jobs" Type="Self.jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="jobs">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_categories">
+          <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="catagory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_cities">
+          <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cities">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_products">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_shops">
+          <End Role="shops" Type="Self.shops" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shops">
+              <PropertyRef Name="shop_id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="shop_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_categories">
+          <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Article_RS_Category">
+          <End Role="RS_Category" Type="Self.RS_Category" Multiplicity="0..1" />
+          <End Role="RS_Article" Type="Self.RS_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RS_Article">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Article_RS_Category1">
+          <End Role="RS_Category" Type="Self.RS_Category" Multiplicity="0..1" />
+          <End Role="RS_Article" Type="Self.RS_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RS_Article">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Branch_cities">
+          <End Role="cities" Type="Self.cities" Multiplicity="1" />
+          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cities">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="RS_Branch">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Branch_status">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="RS_Branch">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Category_admin">
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="RS_Category" Type="Self.RS_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Category">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Category_admin1">
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="RS_Category" Type="Self.RS_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Category">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_FAQ_admin">
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="RS_FAQ" Type="Self.RS_FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_FAQ">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_FAQ_admin1">
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="RS_FAQ" Type="Self.RS_FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_FAQ">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Images_RS_Category">
+          <End Role="RS_Category" Type="Self.RS_Category" Multiplicity="0..1" />
+          <End Role="RS_Images" Type="Self.RS_Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RS_Images">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_mail_template_cities">
+          <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
+          <End Role="RS_mail_template" Type="Self.RS_mail_template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cities">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="RS_mail_template">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_mail_template_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="RS_mail_template" Type="Self.RS_mail_template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="RS_mail_template">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Menu_admin">
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="RS_Menu" Type="Self.RS_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Menu">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Menu_admin1">
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="RS_Menu" Type="Self.RS_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Menu">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Video_admin">
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="RS_Video" Type="Self.RS_Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Video">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Video_admin1">
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="RS_Video" Type="Self.RS_Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Video">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_serial_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="serial" Type="Self.serial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="serial">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shops_cities">
+          <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
+          <End Role="shops" Type="Self.shops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cities">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="shops">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shops_shoptype">
+          <End Role="shoptype" Type="Self.shoptype" Multiplicity="0..1" />
+          <End Role="shops" Type="Self.shops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shoptype">
+              <PropertyRef Name="shoptype_id" />
+            </Principal>
+            <Dependent Role="shops">
+              <PropertyRef Name="shoptype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shops_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="shops" Type="Self.shops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="shops">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shoptype_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="shoptype" Type="Self.shoptype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="shoptype">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_cities">
+          <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cities">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_districts">
+          <End Role="districts" Type="Self.districts" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="districts">
+              <PropertyRef Name="district_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="district_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_education">
+          <End Role="education" Type="Self.education" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="education">
+              <PropertyRef Name="education_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="education_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_jobs">
+          <End Role="jobs" Type="Self.jobs" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="job_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="job_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_usertype">
+          <End Role="customertype" Type="Self.customertype" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customertype">
+              <PropertyRef Name="customertype_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="customertype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usertype_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="customertype" Type="Self.customertype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="customertype">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetCustomerProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetCustomerShop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetRegisteredProductByMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="ShopId" Type="int" Mode="In" />
+          <Parameter Name="Month" Type="int" Mode="In" />
+          <Parameter Name="Year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetSerial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ProductReportByMonthCenter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SearchSerial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="series" Type="nvarchar" Mode="In" />
+          <Parameter Name="warrantyNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="modelname" Type="nvarchar" Mode="In" />
+          <Parameter Name="okAnpha" Type="nvarchar" Mode="In" />
+          <Parameter Name="battery" Type="nvarchar" Mode="In" />
+          <Parameter Name="adapter" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateOrderIdOnSerial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="MySonyModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cities" EntityType="Self.cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customerlock" EntityType="Self.customerlock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customertype" EntityType="Self.customertype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="districts" EntityType="Self.districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="education" EntityType="Self.education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogError" EntityType="Self.LogError" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PassChange" EntityType="Self.PassChange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="resethistory" EntityType="Self.resethistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Article" EntityType="Self.RS_Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Branch" EntityType="Self.RS_Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Category" EntityType="Self.RS_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Config" EntityType="Self.RS_Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_FAQ" EntityType="Self.RS_FAQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Images" EntityType="Self.RS_Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_mail_template" EntityType="Self.RS_mail_template" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Menu" EntityType="Self.RS_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Video" EntityType="Self.RS_Video" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="serial" EntityType="Self.serial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shops" EntityType="Self.shops" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shoptype" EntityType="Self.shoptype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_admin_status" Association="Self.FK_admin_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="admin" EntitySet="admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_status" Association="Self.FK_categories_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="categories" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cities_status" Association="Self.FK_cities_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="cities" EntitySet="cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_districts_cities" Association="Self.FK_districts_cities">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="districts" EntitySet="districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_districts_status" Association="Self.FK_districts_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="districts" EntitySet="districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_education_status" Association="Self.FK_education_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="education" EntitySet="education" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jobs_status" Association="Self.FK_jobs_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="jobs" EntitySet="jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_categories" Association="Self.FK_orders_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_cities" Association="Self.FK_orders_cities">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_customer" Association="Self.FK_orders_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_products" Association="Self.FK_orders_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_shops" Association="Self.FK_orders_shops">
+            <End Role="shops" EntitySet="shops" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_status" Association="Self.FK_orders_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_categories" Association="Self.FK_products_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_status" Association="Self.FK_products_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Article_RS_Category" Association="Self.FK_RS_Article_RS_Category">
+            <End Role="RS_Category" EntitySet="RS_Category" />
+            <End Role="RS_Article" EntitySet="RS_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Article_RS_Category1" Association="Self.FK_RS_Article_RS_Category1">
+            <End Role="RS_Category" EntitySet="RS_Category" />
+            <End Role="RS_Article" EntitySet="RS_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Branch_cities" Association="Self.FK_RS_Branch_cities">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="RS_Branch" EntitySet="RS_Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Branch_status" Association="Self.FK_RS_Branch_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="RS_Branch" EntitySet="RS_Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Category_admin" Association="Self.FK_RS_Category_admin">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Category" EntitySet="RS_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Category_admin1" Association="Self.FK_RS_Category_admin1">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Category" EntitySet="RS_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_FAQ_admin" Association="Self.FK_RS_FAQ_admin">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_FAQ" EntitySet="RS_FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_FAQ_admin1" Association="Self.FK_RS_FAQ_admin1">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_FAQ" EntitySet="RS_FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Images_RS_Category" Association="Self.FK_RS_Images_RS_Category">
+            <End Role="RS_Category" EntitySet="RS_Category" />
+            <End Role="RS_Images" EntitySet="RS_Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_mail_template_cities" Association="Self.FK_RS_mail_template_cities">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="RS_mail_template" EntitySet="RS_mail_template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_mail_template_status" Association="Self.FK_RS_mail_template_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="RS_mail_template" EntitySet="RS_mail_template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Menu_admin" Association="Self.FK_RS_Menu_admin">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Menu_admin1" Association="Self.FK_RS_Menu_admin1">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Video_admin" Association="Self.FK_RS_Video_admin">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Video" EntitySet="RS_Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Video_admin1" Association="Self.FK_RS_Video_admin1">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Video" EntitySet="RS_Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK_serial_status" Association="Self.FK_serial_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="serial" EntitySet="serial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_cities" Association="Self.FK_shops_cities">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="shops" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_shoptype" Association="Self.FK_shops_shoptype">
+            <End Role="shoptype" EntitySet="shoptype" />
+            <End Role="shops" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_status" Association="Self.FK_shops_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="shops" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shoptype_status" Association="Self.FK_shoptype_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="shoptype" EntitySet="shoptype" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_cities" Association="Self.FK_user_cities">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_districts" Association="Self.FK_user_districts">
+            <End Role="districts" EntitySet="districts" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_education" Association="Self.FK_user_education">
+            <End Role="education" EntitySet="education" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_jobs" Association="Self.FK_user_jobs">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_status" Association="Self.FK_user_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_usertype" Association="Self.FK_user_usertype">
+            <End Role="customertype" EntitySet="customertype" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usertype_status" Association="Self.FK_usertype_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="customertype" EntitySet="customertype" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MySonyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MySonyEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="GetCustomerProduct" ReturnType="Collection(MySonyModel.GetCustomerProduct_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProductReportByMonthCenter" ReturnType="Collection(MySonyModel.ProductReportByMonthCenter_Result)">
+          <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SearchSerial" ReturnType="Collection(MySonyModel.SearchSerial_Result)">
+            <Parameter Name="series" Mode="In" Type="String" />
+            <Parameter Name="warrantyNumber" Mode="In" Type="String" />
+            <Parameter Name="modelname" Mode="In" Type="String" />
+            <Parameter Name="okAnpha" Mode="In" Type="String" />
+            <Parameter Name="battery" Mode="In" Type="String" />
+            <Parameter Name="adapter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MySonyModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MySonyModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="UpdateOrderIdOnSerial">
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetSerial" ReturnType="Collection(MySonyModel.GetSerial_Result)" />
+          <FunctionImport Name="GetCustomerShop" ReturnType="Collection(MySonyModel.GetCustomerShop_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="admins" EntityType="MySonyModel.admin" />
+          <EntitySet Name="categories" EntityType="MySonyModel.category" />
+          <EntitySet Name="cities" EntityType="MySonyModel.city" />
+          <EntitySet Name="customers" EntityType="MySonyModel.customer" />
+          <EntitySet Name="customerlocks" EntityType="MySonyModel.customerlock" />
+          <EntitySet Name="customertypes" EntityType="MySonyModel.customertype" />
+          <EntitySet Name="districts" EntityType="MySonyModel.district" />
+          <EntitySet Name="educations" EntityType="MySonyModel.education" />
+          <EntitySet Name="jobs" EntityType="MySonyModel.job" />
+          <EntitySet Name="LogErrors" EntityType="MySonyModel.LogError" />
+          <EntitySet Name="orders" EntityType="MySonyModel.order" />
+          <EntitySet Name="PassChanges" EntityType="MySonyModel.PassChange" />
+          <EntitySet Name="products" EntityType="MySonyModel.product" />
+          <EntitySet Name="resethistories" EntityType="MySonyModel.resethistory" />
+          <EntitySet Name="RS_Article" EntityType="MySonyModel.RS_Article" />
+          <EntitySet Name="RS_Branch" EntityType="MySonyModel.RS_Branch" />
+          <EntitySet Name="RS_Category" EntityType="MySonyModel.RS_Category" />
+          <EntitySet Name="RS_Config" EntityType="MySonyModel.RS_Config" />
+          <EntitySet Name="RS_FAQ" EntityType="MySonyModel.RS_FAQ" />
+          <EntitySet Name="RS_Images" EntityType="MySonyModel.RS_Images" />
+          <EntitySet Name="RS_mail_template" EntityType="MySonyModel.RS_mail_template" />
+          <EntitySet Name="RS_Menu" EntityType="MySonyModel.RS_Menu" />
+          <EntitySet Name="RS_Video" EntityType="MySonyModel.RS_Video" />
+          <EntitySet Name="serials" EntityType="MySonyModel.serial" />
+          <EntitySet Name="shops" EntityType="MySonyModel.shop" />
+          <EntitySet Name="shoptypes" EntityType="MySonyModel.shoptype" />
+          <EntitySet Name="status" EntityType="MySonyModel.status" />
+          <EntitySet Name="sysdiagrams" EntityType="MySonyModel.sysdiagram" />
+          <AssociationSet Name="FK_admin_status" Association="MySonyModel.FK_admin_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="admin" EntitySet="admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Category_admin" Association="MySonyModel.FK_RS_Category_admin">
+            <End Role="admin" EntitySet="admins" />
+            <End Role="RS_Category" EntitySet="RS_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Category_admin1" Association="MySonyModel.FK_RS_Category_admin1">
+            <End Role="admin" EntitySet="admins" />
+            <End Role="RS_Category" EntitySet="RS_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_FAQ_admin" Association="MySonyModel.FK_RS_FAQ_admin">
+            <End Role="admin" EntitySet="admins" />
+            <End Role="RS_FAQ" EntitySet="RS_FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_FAQ_admin1" Association="MySonyModel.FK_RS_FAQ_admin1">
+            <End Role="admin" EntitySet="admins" />
+            <End Role="RS_FAQ" EntitySet="RS_FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Menu_admin" Association="MySonyModel.FK_RS_Menu_admin">
+            <End Role="admin" EntitySet="admins" />
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Menu_admin1" Association="MySonyModel.FK_RS_Menu_admin1">
+            <End Role="admin" EntitySet="admins" />
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Video_admin" Association="MySonyModel.FK_RS_Video_admin">
+            <End Role="admin" EntitySet="admins" />
+            <End Role="RS_Video" EntitySet="RS_Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Video_admin1" Association="MySonyModel.FK_RS_Video_admin1">
+            <End Role="admin" EntitySet="admins" />
+            <End Role="RS_Video" EntitySet="RS_Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_status" Association="MySonyModel.FK_categories_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="category" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_categories" Association="MySonyModel.FK_orders_categories">
+            <End Role="category" EntitySet="categories" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_categories" Association="MySonyModel.FK_products_categories">
+            <End Role="category" EntitySet="categories" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cities_status" Association="MySonyModel.FK_cities_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="city" EntitySet="cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_districts_cities" Association="MySonyModel.FK_districts_cities">
+            <End Role="city" EntitySet="cities" />
+            <End Role="district" EntitySet="districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_cities" Association="MySonyModel.FK_orders_cities">
+            <End Role="city" EntitySet="cities" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Branch_cities" Association="MySonyModel.FK_RS_Branch_cities">
+            <End Role="city" EntitySet="cities" />
+            <End Role="RS_Branch" EntitySet="RS_Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_mail_template_cities" Association="MySonyModel.FK_RS_mail_template_cities">
+            <End Role="city" EntitySet="cities" />
+            <End Role="RS_mail_template" EntitySet="RS_mail_template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_cities" Association="MySonyModel.FK_shops_cities">
+            <End Role="city" EntitySet="cities" />
+            <End Role="shop" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_cities" Association="MySonyModel.FK_user_cities">
+            <End Role="city" EntitySet="cities" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_customer" Association="MySonyModel.FK_orders_customer">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_districts" Association="MySonyModel.FK_user_districts">
+            <End Role="district" EntitySet="districts" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_education" Association="MySonyModel.FK_user_education">
+            <End Role="education" EntitySet="educations" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_jobs" Association="MySonyModel.FK_user_jobs">
+            <End Role="job" EntitySet="jobs" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_status" Association="MySonyModel.FK_user_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_usertype" Association="MySonyModel.FK_user_usertype">
+            <End Role="customertype" EntitySet="customertypes" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usertype_status" Association="MySonyModel.FK_usertype_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="customertype" EntitySet="customertypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_districts_status" Association="MySonyModel.FK_districts_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="district" EntitySet="districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_education_status" Association="MySonyModel.FK_education_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="education" EntitySet="educations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jobs_status" Association="MySonyModel.FK_jobs_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="job" EntitySet="jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_products" Association="MySonyModel.FK_orders_products">
+            <End Role="product" EntitySet="products" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_shops" Association="MySonyModel.FK_orders_shops">
+            <End Role="shop" EntitySet="shops" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_status" Association="MySonyModel.FK_orders_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_status" Association="MySonyModel.FK_products_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Article_RS_Category" Association="MySonyModel.FK_RS_Article_RS_Category">
+            <End Role="RS_Category" EntitySet="RS_Category" />
+            <End Role="RS_Article" EntitySet="RS_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Article_RS_Category1" Association="MySonyModel.FK_RS_Article_RS_Category1">
+            <End Role="RS_Category" EntitySet="RS_Category" />
+            <End Role="RS_Article" EntitySet="RS_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Branch_status" Association="MySonyModel.FK_RS_Branch_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="RS_Branch" EntitySet="RS_Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_RS_Branch" Association="MySonyModel.FK_shops_RS_Branch">
+            <End Role="RS_Branch" EntitySet="RS_Branch" />
+            <End Role="shop" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Images_RS_Category" Association="MySonyModel.FK_RS_Images_RS_Category">
+            <End Role="RS_Category" EntitySet="RS_Category" />
+            <End Role="RS_Images" EntitySet="RS_Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_mail_template_status" Association="MySonyModel.FK_RS_mail_template_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="RS_mail_template" EntitySet="RS_mail_template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_serial_status" Association="MySonyModel.FK_serial_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="serial" EntitySet="serials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_shoptype" Association="MySonyModel.FK_shops_shoptype">
+            <End Role="shoptype" EntitySet="shoptypes" />
+            <End Role="shop" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_status" Association="MySonyModel.FK_shops_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="shop" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shoptype_status" Association="MySonyModel.FK_shoptype_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="shoptype" EntitySet="shoptypes" />
+          </AssociationSet>
+          <FunctionImport Name="GetCustomerShop1" ReturnType="Collection(MySonyModel.GetCustomerShop1_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="GetCustomerProduct_Result">
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" />
+          <Property Type="String" Name="LastName" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" />
+          <Property Type="Boolean" Name="Gender" Nullable="true" />
+          <Property Type="DateTime" Name="Birthday" Nullable="true" />
+          <Property Type="String" Name="HomePhone" Nullable="true" />
+          <Property Type="String" Name="MobilePhone" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="District" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" />
+          <Property Type="String" Name="IdCard" Nullable="true" />
+          <Property Type="String" Name="Job" Nullable="true" />
+          <Property Type="String" Name="Education" Nullable="true" />
+          <Property Type="DateTime" Name="RegistrationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Channel" Nullable="true" />
+          <Property Type="Int32" Name="TrangThai" Nullable="true" />
+          <Property Type="String" Name="Category" Nullable="true" />
+          <Property Type="String" Name="ModelName" Nullable="true" />
+          <Property Type="String" Name="Serial" Nullable="true" />
+          <Property Type="String" Name="Shop" Nullable="true" />
+          <Property Type="DateTime" Name="ProductRegDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ProductReportByMonthCenter_Result">
+          <Property Type="Int32" Name="RowId" Nullable="false" />
+          <Property Type="Int32" Name="ShopId" Nullable="true" />
+          <Property Type="String" Name="ShopName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="January" Nullable="true" />
+          <Property Type="Int32" Name="February" Nullable="true" />
+          <Property Type="Int32" Name="March" Nullable="true" />
+          <Property Type="Int32" Name="April" Nullable="true" />
+          <Property Type="Int32" Name="May" Nullable="true" />
+          <Property Type="Int32" Name="June" Nullable="true" />
+          <Property Type="Int32" Name="July" Nullable="true" />
+          <Property Type="Int32" Name="August" Nullable="true" />
+          <Property Type="Int32" Name="September" Nullable="true" />
+          <Property Type="Int32" Name="October" Nullable="true" />
+          <Property Type="Int32" Name="November" Nullable="true" />
+          <Property Type="Int32" Name="December" Nullable="true" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SearchSerial_Result">
+          <Property Type="Int32" Name="serial_id" Nullable="false" />
+          <Property Type="String" Name="modelname" Nullable="true" />
+          <Property Type="String" Name="serialnumber" Nullable="true" />
+          <Property Type="String" Name="productcode" Nullable="true" />
+          <Property Type="String" Name="warrantycardnumber" Nullable="true" />
+          <Property Type="String" Name="partcode" Nullable="true" />
+          <Property Type="DateTime" Name="manufacturingdate" Nullable="true" />
+          <Property Type="String" Name="batterynumber" Nullable="true" />
+          <Property Type="String" Name="adapternumber" Nullable="true" />
+          <Property Type="String" Name="alphalenumber" Nullable="true" />
+          <Property Type="Decimal" Name="period" Nullable="true" Precision="3" Scale="1" />
+          <Property Type="DateTime" Name="expireddate" Nullable="true" />
+          <Property Type="String" Name="RM" Nullable="true" />
+          <Property Type="String" Name="RM1" Nullable="true" />
+          <Property Type="String" Name="RM2" Nullable="true" />
+          <Property Type="DateTime" Name="dateimport" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="status_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetSerial_Result">
+          <Property Type="String" Name="serialnumber" Nullable="true" />
+          <Property Type="Int32" Name="category_id" Nullable="true" />
+          <Property Type="String" Name="categoryname" Nullable="true" />
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="Int32" Name="customer_id" Nullable="true" />
+          <Property Type="Int32" Name="status_id" Nullable="false" />
+          <Property Type="Int32" Name="serial_id" Nullable="false" />
+          <Property Type="String" Name="fullname" Nullable="false" />
+          <Property Type="String" Name="modelname" Nullable="false" />
+          <Property Type="String" Name="productcode" Nullable="false" />
+          <Property Type="DateTime" Name="manufacturingdate" Nullable="false" />
+          <Property Type="String" Name="batterynumber" Nullable="false" />
+          <Property Type="String" Name="adapternumber" Nullable="false" />
+          <Property Type="String" Name="alphalenumber" Nullable="false" />
+          <Property Type="Decimal" Name="period" Nullable="false" />
+          <Property Type="DateTime" Name="expireddate" Nullable="false" />
+          <Property Type="DateTime" Name="dateimport" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetCustomerShop_Result">
+          <Property Type="Int32" Name="customer_id" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" />
+          <Property Type="String" Name="LastName" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" />
+          <Property Type="Boolean" Name="Gender" Nullable="true" />
+          <Property Type="DateTime" Name="Birthday" Nullable="true" />
+          <Property Type="String" Name="HomePhone" Nullable="true" />
+          <Property Type="String" Name="MobilePhone" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="District" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" />
+          <Property Type="String" Name="IdCard" Nullable="true" />
+          <Property Type="String" Name="Job" Nullable="true" />
+          <Property Type="String" Name="Education" Nullable="true" />
+          <Property Type="DateTime" Name="RegistrationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Channel" Nullable="true" />
+          <Property Type="Int32" Name="TrangThai" Nullable="true" />
+          <Property Type="String" Name="Shop" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="admin_type" Type="Int32" />
+          <Property Name="status_id" Type="Int32" />
+          <Property Name="admincodereg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_admin_status" FromRole="admin" ToRole="status" />
+          <NavigationProperty Name="RS_Category" Relationship="MySonyModel.FK_RS_Category_admin" FromRole="admin" ToRole="RS_Category" />
+          <NavigationProperty Name="RS_Category1" Relationship="MySonyModel.FK_RS_Category_admin1" FromRole="admin" ToRole="RS_Category" />
+          <NavigationProperty Name="RS_FAQ" Relationship="MySonyModel.FK_RS_FAQ_admin" FromRole="admin" ToRole="RS_FAQ" />
+          <NavigationProperty Name="RS_FAQ1" Relationship="MySonyModel.FK_RS_FAQ_admin1" FromRole="admin" ToRole="RS_FAQ" />
+          <NavigationProperty Name="RS_Menu" Relationship="MySonyModel.FK_RS_Menu_admin" FromRole="admin" ToRole="RS_Menu" />
+          <NavigationProperty Name="RS_Menu1" Relationship="MySonyModel.FK_RS_Menu_admin1" FromRole="admin" ToRole="RS_Menu" />
+          <NavigationProperty Name="RS_Video" Relationship="MySonyModel.FK_RS_Video_admin" FromRole="admin" ToRole="RS_Video" />
+          <NavigationProperty Name="RS_Video1" Relationship="MySonyModel.FK_RS_Video_admin1" FromRole="admin" ToRole="RS_Video" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="modelImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="serialImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nameImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_id" Type="Int32" />
+          <Property Name="viewModelImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="viewSerialImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RS_base_warranty_months" Type="Int32" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_categories_status" FromRole="category" ToRole="status" />
+          <NavigationProperty Name="orders" Relationship="MySonyModel.FK_orders_categories" FromRole="category" ToRole="order" />
+          <NavigationProperty Name="products" Relationship="MySonyModel.FK_products_categories" FromRole="category" ToRole="product" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="porder" Type="Int32" />
+          <Property Name="status_id" Type="Int32" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_cities_status" FromRole="city" ToRole="status" />
+          <NavigationProperty Name="districts" Relationship="MySonyModel.FK_districts_cities" FromRole="city" ToRole="district" />
+          <NavigationProperty Name="orders" Relationship="MySonyModel.FK_orders_cities" FromRole="city" ToRole="order" />
+          <NavigationProperty Name="RS_Branch" Relationship="MySonyModel.FK_RS_Branch_cities" FromRole="city" ToRole="RS_Branch" />
+          <NavigationProperty Name="RS_mail_template" Relationship="MySonyModel.FK_RS_mail_template_cities" FromRole="city" ToRole="RS_mail_template" />
+          <NavigationProperty Name="shops" Relationship="MySonyModel.FK_shops_cities" FromRole="city" ToRole="shop" />
+          <NavigationProperty Name="customers" Relationship="MySonyModel.FK_user_cities" FromRole="city" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sex" Type="Boolean" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="homephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mobilephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="district_id" Type="Int32" />
+          <Property Name="city_id" Type="Int32" />
+          <Property Name="identitycard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="job_id" Type="Int32" />
+          <Property Name="education_id" Type="Int32" />
+          <Property Name="status_id" Type="Int32" />
+          <Property Name="customertype_id" Type="Int32" />
+          <Property Name="customercodereg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datereg" Type="DateTime" Precision="3" />
+          <Property Name="status_active" Type="Int32" />
+          <Property Name="modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="RM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RM1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RM2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsPending" Type="Boolean" />
+          <NavigationProperty Name="city" Relationship="MySonyModel.FK_user_cities" FromRole="customer" ToRole="city" />
+          <NavigationProperty Name="orders" Relationship="MySonyModel.FK_orders_customer" FromRole="customer" ToRole="order" />
+          <NavigationProperty Name="district" Relationship="MySonyModel.FK_user_districts" FromRole="customer" ToRole="district" />
+          <NavigationProperty Name="education" Relationship="MySonyModel.FK_user_education" FromRole="customer" ToRole="education" />
+          <NavigationProperty Name="job" Relationship="MySonyModel.FK_user_jobs" FromRole="customer" ToRole="job" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_user_status" FromRole="customer" ToRole="status" />
+          <NavigationProperty Name="customertype" Relationship="MySonyModel.FK_user_usertype" FromRole="customer" ToRole="customertype" />
+        </EntityType>
+        <EntityType Name="customerlock">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="timelock" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="customertype">
+          <Key>
+            <PropertyRef Name="customertype_id" />
+          </Key>
+          <Property Name="customertype_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_id" Type="Int32" />
+          <NavigationProperty Name="customers" Relationship="MySonyModel.FK_user_usertype" FromRole="customertype" ToRole="customer" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_usertype_status" FromRole="customertype" ToRole="status" />
+        </EntityType>
+        <EntityType Name="district">
+          <Key>
+            <PropertyRef Name="district_id" />
+          </Key>
+          <Property Name="district_id" Type="Int32" Nullable="false" />
+          <Property Name="city_id" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_id" Type="Int32" />
+          <NavigationProperty Name="city" Relationship="MySonyModel.FK_districts_cities" FromRole="district" ToRole="city" />
+          <NavigationProperty Name="customers" Relationship="MySonyModel.FK_user_districts" FromRole="district" ToRole="customer" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_districts_status" FromRole="district" ToRole="status" />
+        </EntityType>
+        <EntityType Name="education">
+          <Key>
+            <PropertyRef Name="education_id" />
+          </Key>
+          <Property Name="education_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_id" Type="Int32" />
+          <NavigationProperty Name="customers" Relationship="MySonyModel.FK_user_education" FromRole="education" ToRole="customer" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_education_status" FromRole="education" ToRole="status" />
+        </EntityType>
+        <EntityType Name="job">
+          <Key>
+            <PropertyRef Name="job_id" />
+          </Key>
+          <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_id" Type="Int32" />
+          <NavigationProperty Name="customers" Relationship="MySonyModel.FK_user_jobs" FromRole="job" ToRole="customer" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_jobs_status" FromRole="job" ToRole="status" />
+        </EntityType>
+        <EntityType Name="LogError">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="catagory_id" Type="Int32" />
+          <Property Name="customer_id" Type="Int32" />
+          <Property Name="product_id" Type="Int32" />
+          <Property Name="serial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="city_id" Type="Int32" />
+          <Property Name="shop_id" Type="Int32" />
+          <Property Name="status_id" Type="Int32" />
+          <Property Name="regdate" Type="DateTime" Precision="3" />
+          <Property Name="modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="cardnumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="smssentdate" Type="DateTime" Precision="3" />
+          <Property Name="RM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RM1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RM2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WarrantyStart" Type="DateTime" Precision="3" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="category" Relationship="MySonyModel.FK_orders_categories" FromRole="order" ToRole="category" />
+          <NavigationProperty Name="city" Relationship="MySonyModel.FK_orders_cities" FromRole="order" ToRole="city" />
+          <NavigationProperty Name="customer" Relationship="MySonyModel.FK_orders_customer" FromRole="order" ToRole="customer" />
+          <NavigationProperty Name="product" Relationship="MySonyModel.FK_orders_products" FromRole="order" ToRole="product" />
+          <NavigationProperty Name="shop" Relationship="MySonyModel.FK_orders_shops" FromRole="order" ToRole="shop" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_orders_status" FromRole="order" ToRole="status" />
+          <Property Name="WarrantyEnd" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PassChange">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datechange" Type="DateTime" Precision="3" />
+          <Property Name="RM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RM1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RM2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_id" Type="Int32" />
+          <Property Name="productcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_id" Type="Int32" />
+          <NavigationProperty Name="category" Relationship="MySonyModel.FK_products_categories" FromRole="product" ToRole="category" />
+          <NavigationProperty Name="orders" Relationship="MySonyModel.FK_orders_products" FromRole="product" ToRole="order" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_products_status" FromRole="product" ToRole="status" />
+        </EntityType>
+        <EntityType Name="resethistory">
+          <Key>
+            <PropertyRef Name="para_id" />
+          </Key>
+          <Property Name="para_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customercodereg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="senttime" Type="DateTime" Precision="3" />
+          <Property Name="expiredtime" Type="DateTime" Precision="3" />
+          <Property Name="longsenttime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RS_Article">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Thumbnail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Brief" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsTop" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="PublishDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNo" Type="Int32" />
+          <NavigationProperty Name="RS_Category" Relationship="MySonyModel.FK_RS_Article_RS_Category" FromRole="RS_Article" ToRole="RS_Category" />
+          <NavigationProperty Name="RS_Category1" Relationship="MySonyModel.FK_RS_Article_RS_Category1" FromRole="RS_Article" ToRole="RS_Category" />
+        </EntityType>
+        <EntityType Name="RS_Branch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="city_id" Type="Int32" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="city" Relationship="MySonyModel.FK_RS_Branch_cities" FromRole="RS_Branch" ToRole="city" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_RS_Branch_status" FromRole="RS_Branch" ToRole="status" />
+          <NavigationProperty Name="shops" Relationship="MySonyModel.FK_shops_RS_Branch" FromRole="RS_Branch" ToRole="shop" />
+        </EntityType>
+        <EntityType Name="RS_Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="Tags" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="admin" Relationship="MySonyModel.FK_RS_Category_admin" FromRole="RS_Category" ToRole="admin" />
+          <NavigationProperty Name="admin1" Relationship="MySonyModel.FK_RS_Category_admin1" FromRole="RS_Category" ToRole="admin" />
+          <NavigationProperty Name="RS_Article" Relationship="MySonyModel.FK_RS_Article_RS_Category" FromRole="RS_Category" ToRole="RS_Article" />
+          <NavigationProperty Name="RS_Article1" Relationship="MySonyModel.FK_RS_Article_RS_Category1" FromRole="RS_Category" ToRole="RS_Article" />
+          <NavigationProperty Name="RS_Images" Relationship="MySonyModel.FK_RS_Images_RS_Category" FromRole="RS_Category" ToRole="RS_Images" />
+        </EntityType>
+        <EntityType Name="RS_Config">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BannerHome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BackgroundLanding" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LandingContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RS_FAQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNo" Type="Int32" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="admin" Relationship="MySonyModel.FK_RS_FAQ_admin" FromRole="RS_FAQ" ToRole="admin" />
+          <NavigationProperty Name="admin1" Relationship="MySonyModel.FK_RS_FAQ_admin1" FromRole="RS_FAQ" ToRole="admin" />
+        </EntityType>
+        <EntityType Name="RS_Images">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Descript" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LinkImage" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RS_Category" Relationship="MySonyModel.FK_RS_Images_RS_Category" FromRole="RS_Images" ToRole="RS_Category" />
+        </EntityType>
+        <EntityType Name="RS_mail_template">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="city" Relationship="MySonyModel.FK_RS_mail_template_cities" FromRole="RS_mail_template" ToRole="city" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_RS_mail_template_status" FromRole="RS_mail_template" ToRole="status" />
+        </EntityType>
+        <EntityType Name="RS_Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CssClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="admin" Relationship="MySonyModel.FK_RS_Menu_admin" FromRole="RS_Menu" ToRole="admin" />
+          <NavigationProperty Name="admin1" Relationship="MySonyModel.FK_RS_Menu_admin1" FromRole="RS_Menu" ToRole="admin" />
+        </EntityType>
+        <EntityType Name="RS_Video">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Brief" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descript" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Thumb" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Source" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="IsHighlight" Type="Boolean" Nullable="false" />
+          <Property Name="PublishDate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="admin" Relationship="MySonyModel.FK_RS_Video_admin" FromRole="RS_Video" ToRole="admin" />
+          <NavigationProperty Name="admin1" Relationship="MySonyModel.FK_RS_Video_admin1" FromRole="RS_Video" ToRole="admin" />
+        </EntityType>
+        <EntityType Name="serial">
+          <Key>
+            <PropertyRef Name="serial_id" />
+          </Key>
+          <Property Name="serial_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="modelname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="serialnumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="productcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="warrantycardnumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="partcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="manufacturingdate" Type="DateTime" Precision="0" />
+          <Property Name="batterynumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="adapternumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="alphalenumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="period" Type="Decimal" Precision="3" Scale="1" />
+          <Property Name="expireddate" Type="DateTime" Precision="0" />
+          <Property Name="RM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RM1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RM2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateimport" Type="DateTime" Precision="3" />
+          <Property Name="status_id" Type="Int32" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_serial_status" FromRole="serial" ToRole="status" />
+        </EntityType>
+        <EntityType Name="shop">
+          <Key>
+            <PropertyRef Name="shop_id" />
+          </Key>
+          <Property Name="shop_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="city_id" Type="Int32" />
+          <Property Name="shoptype_id" Type="Int32" />
+          <Property Name="status_id" Type="Int32" />
+          <Property Name="branch_id" Type="Int32" />
+          <Property Name="order_no" Type="Int32" />
+          <NavigationProperty Name="city" Relationship="MySonyModel.FK_shops_cities" FromRole="shop" ToRole="city" />
+          <NavigationProperty Name="orders" Relationship="MySonyModel.FK_orders_shops" FromRole="shop" ToRole="order" />
+          <NavigationProperty Name="RS_Branch" Relationship="MySonyModel.FK_shops_RS_Branch" FromRole="shop" ToRole="RS_Branch" />
+          <NavigationProperty Name="shoptype" Relationship="MySonyModel.FK_shops_shoptype" FromRole="shop" ToRole="shoptype" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_shops_status" FromRole="shop" ToRole="status" />
+        </EntityType>
+        <EntityType Name="shoptype">
+          <Key>
+            <PropertyRef Name="shoptype_id" />
+          </Key>
+          <Property Name="shoptype_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_id" Type="Int32" />
+          <NavigationProperty Name="shops" Relationship="MySonyModel.FK_shops_shoptype" FromRole="shoptype" ToRole="shop" />
+          <NavigationProperty Name="status" Relationship="MySonyModel.FK_shoptype_status" FromRole="shoptype" ToRole="status" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="admins" Relationship="MySonyModel.FK_admin_status" FromRole="status" ToRole="admin" />
+          <NavigationProperty Name="categories" Relationship="MySonyModel.FK_categories_status" FromRole="status" ToRole="category" />
+          <NavigationProperty Name="cities" Relationship="MySonyModel.FK_cities_status" FromRole="status" ToRole="city" />
+          <NavigationProperty Name="customers" Relationship="MySonyModel.FK_user_status" FromRole="status" ToRole="customer" />
+          <NavigationProperty Name="customertypes" Relationship="MySonyModel.FK_usertype_status" FromRole="status" ToRole="customertype" />
+          <NavigationProperty Name="districts" Relationship="MySonyModel.FK_districts_status" FromRole="status" ToRole="district" />
+          <NavigationProperty Name="educations" Relationship="MySonyModel.FK_education_status" FromRole="status" ToRole="education" />
+          <NavigationProperty Name="jobs" Relationship="MySonyModel.FK_jobs_status" FromRole="status" ToRole="job" />
+          <NavigationProperty Name="orders" Relationship="MySonyModel.FK_orders_status" FromRole="status" ToRole="order" />
+          <NavigationProperty Name="products" Relationship="MySonyModel.FK_products_status" FromRole="status" ToRole="product" />
+          <NavigationProperty Name="RS_Branch" Relationship="MySonyModel.FK_RS_Branch_status" FromRole="status" ToRole="RS_Branch" />
+          <NavigationProperty Name="RS_mail_template" Relationship="MySonyModel.FK_RS_mail_template_status" FromRole="status" ToRole="RS_mail_template" />
+          <NavigationProperty Name="serials" Relationship="MySonyModel.FK_serial_status" FromRole="status" ToRole="serial" />
+          <NavigationProperty Name="shops" Relationship="MySonyModel.FK_shops_status" FromRole="status" ToRole="shop" />
+          <NavigationProperty Name="shoptypes" Relationship="MySonyModel.FK_shoptype_status" FromRole="status" ToRole="shoptype" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_admin_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.admin" Role="admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="admin">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Category_admin">
+          <End Type="MySonyModel.admin" Role="admin" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_Category" Role="RS_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Category">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Category_admin1">
+          <End Type="MySonyModel.admin" Role="admin" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_Category" Role="RS_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Category">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_FAQ_admin">
+          <End Type="MySonyModel.admin" Role="admin" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_FAQ" Role="RS_FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_FAQ">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_FAQ_admin1">
+          <End Type="MySonyModel.admin" Role="admin" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_FAQ" Role="RS_FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_FAQ">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Menu_admin">
+          <End Type="MySonyModel.admin" Role="admin" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_Menu" Role="RS_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Menu">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Menu_admin1">
+          <End Type="MySonyModel.admin" Role="admin" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_Menu" Role="RS_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Menu">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Video_admin">
+          <End Type="MySonyModel.admin" Role="admin" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_Video" Role="RS_Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Video">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Video_admin1">
+          <End Type="MySonyModel.admin" Role="admin" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_Video" Role="RS_Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="RS_Video">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categories_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.category" Role="category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="category">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_categories">
+          <End Type="MySonyModel.category" Role="category" Multiplicity="0..1" />
+          <End Type="MySonyModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="catagory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_categories">
+          <End Type="MySonyModel.category" Role="category" Multiplicity="0..1" />
+          <End Type="MySonyModel.product" Role="product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cities_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.city" Role="city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_districts_cities">
+          <End Type="MySonyModel.city" Role="city" Multiplicity="0..1" />
+          <End Type="MySonyModel.district" Role="district" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="district">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_cities">
+          <End Type="MySonyModel.city" Role="city" Multiplicity="0..1" />
+          <End Type="MySonyModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Branch_cities">
+          <End Type="MySonyModel.city" Role="city" Multiplicity="1" />
+          <End Type="MySonyModel.RS_Branch" Role="RS_Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="RS_Branch">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_mail_template_cities">
+          <End Type="MySonyModel.city" Role="city" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_mail_template" Role="RS_mail_template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="RS_mail_template">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shops_cities">
+          <End Type="MySonyModel.city" Role="city" Multiplicity="0..1" />
+          <End Type="MySonyModel.shop" Role="shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="shop">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_cities">
+          <End Type="MySonyModel.city" Role="city" Multiplicity="0..1" />
+          <End Type="MySonyModel.customer" Role="customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_customer">
+          <End Type="MySonyModel.customer" Role="customer" Multiplicity="0..1" />
+          <End Type="MySonyModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_districts">
+          <End Type="MySonyModel.district" Role="district" Multiplicity="0..1" />
+          <End Type="MySonyModel.customer" Role="customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="district">
+              <PropertyRef Name="district_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="district_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_education">
+          <End Type="MySonyModel.education" Role="education" Multiplicity="0..1" />
+          <End Type="MySonyModel.customer" Role="customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="education">
+              <PropertyRef Name="education_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="education_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_jobs">
+          <End Type="MySonyModel.job" Role="job" Multiplicity="0..1" />
+          <End Type="MySonyModel.customer" Role="customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job">
+              <PropertyRef Name="job_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="job_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.customer" Role="customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_usertype">
+          <End Type="MySonyModel.customertype" Role="customertype" Multiplicity="0..1" />
+          <End Type="MySonyModel.customer" Role="customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customertype">
+              <PropertyRef Name="customertype_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="customertype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usertype_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.customertype" Role="customertype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="customertype">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_districts_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.district" Role="district" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="district">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_education_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.education" Role="education" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="education">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jobs_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.job" Role="job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="job">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_products">
+          <End Type="MySonyModel.product" Role="product" Multiplicity="0..1" />
+          <End Type="MySonyModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_shops">
+          <End Type="MySonyModel.shop" Role="shop" Multiplicity="0..1" />
+          <End Type="MySonyModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shop">
+              <PropertyRef Name="shop_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="shop_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.product" Role="product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Article_RS_Category">
+          <End Type="MySonyModel.RS_Category" Role="RS_Category" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_Article" Role="RS_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RS_Article">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Article_RS_Category1">
+          <End Type="MySonyModel.RS_Category" Role="RS_Category" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_Article" Role="RS_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RS_Article">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Branch_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="1" />
+          <End Type="MySonyModel.RS_Branch" Role="RS_Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="RS_Branch">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shops_RS_Branch">
+          <End Type="MySonyModel.RS_Branch" Role="RS_Branch" Multiplicity="0..1" />
+          <End Type="MySonyModel.shop" Role="shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Branch">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="shop">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Images_RS_Category">
+          <End Type="MySonyModel.RS_Category" Role="RS_Category" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_Images" Role="RS_Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RS_Images">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_mail_template_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.RS_mail_template" Role="RS_mail_template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="RS_mail_template">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_serial_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.serial" Role="serial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="serial">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shops_shoptype">
+          <End Type="MySonyModel.shoptype" Role="shoptype" Multiplicity="0..1" />
+          <End Type="MySonyModel.shop" Role="shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shoptype">
+              <PropertyRef Name="shoptype_id" />
+            </Principal>
+            <Dependent Role="shop">
+              <PropertyRef Name="shoptype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shops_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.shop" Role="shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="shop">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shoptype_status">
+          <End Type="MySonyModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="MySonyModel.shoptype" Role="shoptype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="shoptype">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetCustomerShop1_Result">
+          <Property Type="Int32" Name="customer_id" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" />
+          <Property Type="String" Name="LastName" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" />
+          <Property Type="Boolean" Name="Gender" Nullable="true" />
+          <Property Type="DateTime" Name="Birthday" Nullable="true" />
+          <Property Type="String" Name="HomePhone" Nullable="true" />
+          <Property Type="String" Name="MobilePhone" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="District" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" />
+          <Property Type="String" Name="IdCard" Nullable="true" />
+          <Property Type="String" Name="Job" Nullable="true" />
+          <Property Type="String" Name="Education" Nullable="true" />
+          <Property Type="DateTime" Name="RegistrationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Channel" Nullable="true" />
+          <Property Type="Int32" Name="TrangThai" Nullable="true" />
+          <Property Type="String" Name="Shop" Nullable="true" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MySonyModelStoreContainer" CdmEntityContainer="MySonyEntities">
+          <FunctionImportMapping FunctionImportName="GetCustomerProduct" FunctionName="MySonyModel.Store.GetCustomerProduct">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MySonyModel.GetCustomerProduct_Result">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Shop" ColumnName="Shop" />
+                <ScalarProperty Name="ProductRegDate" ColumnName="ProductRegDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProductReportByMonthCenter" FunctionName="MySonyModel.Store.ProductReportByMonthCenter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MySonyModel.ProductReportByMonthCenter_Result">
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="January" ColumnName="January" />
+                <ScalarProperty Name="February" ColumnName="February" />
+                <ScalarProperty Name="March" ColumnName="March" />
+                <ScalarProperty Name="April" ColumnName="April" />
+                <ScalarProperty Name="May" ColumnName="May" />
+                <ScalarProperty Name="June" ColumnName="June" />
+                <ScalarProperty Name="July" ColumnName="July" />
+                <ScalarProperty Name="August" ColumnName="August" />
+                <ScalarProperty Name="September" ColumnName="September" />
+                <ScalarProperty Name="October" ColumnName="October" />
+                <ScalarProperty Name="November" ColumnName="November" />
+                <ScalarProperty Name="December" ColumnName="December" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchSerial" FunctionName="MySonyModel.Store.SearchSerial">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MySonyModel.SearchSerial_Result">
+                <ScalarProperty Name="serial_id" ColumnName="serial_id" />
+                <ScalarProperty Name="modelname" ColumnName="modelname" />
+                <ScalarProperty Name="serialnumber" ColumnName="serialnumber" />
+                <ScalarProperty Name="productcode" ColumnName="productcode" />
+                <ScalarProperty Name="warrantycardnumber" ColumnName="warrantycardnumber" />
+                <ScalarProperty Name="partcode" ColumnName="partcode" />
+                <ScalarProperty Name="manufacturingdate" ColumnName="manufacturingdate" />
+                <ScalarProperty Name="batterynumber" ColumnName="batterynumber" />
+                <ScalarProperty Name="adapternumber" ColumnName="adapternumber" />
+                <ScalarProperty Name="alphalenumber" ColumnName="alphalenumber" />
+                <ScalarProperty Name="period" ColumnName="period" />
+                <ScalarProperty Name="expireddate" ColumnName="expireddate" />
+                <ScalarProperty Name="RM" ColumnName="RM" />
+                <ScalarProperty Name="RM1" ColumnName="RM1" />
+                <ScalarProperty Name="RM2" ColumnName="RM2" />
+                <ScalarProperty Name="dateimport" ColumnName="dateimport" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MySonyModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MySonyModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MySonyModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MySonyModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MySonyModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MySonyModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MySonyModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MySonyModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MySonyModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="UpdateOrderIdOnSerial" FunctionName="MySonyModel.Store.UpdateOrderIdOnSerial" />
+          <FunctionImportMapping FunctionImportName="GetSerial" FunctionName="MySonyModel.Store.GetSerial">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MySonyModel.GetSerial_Result">
+                <ScalarProperty Name="serialnumber" ColumnName="serialnumber" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="MySonyModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="admincodereg" ColumnName="admincodereg" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="admin_type" ColumnName="admin_type" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="MySonyModel.category">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="RS_base_warranty_months" ColumnName="RS_base_warranty_months" />
+                <ScalarProperty Name="viewSerialImage" ColumnName="viewSerialImage" />
+                <ScalarProperty Name="viewModelImage" ColumnName="viewModelImage" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="nameImage" ColumnName="nameImage" />
+                <ScalarProperty Name="serialImage" ColumnName="serialImage" />
+                <ScalarProperty Name="modelImage" ColumnName="modelImage" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="MySonyModel.city">
+              <MappingFragment StoreEntitySet="cities">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="porder" ColumnName="porder" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="MySonyModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="IsPending" ColumnName="IsPending" />
+                <ScalarProperty Name="RM2" ColumnName="RM2" />
+                <ScalarProperty Name="RM1" ColumnName="RM1" />
+                <ScalarProperty Name="RM" ColumnName="RM" />
+                <ScalarProperty Name="modifieddate" ColumnName="modifieddate" />
+                <ScalarProperty Name="status_active" ColumnName="status_active" />
+                <ScalarProperty Name="datereg" ColumnName="datereg" />
+                <ScalarProperty Name="customercodereg" ColumnName="customercodereg" />
+                <ScalarProperty Name="customertype_id" ColumnName="customertype_id" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="education_id" ColumnName="education_id" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="identitycard" ColumnName="identitycard" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="district_id" ColumnName="district_id" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="mobilephone" ColumnName="mobilephone" />
+                <ScalarProperty Name="homephone" ColumnName="homephone" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customerlocks">
+            <EntityTypeMapping TypeName="MySonyModel.customerlock">
+              <MappingFragment StoreEntitySet="customerlock">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="timelock" ColumnName="timelock" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customertypes">
+            <EntityTypeMapping TypeName="MySonyModel.customertype">
+              <MappingFragment StoreEntitySet="customertype">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="customertype_id" ColumnName="customertype_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="districts">
+            <EntityTypeMapping TypeName="MySonyModel.district">
+              <MappingFragment StoreEntitySet="districts">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="district_id" ColumnName="district_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="educations">
+            <EntityTypeMapping TypeName="MySonyModel.education">
+              <MappingFragment StoreEntitySet="education">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="education_id" ColumnName="education_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobs">
+            <EntityTypeMapping TypeName="MySonyModel.job">
+              <MappingFragment StoreEntitySet="jobs">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogErrors">
+            <EntityTypeMapping TypeName="MySonyModel.LogError">
+              <MappingFragment StoreEntitySet="LogError">
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="MySonyModel.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="WarrantyEnd" ColumnName="WarrantyEnd" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="WarrantyStart" ColumnName="WarrantyStart" />
+                <ScalarProperty Name="RM2" ColumnName="RM2" />
+                <ScalarProperty Name="RM1" ColumnName="RM1" />
+                <ScalarProperty Name="RM" ColumnName="RM" />
+                <ScalarProperty Name="smssentdate" ColumnName="smssentdate" />
+                <ScalarProperty Name="cardnumber" ColumnName="cardnumber" />
+                <ScalarProperty Name="modifieddate" ColumnName="modifieddate" />
+                <ScalarProperty Name="regdate" ColumnName="regdate" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="shop_id" ColumnName="shop_id" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="serial" ColumnName="serial" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="catagory_id" ColumnName="catagory_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PassChanges">
+            <EntityTypeMapping TypeName="MySonyModel.PassChange">
+              <MappingFragment StoreEntitySet="PassChange">
+                <ScalarProperty Name="RM2" ColumnName="RM2" />
+                <ScalarProperty Name="RM1" ColumnName="RM1" />
+                <ScalarProperty Name="RM" ColumnName="RM" />
+                <ScalarProperty Name="datechange" ColumnName="datechange" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="MySonyModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="productcode" ColumnName="productcode" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="resethistories">
+            <EntityTypeMapping TypeName="MySonyModel.resethistory">
+              <MappingFragment StoreEntitySet="resethistory">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="longsenttime" ColumnName="longsenttime" />
+                <ScalarProperty Name="expiredtime" ColumnName="expiredtime" />
+                <ScalarProperty Name="senttime" ColumnName="senttime" />
+                <ScalarProperty Name="customercodereg" ColumnName="customercodereg" />
+                <ScalarProperty Name="para_id" ColumnName="para_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Article">
+            <EntityTypeMapping TypeName="MySonyModel.RS_Article">
+              <MappingFragment StoreEntitySet="RS_Article">
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="IsTop" ColumnName="IsTop" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="ArticleContent" ColumnName="ArticleContent" />
+                <ScalarProperty Name="Brief" ColumnName="Brief" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Branch">
+            <EntityTypeMapping TypeName="MySonyModel.RS_Branch">
+              <MappingFragment StoreEntitySet="RS_Branch">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Category">
+            <EntityTypeMapping TypeName="MySonyModel.RS_Category">
+              <MappingFragment StoreEntitySet="RS_Category">
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Config">
+            <EntityTypeMapping TypeName="MySonyModel.RS_Config">
+              <MappingFragment StoreEntitySet="RS_Config">
+                <ScalarProperty Name="LandingContent" ColumnName="LandingContent" />
+                <ScalarProperty Name="BackgroundLanding" ColumnName="BackgroundLanding" />
+                <ScalarProperty Name="BannerHome" ColumnName="BannerHome" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_FAQ">
+            <EntityTypeMapping TypeName="MySonyModel.RS_FAQ">
+              <MappingFragment StoreEntitySet="RS_FAQ">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Images">
+            <EntityTypeMapping TypeName="MySonyModel.RS_Images">
+              <MappingFragment StoreEntitySet="RS_Images">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LinkImage" ColumnName="LinkImage" />
+                <ScalarProperty Name="Descript" ColumnName="Descript" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_mail_template">
+            <EntityTypeMapping TypeName="MySonyModel.RS_mail_template">
+              <MappingFragment StoreEntitySet="RS_mail_template">
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Menu">
+            <EntityTypeMapping TypeName="MySonyModel.RS_Menu">
+              <MappingFragment StoreEntitySet="RS_Menu">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="CssClass" ColumnName="CssClass" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Video">
+            <EntityTypeMapping TypeName="MySonyModel.RS_Video">
+              <MappingFragment StoreEntitySet="RS_Video">
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="IsHighlight" ColumnName="IsHighlight" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Thumb" ColumnName="Thumb" />
+                <ScalarProperty Name="Descript" ColumnName="Descript" />
+                <ScalarProperty Name="Brief" ColumnName="Brief" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="serials">
+            <EntityTypeMapping TypeName="MySonyModel.serial">
+              <MappingFragment StoreEntitySet="serial">
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="dateimport" ColumnName="dateimport" />
+                <ScalarProperty Name="RM2" ColumnName="RM2" />
+                <ScalarProperty Name="RM1" ColumnName="RM1" />
+                <ScalarProperty Name="RM" ColumnName="RM" />
+                <ScalarProperty Name="expireddate" ColumnName="expireddate" />
+                <ScalarProperty Name="period" ColumnName="period" />
+                <ScalarProperty Name="alphalenumber" ColumnName="alphalenumber" />
+                <ScalarProperty Name="adapternumber" ColumnName="adapternumber" />
+                <ScalarProperty Name="batterynumber" ColumnName="batterynumber" />
+                <ScalarProperty Name="manufacturingdate" ColumnName="manufacturingdate" />
+                <ScalarProperty Name="partcode" ColumnName="partcode" />
+                <ScalarProperty Name="warrantycardnumber" ColumnName="warrantycardnumber" />
+                <ScalarProperty Name="productcode" ColumnName="productcode" />
+                <ScalarProperty Name="serialnumber" ColumnName="serialnumber" />
+                <ScalarProperty Name="modelname" ColumnName="modelname" />
+                <ScalarProperty Name="serial_id" ColumnName="serial_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shops">
+            <EntityTypeMapping TypeName="MySonyModel.shop">
+              <MappingFragment StoreEntitySet="shops">
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="shoptype_id" ColumnName="shoptype_id" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="shop_id" ColumnName="shop_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shoptypes">
+            <EntityTypeMapping TypeName="MySonyModel.shoptype">
+              <MappingFragment StoreEntitySet="shoptype">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="shoptype_id" ColumnName="shoptype_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status">
+            <EntityTypeMapping TypeName="MySonyModel.status">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MySonyModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetCustomerShop1" FunctionName="MySonyModel.Store.GetCustomerShop">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MySonyModel.GetCustomerShop1_Result">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="Shop" ColumnName="Shop" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

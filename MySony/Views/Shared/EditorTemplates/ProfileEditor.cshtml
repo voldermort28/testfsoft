@@ -1,0 +1,7 @@
+﻿@(Html.Kendo().DropDownList()
+    .Name("Profile")
+    .OptionLabel("Select profile")
+    .DataTextField("Fullname")
+    .DataValueField("Id")
+    .BindTo((System.Collections.IEnumerable)ViewData["profiles"])
+)

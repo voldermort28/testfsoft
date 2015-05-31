@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Quản lý ảnh";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        @Html.AntiForgeryToken()
+        <label for="cboCategory">Chọn danh mục: </label>
+        @(Html.Kendo().DropDownList().Name("cboCategory").DataTextField("Text").DataValueField("Value")
+            .BindTo(new SelectList((System.Collections.ICollection)ViewData["categories"], "ID", "Name"))
+            .HtmlAttributes(new { id = "cboCategory", style = "width:300px" })
+            .Events(e => e.Change("cboCategoryChange"))
+            .SelectedIndex(0)
+        )
+        <button id="btnAdd" class="btn btn-default">Thêm mới</button>   
+        
+        @(Html.Kendo().Grid<MySony.Models.RS_Images>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID).Filterable(false).ClientTemplate("<a href='/HeThong/RSImagesEditor?id=" + "#=ID#" + "&&cat=" + "#=CategoryID#'>#=ID#</a>").Title("Mã");
+            columns.Bound(p => p.Title).ClientTemplate("<a href='/HeThong/RSImagesEditor?id=" + "#=ID#" + "&&cat=" + "#=CategoryID#'>#=Title#</a>").Title("Tiêu đề");
+            columns.Bound(p => p.Descript).Title("Mô tả");
+            columns.Bound(p => p.Url).ClientTemplate("<a href=#=Url#>#=Url#</a>").Title("Url").Filterable(false);
+            columns.Bound(p => p.LinkImage).Title("Hình ảnh").Filterable(false).ClientTemplate("<img src='#=LinkImage#' width='150' height='100' alt='' />");
+            columns.Bound(p => p.IsActive).Title("Trạng thái").Filterable(false).ClientTemplate("<span class='fa fa-2x #=IsActive == true ? 'fa-check text-success' : 'fa-remove text-danger' #'></span>");
+            columns.Command(command => { command.Destroy().Text(" "); }).Width(60).Title("Thao tác");
+        })        
+        .Editable(editable => editable.Mode(GridEditMode.InLine))
+        .Sortable()
+        .Resizable(resize => resize.Columns(true))
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .Filterable(filterable => filterable
+            .Extra(false)
+            .Operators(operators => operators
+                .ForString(str => str.Clear().Contains("Contains"))
+            )
+        )
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .Events(events => events.Error("error_handler"))
+            .Model(model =>
+            {
+                model.Id(p => p.ID);
+            })
+                    .Read(read => read.Action("RSImages_Read", "HeThong").Data("sendCategory"))
+            .Destroy(update => update.Action("RSImages_Destroy", "HeThong"))
+            )
+        )
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        
+        $('#btnAdd').click(function () {
+            location.href = "/HeThong/RSImagesEditor/0?id =0&&cat=" + $('#cboCategory').val();
+        });
+
+        function cboCategoryChange(e) {
+            $("#grid").data("kendoGrid").dataSource.read();
+        };
+        function sendCategory() {
+            return { categoryId: $('#cboCategory').val() };
+        };
+
+        function error_handler(e) {
+            if (e.errors) {
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                console.info(message);
+            }
+        }
+    </script>
+}

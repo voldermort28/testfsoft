@@ -1,0 +1,357 @@
+﻿@model MySony.ViewModels.CustomerVM
+@{
+    ViewBag.Title = "MyProduct";
+    ViewBag.IsMyProduct = "active";
+    Layout = "~/Views/Shared/_UserCPLayout.cshtml";
+    int i = 0;
+    string stypeactive = "";
+}
+
+<section class="scrollable">
+    <div class="page page-main-content">
+        <div class="page-content padder page-contrains">
+            <div class="page-form-wrapper">
+                <div class="form form-persional-infos">
+                    <div class="form-message success" style="display: none;" id="message">
+                        <span id="dialog_title_span"></span>
+                    </div> 
+                    <div class="clearfix">
+                        <div class="form-markup form-title form-product-title">
+                            Sản phẩm của tôi
+                        </div>
+                        <a href="#register-products-form" class="btn register-products-link" id="btnNewregiterProduct" title="Đăng ký sản phẩm mới">
+                            Đăng ký sản phẩm mới
+                        </a>
+                    </div>     
+                    <div class="post-media site-highlighted">
+                        <section class="m-b-none">
+                            <div class="carousel auto slide" id="c-fade" data-interval="50000">
+                                <div class="carousel-inner">
+                                    @foreach (var item in Model.LstCusPro)
+                                    {
+                                        stypeactive = i == 0 ? "item bg-light dker active text-center" : "item bg-light dker  text-center";
+                                        <div class='@stypeactive'>
+                                            Sản phẩm @(i + 1) / @Model.LstCusPro.Count
+                                            <h1></h1>
+                                            <h1></h1>
+                                            <section class="row border-top" >
+                                                <div class="col-xs-12 col-sm-5 col-md-5 r-l">
+                                                    <div class="form-group form-group-product-type" align="left" style="margin-left:30px;">
+                                                        <label>Chủng loại sản phẩm <span class="form-require">*</span></label>
+                                                        <div class="form-control">@item.CategoryName</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-4 col-md-4" align="left">
+                                                    <div class="form-group form-group-product-name">
+                                                        <label>Tên sản phẩm <span class="form-require">*</span></label>
+                                                        <div class="form-control">@item.ProductName</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-3 col-md-3 r-r" align="left">
+                                                    <div class="form-group form-group-product-serial">
+                                                        <label>Số serial <span class="form-require">*</span></label>
+                                                        <div class="form-control">@item.Serial</div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            <section class="row">
+                                                <div class="col-xs-12 col-sm-5 col-md-5 r-l">
+                                                    <div class="form-group form-group-product-date" align="left" style="margin-left:30px;">
+                                                        <label>Ngày mua hàng <span class="form-require">*</span></label>
+                                                        <div class="form-control ">
+                                                            @Convert.ToDateTime(item.TimePucharsed).ToString("dd/MM/yyyy")                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-4 col-md-4" align="left">
+                                                    <div class="form-group form-group-product-place border-bottom-0">
+                                                        <label>Nơi mua hàng <span class="form-require">*</span></label>
+                                                        <div class="form-control">@item.ShopName</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-3 col-md-3s r-r" align="left">
+                                                    <div class="form-group form-group-product-serial">
+                                                        <label>Thời hạn bảo hành <span class="form-require">*</span></label>
+                                                        <div class="form-control">@((item.TimeWarranty != null) ? Convert.ToDateTime(item.TimeWarranty).ToString("dd/MM/yyyy") : "")</div>
+                                                    </div>
+                                                </div>
+
+                                            </section>
+                                        </div>  
+                                        i++;
+                                    }                                     
+                                </div>                                 
+                                <a id="leftprev" style="top:17%"  class="left carousel-control" href="#c-fade" data-slide="prev">prev </a>
+                                <a id="rightprev" style="top:17%" class="right carousel-control" href="#c-fade" data-slide="next">next</a>
+                            </div>
+                        </section>
+                    </div>
+                   
+                </div>
+                <div class="form-markup user-infos-note">
+                    <h3><b> Lưu ý: Vui lòng xuất trình Hóa đơn mua hàng khi đến bảo hành sản phẩm tại TTBH chính hãng của Sony.</b></h3>
+                </div>
+                        <!-- register myproduct form -->
+                        <div id="register-products-form">                            
+                            <form role="form" id="frmRegiterProduct" class="form form-persional-infos" data-parsley-validate="parsley" onsubmit="return(false)" style="width: 800px; height: 400px;">
+                                @Html.AntiForgeryToken()
+                                <label id="lbAlert" style="color:red">@ViewBag.Alert</label>
+                                <section class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group form-group-product-type">
+                                            <label>Chủng loại sản phẩm <span class="form-require">*</span></label>
+                                            <select data-required="true" class="form-control chosen-select" id="cboCategory" onchange="changCategory()">
+                                                <option value="">Chọn</option>
+                                                @foreach (var item in Model.LstCategories)
+                                                {
+                                                    <option value="@item.category_id">@item.name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group form-group-product-name">
+                                            <label>Tên sản phẩm <span class="form-require">*</span></label><br />
+                                            <select data-required="true" class="form-control chosen-select" id="cboProduct">
+                                                <option value="">Chọn</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group form-group-product-serial">
+                                            <label>Số serial <span class="form-require">*</span></label>
+                                            <input type="text" id="serialNumber" placeholder="Serial Number" class="form-control" data-parsley-notblank="true" data-parsley-required="true">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group form-group-product-date">
+                                            <label>Ngày mua hàng <span class="form-require">*</span></label>
+                                            <input class="form-control timePurchase" placeholder="dd/MM/yyyy" readonly="readonly" style="background:white;" size="16" type="text" id="slDOB" data-parsley-notblank="true" data-parsley-required="true">
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group form-group-product-place">
+                                            <label>Nơi mua hàng <span class="form-require">*</span></label><br />
+                                            <select data-parsley-required="true"  class="form-control chosen-select" id="cityID" onchange="changCity()">
+                                                <option value="">Chọn</option>
+                                                @foreach (var item in Model.LstCity)
+                                                {
+                                                    <option value="@item.city_id">@item.name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group form-group-product-store">
+                                            <label>Cửa hàng <span class="form-require">*</span></label><br />
+                                            <select data-parsley-required="true"  class="form-control chosen-select" id="shopID"></select>
+                                        </div>
+                                    </div>
+                                </section>
+                                <div class="form-actions text-right">
+                                    <a id="closefromfancy"></a>
+                                    <button id="btnRegisterMyProduct" class="btn btn-s-md btn-dark button">
+                                        Lưu lại
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-footer padder">
+                    <div class="row m-t">
+                        <div class="col-md-6">
+                            <div class="block block-landing-footer-menu">
+                                <div class="block-content">
+                                    <ul class="menu">
+                                        <li><a href="/Clause/">Điều khoản sử dụng</a></li>
+                                        <li><a href="/Privacy/">Quyền riêng tư</a></li>
+                                        <li>
+                                            <a href="https://www.sony.com.vn/section/contactus">Liên hệ</a>
+                                        </li>
+                                        <li>
+                                            <a href="http://sony.net">Global home</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="block block-landing-footer-copyright">
+                                <div class="block-content">
+                                    @DateTime.Now.Year © Bản quyền thuộc sở hữu Công ty Sony Electronics Vietnam
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End content-->
+        </section>
+
+@section scripts{
+    <script src="/static/js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.10.4.min.js"></script>
+    <script> window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.10.2.min.js"><\/script>') </script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/respond.min.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/app.v1.js"></script>
+    <script src="/static/js/chosen/chosen.jquery.min.js"></script>
+    <script src="/static/js/jquery.uniform.js"></script>
+    <script src="/static/js/application.js"></script>
+    <script src="/static/js/jquery.fancybox.js"></script>
+    <script src="/static/js/application.js"></script>
+    <script src="/static/js/application_products.js"></script>
+    <script src="/static/js/parsley/parsley.min.js"></script>
+    <script src="/static/js/parsley/parsley.extend.js"></script>
+    <script src="/static/js/validator/parsley.vi.js"></script>
+    <script src="/static/js/validator/parsley.min.js"></script>
+    <script type="text/javascript">
+        window.ParsleyValidator.setLocale('vi');
+    </script>
+    <script src="/static/js/jquery.uniform.js"></script>
+    <script>
+
+    $(".timePurchase").datepicker({
+        changeMonth: true,
+        changeYear: true,maxDate: 0,
+        dateFormat: "dd/mm/yy",
+    });
+
+    $('#btnNewregiterProduct').click(function () {
+        //jQuery('.chosen-select').chosen();
+    });
+
+    
+
+    $('#frmRegiterProduct').parsley().subscribe('parsley:form:validate', function (formInstance) {
+        if (formInstance.isValid()) {
+            $.post('/UserCP/RegisterCustProduct/', {
+              categoryId: $('#cboCategory').val(),
+              productId: $('#cboProduct').val(),
+              serialNumber: $('#serialNumber').val(),
+              timePuCharsedId: $('#slDOB').val(),
+              cityId: $('#cityID').val(),
+              shopId: $('#shopID').val(),
+              productName: $('#cboProduct option:selected').text(),
+            },
+            function (res) {
+                if (res.result == "ERROR") {
+                    ShowPopup(res.result + ': ' + res.msg);
+                    $(this).clearForm();
+                } else {
+                    ShowPopup(res.result + ': ' + res.msg, function () { location.href = '/userCP/MyProduct/'; });                    
+                }
+            });
+        }
+    });
+    
+    function changCategory(initial) {
+        //alert(1);
+        isInitial = 0 || initial
+        $('#cboProduct').empty();
+        $.get("/UserCP/GetProductByCat/", { CategoryId: $('#cboCategory').val() }, function (result) {
+            $.each(result, function (index, data) {
+                //$('#cboProduct').append("<option value='""'>Chọn sản phẩm</option>");
+                $('#cboProduct').append("<option value='" + data.product_id + "'>" + data.name + "</option>");
+            });
+            jQuery(".chosen-select").trigger("chosen:updated");
+            if (isInitial == 0) {
+             //   alert(0);
+                jQuery(".chosen-select").trigger("chosen:updated");
+            } else {
+            //    alert(1);
+             //   jQuery(".chosen-select").chosen();
+            }
+        });
+    }
+
+    function changCity() {
+        $('#shopID').empty();
+        $.get("/UserCP/GetShopByCity/", { cityId: $('#cityID').val() }, function (result) {
+            $.each(result, function (index, data) {
+                $('#shopID').append("<option value='" + data.shop_id + "'>" + data.name + "</option>");
+            });
+            jQuery('.chosen-select').trigger('chosen:updated');
+        });
+    }
+
+    function loadCustProduct() {
+        $(".carousel-inner").html('');
+        $.get('/UserCP/GetCustProduct/', function (a) {
+             
+            $(a).each(function (index, e) {
+                
+                var stypeactive = index == 0 ? "item bg-light dker active text-center" : "item bg-light dker  text-center";
+                    $(".carousel-inner").append('<div class="' + stypeactive + '">' +
+                                            '    <img data="' + e.CategoryProductId + '" src="' + e.CategoryImage + '" alt="Sản phẩm "' + index + '">                 ' +
+                                            '    <h1></h1>                                                                                        ' +
+                                            '    <h1></h1>                                                                                        ' +
+                                            '    <section class="row border-top">                                                                 ' +
+                                            '        <div class="col-xs-12 col-sm-5 col-md-5 r-l">                                                ' +
+                                            '            <div class="form-group form-group-product-type" align="left" style="margin-left:30px;">  ' +
+                                            '                <label>Chủng loại sản phẩm <span class="form-require">*</span></label>               ' +
+                                            '                <div class="form-control">'+e.CategoryName+'</div>                                   ' +
+                                            '            </div>                                                                                   ' +
+                                            '        </div>                                                                                       ' +
+                                            '        <div class="col-xs-12 col-sm-4 col-md-4" align="left">                                       ' +
+                                            '            <div class="form-group form-group-product-name">                                         ' +
+                                            '                <label>Tên sản phẩm <span class="form-require">*</span></label>                      ' +
+                                            '                <div class="form-control">' + e.ProductName + '</div>                                    ' +
+                                            '            </div>                                                                                   ' +
+                                            '        </div>                                                                                       ' +
+                                            '        <div class="col-xs-12 col-sm-3 col-md-3 r-r" align="left">                                   ' +
+                                            '            <div class="form-group form-group-product-serial">                                       ' +
+                                            '                <label>Số serial <span class="form-require">*</span></label>                         ' +
+                                            '                <div class="form-control">' + e.Serial + '</div>                                         ' +
+                                            '            </div>                                                                                   ' +
+                                            '        </div>                                                                                       ' +
+                                            '    </section>                                                                                       ' +
+                                            '    <section class="row">                                                                            ' +
+                                            '        <div class="col-xs-12 col-sm-5 col-md-5 r-l">                                                ' +
+                                            '            <div class="form-group form-group-product-date" align="left" style="margin-left:30px;">  ' +
+                                            '                <label>Ngày mua hàng <span class="form-require">*</span></label>                     ' +
+                                            '                <div class="form-control "> ' + e.TimePucharsed + '</div>            ' +
+                                            '            </div>                                                                                   ' +
+                                            '        </div>                                                                                       ' +
+                                            '        <div class="col-xs-12 col-sm-4 col-md-4" align="left">                                       ' +
+                                            '            <div class="form-group form-group-product-place border-bottom-0">                        ' +
+                                            '                <label>Nơi mua hàng <span class="form-require">*</span></label>                      ' +
+                                            '                <div class="form-control">' + e.ShopName + '</div> ' +
+                                            '            </div> ' +
+                                            '        </div> ' +
+                                            '        <div class="col-xs-12 col-sm-3 col-md-3s r-r" align="left"> ' +
+                                            '            <div class="form-group form-group-product-serial"> ' +
+                                            '                <label>Thời hạn bảo hành <span class="form-require">*</span></label> ' +
+                                            '                <div class="form-control">' + e.TimeWarranty + '</div> ' +
+                                            '            </div> ' +
+                                            '        </div> ' +
+                                            '    </section> ' +
+                                            '</div> '
+                                            );
+            });
+        });
+    }
+    function convertDateJson(parsedDate) {
+        var jsDate = new Date(parsedDate); //Date object
+        var date = jsDate.getDay() + '/' + jsDate.getMonth() + '/' + jsDate.getYear();
+        return date;
+    }
+
+    $(function () {
+        $(document).ready(function () {
+            // changCategory(1);
+             //changCity();
+        });
+    });
+
+    
+
+    </script>
+}
+             
+

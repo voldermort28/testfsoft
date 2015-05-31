@@ -1,0 +1,17 @@
+function changeImgHref(cateid) {
+            var href = '';
+            switch (cateid) {
+                case "3":
+                    href = 'img/xemIMEI/cybershot.jpg';
+                    break;
+                case "4":
+                    href = 'img/xemIMEI/nex.jpg';
+                    break;
+                case "5":
+                    href = 'img/xemIMEI/handycam.jpg';
+                    break;
+            }
+            if (href != '') {
+                $('.xemSerial').attr('href', href);
+            }
+        }

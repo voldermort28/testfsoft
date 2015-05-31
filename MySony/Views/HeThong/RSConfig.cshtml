@@ -1,0 +1,66 @@
+﻿@model MySony.Models.RS_Config
+@{
+    ViewBag.Title = "Quản lý landing";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+@using (Html.BeginForm("SaveRSConfig", "HeThong"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.ID)
+    <table class="table table-condensed">
+        <tr>
+            <td class="col1"><label>Banner trang chủ</label></td>
+            <td class="col2">
+                @(Html.Kendo().Upload()
+                    .Name("Banner")
+                    .Multiple(false)
+                    .Async(a => a
+                    .Save("SaveBannerHome", "HeThong")
+                    //.Remove("RemoveBannerHome", "HeThong")
+                    .AutoUpload(true))
+                )
+            </td>
+        </tr>
+        <tr>
+            <td class="col1"><label>Hình nền landing</label></td>
+            <td>
+                @(Html.Kendo().Upload()
+                    .Name("Background")
+                    .Multiple(false)
+                    .Async(a => a
+                    .Save("SaveBackgroundLanding", "HeThong")
+                    //.Remove("RemoveBackgroundLanding", "HeThong")
+                    .AutoUpload(true))
+                )
+            </td>
+        </tr>
+        <tr>
+            <td class="col1"><label>Nôi dụng landing</label></td>
+            <td class="col2">@Html.TextAreaFor(x => x.LandingContent, 50, 100, new { id = "txtLandingContent", @class = "form-control" })</td>
+        </tr>
+    </table>
+    <div class="btn-group pull-right">
+        <input type="submit" class="btn btn-primary" id="btnSave" value="Lưu" />
+        <button type="button" class="btn btn-warning" id="btnCancel">Hủy</button>
+        <button type="button" class="btn btn-danger" id="btnDelete">Xóa</button>
+    </div>
+}
+</div>
+@section scripts{
+    <script>
+    $(function () {
+        $('#btnCancel').click(function () {
+            window.location.href = '/HeThong/RSConfig';
+        });
+        $('#btnDelete').click(function () {
+            if (confirm('Bạn có chắc không?')) {
+                if ($('#ID').val() == 0) window.location.href = '/HeThong/RSConfig';
+                $.post('/HeThong/DeleteRSConfig', { Id: $('#ID').val() }, function () {
+                    window.location.href = '/HeThong/RSConfig';
+                });
+            }
+        });
+    });
+    </script>
+}

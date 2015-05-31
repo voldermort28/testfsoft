@@ -1,0 +1,160 @@
+﻿@model MySony.ViewModels.SerialVm
+@{
+    ViewBag.Title = "Danh sách khách hàng";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        @Html.AntiForgeryToken()
+        <div class="well well-sm">            
+            <div class="row">
+                <div class="col-md-1">Tìm kiếm:</div>
+                <div class="col-md-3">
+                    <select id="slCategory" data-parsley-required="true" class="form-control chosen-select">
+                        <option value="-1">Tất cả</option>
+                        @foreach (var item in Model.lstCategories)
+                        {
+                            <option value="@item.Key">@item.Value</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select id="slProduct" class="form-control chosen-select">
+                        <option value="">Vui lòng chọn</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" id="txtSerial" class="form-control col-md-5" placeholder="Serial" />
+                </div>
+                <div class="col-md-3">
+                    <button type="button" id="btnSearch" class="btn btn-primary">Tìm</button>
+                </div>               
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <select id="cboPending" class="form-control">
+                        <option value="false">Danh sách chính thức</option>
+                        <option value="true">Danh sách chờ</option>
+                    </select>
+                </div>                
+                <div class="col-md-6 showsuperAdmin">
+                    Export từ ngày: @Html.Kendo().DatePicker().Name("fromDate")
+                    đến ngày: @Html.Kendo().DatePicker().Name("toDate")
+                    <button id="btnExport" class="btn btn-primary">Export</button>
+                </div>
+                <div class="col-md-4 btn-addcustomer"><a href="/Hethong/ProfileEditor" class="btn btn-default pull-right">Thêm mới</a></div>
+            </div>
+        </div>
+        @(Html.Kendo().Grid<MySony.ViewModels.ProfileVM>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.Firstname).Title("Họ");
+            columns.Bound(p => p.Lastname).Title("Tên");
+            columns.Bound(p => p.Birthday).Format("{0:dd/MM/yyyy}").Width(100).Title("Ngày sinh");
+            columns.Bound(p => p.Email).Title("Email");
+            columns.Bound(p => p.Mobile).Title("Điện thoại");
+            columns.Bound(p => p.RegDate).Format("{0:dd/MM/yyyy}").Width(100).Title("Ngày đăng kí");
+            columns.Bound(p => p.IsActive).Title("Trạng thái").Filterable(false).Width(80).ClientTemplate("<span class='fa fa-2x #=status_active == 2 ? 'fa-check text-success' : 'fa-remove text-danger' #'></span>");
+            columns.Bound(p => p.status_id).Title("Tình trạng").Filterable(false).Width(80).ClientTemplate("<div>#=status_id == 1 ? '': 'Đã bị xóa'#");
+            columns.Bound(p => p.ID).ClientTemplate("<a href='/HeThong/ProfileEditor?ID=" + "#=ID#'>Chi tiết</a>").Title("Cập nhật").Width(80).Filterable(false);
+            //columns.Command(command => { command.Destroy().Text(" "); }).Width(60).Title("Thao tác");
+        })
+        .Editable(editable => editable.Mode(GridEditMode.InLine))
+        //.AutoBind(false)
+        .EnableCustomBinding(true)
+        .Sortable()
+        .Resizable(resize => resize.Columns(true))
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .Filterable(filterable => filterable
+            .Extra(true)
+            .Operators(operators => operators
+                .ForString(str => str.Clear().Contains("Contains"))
+            )
+        )
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .Sort(sort => sort.Add("RegDate").Descending())
+            .ServerOperation(true)
+            .Events(events => events.Error("error_handler"))
+            .Model(model =>
+            {
+                model.Id(p => p.ID);
+                model.Field(p => p.ID).Editable(false);
+                model.Field(p => p.status_id).DefaultValue(0);                
+            })
+            .Read(read => read.Action("Profile_Read", "HeThong").Data("sendIsPending"))
+            //.Destroy(update => update.Action("Profile_Destroy", "HeThong"))
+            )
+        )
+    </div>
+</div>
+@section scripts{
+    <script src="/static/js/serial.js"></script>    
+    <script type="text/javascript">
+        $('#cboPending').change(function(){
+            $("#grid").data("kendoGrid").dataSource.read();
+        });
+        $('#btnSearch').click(function () {
+            $("#grid").data("kendoGrid").dataSource.read();
+        });
+        function sendIsPending() {
+            return {
+                isPending: $('#cboPending').val(),
+                categoryId: $('#slCategory').val(),
+                modelName: $('#slProduct').val(),
+                serial: $('#txtSerial').val()
+            };
+        };
+        function error_handler(e) {
+            if (e.errors) {
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                
+            }
+        }
+        $('#btnExport').click(function(){
+            var fromDate = $("#fromDate").data("kendoDatePicker");
+            var toDate = $("#toDate").data("kendoDatePicker");
+            var category = $("#slCategory").val();
+            
+            var prorduct = $("#slProduct").val();
+            var serial = $("#txtSerial").val();
+            if (fromDate._oldText != "" && toDate._oldText != "" && fromDate._oldText > toDate._oldText) {
+                alert("From date must less than to date");
+                return false;
+            }
+            document.location = '/HeThong/ExportProfile?fromDate=' + fromDate._oldText + '&toDate=' + toDate._oldText + '&category=' + category + '&modelName=' + prorduct + '&serial=' + serial;
+        });
+
+
+       
+
+        //$.get('/HeThong/GetAllProducts', function (res) {
+        //    $.each(res, function (index, value) {
+        //        $('#cboModel').append('<option value="' + value.product_id + '">' + value.name + '</option>')
+        //    });
+        //    jQuery('.chosen-select').trigger('chosen:updated');
+        //});
+        
+        $("#showMenuCustomer").css("background-color", "#000055");
+
+        $(function () {
+            $(document).ready(function () {
+                jQuery('.chosen-select').chosen({ search_contains: true });
+            });
+        });
+
+    </script>
+}

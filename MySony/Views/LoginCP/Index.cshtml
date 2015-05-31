@@ -1,0 +1,122 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />    
+    <title>Đăng nhập vào quản trị</title>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/admin.css" rel="stylesheet" />
+    <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />    
+    <link rel="icon" href="/static/images/favicon.ico">        
+    <link rel="stylesheet" href="/static/css/sony.style.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/screen.css" type="text/css" />
+    <style type="text/css">.adminLogin{width:120px}</style>
+</head>
+<body>
+    <div id="ajax_loader" style="background-color: rgba(0, 0, 0, 0.5); z-index: 9999; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; display: none;" class="">
+        <img src="/static/images/loading.gif" style="position: fixed; left: 50%; top: 50%;" class="">
+    </div>
+    <section class="vbox site-wrapper page-user register dark-green">
+        <section>
+            <section class="hbox stretch">
+                <section id="content">
+                    <header class="header header-md navbar bg site-header-top">
+                        <div class="navbar-header aside-md dk site-logo">
+                            <a class="btn btn-link visible-xs site-m-menu-toggle" data-parsley-toggle="class:nav-off-screen" data-parsley-target="#nav"> <i class="fa fa-bars"></i> </a>
+                            <a href="/" class="navbar-brand"> <img src="/static/images/logo.png" class="m-r-sm" alt="scale" height="17" width="100" /> </a>
+                        </div>
+                        <div class="page-header-logo">
+                            <div class="customer-logo">
+                                <img src="/static/images/figures/cus-logo.png" alt="...">
+                            </div>
+                            <div class="navbar-header site-logan">
+                                Chúng tôi trồng cây Dịch vụ
+                                <span>bạn hái quả Chăm sóc</span>
+                            </div>
+                        </div>
+                    </header>
+                    <section class="vbox page-user-content-box">
+                        <section class="scrollable">
+                            <div class="page page-main-content">
+                                <div class="page-content padder page-contrains">
+                                    <div class="page-form-wrapper">                                        
+                                        <form id="frmLoginCp" method="post" action="/LoginCP">
+                                            @Html.AntiForgeryToken()
+                                            <div id="loginBody">
+                                                <div id="loginBlock">
+                                                    <div class="form-title">
+                                                        Truy cập vào trang quản trị MySony
+                                                    </div>
+                                                    <label id="lbAlert" style="color:red">@ViewBag.Alert</label>
+                                                    <div class="input-group col-md-8">
+                                                        <span class="input-group-addon adminLogin">Tên đăng nhập</span>
+                                                        <input type="text" class="form-control input-md no-border parsley-error"  width="250" id="txtUsername" name="txtUsername" autocomplete="off" />
+                                                    </div><br />
+                                                    <div class="input-group col-md-8">
+                                                        <span class="input-group-addon adminLogin">Mật khẩu</span>
+                                                        <input type="password" class="form-control input-md no-border"   id="txtPassword" name="txtPassword" autocomplete="off" />
+                                                    </div><br />
+                                                    <input hidden name="returnUrl" value='@Request.QueryString["returnUrl"]' />  
+                                                    <div class="form-markup forgot-pass text-right">
+                                                        <a href="/LoginCP/ForgetPassAdmin/">Quên mật khẩu?</a>
+                                                    </div>
+                                                    <button type="submit" id="btnLogin" class="btn btn-primary adminLogin btn-dark">Đăng nhập</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                                <div class="page-footer padder">
+                                    <div class="row m-t">
+                                        <div class="col-md-6">
+                                            <div class="block block-landing-footer-menu">
+                                                <div class="block-content">
+                                                    <ul class="menu">
+                                                         
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="block block-landing-footer-copyright">
+                                                <div class="block-content">
+                                                    @DateTime.Now.Year © Bản quyền thuộc sở hữu Công ty Sony Electronics Vietnam
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End content-->
+                        </section>
+                    </section>
+                    <a href="#" class="hide nav-off-screen-block" data-parsley-toggle="class:nav-off-screen" data-parsley-target="#nav"></a>
+                </section>
+            </section>
+        </section>
+    </section>
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/Scripts/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/respond.min.js"></script>
+    <script>
+        $(function () {
+            $('#btnLogin').click(function () {
+                if ($('#txtUsername').val() == "" || $('#txtPassword').val() == "") {
+                    $('#lbAlert').text('Username and Password are requried');
+                    return false;
+                }
+                $('#frmLoginCp').submit();
+            });
+        });
+        jQuery(document).ready(function () {
+            $('#txtUsername').focus();
+        });
+    </script>
+    <script src="/static/js/app.v1.js"></script>
+    <script src="/static/js/application.js"></script>
+</body>
+</html>

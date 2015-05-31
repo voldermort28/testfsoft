@@ -1,0 +1,7 @@
+﻿@(Html.Kendo().DropDownList()
+    .Name("status_id")
+    .OptionLabel("--Select--")
+    .DataTextField("name")
+    .DataValueField("status_id")
+    .BindTo((System.Collections.IEnumerable)ViewData["status"])
+)

@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Danh sách bài viết";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        @Html.AntiForgeryToken()
+        <label for="cboCategory">Chọn danh mục: </label>
+        @(Html.Kendo().DropDownList().Name("cboCategory").DataTextField("Text").DataValueField("Value")
+            .BindTo(new SelectList((System.Collections.ICollection)ViewData["categories"], "ID", "Name"))
+            .HtmlAttributes(new { id = "cboCategory", style = "width:300px" })
+            .Events(e => e.Change("cboCategoryChange"))
+            .SelectedIndex(0)
+              )
+
+        <button id="btnAdd" class="btn btn-default">Thêm mới</button>
+        @(Html.Kendo().Grid<MySony.Models.RS_Article>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.OrderNo).Title("STT").Width(40).Filterable(false);
+            columns.Bound(p => p.Title).Title("Tiêu đề").ClientTemplate("<a href='/HeThong/ArticleEditor?cat=0&ID=" + "#=ID#'>#=Title#</a>");
+            columns.Bound(p => p.Brief).Title("Nội dung ngắn");
+            columns.Bound(p => p.Slug).Title("Url").Filterable(false).ClientTemplate("<a target='_blank' href='/Tintuc/Xem/" + "#=ID#" + "/" + "#=Slug#'>/Tintuc/Xem/" + "#=ID#" + "/" + "#=Slug#</a>");
+            columns.Bound(p => p.IsTop).Title("Nổi bật").Filterable(false).ClientTemplate(
+                "<input type='checkbox' disabled='true' value='#= IsTop #' " +
+                    "# if (IsTop) { #" +
+                        "checked='checked'" +
+                    "# } #" +
+                "/>"
+            ).Width(60);
+            columns.Bound(p => p.IsActive).Title("Trạng thái").Filterable(false).ClientTemplate(
+                "<input type='checkbox' disabled='true' value='#= IsActive #' " +
+                    "# if (IsActive) { #" +
+                        "checked='checked'" +
+                    "# } #" +
+                "/>"
+            ).Width(60);
+            columns.Bound(p => p.Created).Title("Ngày tạo").Format("{0:dd/MM/yyyy H:mm}").Width(160);
+            columns.Command(command => { command.Destroy().Text(" "); }).Width(60).Title("Thao tác");
+        })
+        .Editable(editable => editable.Mode(GridEditMode.InLine))
+        .Sortable()
+        .Resizable(resize => resize.Columns(true))
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .Filterable(filterable => filterable
+            .Extra(false)
+            .Operators(operators => operators
+                .ForString(str => str.Clear().Contains("Contains"))
+            )
+        )
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .ServerOperation(false)
+            .Events(events => { events.Error("error_handler"); events.RequestEnd("onRequestEnd"); })
+            .Sort(sort => sort.Add("Created").Descending())
+            .Model(model =>
+            {
+                model.Id(p => p.ID);
+                model.Field(p => p.Created).Editable(false);
+                model.Field(p => p.IsActive).DefaultValue(true);
+            })
+            .Read(read => read.Action("Article_Read", "HeThong").Data("sendCategory"))
+            .Destroy(update => update.Action("Article_Destroy", "HeThong"))
+            )
+        )
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $('#btnAdd').click(function () {
+            location.href = "/HeThong/ArticleEditor/0?cat=" + $('#cboCategory').val();
+        });
+        function cboCategoryChange(e) {
+            $("#grid").data("kendoGrid").dataSource.read();
+        };
+        function sendCategory() {
+            return { categoryId: $('#cboCategory').val() };
+        };
+        function error_handler(e) {
+            if (e.errors) {
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                console.info(message);
+            }
+        };
+        function onRequestEnd(e) {
+            if (e.type == "create" && !e.response.Errors) alert("Tạo mới thành công");
+            else if (e.type == "update" && !e.response.Errors) alert("Cập nhật thông tin thành công");
+            else if (e.type == "destroy" && !e.response.Errors) alert("Xóa thông tin thành công");
+        }
+    </script>
+}

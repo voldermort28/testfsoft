@@ -1,0 +1,38 @@
+﻿body {
+	padding-top: 0!important;
+	padding-bottom: 0!important
+}
+.page-form-wrapper {
+	padding: 0!important
+}
+.padder {
+	padding-left: 0!important;
+	padding-right: 0!important
+}
+.k-button {
+	min-width: 0 !important;
+}
+.admin form {
+	max-width: 100%!important
+}
+.admin .form-control {
+	border: 1px solid #ccc!important
+}
+
+
+.nav>li>a:hover, .nav>li>a:focus{
+	 background-color: #275d5a !important;
+}
+
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+     background-color: #275d5a !important;
+}
+
+.dropdown-menu {
+	background-color: #275d5a;
+}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
+    background-color: #1f4947 !important;
+	outline:none;
+	width:140%
+}

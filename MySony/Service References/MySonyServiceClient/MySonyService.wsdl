@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MySonyService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_IMySonyService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:BootstrapPolicy>
+                  <wsp:Policy>
+                    <sp:SignedParts>
+                      <sp:Body />
+                      <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                    </sp:SignedParts>
+                    <sp:EncryptedParts>
+                      <sp:Body />
+                    </sp:EncryptedParts>
+                    <sp:TransportBinding>
+                      <wsp:Policy>
+                        <sp:TransportToken>
+                          <wsp:Policy>
+                            <sp:HttpsToken RequireClientCertificate="false" />
+                          </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                          <wsp:Policy>
+                            <sp:Basic256 />
+                          </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                          <wsp:Policy>
+                            <sp:Strict />
+                          </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp />
+                      </wsp:Policy>
+                    </sp:TransportBinding>
+                    <sp:SignedSupportingTokens>
+                      <wsp:Policy>
+                        <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                          <wsp:Policy>
+                            <sp:WssUsernameToken10 />
+                          </wsp:Policy>
+                        </sp:UsernameToken>
+                      </wsp:Policy>
+                    </sp:SignedSupportingTokens>
+                    <sp:Wss11>
+                      <wsp:Policy />
+                    </sp:Wss11>
+                    <sp:Trust10>
+                      <wsp:Policy>
+                        <sp:MustSupportIssuedTokens />
+                        <sp:RequireClientEntropy />
+                        <sp:RequireServerEntropy />
+                      </wsp:Policy>
+                    </sp:Trust10>
+                  </wsp:Policy>
+                </sp:BootstrapPolicy>
+              </wsp:Policy>
+            </sp:SecureConversationToken>
+          </wsp:Policy>
+        </sp:EndorsingSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://mysony.sony.com.vn/MySonyService/MySonyService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://mysony.sony.com.vn/MySonyService/MySonyService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://mysony.sony.com.vn/MySonyService/MySonyService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MySonyService.Constracts" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMySonyService_GetUnit_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnit" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetUnit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetMobile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMobile" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetMobile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMobileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetUnitsBySerial_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitsBySerial" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetUnitsBySerial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitsBySerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetUnitForSMS_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitForSMS" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetUnitForSMS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitForSMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetRegInfoForSMS_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRegInfoForSMS" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetRegInfoForSMS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRegInfoForSMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetAllCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCity" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetAllCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetDistricts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDistricts" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetDistricts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDistrictsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetShops_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShops" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetShops_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetAllCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCategory" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetAllCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducts" />
+  </wsdl:message>
+  <wsdl:message name="IMySonyService_GetProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMySonyService">
+    <wsdl:operation name="GetUnit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySonyService/GetUnit" message="tns:IMySonyService_GetUnit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySonyService/GetUnitResponse" message="tns:IMySonyService_GetUnit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMobile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySonyService/GetMobile" message="tns:IMySonyService_GetMobile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySonyService/GetMobileResponse" message="tns:IMySonyService_GetMobile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsBySerial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySonyService/GetUnitsBySerial" message="tns:IMySonyService_GetUnitsBySerial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySonyService/GetUnitsBySerialResponse" message="tns:IMySonyService_GetUnitsBySerial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitForSMS">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySonyService/GetUnitForSMS" message="tns:IMySonyService_GetUnitForSMS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySonyService/GetUnitForSMSResponse" message="tns:IMySonyService_GetUnitForSMS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRegInfoForSMS">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySonyService/GetRegInfoForSMS" message="tns:IMySonyService_GetRegInfoForSMS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySonyService/GetRegInfoForSMSResponse" message="tns:IMySonyService_GetRegInfoForSMS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySonyService/GetAllCity" message="tns:IMySonyService_GetAllCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySonyService/GetAllCityResponse" message="tns:IMySonyService_GetAllCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDistricts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySonyService/GetDistricts" message="tns:IMySonyService_GetDistricts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySonyService/GetDistrictsResponse" message="tns:IMySonyService_GetDistricts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShops">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySonyService/GetShops" message="tns:IMySonyService_GetShops_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySonyService/GetShopsResponse" message="tns:IMySonyService_GetShops_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySonyService/GetAllCategory" message="tns:IMySonyService_GetAllCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySonyService/GetAllCategoryResponse" message="tns:IMySonyService_GetAllCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySonyService/GetProducts" message="tns:IMySonyService_GetProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySonyService/GetProductsResponse" message="tns:IMySonyService_GetProducts_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_IMySonyService" type="tns:IMySonyService">
+    <wsp:PolicyReference URI="#WSHttpBinding_IMySonyService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUnit">
+      <soap12:operation soapAction="http://tempuri.org/IMySonyService/GetUnit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMobile">
+      <soap12:operation soapAction="http://tempuri.org/IMySonyService/GetMobile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsBySerial">
+      <soap12:operation soapAction="http://tempuri.org/IMySonyService/GetUnitsBySerial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitForSMS">
+      <soap12:operation soapAction="http://tempuri.org/IMySonyService/GetUnitForSMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegInfoForSMS">
+      <soap12:operation soapAction="http://tempuri.org/IMySonyService/GetRegInfoForSMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCity">
+      <soap12:operation soapAction="http://tempuri.org/IMySonyService/GetAllCity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDistricts">
+      <soap12:operation soapAction="http://tempuri.org/IMySonyService/GetDistricts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShops">
+      <soap12:operation soapAction="http://tempuri.org/IMySonyService/GetShops" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCategory">
+      <soap12:operation soapAction="http://tempuri.org/IMySonyService/GetAllCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <soap12:operation soapAction="http://tempuri.org/IMySonyService/GetProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MySonyService">
+    <wsdl:port name="WSHttpBinding_IMySonyService" binding="tns:WSHttpBinding_IMySonyService">
+      <soap12:address location="https://mysony.sony.com.vn/MySonyService/MySonyService.svc/username" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://mysony.sony.com.vn/MySonyService/MySonyService.svc/username</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

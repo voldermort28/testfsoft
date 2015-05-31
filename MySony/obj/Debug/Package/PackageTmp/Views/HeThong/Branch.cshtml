@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Chi nhánh";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        @Html.AntiForgeryToken()
+        @(Html.Kendo().Grid<MySony.Models.RS_Branch>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.name).Title("Tên chi nhánh");
+            columns.ForeignKey(p => p.city_id, (System.Collections.IEnumerable)ViewData["cities"], "city_id", "name").EditorTemplateName("CityEditor").Title("Thành phố");
+            columns.ForeignKey(p => p.status_id, (System.Collections.IEnumerable)ViewData["status"], "status_id", "name").EditorTemplateName("StatusEditor").Title("Trạng thái").ClientTemplate("<span class='fa fa-2x #=status_id == 1 ? 'fa-check text-success' : 'fa-remove text-danger' #'></span>").Filterable(false).Width(80);
+            columns.Command(command => { command.Edit().Text(" ").UpdateText(" ").CancelText(" "); }).Width(110).Title("Thao tác");
+        })
+        .ToolBar(toolbar => toolbar.Create().Text("Thêm mới"))
+        .Editable(editable => editable.Mode(GridEditMode.InLine))
+        .Sortable()
+        .Resizable(resize => resize.Columns(true))
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .Filterable(filterable => filterable
+            .Extra(false)
+            .Operators(operators => operators
+                .ForString(str => str.Clear().Contains("Contains"))
+            )
+        )
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .ServerOperation(false)
+            .Sort(sort => sort.Add("name"))
+            .Events(events => { events.Error("error_handler"); })//events.RequestEnd("onRequestEnd"); })
+            .Model(model =>
+            {
+                model.Id(p => p.ID);
+                model.Field(p => p.ID).Editable(false);
+                model.Field(p => p.city_id).DefaultValue(0);
+                model.Field(p => p.status_id).DefaultValue(0);
+            })
+            .Read(read => read.Action("Branch_Read", "HeThong"))
+            .Create(update => update.Action("Branch_Create", "HeThong"))
+            .Update(update => update.Action("Branch_Update", "HeThong"))
+            //.Destroy(update => update.Action("Branch_Destroy", "HeThong"))
+            )
+        )
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        function error_handler(e) {
+            if (e.errors) {
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                console.info(message);
+            }
+        }
+        //function onRequestEnd(e) {
+        //    if (e.type == "create" && !e.response.Errors) {
+        //        alert("Tạo mới thành công");
+        //        window.location.reload();
+        //    }
+        //    else if (e.type == "update" && !e.response.Errors) {
+        //        alert("Cập nhật thông tin thành công");
+        //        window.location.reload();
+        //    }
+        //    else if (e.type == "destroy" && !e.response.Errors) {
+        //        alert("Xóa thông tin thành công");
+        //        window.location.reload();
+        //    }            
+        //}
+    </script>
+}

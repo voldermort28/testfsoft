@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Log";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        @Html.AntiForgeryToken()
+        @(Html.Kendo().Grid<MySony.Models.LogError>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.Content).Title("Nôi dung lỗi");
+            columns.Bound(p => p.Created).Format("{0:dd/MM/yyyy H:mm:ss}").Width(160).Title("Ngày xảy ra lỗi");
+            columns.Command(command => command.Destroy().Text(" ")).Width(60).Title("Sửa");
+        })
+        .Editable(editable => editable.Mode(GridEditMode.InLine))
+        .Sortable()
+        .Resizable(resize => resize.Columns(true))
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(10)
+            .Sort(sort => sort.Add("Created").Descending())
+            .Events(events => { events.Error("error_handler"); events.RequestEnd("onRequestEnd"); })
+            .Model(model => model.Id(p => p.ID))
+            .Read(read => read.Action("Log_Read", "HeThong"))
+            .Destroy(update => update.Action("Log_Destroy", "HeThong"))
+            )
+        )
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        function error_handler(e) {
+            if (e.errors) {
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                console.info(message);
+            }
+        }
+        function onRequestEnd(e) {
+            if (e.type == "create" && !e.response.Errors) alert("Tạo mới thành công");
+            else if (e.type == "update" && !e.response.Errors) alert("Cập nhật thông tin thành công");
+            else if (e.type == "destroy" && !e.response.Errors) alert("Xóa thông tin thành công");
+        }
+    </script>
+}

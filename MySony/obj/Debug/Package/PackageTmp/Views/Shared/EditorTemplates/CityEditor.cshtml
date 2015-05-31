@@ -1,0 +1,7 @@
+﻿@(Html.Kendo().DropDownList()
+    .Name("city_id")
+    .OptionLabel("--Select--")
+    .DataTextField("name")
+    .DataValueField("city_id")
+    .BindTo((System.Collections.IEnumerable)ViewData["cities"])
+)

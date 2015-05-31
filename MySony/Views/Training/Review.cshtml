@@ -1,0 +1,82 @@
+﻿@model MySony.ViewModels.TrainingVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="vbox bg-light lter">
+    <section class="scrollable">
+        <div class="page page-main-wrapper page-trainning yellow">
+            <div class="col-xs-12 col-sm-12 col-md-8 left-col">
+                <div class="node-view">
+                    <h1 class="page-title">Khóa huấn luyện miễn phí</h1>
+                    <div class="node-content">
+                        <div class="node-description">
+                            <p>Bạn muốn chụp những bức ảnh đẹp, quay những thước phim tốt? Bạn muốn hiểu rõ các sản phẩm Sony mà bạn đang sử dụng? Mời bạn tham gia lớp trải nghiệm sản phẩm Sony.</p>
+                            <p class="node-register-link">
+                                <div style="background: #ffa63e;
+  color: #ffffff;
+  padding-left: 30px;
+  padding-right: 30px;" class="btn btn-s-md" onclick="javascript:ShowPopup('Hiện tại chưa có chương trình huấn luyện mới, bạn thử lại sau nhé !');">
+                                    Đăng ký tham gia
+                                </div>
+                            </p>
+                        </div>                       
+                        <div class="view-hot-article-wrapper">
+                            <div class="hot-article-row">
+                                <div id="view-hot-trainning-1" class="view-hot-article">
+                                    <div class="sony-trainning-courses">
+                                        <div class="row">
+                                            <div class="sony-trainning-details" id="image-details">
+                                                @if (Model.lstImage.Count > 0)
+                                                {
+                                                    foreach (var image in Model.lstImage)
+                                                     {
+                                                         <div class="col-xs-4 col-sm-6 col-md-6">
+                                                             <a href="@image.LinkImage" data-fb="#trainning-@image.ID" data-zing="#trainning-@image.ID" title="@image.Title">
+                                                                 <img alt="scale" src="@image.LinkImage" />
+                                                             </a>
+                                                         </div>
+                                                     }
+                                                }
+                                                <input type="hidden" id="trainingImageID"  readonly value="@Model.Id" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 right-col hidden-xs">                
+                <div class="block block-related-post">
+                    <div class="block-title">
+                        <h2>Các khóa khác</h2>
+                    </div>
+                    <div class="block-content">
+                        <ul id="trainningID"></ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</section>
+@section scripts{
+    <script>
+        $.get("/Training/GetTraining/", function (res) {
+             
+            $.each(res, function (index, data) {
+                $('#trainningID').append(' <li id =' + data.ID + '"><a id=image' + data.ID + '  href="/Training/Review/' + data.ID + '" >' + data.Name + '</a></li>');
+            }); 
+            var focus = "image" + $('#trainingImageID').val();            
+            var div = document.getElementById(focus);
+            if (div != null) {
+                div.style.backgroundColor = "#009999";
+                div.style.color = "#ffffff";
+            }
+        }); 
+
+    </script>
+    <script src="/static/js/application_trainning.js"></script>
+}

@@ -1,0 +1,7 @@
+﻿@(Html.Kendo().DropDownList()
+    .Name("branch_id")
+    .OptionLabel("--Select--")
+    .DataTextField("name")
+    .DataValueField("ID")
+    .BindTo((System.Collections.IEnumerable)ViewData["branches"])
+)

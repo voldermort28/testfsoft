@@ -1,0 +1,246 @@
+﻿@using MySony.Functions
+<!DOCTYPE html>
+<html lang="en" class=" ">
+<head>
+    <meta charset="utf-8" />
+    <title>Thông tin cá nhân</title>
+    <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/static/css/app.v1.css" type="text/css" />
+    <link href="/Content/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/jquery.fancybox.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/sony.style.css" type="text/css" />
+    <link rel="stylesheet" href="/static/js/chosen/chosen.css" type="text/css" />
+    <!--[if lt IE 9]> <script src="/static/js/ie/html5shiv.js"></script> <script
+    src="/static/js/ie/respond.min.js"></script> <script
+    src="/static/js/ie/excanvas.js"></script> <![endif]-->
+</head>
+    <body>
+        <div id="ajax_loader" style="background-color: rgba(0, 0, 0, 0.5); z-index: 9999; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; display: none;" class="">
+            <img src="/static/images/loading.gif" style="position: fixed; left: 50%; top: 50%;" class="">
+        </div>
+        <!-- my modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 9999999 !important;">
+            <div class="modal-dialog login">
+                <div class="modal-content clearfix">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="font-thin h1">&times;</span><span class="sr-only font-thin">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div style="line-height:20px" id="msg">msg</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="vbox site-wrapper page-user user-infos dark-green">
+            <section>
+                <section class="hbox stretch">
+                    <!-- .aside -->
+                    <aside class="bg-dark aside-lg hidden-print box-shadow sidebar-first" id="nav">
+                        <section class="vbox">
+                            <section class="w-f scrollable">
+                                <div class=" " data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railopacity="0.2">
+                                    <nav class="nav-primary hidden-xs sidebar-user-nav">
+                                        <ul class="nav nav-main" data-ride="collapse">
+                                            <li class="customer-logo desktop hidden-xs">
+                                                <img src="/static/images/figures/cus-logo-desk.png" alt="..." height="110" width="130" />
+                                            </li>
+                                            <li class="customer-logo hidden-md hidden-lg">
+                                                <img src="/static/images/figures/cus-logo.png" alt="..." height="100" width="100">
+                                            </li>
+                                            <li>
+                                                <div class="clearfix wrapper dk nav-user hidden-md hidden-lg user-menus">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                            <span class="thumb-u-avatar pull-left">
+                                                                <img src="/static/images/figures/avatar.png" alt="...">
+                                                            </span>
+                                                            @Common.GetCurrentUserName()
+                                                            <b class="caret"></b>
+                                                        </a>
+                                                        <ul class="dropdown-menu animated fadeInRight">
+                                                            <li>
+                                                                <span class="arrow top hidden-nav-xs"></span><a href="#">Settings</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Profile</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"> <span class="badge bg-danger pull-right">3</span> Notifications </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Help</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" data-toggle="ajaxModal">Logout</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <!--End Sidebar user menu-->
+                                    <!-- nav -->
+                                    <nav class="nav-primary hidden-xs site-system-menu">
+                                        <ul class="nav nav-main" data-ride="collapse">
+                                            <li>
+                                                <a href="/" class="bg-green"> <i class="icon  home"> </i> <span>Trang chủ</span> </a>
+                                            </li>
+                                            <li>
+                                                <a href="/Benefit/" class="bg-dark-green"> <i class="icon group"> </i> <span>Quyền lợi của thành viên</span> </a>
+                                            </li>
+                                            <li>
+                                                <a href="/Tintuc/" class="bg-red"> <i class="icon news"> </i> <span>Tin tức và khuyến mãi</span> </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://sonycenter.sony.com.vn/" target="_blank" class=" bg-lilac"> <i class="icon cart"> </i> <span> Mua hàng ONLINE tại Sony Center</span> </a>
+                                            </li>
+                                            <li>
+                                                <a href="http://www.sony.com.vn/support/resources/vi_VN/html/Warranty/microsite/RepairInfo.htm" target="_blank" class="bg-blue" > <i class="icon setting"> </i> <span>Đăng kí bảo hành tại nhà</span> </a>
+                                            </li>
+                                            <li>
+                                                <a href="/SMS/"  class="bg-yellow"> <i class="icon message"> </i> <span>Dịch vụ nhắn tin SMS</span> </a>
+                                            </li>
+                                            <li>
+                                                <a href="/Game/" class="bg-orange"> <i class="icon award"> </i> <span>Video giới thiệu sản phẩm</span> </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="/FAQ/" class="bg-lilac"> <i class="icon talk"> </i> <span>Hỏi & đáp</span> </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <!--End site nav-->
+                                    <ul class="nav-primary hidden-xs sidebar-footer-nav">
+                                        <li>
+                                            <a href="/Clause/">Điều khoản sử dụng</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Privacy/">Quyền riêng tư</a>
+                                        </li>
+                                        <li >
+                                            <a href="http://www.sony.com.vn/section/bookserviceappointment" target="_blank"> Đăng ký dịch vụ Bảo hành tại nhà</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.sony.com.vn/section/contactus" target="_blank">Liên hệ</a>
+                                        </li>
+                                        <li class="global clearfix" style="padding-left:20px">
+                                            <a href="http://sony.net" target="_blank">Global home11</a>
+                                        </li>
+                                        <li>
+                                            @DateTime.Now.Year © Bản quyền thuộc sở hữu <br /> Công ty Sony Electronics Việt Nam
+                                        </li>
+                                    </ul>
+                                    <!--End site links-->
+                                </div>
+                            </section>
+                        </section>
+                    </aside>
+                    <!-- /.aside -->
+                    <section id="content">
+                        <header class="header header-md navbar bg site-header-top">                           
+                            <div class="navbar-header aside-md dk site-logo">
+                                <a class="btn btn-link visible-xs site-m-menu-toggle" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a>
+                                <a href="/Landing/" class="navbar-brand"> <img src="/static/images/logo.png" class="m-r-sm" alt="scale" height="17" width="100" /> </a>
+                            </div>
+                            <div class="page-header-logo">
+                                <div class="customer-logo">
+                                    <img src="/static/images/figures/cus-logo.png" alt="..." height="100" width="100">
+                                </div>
+                                <div class="navbar-header site-logan">
+                                    Chúng tôi trồng cây Dịch vụ
+                                    <span>bạn hái quả Chăm sóc</span>
+                                </div>
+                            </div>
+                        </header>
+                        <section class="vbox page-user-content-box">
+                            <div class="page-header padder page-contrains">
+                                <ul>
+                                    <li>
+                                        <span class="thumb-u-avatar pull-left">
+                                            <img src="/static/images/figures/avatar_profile.png" alt="...">
+                                        </span>
+                                        <a href="#" id ="txtDisplayUserName">@Common.GetCurrentUserName()<i class="fa fa-caret-up"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="/UserCP/" class="@ViewBag.IsMyProfile">Thông tin của tôi<i class="fa fa-caret-up"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="/userCP/MyProduct/" class="@ViewBag.IsMyProduct">Sản phẩm của tôi <i class="fa fa-caret-up"></i></a>
+                                    </li>
+                                    <li>
+                                        <i class="user-logout"></i>
+                                        <a href="/UserCP/Logout/">Đăng xuất <i class="fa fa-caret-up"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            @RenderBody()
+                        </section>
+                        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <!-- Bootstrap -->
+        <!-- App -->
+        <script>
+            function ShowPopup(a, callback) {
+
+                callback = callback || function () { };
+                $('#ajax_loader').hide();
+                $('.modal').modal('hide');
+                $('#myModal').find('#msg').html(a);
+                $('#myModal').modal('show');
+                $('#myModal').on('hide.bs.modal', function (e) {
+                    callback();
+                });
+            }
+
+            function ShowPopup123() {             
+                parent.$.fancybox.close();
+            }
+             
+        </script>
+
+        <script src="/static/js/app.v1.js"></script>
+        <script src="/static/js/application.js"></script>
+        <script src="/static/js/jquery.fancybox.js"></script>
+        <script src="/static/js/application_persional.js"></script>
+        @*<script src="/static/js/parsley/parsley.min.js"></script>*@
+        <script src="/static/js/parsley/parsley.extend.js"></script>
+        <script src="/static/js/vendor/jquery-1.10.2.min.js"></script>
+        <script> window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.10.2.min.js"><\/script>') </script>
+        <script src="/Scripts/bootstrap.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <script src="/static/js/common.js"></script>
+        <script src="/static/js/calendar.js"></script>
+        <script>
+            window.ParsleyConfig = {
+                errorsWrapper: '<div></div>',
+                errorTemplate: '<span style="color:red"></span>'
+            };
+        </script>
+        <script src="/static/js/validator/parsley.vi.js"></script>
+        <script src="/static/js/validator/parsley.min.js"></script>
+        <script type="text/javascript">
+            window.ParsleyValidator.setLocale('vi');
+        </script>
+        <script src="/static/js/jquery.uniform.js"></script>
+        <script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-56315284-1', 'auto');
+    ga('send', 'pageview');
+
+        </script>
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

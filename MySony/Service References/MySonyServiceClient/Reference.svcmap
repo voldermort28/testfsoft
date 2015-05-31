@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5ea9636c-baa6-437c-af38-c81ec0523b3e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://mysony.sony.com.vn/MySonyService/MySonyService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MySonyService.disco" MetadataType="Disco" ID="fa469b3f-5706-4fab-bd36-ed3fbc62f626" SourceId="1" SourceUrl="https://mysony.sony.com.vn/MySonyService/MySonyService.svc?disco" />
+    <MetadataFile FileName="MySonyService.wsdl" MetadataType="Wsdl" ID="7a0cdb4d-1748-4744-948b-c6f9e46f027c" SourceId="1" SourceUrl="https://mysony.sony.com.vn/MySonyService/MySonyService.svc?wsdl" />
+    <MetadataFile FileName="MySonyService.xsd" MetadataType="Schema" ID="62a8c589-bf9d-43e0-aae1-7be5bdf8b8e8" SourceId="1" SourceUrl="https://mysony.sony.com.vn/MySonyService/MySonyService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MySonyService1.xsd" MetadataType="Schema" ID="13c04083-95d6-4b47-af9b-617313afd513" SourceId="1" SourceUrl="https://mysony.sony.com.vn/MySonyService/MySonyService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MySonyService2.xsd" MetadataType="Schema" ID="fdcd7bb2-a9d3-4466-9102-beef9fc3146c" SourceId="1" SourceUrl="https://mysony.sony.com.vn/MySonyService/MySonyService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

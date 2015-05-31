@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Danh sách sản phẩm";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        @Html.AntiForgeryToken()
+        @(Html.Kendo().Grid<MySony.Models.product>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.product_id).Title("ID").Filterable(false).Width(40);
+            columns.ForeignKey(p => p.category_id, (System.Collections.IEnumerable)ViewData["categories"], "category_id", "name").EditorTemplateName("CategoryEditor").Title("Loại sản phẩm");
+            columns.Bound(p => p.name).Title("Tên sản phẩm");
+            columns.Bound(p => p.productcode).Title("Mã sản phẩm");
+            columns.ForeignKey(p => p.status_id, (System.Collections.IEnumerable)ViewData["status"], "status_id", "name").EditorTemplateName("StatusEditor").Title("Trạng thái").ClientTemplate("<span class='fa fa-2x #=status_id == 1 ? 'fa-check text-success' : 'fa-remove text-danger' #'></span>").Filterable(false).Width(80);
+            columns.Command(command => { command.Edit().Text(" ").UpdateText(" ").CancelText(" "); }).Width(110).Title("Cập nhật");
+        })
+        .ToolBar(toolbar => { toolbar.Create().Text("Thêm mới"); toolbar.Custom().Action("ExportProduct", "HeThong").Text("Export"); })
+        .Editable(editable => editable.Mode(GridEditMode.InLine))
+        .Sortable()
+        .Groupable()
+        .Resizable(resize => resize.Columns(true))
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .Filterable(filterable => filterable
+            .Extra(false)
+            .Operators(operators => operators
+                .ForString(str => str.Clear().Contains("Contains").StartsWith("StartsWith").Equals("Equals"))
+            )
+        )
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(100)
+            .ServerOperation(false)
+            .Sort(sort => sort.Add("category_id").Ascending())
+            .Events(events => { events.Error("error_handler"); })//events.RequestEnd("onRequestEnd"); })
+            .Model(model =>
+            {
+                model.Id(p => p.product_id);
+                model.Field(p => p.product_id).Editable(false);
+                model.Field(p => p.category_id).DefaultValue(0);
+                model.Field(p => p.status_id).DefaultValue(0);
+            })
+            .Read(read => read.Action("Product_Read", "HeThong"))
+            .Create(update => update.Action("Product_Create", "HeThong"))
+            .Update(update => update.Action("Product_Update", "HeThong"))
+            //.Destroy(update => update.Action("Product_Destroy", "HeThong"))
+            )
+        )
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        function error_handler(e) {
+            if (e.errors) {
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                console.info(message);
+            }
+        }
+        //function onRequestEnd(e) {
+        //    if (e.type == "create" && !e.response.Errors) {
+        //        alert("Tạo mới thành công");
+        //        window.location.reload();
+        //    }
+        //    else if (e.type == "update" && !e.response.Errors) {
+        //        alert("Cập nhật thông tin thành công");
+        //        window.location.reload();
+        //    }
+        //    else if (e.type == "destroy" && !e.response.Errors) {
+        //        alert("Xóa thông tin thành công");
+        //        window.location.reload();
+        //    }
+
+        //}
+    </script>
+}

@@ -1,0 +1,4 @@
+﻿#blackHeaderBar{background-color:#000;height:36px;display:block}
+#blackHeaderBar #sonyLogo{padding-right:100px;margin-top:12px;float:right}
+#loginBody{background:url('/static/images/leftLogin.png') no-repeat;width:99%;height:383px}
+#loginBlock{margin-left:450px;margin-top:50px}

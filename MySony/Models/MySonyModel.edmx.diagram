@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5874d23e69194c8980399fce445970f6" Name="Diagram1">
+        <EntityTypeShape EntityType="MySonyModel.admin" Width="1.5" PointX="3" PointY="31.625" />
+        <EntityTypeShape EntityType="MySonyModel.category" Width="1.5" PointX="3" PointY="16.375" />
+        <EntityTypeShape EntityType="MySonyModel.city" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="MySonyModel.customer" Width="1.5" PointX="10.5" PointY="31.5" />
+        <EntityTypeShape EntityType="MySonyModel.customerlock" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MySonyModel.customertype" Width="1.5" PointX="3" PointY="55.75" />
+        <EntityTypeShape EntityType="MySonyModel.district" Width="1.5" PointX="8.25" PointY="18.625" />
+        <EntityTypeShape EntityType="MySonyModel.education" Width="1.5" PointX="3" PointY="44.625" />
+        <EntityTypeShape EntityType="MySonyModel.job" Width="1.5" PointX="3" PointY="47.375" />
+        <EntityTypeShape EntityType="MySonyModel.LogError" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MySonyModel.order" Width="1.5" PointX="12.5" PointY="22" />
+        <EntityTypeShape EntityType="MySonyModel.PassChange" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="MySonyModel.product" Width="1.5" PointX="10.25" PointY="26.5" />
+        <EntityTypeShape EntityType="MySonyModel.resethistory" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="MySonyModel.RS_Article" Width="1.5" PointX="7.5" PointY="30.875" />
+        <EntityTypeShape EntityType="MySonyModel.RS_Branch" Width="1.5" PointX="8.25" PointY="22.25" />
+        <EntityTypeShape EntityType="MySonyModel.RS_Category" Width="1.5" PointX="5.25" PointY="29.25" />
+        <EntityTypeShape EntityType="MySonyModel.RS_Config" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MySonyModel.RS_FAQ" Width="1.5" PointX="5.25" PointY="36" />
+        <EntityTypeShape EntityType="MySonyModel.RS_Images" Width="1.5" PointX="7.5" PointY="26.875" />
+        <EntityTypeShape EntityType="MySonyModel.RS_mail_template" Width="1.5" PointX="5.25" PointY="19.625" />
+        <EntityTypeShape EntityType="MySonyModel.RS_Menu" Width="1.5" PointX="5.25" PointY="23.125" />
+        <EntityTypeShape EntityType="MySonyModel.RS_Video" Width="1.5" PointX="5.25" PointY="39.875" />
+        <EntityTypeShape EntityType="MySonyModel.serial" Width="1.5" PointX="3" PointY="50.125" />
+        <EntityTypeShape EntityType="MySonyModel.shop" Width="1.5" PointX="15.5" PointY="23.25" />
+        <EntityTypeShape EntityType="MySonyModel.shoptype" Width="1.5" PointX="3" PointY="20.375" />
+        <EntityTypeShape EntityType="MySonyModel.status" Width="1.5" PointX="0.75" PointY="33" />
+        <EntityTypeShape EntityType="MySonyModel.sysdiagram" Width="1.5" PointX="4.75" PointY="3.75" />
+        <AssociationConnector Association="MySonyModel.FK_admin_status" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Category_admin" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Category_admin1" />
+        <AssociationConnector Association="MySonyModel.FK_RS_FAQ_admin" />
+        <AssociationConnector Association="MySonyModel.FK_RS_FAQ_admin1" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Menu_admin" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Menu_admin1" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Video_admin" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Video_admin1" />
+        <AssociationConnector Association="MySonyModel.FK_categories_status" />
+        <AssociationConnector Association="MySonyModel.FK_orders_categories" />
+        <AssociationConnector Association="MySonyModel.FK_products_categories" />
+        <AssociationConnector Association="MySonyModel.FK_cities_status" />
+        <AssociationConnector Association="MySonyModel.FK_districts_cities" />
+        <AssociationConnector Association="MySonyModel.FK_orders_cities" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Branch_cities" />
+        <AssociationConnector Association="MySonyModel.FK_RS_mail_template_cities" />
+        <AssociationConnector Association="MySonyModel.FK_shops_cities" />
+        <AssociationConnector Association="MySonyModel.FK_user_cities" />
+        <AssociationConnector Association="MySonyModel.FK_orders_customer" />
+        <AssociationConnector Association="MySonyModel.FK_user_districts" />
+        <AssociationConnector Association="MySonyModel.FK_user_education" />
+        <AssociationConnector Association="MySonyModel.FK_user_jobs" />
+        <AssociationConnector Association="MySonyModel.FK_user_status" />
+        <AssociationConnector Association="MySonyModel.FK_user_usertype" />
+        <AssociationConnector Association="MySonyModel.FK_usertype_status" />
+        <AssociationConnector Association="MySonyModel.FK_districts_status" />
+        <AssociationConnector Association="MySonyModel.FK_education_status" />
+        <AssociationConnector Association="MySonyModel.FK_jobs_status" />
+        <AssociationConnector Association="MySonyModel.FK_orders_products" />
+        <AssociationConnector Association="MySonyModel.FK_orders_shops" />
+        <AssociationConnector Association="MySonyModel.FK_orders_status" />
+        <AssociationConnector Association="MySonyModel.FK_products_status" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Article_RS_Category" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Article_RS_Category1" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Branch_status" />
+        <AssociationConnector Association="MySonyModel.FK_shops_RS_Branch" />
+        <AssociationConnector Association="MySonyModel.FK_RS_Images_RS_Category" />
+        <AssociationConnector Association="MySonyModel.FK_RS_mail_template_status" />
+        <AssociationConnector Association="MySonyModel.FK_serial_status" />
+        <AssociationConnector Association="MySonyModel.FK_shops_shoptype" />
+        <AssociationConnector Association="MySonyModel.FK_shops_status" />
+        <AssociationConnector Association="MySonyModel.FK_shoptype_status" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

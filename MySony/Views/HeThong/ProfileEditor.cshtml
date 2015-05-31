@@ -1,0 +1,448 @@
+﻿@model MySony.Models.customer
+@{
+    ViewBag.Title = "Thông tin khách hàng";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    @using (Html.BeginForm("SaveProfile", "HeThong", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.customer_id)
+        @Html.HiddenFor(m => m.IsPending)
+        <input type="hidden" id="hidAddProduct" name="hidAddProduct" />
+        
+        <div class="col-md-12">
+            <div class="btn-group pull-right btn-profile-customer">
+                <input type="submit" class="btn btn-primary" id="btnSave" value="Hoàn tất" />
+                <button type="button" class="btn btn-info" id="btnDraft" >Lưu vào ds chờ</button>
+                <button type="button" class="btn btn-warning" id="btnCancel">Hủy</button>
+               
+                @if (Model != null && Model.status_id == 2)
+                {
+                    <button type="button" class="btn btn-danger" id="btnDeletePhysical">Xóa khách hàng</button>                   
+                    
+                }
+                else
+                {
+                    <button type="button" class="btn btn-danger" id="btnDelete">Xóa</button>   
+                }
+                
+            </div>
+            <table class="table table-condensed">
+                <tr>
+                    <td class="col1"><label>Họ</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.firstname, new { id = "txtFirstname", @class = "form-control", required = "required" })</td>
+                    <td class="col1"><label>Tên</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.lastname, new { id = "txtLastname", @class = "form-control", required = "required" })</td>
+                </tr>
+                <tr>
+                    <td class="col1"><label>Giới tính</label></td>
+                    <td class="form-group">
+                        @Html.RadioButtonFor(x => x.sex, true) Nam
+                        @Html.RadioButtonFor(x => x.sex, false) Nữ
+                    </td>
+                    <td class="col1"><label>Ngày sinh</label></td>
+                    <td class="form-group">@Html.Kendo().DatePickerFor(x => x.birthday).HtmlAttributes(new { required = "required", style = "width:100%" })</td>
+                </tr>                
+                <tr>
+                    <td class="col1"><label>Email</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.email, new { id = "txtEmail", @class = "form-control", required = "required" })</td>
+                    <td class="col1"><label>Di động</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.mobilephone, new { id = "txtMobile", required = "required", @class = "form-control numberic" })</td>
+                </tr>
+                <tr>
+                    <td class="col1"><label>Mật khẩu</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.password, new { id = "txtPassword", type = "password", required = "required", @class = "form-control" })</td>
+                    <td><label id="lbPassString" ></label></td>
+                    <td class="pull-right"><button id="btnGenPass" class="btn btn-info" type="button" >Reset mật khẩu</button></td>
+                </tr>
+                <tr>
+                    <td class="col1"><label>Thành phố</label></td>
+                    <td class="form-group">@Html.DropDownListFor(x => x.city_id, new SelectList((System.Collections.ICollection)ViewData["cities"], "city_id", "name"), "Chọn Thành phố", new { id = "cboCity", @class = "form-control", required = "required" })</td>
+                    <td class="col1"><label>Quận huyện</label></td>
+                    <td class="form-group">@Html.DropDownListFor(x => x.district_id, new SelectList((System.Collections.ICollection)ViewData["districts"], "district_id", "name"), "Chọn Quận/ huyện", new { id = "cboDistrict", @class = "form-control", required = "required" })</td>                    
+                </tr>
+                <tr>
+                    <td class="col1"><label>Địa chỉ</label></td>
+                    <td colspan="3" class="form-group">@Html.TextBoxFor(x => x.address, new { id = "txtAddress", required = "required", @class = "form-control" })</td>
+                </tr>
+                @*<tr>
+                    <td class="col1"><label>Register date</label></td>
+                    <td>@Html.Kendo().DatePickerFor(x => x.datereg)</td>
+                    <td class="col1"><label>HomePhone</label></td>
+                    <td>@Html.TextBoxFor(x => x.homephone, new { id = "txtHomePhone", style = "width:100%", @class = "numberic" })</td>
+                </tr>*@
+                <tr>
+                    <td class="col1"><label>Nguồn đăng ký</label></td>
+                    <td class="form-group">@Html.DropDownListFor(x => x.customertype_id, new SelectList((System.Collections.ICollection)ViewData["types"], "ID", "Name"), "Chọn nguồn đăng ký", new { id = "cboType", @class = "form-control", required = "required" })</td>
+                    <td class="col1"><label>Trạng thái</label></td>
+                    <td class="form-group">@Html.DropDownListFor(x => x.status_active, new SelectList((System.Collections.ICollection)ViewData["isActive"], "Value", "Text"),"Chọn trạng thái", new { id = "cboStatus", @class = "form-control" })</td>
+                </tr>
+                <tr id="trAddProduct">
+                    <td colspan="4">
+                        <input type="submit" class="btn btn-primary pull-right" id="btnAddProduct" value="Đăng ký sản phẩm" />
+                    </td>
+                </tr>
+            </table>            
+        </div>        
+    }
+    <div style="clear:both"></div>
+    <div class="col-md-12" id="divProducts">
+        <h3>Đăng ký sản phẩm</h3>
+        @Html.AntiForgeryToken()
+        <input type="hidden" id="isEdit" name="isEdit" />
+        <input type="hidden" id="cusProd_Id" name="cusProd_Id" />
+        <table class="table table-condensed">
+            <tr>
+                <td class="col1"><label>Loại sản phẩm</label></td>
+                <td>@Html.DropDownList("Category", new SelectList((System.Collections.ICollection)ViewData["categories"], "category_id", "name"),"Chọn loại sản phẩm", new { id = "cboCategory", @class = "form-control" })</td>
+                <td class="col1"><label>Tên sản phẩm</label></td>
+                <td>@Html.DropDownList("Product", new SelectList((System.Collections.ICollection)ViewData["products"], "product_id", "name"),"Chọn tên sản phẩm", new { id = "cboProduct", @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td class="col1"><label>Số serial</label></td>
+                <td>@Html.TextBox("Serial", "", new { id = "txtSerial", type = "number", required = "required", @class = "form-control numberic" })</td>
+                <td class="col1"><label>Ngày mua hàng</label></td>
+                <td>@Html.Kendo().DatePicker().Name("TimePucharsed").HtmlAttributes(new { required = "required", style = "width:100%" })</td>
+            </tr>
+            <tr>
+                <td class="col1"><label>Nơi mua hàng</label></td>
+                <td>@Html.DropDownList("City", new SelectList((System.Collections.ICollection)ViewData["cities"], "city_id", "name"),"Chọn nơi mua hàng", new { id = "cboCityBuy", @class = "form-control" })</td>
+                <td class="col1"><label>Tên cửa hàng</label></td>
+                <td>@Html.DropDownList("Shop", new SelectList((System.Collections.ICollection)ViewData["shops"], "shop_id", "name"), new { id = "cboShop", @class = "form-control" })</td>
+            </tr>
+        </table>
+        <div style="clear:both"></div>
+        <div class="btn-save-product">
+            <button id="btnSaveProduct" class="btn btn-success pull-right">Cập nhật</button>    
+        </div>        
+        <div style="clear:both"></div>
+        @(Html.Kendo().Grid<MySony.ViewModels.CustomerProductVM>()
+              .Name("grid")
+              .Columns(columns =>
+              {
+                  columns.Bound(p => p.Product).Title("Product").Title("Sản phẩm");
+                  columns.Bound(p => p.Serial).Title("Serial").Title("Số Serial");
+                  columns.Bound(p => p.Shop).Title("Shop").Filterable(false).Title("Cửa hàng");
+                  columns.Bound(p => p.BuyDate).Format("{0:dd/MM/yyyy}").Width(150).Filterable(false).Title("Ngày mua hàng");
+                  columns.Bound(p => p.WarrantyEnd).Format("{0:dd/MM/yyyy}").Width(150).Filterable(false).Title("Hạn bảo hành");
+                  columns.Command(command => { command.Custom("Sửa").Text(" ").Click("showDetails"); command.Destroy().Text(" "); }).Width(120).Title("Thao tác");
+              })
+              .Editable(editable => editable.Mode(GridEditMode.InLine))
+              .Sortable()
+              .Selectable(selectable => selectable.Type(GridSelectionType.Row))
+              .Resizable(resize => resize.Columns(true))
+              .Pageable(pageable => pageable
+                  .Refresh(true)
+                  .PageSizes(true)
+                  .ButtonCount(5))
+              .Filterable(filterable => filterable
+                  .Extra(false)
+                  .Operators(operators => operators
+                      .ForString(str => str.Clear().Contains("Contains"))
+                  )
+              )
+              .Events(e => e.DataBound("onDataBound"))
+              .DataSource(dataSource => dataSource
+                  .Ajax()
+                  .PageSize(20)
+                  .Sort(sort => sort.Add("ID").Descending())
+                  .Events(events => events.Error("error_handler"))
+                  .Model(model =>
+                  {
+                      model.Id(p => p.ID);
+                      model.Field(p => p.WarrantyEnd).Editable(false);
+                  })
+                  .Read(read => read.Action("CustomerProduct_Read", "HeThong").Data("additionalInfo"))
+                  .Destroy(update => update.Action("CustomerProduct_Destroy", "HeThong"))
+              )
+            )
+        <script>
+            function additionalInfo() {
+                return { customer_id: $('#customer_id').val() };
+            }
+
+            function onDataBound(e) {
+                $(".k-grid-Sửa > span").addClass("k-grid-edit").addClass("k-icon k-edit");
+            }
+
+            function error_handler(e) {
+                if (e.errors) {
+                    var message = "Errors:\n";
+                    $.each(e.errors, function (key, value) {
+                        if ('errors' in value) {
+                            $.each(value.errors, function () {
+                                message += this + "\n";
+                            });
+                        }
+                    });
+                    console.info(message);
+                }
+            }
+
+            function onRequestEnd(e) {
+                if (e.type == "create" && !e.response.Errors) alert("Tạo mới thành công");
+                else if (e.type == "update" && !e.response.Errors) alert("Cập nhật thông tin thành công");
+                else if (e.type == "destroy" && !e.response.Errors) alert("Xóa thông tin thành công");
+            }
+            
+            function showDetails(e) {
+                e.preventDefault();
+                var grid = $("#grid").data("kendoGrid");
+                var selectedItem = grid.dataItem(grid.select());
+                $.post('/HeThong/GetCustomerProduct', { ID: selectedItem.ID }, function (res) {
+                    if (res.res == "OK") {
+                        $('#cusProd_Id').val(selectedItem.ID);
+                        $('#cboCategory').val(res.categoryId);
+                        $('#cboProduct').empty();
+                        $.get("/HeThong/GetProductByCat/", { CategoryId: $('#cboCategory').val() }, function (result) {
+                            $.each(result, function (index, data) {
+                                $('#cboProduct').append("<option value='" + data.product_id + "'>" + data.name + "</option>");
+                            });
+                            $('#cboProduct').val(res.productId);
+                        });
+                        $('#txtSerial').val(res.serialNumber);
+                        $('#cboCityBuy').val(res.cityBuyId);
+                        $('#cboShop').empty();
+                        $.get("/HeThong/GetShopByCity/", { cityId: $('#cboCityBuy').val() }, function (result) {
+                            $.each(result, function (index, data) {
+                                $('#cboShop').append("<option value='" + data.shop_id + "'>" + data.name + "</option>");
+                            });
+                            $('#cboShop').val(res.shopId);
+                        });
+                        $("#TimePucharsed").data("kendoDatePicker").value(res.timePucharsed);
+                        $("#isEdit").val(true);
+                    }
+                });
+            };
+        </script>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        
+        $(function () {
+            // Disable button submit when submit form
+            $('form').submit(function () {
+                $('#btnSave').attr('disabled', 'disabled');
+                $('#btnDraft').attr('disabled', 'disabled');
+            });
+
+            $('#btnDraft').click(function () {
+                $('#IsPending').val(true);
+                $('form').submit();
+            });
+
+            $('#btnAddProduct').click(function () {
+                $('#hidAddProduct').val(true);
+                $('form').submit();
+            });
+
+            // Allow only numberic input
+            $('.numberic').keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) return false;
+            });
+
+            // Turn off autocomplete
+            $('form,input,select,textarea').attr("autocomplete", "off");
+            $('#txtEmail').blur(function (e) {
+                var emailValue = $('#txtEmail').val();
+                if (emailValue == '') {
+                    return false;
+                }
+                if ($('#customer_id').val() != '') {
+                    return false;
+                }
+                $.get("/HeThong/checkEmail/", {
+                    email: emailValue
+                }, function (result) {
+                    if (!result) {
+                        alert('Email đã tồn tại, hãy kiểm tra lại thông tin.');
+                        $('#txtEmail').focus();
+                    }
+                });
+            });
+
+            //if ($('#cboCity').val() != 0) {
+            //    $('#cboDistrict').empty();
+            //    $.get("/HeThong/GetDistrictByCity/", { cityId: $('#cboCity').val() }, function (result) {
+            //        $.each(result, function (index, data) {
+            //            $('#cboDistrict').append("<option value='" + data.district_id + "'>" + data.name + "</option>");
+            //        });
+            //    });
+            //}
+
+            $('#cboCity').change(function () {
+                $('#cboDistrict').empty();
+                if ($('#cboCity').val() != 0 || $('#cboCity').val()!= '') {
+                    
+                    $.get("/HeThong/GetDistrictByCity/", { cityId: $('#cboCity').val() }, function (result) {
+                        $.each(result, function (index, data) {
+                            $('#cboDistrict').append("<option value='" + data.district_id + "'>" + data.name + "</option>");
+                        });
+                    });
+                }
+            });
+
+            if ($('#cboCategory').val() != 0) {
+                $('#cboProduct').empty();
+                $.get("/HeThong/GetProductByCat/", { CategoryId: $('#cboCategory').val() }, function (result) {
+                    $.each(result, function (index, data) {
+                        $('#cboProduct').append("<option value='" + data.product_id + "'>" + data.name + "</option>");
+                    });
+                });
+            }
+
+            $('#cboCategory').change(function () {
+                if ($('#cboCategory').val() != 0 ) {
+                    $('#cboProduct').empty();
+                    $.get("/HeThong/GetProductByCat/", { CategoryId: $('#cboCategory').val() }, function (result) {
+                        $.each(result, function (index, data) {
+                            $('#cboProduct').append("<option value='" + data.product_id + "'>" + data.name + "</option>");
+                        });
+                    });
+                }
+            });
+
+            if ($('#cboCityBuy').val() != 0) {
+                $('#cboShop').empty();
+                $.get("/HeThong/GetShopByCity/", { cityId: $('#cboCityBuy').val() }, function (result) {
+                    $.each(result, function (index, data) {
+                        $('#cboShop').append("<option value='" + data.shop_id + "'>" + data.name + "</option>");
+                    });
+                });
+            }
+
+            $('#cboCityBuy').change(function () {
+                if ($('#cboCityBuy').val() != 0) {
+                    $('#cboShop').empty();
+                    $.get("/HeThong/GetShopByCity/", { cityId: $('#cboCityBuy').val() }, function (result) {
+                        $.each(result, function (index, data) {
+                            $('#cboShop').append("<option value='" + data.shop_id + "'>" + data.name + "</option>");
+                        });
+                    });
+                }
+            });
+
+            if ($('#customer_id').val() != 0){
+                $('#divProducts').show();
+                $('.viewOnly').each(function() {
+                    $(this).attr('disabled',true);
+                });
+                //$('#birthday').data('kendoDatePicker').enable(false);
+                //$('#datereg').data('kendoDatePicker').enable(false);
+            }
+            else $('#divProducts').hide();
+
+            $('#btnCancel').click(function () {
+                window.location.href = '/HeThong/Profiles';
+            });
+
+            $('#btnDelete').click(function () {
+                if (confirm('Bạn có chắc không?')) {
+                    if ($('#customer_id').val() == 0) window.location.href = '/HeThong/Profiles';
+                    $.post('/HeThong/DeleteProfile', {
+                        Id: $('#customer_id').val(),
+                        isDeletePhysical: false
+                    }, function () {
+                        window.location.href = '/HeThong/Profiles';
+                    });
+                }
+            });
+
+            $('#btnDeletePhysical').click(function () {
+                if (confirm('Khách hàng sẽ bị xóa khỏi hệ thống?')) {
+                    if ($('#customer_id').val() == 0) {
+                        window.location.href = '/HeThong/Profiles';
+                    }else {
+                        $.post('/HeThong/DeleteProfile', {
+                            Id: $('#customer_id').val(),
+                            isDeletePhysical: true
+
+                        }, function () {
+                            window.location.href = '/HeThong/Profiles';
+                        });
+                    }
+                }
+            });
+            
+            $('#btnSaveProduct').click(function () {
+                $.get('/HeThong/CheckProduct', {
+                    category: $('#cboCategory').val(),
+                    product: $('#cboProduct option:selected').text(),
+                    serial: $('#txtSerial').val()
+                }, function (result) {
+                    if (result !=1) {
+                        alert('Tên sản phẩm hoặc số serial không đúng, vui lòng kiểm tra lại');
+                    } else {
+                        if ($("#isEdit").val() == "true" && $('#cusProd_Id').val() != '') {
+                            updateCustomer();
+                        }
+                        else {
+                            saveCustomer();                            
+                        }
+
+                        // reset element content
+                        $("#isEdit").val(false);
+                        $('#cusProd_Id').val('');
+                        $('#cboCategory').val($("#cboCategory option:first").val());
+                        $('#cboCategory').change();
+                        $('#txtSerial').val('');
+                        $("#TimePucharsed").data("kendoDatePicker").value('');
+                        $('#cboCityBuy').val($("#cboCityBuy option:first").val());
+                        $('#cboCityBuy').change();
+                    }
+                });
+            });
+
+            function saveCustomer() {
+                $.post('/HeThong/SaveCustomerProduct', {
+                    profileId: $('#customer_id').val(),
+                    categoryId: $('#cboCategory').val(),
+                    productId: $('#cboProduct').val(),
+                    serialNumber: $('#txtSerial').val(),
+                    timePucharsed: $("#TimePucharsed").data("kendoDatePicker")._oldText,
+                    shopId: $('#cboShop').val(),
+                    cityId: $('#cboCityBuy').val()
+                }, function (result) {
+                    $('#grid').data('kendoGrid').dataSource.read({ customer_id: $('#customer_id').val() });
+                });
+            };
+
+            function updateCustomer() {
+                $.post('/HeThong/UpdateCustomerProduct', {
+                    Id: $('#cusProd_Id').val(),
+                    profileId: $('#customer_id').val(),
+                    productId: $('#cboProduct').val(),
+                    serialNumber: $('#txtSerial').val(),
+                    timePucharsed: $("#TimePucharsed").data("kendoDatePicker")._oldText,
+                    shopId: $('#cboShop').val(),
+                    cityId: $('#cboCityBuy').val()
+                }, function (result) {
+                    $('#grid').data('kendoGrid').dataSource.read({ customer_id: $('#customer_id').val() });
+                });
+            };
+
+            $('#btnGenPass').click(function () {                
+                $.post('/HeThong/ResetPassByAdmin', { ID: $('#customer_id').val() }, function (res) {
+                    $("#modalNotice .modal-body").text(res.result);
+                    $("#modalNotice").modal("show");
+                });
+            });
+        });
+
+         
+
+        $("#showMenuCustomer").css("background-color", "#000055");
+        if ($('#customer_id').val() > 0) {
+            $('#btnGenPass').show();
+            $('#trAddProduct').hide();
+        }
+        else {
+            $('#btnGenPass').hide();
+            $('#trAddProduct').show();
+        }
+
+    </script>
+}
