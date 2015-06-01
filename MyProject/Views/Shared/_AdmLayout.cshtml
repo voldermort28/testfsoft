@@ -167,6 +167,42 @@
             </div>
         </div>
     </div><!--end-->
+
+      <!-- my modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog login">
+            <div class="modal-content clearfix">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="font-thin h1">&times;</span><span class="sr-only font-thin">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+                </div>
+                <div class="modal-body">
+                    <div style="line-height:20px" id="msg">msg</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalContainer" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Modal title
+							</h4>
+						</div>
+						<div class="modal-body">
+							...
+						</div>
+						<div class="modal-footer">
+							 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save changes</button>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+
     <script>
     // Setup CSRF safety for AJAX:
     $.ajaxPrefilter(function (options, originalOptions, jqXHR) {

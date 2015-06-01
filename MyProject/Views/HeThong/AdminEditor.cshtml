@@ -9,6 +9,7 @@
         @Html.HiddenFor(m => m.admin_id)
         <div class="col-md-12">
             <div class="btn-group pull-right">
+                
                 <button type="button" class="btn btn-primary" id="btnSave">Lưu</button>                
                 <button type="button" class="btn btn-danger" id="btnDelete">Xóa</button>
                 <button type="button" class="btn btn-warning" id="btnCancel">Hủy</button>
@@ -63,6 +64,8 @@
                     });
                 }
             });
+
+           
         });
 
         $("#showMenuTool").css("background-color", "#000055");
