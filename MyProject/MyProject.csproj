@@ -1264,13 +1264,6 @@
     <Content Include="Views\HeThong\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\HeThong\Branch.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\HeThong\ProfileEditor.cshtml" />
-    <Content Include="Views\HeThong\Profiles.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Shared\EditorTemplates\BranchEditor.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CategoryEditor.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CityEditor.cshtml" />

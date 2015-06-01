@@ -12,11 +12,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MyProject.Controllers
-{
-   // [OutputCache(Duration = 60 * 60, VaryByParam = "none")]
+{ 
     public class LoginCPController : Controller
-    {
-         
+    { 
         public ActionResult Index()
         {
             return View();
