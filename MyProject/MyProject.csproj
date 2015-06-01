@@ -878,7 +878,7 @@
     <Content Include="static\css\main.css" />
     <Content Include="static\css\print.css" />
     <Content Include="static\css\screen.css" />
-    <Content Include="static\css\sony.style.css" />
+    <Content Include="static\css\customer.style.css" />
     <Content Include="static\fonts\fontawesome-webfont-v=4.0.3.svg" />
     <Content Include="static\fonts\icon.svg" />
     <Content Include="static\fonts\segoeui\segoeui.svg" />
