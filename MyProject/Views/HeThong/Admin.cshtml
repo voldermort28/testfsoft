@@ -20,8 +20,7 @@
                   columns.Bound(p => p.admin_id).ClientTemplate("<a href='/HeThong/AdminEditor?ID=" + "#=admin_id#'>Chi tiết</a>").Filterable(false).Title("Cập nhật").Filterable(false).Width(60);
                   //columns.Command(command => { command.Destroy().Text(" "); }).Width(110).Title("Xóa").Width(60);
               })
-              .ToolBar(toolbar => toolbar.Custom().Action("AdminEditor","HeThong").Text("Thêm mới"))
-              .ToolBar(toolbar => toolbar.Custom().Action("AdminEditor","HeThong").Text("Xuất"))
+              .ToolBar(toolbar => toolbar.Custom().Action("AdminEditor","HeThong").Text("Thêm mới")) 
               //.Editable(editable => editable.Mode(GridEditMode.InLine))
               .Sortable()
               .Resizable(resize => resize.Columns(true))

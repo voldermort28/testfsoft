@@ -849,11 +849,11 @@ namespace MyProject.Controllers
             try
             {
                 ViewData["status"] = db.status.Select(x => new { ID = x.status_id, Name = x.name }).ToList();
-                List<SelectListItem> lstType = new List<SelectListItem>();
-                lstType.Add(new SelectListItem { Value = "1", Text = "Head account" });
-                lstType.Add(new SelectListItem { Value = "2", Text = "CIC account" });
-                lstType.Add(new SelectListItem { Value = "3", Text = "ASC account" });
-                ViewData["type"] = lstType;
+
+                ViewData["type"] =
+                    db.ANhomNguoiDungs.Select(
+                        x => new {MaNhomNguoiDung = x.MaNhomNguoiDung, TenNhomNguoiDung = x.TenNhomNguoiDung}).ToList();
+                 
 
                 if (ID == 0) return View();
                 else
@@ -876,20 +876,29 @@ namespace MyProject.Controllers
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Post)]        
         [ValidateAntiForgeryToken]
-        public ActionResult SaveAdmin(admin admin)
+        public ActionResult SaveAdmin(ANguoiDung admin)
         {
             try
             {
                 // add a new item
-                if (admin.admin_id == 0)
+                if (admin.NguoiDungID == 0)
                 {
-                    if (!String.IsNullOrEmpty(admin.password))
+                    if (!String.IsNullOrEmpty(admin.MatKhau))
                     {
-                        if (db.admins.FirstOrDefault(x => x.email == admin.email) == null)
+                        if (db.admins.FirstOrDefault(x => x.email == admin.MaNguoiDung) == null)
                         {
-                            admin.password = Common.MaHoa(admin.password.Trim());
-                            admin.admincodereg = new Guid().ToString();  
-                            db.admins.Add(admin);
+
+                            admin.MatKhau = Common.MaHoa(admin.MatKhau.Trim());
+                            admin.NgayTao = DateTime.Now;
+                            admin.NguoiTao = Session["admss"].ToString();
+                            admin.NgaySua = DateTime.Now;
+                            admin.NguoiSua = Session["admss"].ToString();
+                            admin.NguoiDung = "phần Mô tả";
+                            admin.TaiKhoan = "taikhoan";
+                            admin.ChucNang = "Mã nhân viên";
+                            
+                          
+                            db.ANguoiDungs.Add(admin); 
                             db.SaveChanges();
                         }
                         else
@@ -906,17 +915,17 @@ namespace MyProject.Controllers
                 }
                 else // modify item
                 {
-                    var existObj = db.admins.FirstOrDefault(x => x.admin_id == admin.admin_id);
+                    var existObj = db.ANguoiDungs.FirstOrDefault(x => x.MaNguoiDung == admin.MaNguoiDung);
                     if (existObj != null)
                     {
-                        if (!String.IsNullOrEmpty(admin.password))
+                        if (!String.IsNullOrEmpty(admin.MatKhau))
                         {
-                            string pass = Common.MaHoa(admin.password.Trim());
-                            if (existObj.password.Trim() != pass) existObj.password = pass;
+                            string pass = Common.MaHoa(admin.MatKhau.Trim());
+                            if (existObj.MatKhau.Trim() != pass) existObj.MatKhau = pass;
                         }
                         //existObj.email = admin.email;
-                        existObj.admin_type = admin.admin_type;
-                        existObj.status_id = admin.status_id;
+                        existObj.MaNhomNguoiDung = admin.MaNhomNguoiDung;
+                        existObj.TrangThai = admin.TrangThai;
                         db.SaveChanges();
                     }
                 }                
