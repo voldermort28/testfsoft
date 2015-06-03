@@ -1,0 +1,79 @@
+﻿@model MyProject.Models.ANhomNguoiDung
+@{
+    ViewBag.Title = "Tài khoản quản trị";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    <form id="frm" action="/HeThong/SaveAdminType" method="post">
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.NhomNguoiDungID)
+        <div class="col-md-12">
+            <div class="btn-group pull-right"> 
+                <button type="button" class="btn btn-primary" id="btnSave">Lưu</button>                
+                <button type="button" class="btn btn-danger" id="btnDelete">Xóa</button>
+                <button type="button" class="btn btn-warning" id="btnCancel">Hủy</button>
+            </div>
+            <table class="table table-condensed">
+                <tr>
+                    <td class="col1"><label>Tên đăng nhập</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.MaNhomNguoiDung, new { id = "txtMaNguoiDung", @class = "form-control ", required = "required" , maxlength = 20 })</td>
+                    <td class="col1"><label>Mật khẩu</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.TenNhomNguoiDung, new { id = "txtTenNhomNguoiDung", @class = "form-control", required = "required" ,maxlength = 250})</td>
+                </tr>
+               <tr>
+                    <td class="col1"><label>Mô tả</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.MoTa, new { id = "txtMoTa", @class = "form-control ", required = "required" , maxlength = 220 })</td>
+                    <td class="col1"><label>Người dùng</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.NguoiDung, new { id = "txtNguoiDung", @class = "form-control", required = "required" ,maxlength = 250})</td>
+                </tr>
+               <tr>
+                    <td class="col1"><label>Chức năng</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.ChucNang, new { id = "txtChucNang", @class = "form-control ", required = "required" , maxlength = 20 })</td>
+                    <td class="col1"><label>Trạng thái</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.TrangThai, new { id = "txtTrangThai", @class = "form-control", required = "required" ,maxlength = 250})</td>
+                </tr>
+               
+            </table>
+        </div>
+    </form>
+</div>
+@section scripts{
+    <script>
+        $(function () {
+            // Disable button submit when submit form
+            $('form').submit(function () {
+                $('#btnSave').attr('disabled', 'disabled');
+            });
+
+            // Turn off autocomplete
+            $('form,input,select,textarea').attr("autocomplete", "off");
+            
+            if ($('#admin_id').val() != 0){
+                $('.viewOnly').each(function() {
+                    $(this).attr('disabled',true);
+                });
+            }
+
+            $('#btnCancel').click(function () {
+                window.location.href = '/HeThong/Admin';
+            });
+
+            $('#btnSave').click(function () {
+                $('form').submit();
+            });
+
+            $('#btnDelete').click(function () {
+                if (confirm('Bạn có chắc không?')) {
+                    if ($('#admin_id').val() == 0) window.location.href = '/HeThong/Admin';
+                    $.post('/HeThong/DeleteAdmin', { Id: $('#admin_id').val() }, function () {
+                        window.location.href = '/HeThong/Admin';
+                    });
+                }
+            });
+
+           
+        });
+
+        $("#showMenuTool").css("background-color", "#000055");
+    </script>
+}

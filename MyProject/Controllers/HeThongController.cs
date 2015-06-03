@@ -744,103 +744,17 @@ namespace MyProject.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Admin_Read([DataSourceRequest]DataSourceRequest request)
         {
-            var objs = db.admins.Select(x => new
+            var objs = db.ANguoiDungs.Select(x => new
             {
-                admin_id = x.admin_id,
-                admin_type = x.admin_type,
-                email = x.email,
-                password = x.password,
-                status_id = x.status_id
+                admin_id = x.NguoiDungID,
+                admin_type = x.MaNhomNguoiDung,
+                email = x.MaNguoiDung,
+                password = x.MatKhau,
+                status_id = x.TrangThai  ? 1:0
             }).ToList();
             return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
-
-        /* for grid
-        
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public ActionResult Admin_Create([DataSourceRequest] DataSourceRequest request, admin item)
-        {
-            CustomValidateModel(item);
-            if (item != null && ModelState.IsValid)
-            {
-                try
-                {
-                    item.admin_id = (db.admins.Count() > 0) ? db.admins.Max(x => x.admin_id) + 1 : 1;
-                    item.password = Common.MaHoa(item.password.Trim());
-                    item.status_id = item.status_id;
-                    db.admins.Add(item);
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
-                }
-            }
-            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
-        }
-
-        
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public ActionResult Admin_Update([DataSourceRequest] DataSourceRequest request, admin item)
-        {
-            CustomValidateModel(item);
-            if (item == null) return HttpNotFound();
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var obj = db.admins.FirstOrDefault(x => x.admin_id == item.admin_id);
-                    obj.email = item.email.Trim();
-                    obj.status_id = item.status_id;
-                    if (obj.password.Trim() != item.password.Trim() && !String.IsNullOrEmpty(item.password)) obj.password = Common.MaHoa(item.password.Trim());
-                    // write log
-                    if (GetCurrentAdminId() > 0)
-                    {
-                        db.LogErrors.Add(new LogError()
-                        {
-                            Content = "Admin: " + GetCurrentAdminName() + " change information of account " + item.email,
-                            Created = DateTime.Now
-                        });
-                    }
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
-                }
-            }
-            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
-        }
-
-        
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public ActionResult Admin_Destroy([DataSourceRequest] DataSourceRequest request, admin item)
-        {
-            try
-            {
-                db.admins.Attach(item);
-                item.status_id = 2; // set delete
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
-            }
-            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
-        }
-
-        // validation for admin
-        private void CustomValidateModel(admin model)
-        {
-            var existingEntity = db.admins.FirstOrDefault(x => x.email == model.email);
-            if (existingEntity != null) ModelState.AddModelError("email", "Email này đã được đăng ký.");
-            if (model.status_id == null) ModelState.AddModelError("status_id", "Chưa chọn trạng thái");
-            if (!Common.ValidatePass(model.password)) ModelState.AddModelError("password", "Mật khẩu phải ít nhất 8 ký tự, chứa chữ hoa, chữ thường, số và ký tự đặc biệt.");
-        }
-        */
+ 
 
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -858,7 +772,7 @@ namespace MyProject.Controllers
                 if (ID == 0) return View();
                 else
                 {
-                    var obj = db.admins.FirstOrDefault(x => x.admin_id == ID);
+                    var obj = db.ANguoiDungs.FirstOrDefault(x => x.NguoiDungID == ID);
                     if (obj == null) return HttpNotFound();
                     return View(obj);
                 }
@@ -886,17 +800,20 @@ namespace MyProject.Controllers
                     if (!String.IsNullOrEmpty(admin.MatKhau))
                     {
                         if (db.admins.FirstOrDefault(x => x.email == admin.MaNguoiDung) == null)
-                        {
-
+                        {  
+                            admin.MaNhomNguoiDung = "001";
+                            admin.TaiKhoan = "taikhoan";
+                            admin.TrangThai = true;
+                            admin.MoTa = "Mota";
+                            admin.MaNhanVien = "111111"; 
+                            admin.NguoiDung = "phần Mô tả";
+                            admin.ChucNang = "chức năng";
                             admin.MatKhau = Common.MaHoa(admin.MatKhau.Trim());
                             admin.NgayTao = DateTime.Now;
                             admin.NguoiTao = Session["admss"].ToString();
                             admin.NgaySua = DateTime.Now;
                             admin.NguoiSua = Session["admss"].ToString();
-                            admin.NguoiDung = "phần Mô tả";
-                            admin.TaiKhoan = "taikhoan";
-                            admin.ChucNang = "Mã nhân viên";
-                            
+                            admin.Active = true;
                           
                             db.ANguoiDungs.Add(admin); 
                             db.SaveChanges();
@@ -961,6 +878,122 @@ namespace MyProject.Controllers
             }
             return RedirectToAction("Admin");
         }
+        #endregion
+        #region AdminType
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult AdminType()
+        {
+            ViewData["status"] = db.status.Select(x => new { status_id = x.status_id, name = x.name }).ToList();
+            return View();
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AdminType_Read([DataSourceRequest]DataSourceRequest request)
+        {
+            var objs = db.ANhomNguoiDungs.Select(x => new
+            {
+                NhomNguoiDungID = x.NhomNguoiDungID,
+                MaNhomNguoiDung = x.MaNhomNguoiDung,
+                TenNhomNguoiDung = x.TenNhomNguoiDung,
+                MoTa = x.MoTa,
+                status_id = x.TrangThai ? 1 : 0,
+                NguoiDung = x.NguoiDung,
+                ChucNang = x.ChucNang,
+                Active = x.Active ==true ? 1 : 0,
+             
+            }).ToList();
+            return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult AdminTypeEditor(int ID = 0)
+        {
+            try
+            {
+                ViewData["status"] = db.status.Select(x => new { ID = x.status_id, Name = x.name }).ToList();
+
+                ViewData["type"] =
+                    db.ANhomNguoiDungs.Select(
+                        x => new { MaNhomNguoiDung = x.MaNhomNguoiDung, TenNhomNguoiDung = x.TenNhomNguoiDung }).ToList();
+
+
+                if (ID == 0) return View();
+                else
+                {
+                    var obj = db.ANhomNguoiDungs.FirstOrDefault(x => x.MaNhomNguoiDung == ID.ToString());
+                    if (obj == null) return HttpNotFound();
+                    return View(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveAdminType(ANhomNguoiDung adminType)
+        {
+            try
+            {
+                // add a new item
+                if (adminType.NhomNguoiDungID == 0)
+                {
+                    if (db.ANhomNguoiDungs.FirstOrDefault(x => x.NhomNguoiDungID == adminType.NhomNguoiDungID) == null)
+                    {  
+                        adminType.NgayTao = DateTime.Now;
+                        adminType.NguoiTao = Session["admss"].ToString();
+                        adminType.NgaySua = DateTime.Now;
+                        adminType.NguoiSua = Session["admss"].ToString();
+                        adminType.Active = true;
+
+                        db.ANhomNguoiDungs.Add(adminType);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        TempData["Notice"] = "Nhóm người dùng này đã được đăng ký rồi";
+                        TempData["ShowPopup"] = true;
+                    }
+                }
+                else // modify item
+                {
+                    var existObj = db.ANhomNguoiDungs.FirstOrDefault(x => x.NhomNguoiDungID == adminType.NhomNguoiDungID);
+                    if (existObj != null)
+                    { 
+                        //existObj.email = admin.email;
+                        existObj.TenNhomNguoiDung = adminType.TenNhomNguoiDung;
+                        existObj.TrangThai = adminType.TrangThai;
+                        existObj.MoTa = adminType.MoTa;
+                        existObj.NguoiDung = adminType.NguoiDung;
+                        existObj.ChucNang = adminType.ChucNang;
+                        existObj.NgaySua = DateTime.Now;
+                        existObj.NguoiSua = Session["admss"].ToString();
+                        db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("Admin");
+        }
+
+
+
         #endregion
 
         #region Log

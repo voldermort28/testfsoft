@@ -4,12 +4,347 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MyDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MyDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MyDatabaseModelStoreContainer">
+          <EntitySet Name="admin" EntityType="MyDatabaseModel.Store.admin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AMenu" EntityType="MyDatabaseModel.Store.AMenu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ANguoiDung" EntityType="MyDatabaseModel.Store.ANguoiDung" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ANhatKyHeThong" EntityType="MyDatabaseModel.Store.ANhatKyHeThong" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ANhomMenu" EntityType="MyDatabaseModel.Store.ANhomMenu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ANhomNguoiDung" EntityType="MyDatabaseModel.Store.ANhomNguoiDung" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="categories" EntityType="MyDatabaseModel.Store.categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ChiTietHoaDon" EntityType="MyDatabaseModel.Store.ChiTietHoaDon" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ChiTietPhieuNhap" EntityType="MyDatabaseModel.Store.ChiTietPhieuNhap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ChiTietPhieuXuat" EntityType="MyDatabaseModel.Store.ChiTietPhieuXuat" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="cities" EntityType="MyDatabaseModel.Store.cities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="customer" EntityType="MyDatabaseModel.Store.customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="customerlock" EntityType="MyDatabaseModel.Store.customerlock" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="customertype" EntityType="MyDatabaseModel.Store.customertype" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DinhMuc" EntityType="MyDatabaseModel.Store.DinhMuc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="districts" EntityType="MyDatabaseModel.Store.districts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMBan" EntityType="MyDatabaseModel.Store.DMBan" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMCa" EntityType="MyDatabaseModel.Store.DMCa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMDonViTinh" EntityType="MyDatabaseModel.Store.DMDonViTinh" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMHangHoa" EntityType="MyDatabaseModel.Store.DMHangHoa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMKhachHang" EntityType="MyDatabaseModel.Store.DMKhachHang" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMLoaiHang" EntityType="MyDatabaseModel.Store.DMLoaiHang" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMLoaiKhachHang" EntityType="MyDatabaseModel.Store.DMLoaiKhachHang" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMLoaiNhanVien" EntityType="MyDatabaseModel.Store.DMLoaiNhanVien" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMLoaiNVL" EntityType="MyDatabaseModel.Store.DMLoaiNVL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMLoaiPhieu" EntityType="MyDatabaseModel.Store.DMLoaiPhieu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMNhanVien" EntityType="MyDatabaseModel.Store.DMNhanVien" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DMNVL" EntityType="MyDatabaseModel.Store.DMNVL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="education" EntityType="MyDatabaseModel.Store.education" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GiaBan" EntityType="MyDatabaseModel.Store.GiaBan" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HoaDon" EntityType="MyDatabaseModel.Store.HoaDon" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HoaDon_Ban" EntityType="MyDatabaseModel.Store.HoaDon_Ban" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="jobs" EntityType="MyDatabaseModel.Store.jobs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LogError" EntityType="MyDatabaseModel.Store.LogError" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PassChange" EntityType="MyDatabaseModel.Store.PassChange" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PhanCong" EntityType="MyDatabaseModel.Store.PhanCong" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PhieuChi" EntityType="MyDatabaseModel.Store.PhieuChi" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PhieuNhap" EntityType="MyDatabaseModel.Store.PhieuNhap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PhieuThu" EntityType="MyDatabaseModel.Store.PhieuThu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PhieuXuat" EntityType="MyDatabaseModel.Store.PhieuXuat" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="products" EntityType="MyDatabaseModel.Store.products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="resethistory" EntityType="MyDatabaseModel.Store.resethistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RS_Branch" EntityType="MyDatabaseModel.Store.RS_Branch" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RS_Menu" EntityType="MyDatabaseModel.Store.RS_Menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="shops" EntityType="MyDatabaseModel.Store.shops" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="shoptype" EntityType="MyDatabaseModel.Store.shoptype" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="status" EntityType="MyDatabaseModel.Store.status" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="MyDatabaseModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UuDaiThanhVien" EntityType="MyDatabaseModel.Store.UuDaiThanhVien" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_admin_status" Association="MyDatabaseModel.Store.FK_admin_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="admin" EntitySet="admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ANguoiDung_ANhomNguoiDung" Association="MyDatabaseModel.Store.FK_ANguoiDung_ANhomNguoiDung">
+            <End Role="ANhomNguoiDung" EntitySet="ANhomNguoiDung" />
+            <End Role="ANguoiDung" EntitySet="ANguoiDung" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ANhomMenu_AMenu" Association="MyDatabaseModel.Store.FK_ANhomMenu_AMenu">
+            <End Role="AMenu" EntitySet="AMenu" />
+            <End Role="ANhomMenu" EntitySet="ANhomMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ANhomMenu_ANhomNguoiDung" Association="MyDatabaseModel.Store.FK_ANhomMenu_ANhomNguoiDung">
+            <End Role="ANhomNguoiDung" EntitySet="ANhomNguoiDung" />
+            <End Role="ANhomMenu" EntitySet="ANhomMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_status" Association="MyDatabaseModel.Store.FK_categories_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="categories" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietHoaDon_DMHangHoa" Association="MyDatabaseModel.Store.FK_ChiTietHoaDon_DMHangHoa">
+            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
+            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="MyDatabaseModel.Store.FK_ChiTietHoaDon_HoaDon">
+            <End Role="HoaDon" EntitySet="HoaDon" />
+            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuNhap_DMKhachHang" Association="MyDatabaseModel.Store.FK_ChiTietPhieuNhap_DMKhachHang">
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuNhap_DMNVL" Association="MyDatabaseModel.Store.FK_ChiTietPhieuNhap_DMNVL">
+            <End Role="DMNVL" EntitySet="DMNVL" />
+            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuNhap_PhieuNhap" Association="MyDatabaseModel.Store.FK_ChiTietPhieuNhap_PhieuNhap">
+            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuXuat_DMKhachHang" Association="MyDatabaseModel.Store.FK_ChiTietPhieuXuat_DMKhachHang">
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuXuat_DMNVL" Association="MyDatabaseModel.Store.FK_ChiTietPhieuXuat_DMNVL">
+            <End Role="DMNVL" EntitySet="DMNVL" />
+            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuXuat_PhieuXuat" Association="MyDatabaseModel.Store.FK_ChiTietPhieuXuat_PhieuXuat">
+            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
+            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cities_status" Association="MyDatabaseModel.Store.FK_cities_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="cities" EntitySet="cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DinhMuc_DMHangHoa" Association="MyDatabaseModel.Store.FK_DinhMuc_DMHangHoa">
+            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
+            <End Role="DinhMuc" EntitySet="DinhMuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DinhMuc_DMNVL" Association="MyDatabaseModel.Store.FK_DinhMuc_DMNVL">
+            <End Role="DMNVL" EntitySet="DMNVL" />
+            <End Role="DinhMuc" EntitySet="DinhMuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_districts_cities" Association="MyDatabaseModel.Store.FK_districts_cities">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="districts" EntitySet="districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_districts_status" Association="MyDatabaseModel.Store.FK_districts_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="districts" EntitySet="districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMHangHoa_DMLoaiHang" Association="MyDatabaseModel.Store.FK_DMHangHoa_DMLoaiHang">
+            <End Role="DMLoaiHang" EntitySet="DMLoaiHang" />
+            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMKhachHang_DMLoaiKhachHang" Association="MyDatabaseModel.Store.FK_DMKhachHang_DMLoaiKhachHang">
+            <End Role="DMLoaiKhachHang" EntitySet="DMLoaiKhachHang" />
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNhanVien_DMLoaiNhanVien" Association="MyDatabaseModel.Store.FK_DMNhanVien_DMLoaiNhanVien">
+            <End Role="DMLoaiNhanVien" EntitySet="DMLoaiNhanVien" />
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNVL_DMDonViTinh" Association="MyDatabaseModel.Store.FK_DMNVL_DMDonViTinh">
+            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
+            <End Role="DMNVL" EntitySet="DMNVL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNVL_DMDonViTinh1" Association="MyDatabaseModel.Store.FK_DMNVL_DMDonViTinh1">
+            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
+            <End Role="DMNVL" EntitySet="DMNVL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNVL_DMDonViTinh2" Association="MyDatabaseModel.Store.FK_DMNVL_DMDonViTinh2">
+            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
+            <End Role="DMNVL" EntitySet="DMNVL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNVL_DMDonViTinh3" Association="MyDatabaseModel.Store.FK_DMNVL_DMDonViTinh3">
+            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
+            <End Role="DMNVL" EntitySet="DMNVL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNVL_DMLoaiNVL" Association="MyDatabaseModel.Store.FK_DMNVL_DMLoaiNVL">
+            <End Role="DMLoaiNVL" EntitySet="DMLoaiNVL" />
+            <End Role="DMNVL" EntitySet="DMNVL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_education_status" Association="MyDatabaseModel.Store.FK_education_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="education" EntitySet="education" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiaBan_DMHangHoa" Association="MyDatabaseModel.Store.FK_GiaBan_DMHangHoa">
+            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
+            <End Role="GiaBan" EntitySet="GiaBan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_Ban_DMBan" Association="MyDatabaseModel.Store.FK_HoaDon_Ban_DMBan">
+            <End Role="DMBan" EntitySet="DMBan" />
+            <End Role="HoaDon_Ban" EntitySet="HoaDon_Ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_Ban_HoaDon" Association="MyDatabaseModel.Store.FK_HoaDon_Ban_HoaDon">
+            <End Role="HoaDon" EntitySet="HoaDon" />
+            <End Role="HoaDon_Ban" EntitySet="HoaDon_Ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_DMKhachHang" Association="MyDatabaseModel.Store.FK_HoaDon_DMKhachHang">
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_DMNhanVien" Association="MyDatabaseModel.Store.FK_HoaDon_DMNhanVien">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_DMNhanVien1" Association="MyDatabaseModel.Store.FK_HoaDon_DMNhanVien1">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jobs_status" Association="MyDatabaseModel.Store.FK_jobs_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="jobs" EntitySet="jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhanCong_DMCa" Association="MyDatabaseModel.Store.FK_PhanCong_DMCa">
+            <End Role="DMCa" EntitySet="DMCa" />
+            <End Role="PhanCong" EntitySet="PhanCong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhanCong_DMNhanVien" Association="MyDatabaseModel.Store.FK_PhanCong_DMNhanVien">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhanCong" EntitySet="PhanCong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuChi_DMKhachHang" Association="MyDatabaseModel.Store.FK_PhieuChi_DMKhachHang">
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+            <End Role="PhieuChi" EntitySet="PhieuChi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuChi_DMLoaiPhieu" Association="MyDatabaseModel.Store.FK_PhieuChi_DMLoaiPhieu">
+            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
+            <End Role="PhieuChi" EntitySet="PhieuChi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuChi_DMNhanVien" Association="MyDatabaseModel.Store.FK_PhieuChi_DMNhanVien">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuChi" EntitySet="PhieuChi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuChi_DMNhanVien1" Association="MyDatabaseModel.Store.FK_PhieuChi_DMNhanVien1">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuChi" EntitySet="PhieuChi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuNhap_DMLoaiPhieu" Association="MyDatabaseModel.Store.FK_PhieuNhap_DMLoaiPhieu">
+            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
+            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuNhap_DMNhanVien2" Association="MyDatabaseModel.Store.FK_PhieuNhap_DMNhanVien2">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuNhap_DMNhanVien3" Association="MyDatabaseModel.Store.FK_PhieuNhap_DMNhanVien3">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuThu_DMKhachHang" Association="MyDatabaseModel.Store.FK_PhieuThu_DMKhachHang">
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+            <End Role="PhieuThu" EntitySet="PhieuThu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuThu_DMLoaiPhieu" Association="MyDatabaseModel.Store.FK_PhieuThu_DMLoaiPhieu">
+            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
+            <End Role="PhieuThu" EntitySet="PhieuThu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuThu_DMNhanVien" Association="MyDatabaseModel.Store.FK_PhieuThu_DMNhanVien">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuThu" EntitySet="PhieuThu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuThu_DMNhanVien1" Association="MyDatabaseModel.Store.FK_PhieuThu_DMNhanVien1">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuThu" EntitySet="PhieuThu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuXuat_DMLoaiPhieu" Association="MyDatabaseModel.Store.FK_PhieuXuat_DMLoaiPhieu">
+            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
+            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuXuat_DMNhanVien3" Association="MyDatabaseModel.Store.FK_PhieuXuat_DMNhanVien3">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuXuat_DMNhanVien4" Association="MyDatabaseModel.Store.FK_PhieuXuat_DMNhanVien4">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_categories" Association="MyDatabaseModel.Store.FK_products_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_status" Association="MyDatabaseModel.Store.FK_products_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Branch_cities" Association="MyDatabaseModel.Store.FK_RS_Branch_cities">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="RS_Branch" EntitySet="RS_Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Branch_status" Association="MyDatabaseModel.Store.FK_RS_Branch_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="RS_Branch" EntitySet="RS_Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Menu_admin" Association="MyDatabaseModel.Store.FK_RS_Menu_admin">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Menu_admin1" Association="MyDatabaseModel.Store.FK_RS_Menu_admin1">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_RS_Branch_admin" Association="MyDatabaseModel.Store.FK_RS_RS_Branch_admin">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Branch" EntitySet="RS_Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_RS_Branch_admin1" Association="MyDatabaseModel.Store.FK_RS_RS_Branch_admin1">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Branch" EntitySet="RS_Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_cities" Association="MyDatabaseModel.Store.FK_shops_cities">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="shops" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_RS_Branch" Association="MyDatabaseModel.Store.FK_shops_RS_Branch">
+            <End Role="RS_Branch" EntitySet="RS_Branch" />
+            <End Role="shops" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_shoptype" Association="MyDatabaseModel.Store.FK_shops_shoptype">
+            <End Role="shoptype" EntitySet="shoptype" />
+            <End Role="shops" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shops_status" Association="MyDatabaseModel.Store.FK_shops_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="shops" EntitySet="shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shoptype_status" Association="MyDatabaseModel.Store.FK_shoptype_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="shoptype" EntitySet="shoptype" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_cities" Association="MyDatabaseModel.Store.FK_user_cities">
+            <End Role="cities" EntitySet="cities" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_districts" Association="MyDatabaseModel.Store.FK_user_districts">
+            <End Role="districts" EntitySet="districts" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_education" Association="MyDatabaseModel.Store.FK_user_education">
+            <End Role="education" EntitySet="education" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_jobs" Association="MyDatabaseModel.Store.FK_user_jobs">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_status" Association="MyDatabaseModel.Store.FK_user_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_usertype" Association="MyDatabaseModel.Store.FK_user_usertype">
+            <End Role="customertype" EntitySet="customertype" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usertype_status" Association="MyDatabaseModel.Store.FK_usertype_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="customertype" EntitySet="customertype" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UuDaiThanhVien_DMLoaiKhachHang" Association="MyDatabaseModel.Store.FK_UuDaiThanhVien_DMLoaiKhachHang">
+            <End Role="DMLoaiKhachHang" EntitySet="DMLoaiKhachHang" />
+            <End Role="UuDaiThanhVien" EntitySet="UuDaiThanhVien" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="admin_id" />
           </Key>
-          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="email" Type="nvarchar(max)" />
           <Property Name="password" Type="nvarchar(max)" />
           <Property Name="admin_type" Type="int" />
@@ -21,15 +356,15 @@
           <Key>
             <PropertyRef Name="MaMenu" />
           </Key>
-          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaMenu" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="TenMenu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MaMenu" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="TenMenu" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
           <Property Name="MoTa" Type="text" />
-          <Property Name="NguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="ChucNang" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ChucNang" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
-          <Property Name="NguoiTao" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NguoiTao" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="NgaySua" Type="datetime" />
           <Property Name="NguoiSua" Type="varchar" MaxLength="20" />
           <Property Name="Active" Type="bit" />
@@ -38,18 +373,18 @@
           <Key>
             <PropertyRef Name="MaNguoiDung" />
           </Key>
-          <Property Name="NguoiDungID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="MaNhomNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="MatKhau" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="TaiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NguoiDungID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MaNguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="MaNhomNguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="MatKhau" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="TaiKhoan" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
           <Property Name="MaNhanVien" Type="varchar" MaxLength="20" />
-          <Property Name="NguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="ChucNang" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ChucNang" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
-          <Property Name="NguoiTao" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NguoiTao" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="NgaySua" Type="datetime" />
           <Property Name="NguoiSua" Type="varchar" MaxLength="20" />
           <Property Name="Active" Type="bit" />
@@ -58,7 +393,7 @@
           <Key>
             <PropertyRef Name="ThongTin_ID" />
           </Key>
-          <Property Name="ThongTin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ThongTin_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NguoiDung" Type="varchar" MaxLength="20" />
           <Property Name="ThoiGian" Type="datetime" />
           <Property Name="ChucNang" Type="nvarchar" MaxLength="100" />
@@ -71,9 +406,9 @@
             <PropertyRef Name="MaMenu" />
             <PropertyRef Name="MaNhomNguoiDung" />
           </Key>
-          <Property Name="NhomMenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaMenu" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="MaNhomNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NhomMenuID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MaMenu" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="MaNhomNguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="VIEW" Type="bit" Nullable="false" />
           <Property Name="ADD" Type="bit" Nullable="false" />
           <Property Name="EDIT" Type="bit" Nullable="false" />
@@ -82,10 +417,10 @@
           <Property Name="EXPORT" Type="bit" Nullable="false" />
           <Property Name="PRINT" Type="bit" Nullable="false" />
           <Property Name="CONTROL" Type="bit" Nullable="false" />
-          <Property Name="NguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="ChucNang" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ChucNang" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
-          <Property Name="NguoiTao" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NguoiTao" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="NgaySua" Type="datetime" />
           <Property Name="NguoiSua" Type="nchar" MaxLength="10" />
           <Property Name="Active" Type="bit" />
@@ -94,15 +429,15 @@
           <Key>
             <PropertyRef Name="MaNhomNguoiDung" />
           </Key>
-          <Property Name="NhomNguoiDungID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaNhomNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="TenNhomNguoiDung" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="NhomNguoiDungID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MaNhomNguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="TenNhomNguoiDung" Type="nvarchar" Nullable="false" MaxLength="255" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
-          <Property Name="NguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="ChucNang" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ChucNang" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
-          <Property Name="NguoiTao" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NguoiTao" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="NgaySua" Type="datetime" />
           <Property Name="NguoiSua" Type="varchar" MaxLength="20" />
           <Property Name="Active" Type="bit" />
@@ -111,7 +446,7 @@
           <Key>
             <PropertyRef Name="category_id" />
           </Key>
-          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar(max)" />
           <Property Name="modelImage" Type="nvarchar(max)" />
           <Property Name="serialImage" Type="nvarchar(max)" />
@@ -167,7 +502,7 @@
           <Key>
             <PropertyRef Name="customer_id" />
           </Key>
-          <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="email" Type="nvarchar(max)" />
           <Property Name="password" Type="nvarchar(max)" />
           <Property Name="firstname" Type="nvarchar(max)" />
@@ -197,7 +532,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="email" Type="nvarchar(max)" />
           <Property Name="timelock" Type="nvarchar(max)" />
           <Property Name="status_id" Type="int" />
@@ -206,7 +541,7 @@
           <Key>
             <PropertyRef Name="customertype_id" />
           </Key>
-          <Property Name="customertype_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customertype_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar(max)" />
           <Property Name="status_id" Type="int" />
         </EntityType>
@@ -234,7 +569,7 @@
           <Key>
             <PropertyRef Name="BanID" />
           </Key>
-          <Property Name="BanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaBan" Type="varchar" MaxLength="5" />
           <Property Name="TenBan" Type="nvarchar" MaxLength="50" />
           <Property Name="SoLuong" Type="int" />
@@ -245,7 +580,7 @@
           <Key>
             <PropertyRef Name="CaID" />
           </Key>
-          <Property Name="CaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CaID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaCa" Type="varchar" MaxLength="1" />
           <Property Name="TenCa" Type="nvarchar" MaxLength="50" />
           <Property Name="TuGio" Type="int" />
@@ -256,7 +591,7 @@
           <Key>
             <PropertyRef Name="DonViTinhID" />
           </Key>
-          <Property Name="DonViTinhID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DonViTinhID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenDonViTinh" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
         </EntityType>
@@ -264,7 +599,7 @@
           <Key>
             <PropertyRef Name="HangHoaID" />
           </Key>
-          <Property Name="HangHoaID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HangHoaID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="LoaiHangID" Type="int" />
           <Property Name="MaHangHoa" Type="varchar" MaxLength="50" />
           <Property Name="TenHangHoa" Type="nvarchar" MaxLength="50" />
@@ -274,7 +609,7 @@
           <Key>
             <PropertyRef Name="KhachHangID" />
           </Key>
-          <Property Name="KhachHangID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KhachHangID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaKhachHang" Type="varchar" MaxLength="20" />
           <Property Name="TenKhachHang" Type="nvarchar" MaxLength="50" />
           <Property Name="NgaySinh" Type="datetime" />
@@ -292,7 +627,7 @@
           <Key>
             <PropertyRef Name="LoaiHangID" />
           </Key>
-          <Property Name="LoaiHangID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoaiHangID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaLoaiHang" Type="varchar" MaxLength="3" />
           <Property Name="TenLoaiHang" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
@@ -301,7 +636,7 @@
           <Key>
             <PropertyRef Name="LoaiKhachHangID" />
           </Key>
-          <Property Name="LoaiKhachHangID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoaiKhachHangID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaLoaiKhachHang" Type="varchar" MaxLength="2" />
           <Property Name="TenLoaiKhachHang" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -309,7 +644,7 @@
           <Key>
             <PropertyRef Name="LoaiNhanVienID" />
           </Key>
-          <Property Name="LoaiNhanVienID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoaiNhanVienID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaLoaiNhanVien" Type="varchar" MaxLength="2" />
           <Property Name="TenLoaiNhanVien" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -317,7 +652,7 @@
           <Key>
             <PropertyRef Name="LoaiNVLID" />
           </Key>
-          <Property Name="LoaiNVLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoaiNVLID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaLoaiNVL" Type="varchar" MaxLength="3" />
           <Property Name="TenLoaiNVL" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
@@ -326,7 +661,7 @@
           <Key>
             <PropertyRef Name="LoaiPhieuID" />
           </Key>
-          <Property Name="LoaiPhieuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoaiPhieuID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaLoaiPhieu" Type="varchar" MaxLength="2" />
           <Property Name="TenLoaiPhieu" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
@@ -335,7 +670,7 @@
           <Key>
             <PropertyRef Name="NhanVienID" />
           </Key>
-          <Property Name="NhanVienID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NhanVienID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaNhanVien" Type="varchar" MaxLength="5" />
           <Property Name="LoaiNhanVienID" Type="int" />
           <Property Name="TenNhanVien" Type="nvarchar" MaxLength="50" />
@@ -351,7 +686,7 @@
           <Key>
             <PropertyRef Name="NVLID" />
           </Key>
-          <Property Name="NVLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NVLID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaNVL" Type="varchar" MaxLength="10" />
           <Property Name="LoaiNVLID" Type="int" />
           <Property Name="TenNVL" Type="nvarchar" MaxLength="50" />
@@ -370,7 +705,7 @@
           <Key>
             <PropertyRef Name="education_id" />
           </Key>
-          <Property Name="education_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="education_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar(max)" />
           <Property Name="status_id" Type="int" />
         </EntityType>
@@ -378,7 +713,7 @@
           <Key>
             <PropertyRef Name="GiaBanID" />
           </Key>
-          <Property Name="GiaBanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GiaBanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="HangHoaID" Type="bigint" />
           <Property Name="Gia" Type="float" />
           <Property Name="TuNgay" Type="datetime" />
@@ -391,7 +726,7 @@
           <Key>
             <PropertyRef Name="HoaDonID" />
           </Key>
-          <Property Name="HoaDonID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoaDonID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaHoaDon" Type="varchar" MaxLength="12" />
           <Property Name="KhachHangID" Type="bigint" />
           <Property Name="NhanVienID" Type="int" />
@@ -419,7 +754,7 @@
           <Key>
             <PropertyRef Name="STT" />
           </Key>
-          <Property Name="STT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STT" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="HoaDonID" Type="bigint" />
           <Property Name="BanID" Type="int" />
           <Property Name="ThoiGianBatDau" Type="datetime" />
@@ -429,7 +764,7 @@
           <Key>
             <PropertyRef Name="job_id" />
           </Key>
-          <Property Name="job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="job_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar(max)" />
           <Property Name="status_id" Type="int" />
         </EntityType>
@@ -437,20 +772,15 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Content" Type="nvarchar(max)" />
           <Property Name="Created" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Model">
-          <Property Name="8D" Type="varchar" MaxLength="50" />
-        </EntityType>-->
         <EntityType Name="PassChange">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="customer_id" Type="int" />
           <Property Name="password" Type="nvarchar(max)" />
           <Property Name="datechange" Type="datetime" />
@@ -493,7 +823,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Key>
             <PropertyRef Name="PhieuNhapID" />
           </Key>
-          <Property Name="PhieuNhapID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhieuNhapID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaPhieuNhap" Type="varchar" MaxLength="9" />
           <Property Name="LoaiPhieu" Type="int" />
           <Property Name="NgayNhap" Type="datetime" />
@@ -529,7 +859,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Key>
             <PropertyRef Name="PhieuXuatID" />
           </Key>
-          <Property Name="PhieuXuatID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhieuXuatID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaPhieuXuat" Type="varchar" MaxLength="9" />
           <Property Name="LoaiPhieuID" Type="int" />
           <Property Name="NgayXuat" Type="datetime" />
@@ -544,7 +874,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Key>
             <PropertyRef Name="product_id" />
           </Key>
-          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="category_id" Type="int" />
           <Property Name="productcode" Type="nvarchar(max)" />
           <Property Name="name" Type="nvarchar(max)" />
@@ -554,7 +884,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Key>
             <PropertyRef Name="para_id" />
           </Key>
-          <Property Name="para_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="para_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="customercodereg" Type="nvarchar(max)" />
           <Property Name="senttime" Type="datetime" />
           <Property Name="expiredtime" Type="datetime" />
@@ -565,8 +895,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="city_id" Type="int" Nullable="false" />
           <Property Name="status_id" Type="int" Nullable="false" />
           <Property Name="Created" Type="datetime" />
@@ -578,7 +908,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="CssClass" Type="nvarchar" MaxLength="50" />
           <Property Name="Url" Type="nvarchar" MaxLength="100" />
@@ -591,7 +921,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Key>
             <PropertyRef Name="shop_id" />
           </Key>
-          <Property Name="shop_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="shop_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar(max)" />
           <Property Name="city_id" Type="int" />
           <Property Name="shoptype_id" Type="int" />
@@ -602,7 +932,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Key>
             <PropertyRef Name="shoptype_id" />
           </Key>
-          <Property Name="shoptype_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="shoptype_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar(max)" />
           <Property Name="status_id" Type="int" />
         </EntityType>
@@ -610,16 +940,16 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Key>
             <PropertyRef Name="status_id" />
           </Key>
-          <Property Name="status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
@@ -627,7 +957,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Key>
             <PropertyRef Name="UuDaiID" />
           </Key>
-          <Property Name="UuDaiID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UuDaiID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="LoaiKhachHangID" Type="int" />
           <Property Name="GiamGia" Type="float" />
           <Property Name="KhuyenMai" Type="float" />
@@ -636,8 +966,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_admin_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="admin" Type="Self.admin" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="admin" Type="MyDatabaseModel.Store.admin" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -648,8 +978,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ANguoiDung_ANhomNguoiDung">
-          <End Role="ANhomNguoiDung" Type="Self.ANhomNguoiDung" Multiplicity="1" />
-          <End Role="ANguoiDung" Type="Self.ANguoiDung" Multiplicity="*" />
+          <End Role="ANhomNguoiDung" Type="MyDatabaseModel.Store.ANhomNguoiDung" Multiplicity="1" />
+          <End Role="ANguoiDung" Type="MyDatabaseModel.Store.ANguoiDung" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ANhomNguoiDung">
               <PropertyRef Name="MaNhomNguoiDung" />
@@ -660,8 +990,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ANhomMenu_AMenu">
-          <End Role="AMenu" Type="Self.AMenu" Multiplicity="1" />
-          <End Role="ANhomMenu" Type="Self.ANhomMenu" Multiplicity="*" />
+          <End Role="AMenu" Type="MyDatabaseModel.Store.AMenu" Multiplicity="1" />
+          <End Role="ANhomMenu" Type="MyDatabaseModel.Store.ANhomMenu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AMenu">
               <PropertyRef Name="MaMenu" />
@@ -672,8 +1002,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ANhomMenu_ANhomNguoiDung">
-          <End Role="ANhomNguoiDung" Type="Self.ANhomNguoiDung" Multiplicity="1" />
-          <End Role="ANhomMenu" Type="Self.ANhomMenu" Multiplicity="*" />
+          <End Role="ANhomNguoiDung" Type="MyDatabaseModel.Store.ANhomNguoiDung" Multiplicity="1" />
+          <End Role="ANhomMenu" Type="MyDatabaseModel.Store.ANhomMenu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ANhomNguoiDung">
               <PropertyRef Name="MaNhomNguoiDung" />
@@ -684,8 +1014,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_categories_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="categories" Type="Self.categories" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="categories" Type="MyDatabaseModel.Store.categories" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -696,8 +1026,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietHoaDon_DMHangHoa">
-          <End Role="DMHangHoa" Type="Self.DMHangHoa" Multiplicity="1" />
-          <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
+          <End Role="DMHangHoa" Type="MyDatabaseModel.Store.DMHangHoa" Multiplicity="1" />
+          <End Role="ChiTietHoaDon" Type="MyDatabaseModel.Store.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMHangHoa">
               <PropertyRef Name="HangHoaID" />
@@ -708,8 +1038,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietHoaDon_HoaDon">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
-          <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
+          <End Role="HoaDon" Type="MyDatabaseModel.Store.HoaDon" Multiplicity="1" />
+          <End Role="ChiTietHoaDon" Type="MyDatabaseModel.Store.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
               <PropertyRef Name="HoaDonID" />
@@ -720,8 +1050,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuNhap_DMKhachHang">
-          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="0..1" />
-          <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
+          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="0..1" />
+          <End Role="ChiTietPhieuNhap" Type="MyDatabaseModel.Store.ChiTietPhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMKhachHang">
               <PropertyRef Name="KhachHangID" />
@@ -732,8 +1062,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuNhap_DMNVL">
-          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="1" />
-          <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
+          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="1" />
+          <End Role="ChiTietPhieuNhap" Type="MyDatabaseModel.Store.ChiTietPhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNVL">
               <PropertyRef Name="NVLID" />
@@ -744,8 +1074,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuNhap_PhieuNhap">
-          <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="1" />
-          <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
+          <End Role="PhieuNhap" Type="MyDatabaseModel.Store.PhieuNhap" Multiplicity="1" />
+          <End Role="ChiTietPhieuNhap" Type="MyDatabaseModel.Store.ChiTietPhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PhieuNhap">
               <PropertyRef Name="PhieuNhapID" />
@@ -756,8 +1086,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuXuat_DMKhachHang">
-          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="0..1" />
-          <End Role="ChiTietPhieuXuat" Type="Self.ChiTietPhieuXuat" Multiplicity="*" />
+          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="0..1" />
+          <End Role="ChiTietPhieuXuat" Type="MyDatabaseModel.Store.ChiTietPhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMKhachHang">
               <PropertyRef Name="KhachHangID" />
@@ -768,8 +1098,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuXuat_DMNVL">
-          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="1" />
-          <End Role="ChiTietPhieuXuat" Type="Self.ChiTietPhieuXuat" Multiplicity="*" />
+          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="1" />
+          <End Role="ChiTietPhieuXuat" Type="MyDatabaseModel.Store.ChiTietPhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNVL">
               <PropertyRef Name="NVLID" />
@@ -780,8 +1110,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuXuat_PhieuXuat">
-          <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="1" />
-          <End Role="ChiTietPhieuXuat" Type="Self.ChiTietPhieuXuat" Multiplicity="*" />
+          <End Role="PhieuXuat" Type="MyDatabaseModel.Store.PhieuXuat" Multiplicity="1" />
+          <End Role="ChiTietPhieuXuat" Type="MyDatabaseModel.Store.ChiTietPhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PhieuXuat">
               <PropertyRef Name="PhieuXuatID" />
@@ -792,8 +1122,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_cities_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="cities" Type="Self.cities" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="cities" Type="MyDatabaseModel.Store.cities" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -804,8 +1134,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DinhMuc_DMHangHoa">
-          <End Role="DMHangHoa" Type="Self.DMHangHoa" Multiplicity="1" />
-          <End Role="DinhMuc" Type="Self.DinhMuc" Multiplicity="*" />
+          <End Role="DMHangHoa" Type="MyDatabaseModel.Store.DMHangHoa" Multiplicity="1" />
+          <End Role="DinhMuc" Type="MyDatabaseModel.Store.DinhMuc" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMHangHoa">
               <PropertyRef Name="HangHoaID" />
@@ -816,8 +1146,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DinhMuc_DMNVL">
-          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="1" />
-          <End Role="DinhMuc" Type="Self.DinhMuc" Multiplicity="*" />
+          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="1" />
+          <End Role="DinhMuc" Type="MyDatabaseModel.Store.DinhMuc" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNVL">
               <PropertyRef Name="NVLID" />
@@ -828,8 +1158,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_districts_cities">
-          <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
-          <End Role="districts" Type="Self.districts" Multiplicity="*" />
+          <End Role="cities" Type="MyDatabaseModel.Store.cities" Multiplicity="0..1" />
+          <End Role="districts" Type="MyDatabaseModel.Store.districts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cities">
               <PropertyRef Name="city_id" />
@@ -840,8 +1170,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_districts_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="districts" Type="Self.districts" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="districts" Type="MyDatabaseModel.Store.districts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -852,8 +1182,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMHangHoa_DMLoaiHang">
-          <End Role="DMLoaiHang" Type="Self.DMLoaiHang" Multiplicity="0..1" />
-          <End Role="DMHangHoa" Type="Self.DMHangHoa" Multiplicity="*" />
+          <End Role="DMLoaiHang" Type="MyDatabaseModel.Store.DMLoaiHang" Multiplicity="0..1" />
+          <End Role="DMHangHoa" Type="MyDatabaseModel.Store.DMHangHoa" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiHang">
               <PropertyRef Name="LoaiHangID" />
@@ -864,8 +1194,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMKhachHang_DMLoaiKhachHang">
-          <End Role="DMLoaiKhachHang" Type="Self.DMLoaiKhachHang" Multiplicity="0..1" />
-          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="*" />
+          <End Role="DMLoaiKhachHang" Type="MyDatabaseModel.Store.DMLoaiKhachHang" Multiplicity="0..1" />
+          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiKhachHang">
               <PropertyRef Name="LoaiKhachHangID" />
@@ -876,8 +1206,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNhanVien_DMLoaiNhanVien">
-          <End Role="DMLoaiNhanVien" Type="Self.DMLoaiNhanVien" Multiplicity="0..1" />
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="*" />
+          <End Role="DMLoaiNhanVien" Type="MyDatabaseModel.Store.DMLoaiNhanVien" Multiplicity="0..1" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiNhanVien">
               <PropertyRef Name="LoaiNhanVienID" />
@@ -888,8 +1218,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNVL_DMDonViTinh">
-          <End Role="DMDonViTinh" Type="Self.DMDonViTinh" Multiplicity="0..1" />
-          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="*" />
+          <End Role="DMDonViTinh" Type="MyDatabaseModel.Store.DMDonViTinh" Multiplicity="0..1" />
+          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMDonViTinh">
               <PropertyRef Name="DonViTinhID" />
@@ -900,8 +1230,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNVL_DMDonViTinh1">
-          <End Role="DMDonViTinh" Type="Self.DMDonViTinh" Multiplicity="0..1" />
-          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="*" />
+          <End Role="DMDonViTinh" Type="MyDatabaseModel.Store.DMDonViTinh" Multiplicity="0..1" />
+          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMDonViTinh">
               <PropertyRef Name="DonViTinhID" />
@@ -912,8 +1242,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNVL_DMDonViTinh2">
-          <End Role="DMDonViTinh" Type="Self.DMDonViTinh" Multiplicity="0..1" />
-          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="*" />
+          <End Role="DMDonViTinh" Type="MyDatabaseModel.Store.DMDonViTinh" Multiplicity="0..1" />
+          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMDonViTinh">
               <PropertyRef Name="DonViTinhID" />
@@ -924,8 +1254,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNVL_DMDonViTinh3">
-          <End Role="DMDonViTinh" Type="Self.DMDonViTinh" Multiplicity="0..1" />
-          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="*" />
+          <End Role="DMDonViTinh" Type="MyDatabaseModel.Store.DMDonViTinh" Multiplicity="0..1" />
+          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMDonViTinh">
               <PropertyRef Name="DonViTinhID" />
@@ -936,8 +1266,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNVL_DMLoaiNVL">
-          <End Role="DMLoaiNVL" Type="Self.DMLoaiNVL" Multiplicity="0..1" />
-          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="*" />
+          <End Role="DMLoaiNVL" Type="MyDatabaseModel.Store.DMLoaiNVL" Multiplicity="0..1" />
+          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiNVL">
               <PropertyRef Name="LoaiNVLID" />
@@ -948,8 +1278,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_education_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="education" Type="Self.education" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="education" Type="MyDatabaseModel.Store.education" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -960,8 +1290,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GiaBan_DMHangHoa">
-          <End Role="DMHangHoa" Type="Self.DMHangHoa" Multiplicity="0..1" />
-          <End Role="GiaBan" Type="Self.GiaBan" Multiplicity="*" />
+          <End Role="DMHangHoa" Type="MyDatabaseModel.Store.DMHangHoa" Multiplicity="0..1" />
+          <End Role="GiaBan" Type="MyDatabaseModel.Store.GiaBan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMHangHoa">
               <PropertyRef Name="HangHoaID" />
@@ -972,8 +1302,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_Ban_DMBan">
-          <End Role="DMBan" Type="Self.DMBan" Multiplicity="0..1" />
-          <End Role="HoaDon_Ban" Type="Self.HoaDon_Ban" Multiplicity="*" />
+          <End Role="DMBan" Type="MyDatabaseModel.Store.DMBan" Multiplicity="0..1" />
+          <End Role="HoaDon_Ban" Type="MyDatabaseModel.Store.HoaDon_Ban" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMBan">
               <PropertyRef Name="BanID" />
@@ -984,8 +1314,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_Ban_HoaDon">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="0..1" />
-          <End Role="HoaDon_Ban" Type="Self.HoaDon_Ban" Multiplicity="*" />
+          <End Role="HoaDon" Type="MyDatabaseModel.Store.HoaDon" Multiplicity="0..1" />
+          <End Role="HoaDon_Ban" Type="MyDatabaseModel.Store.HoaDon_Ban" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
               <PropertyRef Name="HoaDonID" />
@@ -996,8 +1326,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_DMKhachHang">
-          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="0..1" />
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="MyDatabaseModel.Store.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMKhachHang">
               <PropertyRef Name="KhachHangID" />
@@ -1008,8 +1338,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_DMNhanVien">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="MyDatabaseModel.Store.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1020,8 +1350,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_DMNhanVien1">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="MyDatabaseModel.Store.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1032,8 +1362,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_jobs_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="jobs" Type="Self.jobs" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="jobs" Type="MyDatabaseModel.Store.jobs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -1044,8 +1374,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhanCong_DMCa">
-          <End Role="DMCa" Type="Self.DMCa" Multiplicity="1" />
-          <End Role="PhanCong" Type="Self.PhanCong" Multiplicity="*" />
+          <End Role="DMCa" Type="MyDatabaseModel.Store.DMCa" Multiplicity="1" />
+          <End Role="PhanCong" Type="MyDatabaseModel.Store.PhanCong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMCa">
               <PropertyRef Name="CaID" />
@@ -1056,8 +1386,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhanCong_DMNhanVien">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="1" />
-          <End Role="PhanCong" Type="Self.PhanCong" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="1" />
+          <End Role="PhanCong" Type="MyDatabaseModel.Store.PhanCong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1068,8 +1398,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuChi_DMKhachHang">
-          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="0..1" />
-          <End Role="PhieuChi" Type="Self.PhieuChi" Multiplicity="*" />
+          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="0..1" />
+          <End Role="PhieuChi" Type="MyDatabaseModel.Store.PhieuChi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMKhachHang">
               <PropertyRef Name="KhachHangID" />
@@ -1080,8 +1410,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuChi_DMLoaiPhieu">
-          <End Role="DMLoaiPhieu" Type="Self.DMLoaiPhieu" Multiplicity="0..1" />
-          <End Role="PhieuChi" Type="Self.PhieuChi" Multiplicity="*" />
+          <End Role="DMLoaiPhieu" Type="MyDatabaseModel.Store.DMLoaiPhieu" Multiplicity="0..1" />
+          <End Role="PhieuChi" Type="MyDatabaseModel.Store.PhieuChi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiPhieu">
               <PropertyRef Name="LoaiPhieuID" />
@@ -1092,8 +1422,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuChi_DMNhanVien">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuChi" Type="Self.PhieuChi" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuChi" Type="MyDatabaseModel.Store.PhieuChi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1104,8 +1434,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuChi_DMNhanVien1">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuChi" Type="Self.PhieuChi" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuChi" Type="MyDatabaseModel.Store.PhieuChi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1116,8 +1446,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuNhap_DMLoaiPhieu">
-          <End Role="DMLoaiPhieu" Type="Self.DMLoaiPhieu" Multiplicity="0..1" />
-          <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
+          <End Role="DMLoaiPhieu" Type="MyDatabaseModel.Store.DMLoaiPhieu" Multiplicity="0..1" />
+          <End Role="PhieuNhap" Type="MyDatabaseModel.Store.PhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiPhieu">
               <PropertyRef Name="LoaiPhieuID" />
@@ -1128,8 +1458,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuNhap_DMNhanVien2">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuNhap" Type="MyDatabaseModel.Store.PhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1140,8 +1470,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuNhap_DMNhanVien3">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuNhap" Type="MyDatabaseModel.Store.PhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1152,8 +1482,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuThu_DMKhachHang">
-          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="0..1" />
-          <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="0..1" />
+          <End Role="PhieuThu" Type="MyDatabaseModel.Store.PhieuThu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMKhachHang">
               <PropertyRef Name="KhachHangID" />
@@ -1164,8 +1494,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuThu_DMLoaiPhieu">
-          <End Role="DMLoaiPhieu" Type="Self.DMLoaiPhieu" Multiplicity="0..1" />
-          <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+          <End Role="DMLoaiPhieu" Type="MyDatabaseModel.Store.DMLoaiPhieu" Multiplicity="0..1" />
+          <End Role="PhieuThu" Type="MyDatabaseModel.Store.PhieuThu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiPhieu">
               <PropertyRef Name="LoaiPhieuID" />
@@ -1176,8 +1506,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuThu_DMNhanVien">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuThu" Type="MyDatabaseModel.Store.PhieuThu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1188,8 +1518,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuThu_DMNhanVien1">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuThu" Type="MyDatabaseModel.Store.PhieuThu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1200,8 +1530,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuXuat_DMLoaiPhieu">
-          <End Role="DMLoaiPhieu" Type="Self.DMLoaiPhieu" Multiplicity="0..1" />
-          <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="*" />
+          <End Role="DMLoaiPhieu" Type="MyDatabaseModel.Store.DMLoaiPhieu" Multiplicity="0..1" />
+          <End Role="PhieuXuat" Type="MyDatabaseModel.Store.PhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiPhieu">
               <PropertyRef Name="LoaiPhieuID" />
@@ -1212,8 +1542,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuXuat_DMNhanVien3">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuXuat" Type="MyDatabaseModel.Store.PhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1224,8 +1554,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuXuat_DMNhanVien4">
-          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuXuat" Type="MyDatabaseModel.Store.PhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1236,8 +1566,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_products_categories">
-          <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
-          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <End Role="categories" Type="MyDatabaseModel.Store.categories" Multiplicity="0..1" />
+          <End Role="products" Type="MyDatabaseModel.Store.products" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categories">
               <PropertyRef Name="category_id" />
@@ -1248,8 +1578,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_products_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="products" Type="MyDatabaseModel.Store.products" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -1260,8 +1590,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RS_Branch_cities">
-          <End Role="cities" Type="Self.cities" Multiplicity="1" />
-          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="*" />
+          <End Role="cities" Type="MyDatabaseModel.Store.cities" Multiplicity="1" />
+          <End Role="RS_Branch" Type="MyDatabaseModel.Store.RS_Branch" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cities">
               <PropertyRef Name="city_id" />
@@ -1272,8 +1602,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RS_Branch_status">
-          <End Role="status" Type="Self.status" Multiplicity="1" />
-          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="1" />
+          <End Role="RS_Branch" Type="MyDatabaseModel.Store.RS_Branch" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -1284,8 +1614,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RS_Menu_admin">
-          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
-          <End Role="RS_Menu" Type="Self.RS_Menu" Multiplicity="*" />
+          <End Role="admin" Type="MyDatabaseModel.Store.admin" Multiplicity="0..1" />
+          <End Role="RS_Menu" Type="MyDatabaseModel.Store.RS_Menu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="admin">
               <PropertyRef Name="admin_id" />
@@ -1296,8 +1626,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RS_Menu_admin1">
-          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
-          <End Role="RS_Menu" Type="Self.RS_Menu" Multiplicity="*" />
+          <End Role="admin" Type="MyDatabaseModel.Store.admin" Multiplicity="0..1" />
+          <End Role="RS_Menu" Type="MyDatabaseModel.Store.RS_Menu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="admin">
               <PropertyRef Name="admin_id" />
@@ -1308,8 +1638,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RS_RS_Branch_admin">
-          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
-          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="*" />
+          <End Role="admin" Type="MyDatabaseModel.Store.admin" Multiplicity="0..1" />
+          <End Role="RS_Branch" Type="MyDatabaseModel.Store.RS_Branch" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="admin">
               <PropertyRef Name="admin_id" />
@@ -1320,8 +1650,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RS_RS_Branch_admin1">
-          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
-          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="*" />
+          <End Role="admin" Type="MyDatabaseModel.Store.admin" Multiplicity="0..1" />
+          <End Role="RS_Branch" Type="MyDatabaseModel.Store.RS_Branch" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="admin">
               <PropertyRef Name="admin_id" />
@@ -1332,8 +1662,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_shops_cities">
-          <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
-          <End Role="shops" Type="Self.shops" Multiplicity="*" />
+          <End Role="cities" Type="MyDatabaseModel.Store.cities" Multiplicity="0..1" />
+          <End Role="shops" Type="MyDatabaseModel.Store.shops" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cities">
               <PropertyRef Name="city_id" />
@@ -1344,8 +1674,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_shops_RS_Branch">
-          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="0..1" />
-          <End Role="shops" Type="Self.shops" Multiplicity="*" />
+          <End Role="RS_Branch" Type="MyDatabaseModel.Store.RS_Branch" Multiplicity="0..1" />
+          <End Role="shops" Type="MyDatabaseModel.Store.shops" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RS_Branch">
               <PropertyRef Name="ID" />
@@ -1356,8 +1686,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_shops_shoptype">
-          <End Role="shoptype" Type="Self.shoptype" Multiplicity="0..1" />
-          <End Role="shops" Type="Self.shops" Multiplicity="*" />
+          <End Role="shoptype" Type="MyDatabaseModel.Store.shoptype" Multiplicity="0..1" />
+          <End Role="shops" Type="MyDatabaseModel.Store.shops" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="shoptype">
               <PropertyRef Name="shoptype_id" />
@@ -1368,8 +1698,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_shops_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="shops" Type="Self.shops" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="shops" Type="MyDatabaseModel.Store.shops" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -1380,8 +1710,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_shoptype_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="shoptype" Type="Self.shoptype" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="shoptype" Type="MyDatabaseModel.Store.shoptype" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -1392,8 +1722,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_cities">
-          <End Role="cities" Type="Self.cities" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <End Role="cities" Type="MyDatabaseModel.Store.cities" Multiplicity="0..1" />
+          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cities">
               <PropertyRef Name="city_id" />
@@ -1404,8 +1734,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_districts">
-          <End Role="districts" Type="Self.districts" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <End Role="districts" Type="MyDatabaseModel.Store.districts" Multiplicity="0..1" />
+          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="districts">
               <PropertyRef Name="district_id" />
@@ -1416,8 +1746,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_education">
-          <End Role="education" Type="Self.education" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <End Role="education" Type="MyDatabaseModel.Store.education" Multiplicity="0..1" />
+          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="education">
               <PropertyRef Name="education_id" />
@@ -1428,8 +1758,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_jobs">
-          <End Role="jobs" Type="Self.jobs" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <End Role="jobs" Type="MyDatabaseModel.Store.jobs" Multiplicity="0..1" />
+          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="jobs">
               <PropertyRef Name="job_id" />
@@ -1440,8 +1770,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -1452,8 +1782,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_usertype">
-          <End Role="customertype" Type="Self.customertype" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <End Role="customertype" Type="MyDatabaseModel.Store.customertype" Multiplicity="0..1" />
+          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="customertype">
               <PropertyRef Name="customertype_id" />
@@ -1464,8 +1794,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usertype_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="customertype" Type="Self.customertype" Multiplicity="*" />
+          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
+          <End Role="customertype" Type="MyDatabaseModel.Store.customertype" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -1476,8 +1806,8 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UuDaiThanhVien_DMLoaiKhachHang">
-          <End Role="DMLoaiKhachHang" Type="Self.DMLoaiKhachHang" Multiplicity="0..1" />
-          <End Role="UuDaiThanhVien" Type="Self.UuDaiThanhVien" Multiplicity="*" />
+          <End Role="DMLoaiKhachHang" Type="MyDatabaseModel.Store.DMLoaiKhachHang" Multiplicity="0..1" />
+          <End Role="UuDaiThanhVien" Type="MyDatabaseModel.Store.UuDaiThanhVien" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiKhachHang">
               <PropertyRef Name="LoaiKhachHangID" />
@@ -2083,7 +2413,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Parameter Name="Min" Type="float" Mode="In" />
           <Parameter Name="Max" Type="float" Mode="In" />
         </Function>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetCustomerProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StartDate" Type="datetime" Mode="In" />
           <Parameter Name="EndDate" Type="datetime" Mode="In" />
@@ -2092,7 +2422,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Parameter Name="StartDate" Type="datetime" Mode="In" />
           <Parameter Name="EndDate" Type="datetime" Mode="In" />
         </Function>
-        <Function Name="GetRegisteredProductByMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+        <Function Name="GetRegisteredProductByMonth" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ShopId" Type="int" Mode="In" />
           <Parameter Name="Month" Type="int" Mode="In" />
           <Parameter Name="Year" Type="int" Mode="In" />
@@ -2169,343 +2499,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
         <Function Name="ZTimKiemCa_M" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ma" Type="nvarchar" Mode="In" />
         </Function>
-        <EntityContainer Name="MyDatabaseModelStoreContainer">
-          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AMenu" EntityType="Self.AMenu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ANguoiDung" EntityType="Self.ANguoiDung" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ANhatKyHeThong" EntityType="Self.ANhatKyHeThong" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ANhomMenu" EntityType="Self.ANhomMenu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ANhomNguoiDung" EntityType="Self.ANhomNguoiDung" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ChiTietPhieuNhap" EntityType="Self.ChiTietPhieuNhap" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ChiTietPhieuXuat" EntityType="Self.ChiTietPhieuXuat" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="cities" EntityType="Self.cities" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="customerlock" EntityType="Self.customerlock" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="customertype" EntityType="Self.customertype" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DinhMuc" EntityType="Self.DinhMuc" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="districts" EntityType="Self.districts" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMBan" EntityType="Self.DMBan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMCa" EntityType="Self.DMCa" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMDonViTinh" EntityType="Self.DMDonViTinh" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMHangHoa" EntityType="Self.DMHangHoa" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMKhachHang" EntityType="Self.DMKhachHang" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMLoaiHang" EntityType="Self.DMLoaiHang" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMLoaiKhachHang" EntityType="Self.DMLoaiKhachHang" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMLoaiNhanVien" EntityType="Self.DMLoaiNhanVien" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMLoaiNVL" EntityType="Self.DMLoaiNVL" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMLoaiPhieu" EntityType="Self.DMLoaiPhieu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMNhanVien" EntityType="Self.DMNhanVien" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DMNVL" EntityType="Self.DMNVL" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="education" EntityType="Self.education" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GiaBan" EntityType="Self.GiaBan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HoaDon_Ban" EntityType="Self.HoaDon_Ban" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LogError" EntityType="Self.LogError" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PassChange" EntityType="Self.PassChange" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PhanCong" EntityType="Self.PhanCong" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PhieuChi" EntityType="Self.PhieuChi" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PhieuNhap" EntityType="Self.PhieuNhap" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PhieuThu" EntityType="Self.PhieuThu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PhieuXuat" EntityType="Self.PhieuXuat" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="resethistory" EntityType="Self.resethistory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RS_Branch" EntityType="Self.RS_Branch" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RS_Menu" EntityType="Self.RS_Menu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="shops" EntityType="Self.shops" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="shoptype" EntityType="Self.shoptype" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UuDaiThanhVien" EntityType="Self.UuDaiThanhVien" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_admin_status" Association="Self.FK_admin_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="admin" EntitySet="admin" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ANguoiDung_ANhomNguoiDung" Association="Self.FK_ANguoiDung_ANhomNguoiDung">
-            <End Role="ANhomNguoiDung" EntitySet="ANhomNguoiDung" />
-            <End Role="ANguoiDung" EntitySet="ANguoiDung" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ANhomMenu_AMenu" Association="Self.FK_ANhomMenu_AMenu">
-            <End Role="AMenu" EntitySet="AMenu" />
-            <End Role="ANhomMenu" EntitySet="ANhomMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ANhomMenu_ANhomNguoiDung" Association="Self.FK_ANhomMenu_ANhomNguoiDung">
-            <End Role="ANhomNguoiDung" EntitySet="ANhomNguoiDung" />
-            <End Role="ANhomMenu" EntitySet="ANhomMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_categories_status" Association="Self.FK_categories_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="categories" EntitySet="categories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietHoaDon_DMHangHoa" Association="Self.FK_ChiTietHoaDon_DMHangHoa">
-            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
-            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Self.FK_ChiTietHoaDon_HoaDon">
-            <End Role="HoaDon" EntitySet="HoaDon" />
-            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuNhap_DMKhachHang" Association="Self.FK_ChiTietPhieuNhap_DMKhachHang">
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuNhap_DMNVL" Association="Self.FK_ChiTietPhieuNhap_DMNVL">
-            <End Role="DMNVL" EntitySet="DMNVL" />
-            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuNhap_PhieuNhap" Association="Self.FK_ChiTietPhieuNhap_PhieuNhap">
-            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
-            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuXuat_DMKhachHang" Association="Self.FK_ChiTietPhieuXuat_DMKhachHang">
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuXuat_DMNVL" Association="Self.FK_ChiTietPhieuXuat_DMNVL">
-            <End Role="DMNVL" EntitySet="DMNVL" />
-            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuXuat_PhieuXuat" Association="Self.FK_ChiTietPhieuXuat_PhieuXuat">
-            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
-            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_cities_status" Association="Self.FK_cities_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="cities" EntitySet="cities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DinhMuc_DMHangHoa" Association="Self.FK_DinhMuc_DMHangHoa">
-            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
-            <End Role="DinhMuc" EntitySet="DinhMuc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DinhMuc_DMNVL" Association="Self.FK_DinhMuc_DMNVL">
-            <End Role="DMNVL" EntitySet="DMNVL" />
-            <End Role="DinhMuc" EntitySet="DinhMuc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_districts_cities" Association="Self.FK_districts_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="districts" EntitySet="districts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_districts_status" Association="Self.FK_districts_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="districts" EntitySet="districts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMHangHoa_DMLoaiHang" Association="Self.FK_DMHangHoa_DMLoaiHang">
-            <End Role="DMLoaiHang" EntitySet="DMLoaiHang" />
-            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMKhachHang_DMLoaiKhachHang" Association="Self.FK_DMKhachHang_DMLoaiKhachHang">
-            <End Role="DMLoaiKhachHang" EntitySet="DMLoaiKhachHang" />
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNhanVien_DMLoaiNhanVien" Association="Self.FK_DMNhanVien_DMLoaiNhanVien">
-            <End Role="DMLoaiNhanVien" EntitySet="DMLoaiNhanVien" />
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNVL_DMDonViTinh" Association="Self.FK_DMNVL_DMDonViTinh">
-            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
-            <End Role="DMNVL" EntitySet="DMNVL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNVL_DMDonViTinh1" Association="Self.FK_DMNVL_DMDonViTinh1">
-            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
-            <End Role="DMNVL" EntitySet="DMNVL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNVL_DMDonViTinh2" Association="Self.FK_DMNVL_DMDonViTinh2">
-            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
-            <End Role="DMNVL" EntitySet="DMNVL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNVL_DMDonViTinh3" Association="Self.FK_DMNVL_DMDonViTinh3">
-            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
-            <End Role="DMNVL" EntitySet="DMNVL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNVL_DMLoaiNVL" Association="Self.FK_DMNVL_DMLoaiNVL">
-            <End Role="DMLoaiNVL" EntitySet="DMLoaiNVL" />
-            <End Role="DMNVL" EntitySet="DMNVL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_education_status" Association="Self.FK_education_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="education" EntitySet="education" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GiaBan_DMHangHoa" Association="Self.FK_GiaBan_DMHangHoa">
-            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
-            <End Role="GiaBan" EntitySet="GiaBan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_Ban_DMBan" Association="Self.FK_HoaDon_Ban_DMBan">
-            <End Role="DMBan" EntitySet="DMBan" />
-            <End Role="HoaDon_Ban" EntitySet="HoaDon_Ban" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_Ban_HoaDon" Association="Self.FK_HoaDon_Ban_HoaDon">
-            <End Role="HoaDon" EntitySet="HoaDon" />
-            <End Role="HoaDon_Ban" EntitySet="HoaDon_Ban" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_DMKhachHang" Association="Self.FK_HoaDon_DMKhachHang">
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-            <End Role="HoaDon" EntitySet="HoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_DMNhanVien" Association="Self.FK_HoaDon_DMNhanVien">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="HoaDon" EntitySet="HoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_DMNhanVien1" Association="Self.FK_HoaDon_DMNhanVien1">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="HoaDon" EntitySet="HoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_jobs_status" Association="Self.FK_jobs_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="jobs" EntitySet="jobs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhanCong_DMCa" Association="Self.FK_PhanCong_DMCa">
-            <End Role="DMCa" EntitySet="DMCa" />
-            <End Role="PhanCong" EntitySet="PhanCong" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhanCong_DMNhanVien" Association="Self.FK_PhanCong_DMNhanVien">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhanCong" EntitySet="PhanCong" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuChi_DMKhachHang" Association="Self.FK_PhieuChi_DMKhachHang">
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-            <End Role="PhieuChi" EntitySet="PhieuChi" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuChi_DMLoaiPhieu" Association="Self.FK_PhieuChi_DMLoaiPhieu">
-            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
-            <End Role="PhieuChi" EntitySet="PhieuChi" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuChi_DMNhanVien" Association="Self.FK_PhieuChi_DMNhanVien">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuChi" EntitySet="PhieuChi" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuChi_DMNhanVien1" Association="Self.FK_PhieuChi_DMNhanVien1">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuChi" EntitySet="PhieuChi" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuNhap_DMLoaiPhieu" Association="Self.FK_PhieuNhap_DMLoaiPhieu">
-            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
-            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuNhap_DMNhanVien2" Association="Self.FK_PhieuNhap_DMNhanVien2">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuNhap_DMNhanVien3" Association="Self.FK_PhieuNhap_DMNhanVien3">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuThu_DMKhachHang" Association="Self.FK_PhieuThu_DMKhachHang">
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-            <End Role="PhieuThu" EntitySet="PhieuThu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuThu_DMLoaiPhieu" Association="Self.FK_PhieuThu_DMLoaiPhieu">
-            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
-            <End Role="PhieuThu" EntitySet="PhieuThu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuThu_DMNhanVien" Association="Self.FK_PhieuThu_DMNhanVien">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuThu" EntitySet="PhieuThu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuThu_DMNhanVien1" Association="Self.FK_PhieuThu_DMNhanVien1">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuThu" EntitySet="PhieuThu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuXuat_DMLoaiPhieu" Association="Self.FK_PhieuXuat_DMLoaiPhieu">
-            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
-            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuXuat_DMNhanVien3" Association="Self.FK_PhieuXuat_DMNhanVien3">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuXuat_DMNhanVien4" Association="Self.FK_PhieuXuat_DMNhanVien4">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_products_categories" Association="Self.FK_products_categories">
-            <End Role="categories" EntitySet="categories" />
-            <End Role="products" EntitySet="products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_products_status" Association="Self.FK_products_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="products" EntitySet="products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_Branch_cities" Association="Self.FK_RS_Branch_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_Branch_status" Association="Self.FK_RS_Branch_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_Menu_admin" Association="Self.FK_RS_Menu_admin">
-            <End Role="admin" EntitySet="admin" />
-            <End Role="RS_Menu" EntitySet="RS_Menu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_Menu_admin1" Association="Self.FK_RS_Menu_admin1">
-            <End Role="admin" EntitySet="admin" />
-            <End Role="RS_Menu" EntitySet="RS_Menu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_RS_Branch_admin" Association="Self.FK_RS_RS_Branch_admin">
-            <End Role="admin" EntitySet="admin" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_RS_Branch_admin1" Association="Self.FK_RS_RS_Branch_admin1">
-            <End Role="admin" EntitySet="admin" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_cities" Association="Self.FK_shops_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_RS_Branch" Association="Self.FK_shops_RS_Branch">
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_shoptype" Association="Self.FK_shops_shoptype">
-            <End Role="shoptype" EntitySet="shoptype" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_status" Association="Self.FK_shops_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shoptype_status" Association="Self.FK_shoptype_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="shoptype" EntitySet="shoptype" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_cities" Association="Self.FK_user_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_districts" Association="Self.FK_user_districts">
-            <End Role="districts" EntitySet="districts" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_education" Association="Self.FK_user_education">
-            <End Role="education" EntitySet="education" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_jobs" Association="Self.FK_user_jobs">
-            <End Role="jobs" EntitySet="jobs" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_status" Association="Self.FK_user_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_usertype" Association="Self.FK_user_usertype">
-            <End Role="customertype" EntitySet="customertype" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usertype_status" Association="Self.FK_usertype_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="customertype" EntitySet="customertype" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UuDaiThanhVien_DMLoaiKhachHang" Association="Self.FK_UuDaiThanhVien_DMLoaiKhachHang">
-            <End Role="DMLoaiKhachHang" EntitySet="DMLoaiKhachHang" />
-            <End Role="UuDaiThanhVien" EntitySet="UuDaiThanhVien" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2551,7 +2545,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <Property Name="NguoiDungID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaNguoiDung" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MaNhomNguoiDung" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MatKhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TaiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TrangThai" Type="Boolean" Nullable="false" />
           <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -4467,7 +4461,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AMenu_DeleteByPrimaryKey">
-            <Parameter Name="MaMenu" Mode="In" Type="String" />
+          <Parameter Name="MaMenu" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AMenu_Insert">
             <Parameter Name="MenuID" Mode="InOut" Type="Int32" />
@@ -4489,7 +4483,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AMenu_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.AMenu_SelectByPrimaryKey_Result)">
-            <Parameter Name="MaMenu" Mode="In" Type="String" />
+          <Parameter Name="MaMenu" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AMenu_Update">
             <Parameter Name="MenuID" Mode="In" Type="Int32" />
@@ -4510,7 +4504,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ANguoiDung_DeleteByPrimaryKey">
-            <Parameter Name="MaNguoiDung" Mode="In" Type="String" />
+          <Parameter Name="MaNguoiDung" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ANguoiDung_Insert">
             <Parameter Name="NguoiDungID" Mode="InOut" Type="Int32" />
@@ -4535,7 +4529,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ANguoiDung_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.ANguoiDung_SelectByPrimaryKey_Result)">
-            <Parameter Name="MaNguoiDung" Mode="In" Type="String" />
+          <Parameter Name="MaNguoiDung" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ANguoiDung_Update">
             <Parameter Name="NguoiDungID" Mode="In" Type="Int32" />
@@ -4559,7 +4553,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ANhatKyHeThong_DeleteByPrimaryKey">
-            <Parameter Name="ThongTin_ID" Mode="In" Type="Int32" />
+          <Parameter Name="ThongTin_ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ANhatKyHeThong_Insert">
             <Parameter Name="ThongTin_ID" Mode="InOut" Type="Int32" />
@@ -4576,7 +4570,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ANhatKyHeThong_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.ANhatKyHeThong_SelectByPrimaryKey_Result)">
-            <Parameter Name="ThongTin_ID" Mode="In" Type="Int32" />
+          <Parameter Name="ThongTin_ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ANhatKyHeThong_Update">
             <Parameter Name="ThongTin_ID" Mode="In" Type="Int32" />
@@ -4648,7 +4642,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ANhomNguoiDung_DeleteByPrimaryKey">
-            <Parameter Name="MaNhomNguoiDung" Mode="In" Type="String" />
+          <Parameter Name="MaNhomNguoiDung" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ANhomNguoiDung_Insert">
             <Parameter Name="NhomNguoiDungID" Mode="InOut" Type="Int32" />
@@ -4670,7 +4664,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ANhomNguoiDung_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.ANhomNguoiDung_SelectByPrimaryKey_Result)">
-            <Parameter Name="MaNhomNguoiDung" Mode="In" Type="String" />
+          <Parameter Name="MaNhomNguoiDung" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ANhomNguoiDung_Update">
             <Parameter Name="NhomNguoiDungID" Mode="In" Type="Int32" />
@@ -4695,7 +4689,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMBan_DeleteByPrimaryKey">
-            <Parameter Name="BanID" Mode="In" Type="Int32" />
+          <Parameter Name="BanID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMBan_Insert">
             <Parameter Name="MaBan" Mode="In" Type="String" />
@@ -4710,7 +4704,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMBan_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMBan_SelectByPrimaryKey_Result)">
-            <Parameter Name="BanID" Mode="In" Type="Int32" />
+          <Parameter Name="BanID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMBan_Update">
             <Parameter Name="BanID" Mode="In" Type="Int32" />
@@ -4725,7 +4719,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMCa_DeleteByPrimaryKey">
-            <Parameter Name="CaID" Mode="In" Type="Int32" />
+          <Parameter Name="CaID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMCa_Insert">
             <Parameter Name="MaCa" Mode="In" Type="String" />
@@ -4740,7 +4734,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMCa_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMCa_SelectByPrimaryKey_Result)">
-            <Parameter Name="CaID" Mode="In" Type="Int32" />
+          <Parameter Name="CaID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMCa_Update">
             <Parameter Name="CaID" Mode="In" Type="Int32" />
@@ -4755,7 +4749,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMDonViTinh_DeleteByPrimaryKey">
-            <Parameter Name="DonViTinhID" Mode="In" Type="Int32" />
+          <Parameter Name="DonViTinhID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMDonViTinh_Insert">
             <Parameter Name="TenDonViTinh" Mode="In" Type="String" />
@@ -4767,7 +4761,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMDonViTinh_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMDonViTinh_SelectByPrimaryKey_Result)">
-            <Parameter Name="DonViTinhID" Mode="In" Type="Int32" />
+          <Parameter Name="DonViTinhID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMDonViTinh_Update">
             <Parameter Name="DonViTinhID" Mode="In" Type="Int32" />
@@ -4779,7 +4773,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMHangHoa_DeleteByPrimaryKey">
-            <Parameter Name="HangHoaID" Mode="In" Type="Int32" />
+          <Parameter Name="HangHoaID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMHangHoa_Insert">
             <Parameter Name="LoaiHangID" Mode="In" Type="Int32" />
@@ -4793,7 +4787,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMHangHoa_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMHangHoa_SelectByPrimaryKey_Result)">
-            <Parameter Name="HangHoaID" Mode="In" Type="Int32" />
+          <Parameter Name="HangHoaID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMHangHoa_Update">
             <Parameter Name="HangHoaID" Mode="In" Type="Int32" />
@@ -4807,7 +4801,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMKhachHang_DeleteByPrimaryKey">
-            <Parameter Name="KhachHangID" Mode="In" Type="Int32" />
+          <Parameter Name="KhachHangID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMKhachHang_Insert">
             <Parameter Name="MaKhachHang" Mode="In" Type="String" />
@@ -4829,7 +4823,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMKhachHang_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMKhachHang_SelectByPrimaryKey_Result)">
-            <Parameter Name="KhachHangID" Mode="In" Type="Int32" />
+          <Parameter Name="KhachHangID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMKhachHang_Update">
             <Parameter Name="KhachHangID" Mode="In" Type="Int32" />
@@ -4851,7 +4845,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiHang_DeleteByPrimaryKey">
-            <Parameter Name="LoaiHangID" Mode="In" Type="Int32" />
+          <Parameter Name="LoaiHangID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiHang_Insert">
             <Parameter Name="MaLoaiHang" Mode="In" Type="String" />
@@ -4864,7 +4858,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiHang_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMLoaiHang_SelectByPrimaryKey_Result)">
-            <Parameter Name="LoaiHangID" Mode="In" Type="Int32" />
+          <Parameter Name="LoaiHangID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiHang_Update">
             <Parameter Name="LoaiHangID" Mode="In" Type="Int32" />
@@ -4877,7 +4871,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiKhachHang_DeleteByPrimaryKey">
-            <Parameter Name="LoaiKhachHangID" Mode="In" Type="Int32" />
+          <Parameter Name="LoaiKhachHangID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiKhachHang_Insert">
             <Parameter Name="TenLoaiKhachHang" Mode="In" Type="String" />
@@ -4889,7 +4883,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiKhachHang_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMLoaiKhachHang_SelectByPrimaryKey_Result)">
-            <Parameter Name="LoaiKhachHangID" Mode="In" Type="Int32" />
+          <Parameter Name="LoaiKhachHangID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiKhachHang_Update">
             <Parameter Name="LoaiKhachHangID" Mode="In" Type="Int32" />
@@ -4901,7 +4895,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiNhanVien_DeleteByPrimaryKey">
-            <Parameter Name="LoaiNhanVienID" Mode="In" Type="Int32" />
+          <Parameter Name="LoaiNhanVienID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiNhanVien_Insert">
             <Parameter Name="TenLoaiNhanVien" Mode="In" Type="String" />
@@ -4913,7 +4907,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiNhanVien_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMLoaiNhanVien_SelectByPrimaryKey_Result)">
-            <Parameter Name="LoaiNhanVienID" Mode="In" Type="Int32" />
+          <Parameter Name="LoaiNhanVienID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiNhanVien_Update">
             <Parameter Name="LoaiNhanVienID" Mode="In" Type="Int32" />
@@ -4925,7 +4919,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiNVL_DeleteByPrimaryKey">
-            <Parameter Name="LoaiNVLID" Mode="In" Type="Int32" />
+          <Parameter Name="LoaiNVLID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiNVL_Insert">
             <Parameter Name="TenLoaiNVL" Mode="In" Type="String" />
@@ -4938,7 +4932,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiNVL_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMLoaiNVL_SelectByPrimaryKey_Result)">
-            <Parameter Name="LoaiNVLID" Mode="In" Type="Int32" />
+          <Parameter Name="LoaiNVLID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiNVL_Update">
             <Parameter Name="LoaiNVLID" Mode="In" Type="Int32" />
@@ -4951,7 +4945,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiPhieu_DeleteByPrimaryKey">
-            <Parameter Name="LoaiPhieuID" Mode="In" Type="Int32" />
+          <Parameter Name="LoaiPhieuID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiPhieu_Insert">
             <Parameter Name="TenLoaiPhieu" Mode="In" Type="String" />
@@ -4964,7 +4958,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiPhieu_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMLoaiPhieu_SelectByPrimaryKey_Result)">
-            <Parameter Name="LoaiPhieuID" Mode="In" Type="Int32" />
+          <Parameter Name="LoaiPhieuID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMLoaiPhieu_Update">
             <Parameter Name="LoaiPhieuID" Mode="In" Type="Int32" />
@@ -4977,7 +4971,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMNhanVien_DeleteByPrimaryKey">
-            <Parameter Name="NhanVienID" Mode="In" Type="Int32" />
+          <Parameter Name="NhanVienID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMNhanVien_Insert">
             <Parameter Name="MaNhanVien" Mode="In" Type="String" />
@@ -4997,7 +4991,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMNhanVien_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMNhanVien_SelectByPrimaryKey_Result)">
-            <Parameter Name="NhanVienID" Mode="In" Type="Int32" />
+          <Parameter Name="NhanVienID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMNhanVien_Update">
             <Parameter Name="NhanVienID" Mode="In" Type="Int32" />
@@ -5017,7 +5011,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMNVL_DeleteByPrimaryKey">
-            <Parameter Name="NVLID" Mode="In" Type="Int32" />
+          <Parameter Name="NVLID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMNVL_Insert">
             <Parameter Name="MaNVL" Mode="In" Type="String" />
@@ -5040,7 +5034,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="Value" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMNVL_SelectByPrimaryKey" ReturnType="Collection(MyDatabaseModel.DMNVL_SelectByPrimaryKey_Result)">
-            <Parameter Name="NVLID" Mode="In" Type="Int32" />
+          <Parameter Name="NVLID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMNVL_Update">
             <Parameter Name="NVLID" Mode="In" Type="Int32" />
@@ -5068,7 +5062,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           </FunctionImport>
           <FunctionImport Name="GetSerial" />
           <FunctionImport Name="ProductReportByMonthCenter">
-            <Parameter Name="year" Mode="In" Type="Int32" />
+          <Parameter Name="year" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SearchSerial">
             <Parameter Name="series" Mode="In" Type="String" />
@@ -5127,7 +5121,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
           <FunctionImport Name="ZGetDataSetNhanVien" ReturnType="Collection(MyDatabaseModel.ZGetDataSetNhanVien_Result)" />
           <FunctionImport Name="ZGetDataSetNhatKyHeThong" ReturnType="Collection(MyDatabaseModel.ZGetDataSetNhatKyHeThong_Result)" />
           <FunctionImport Name="ZGetDataSetNhomMenu" ReturnType="Collection(MyDatabaseModel.ZGetDataSetNhomMenu_Result)">
-            <Parameter Name="MaNhomNguoiDung" Mode="In" Type="String" />
+          <Parameter Name="MaNhomNguoiDung" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ZGetDataSetNhomNguoiDung" ReturnType="Collection(MyDatabaseModel.ZGetDataSetNhomNguoiDung_Result)" />
           <FunctionImport Name="ZGetDataSetNVL" ReturnType="Collection(MyDatabaseModel.ZGetDataSetNVL_Result)" />
@@ -5136,7 +5130,7 @@ warning 6013: The table/view 'MyDatabase.dbo.Model' does not have a primary key 
             <Parameter Name="tenMenu" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ZTimKiemCa_M">
-            <Parameter Name="ma" Mode="In" Type="String" />
+          <Parameter Name="ma" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AMenu_SelectAll_Result">
