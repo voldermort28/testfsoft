@@ -799,15 +799,8 @@ namespace MyProject.Controllers
                 {
                     if (!String.IsNullOrEmpty(admin.MatKhau))
                     {
-                        if (db.admins.FirstOrDefault(x => x.email == admin.MaNguoiDung) == null)
-                        {  
-                            admin.MaNhomNguoiDung = "001";
-                            admin.TaiKhoan = "taikhoan";
-                            admin.TrangThai = true;
-                            admin.MoTa = "Mota";
-                            admin.MaNhanVien = "111111"; 
-                            admin.NguoiDung = "phần Mô tả";
-                            admin.ChucNang = "chức năng";
+                        if (db.ANguoiDungs.FirstOrDefault(x => x.MaNguoiDung == admin.MaNguoiDung) == null)
+                        {                              
                             admin.MatKhau = Common.MaHoa(admin.MatKhau.Trim());
                             admin.NgayTao = DateTime.Now;
                             admin.NguoiTao = Session["admss"].ToString();
@@ -832,7 +825,7 @@ namespace MyProject.Controllers
                 }
                 else // modify item
                 {
-                    var existObj = db.ANguoiDungs.FirstOrDefault(x => x.MaNguoiDung == admin.MaNguoiDung);
+                    var existObj = db.ANguoiDungs.FirstOrDefault(x => x.NguoiDungID == admin.NguoiDungID);
                     if (existObj != null)
                     {
                         if (!String.IsNullOrEmpty(admin.MatKhau))
@@ -843,6 +836,17 @@ namespace MyProject.Controllers
                         //existObj.email = admin.email;
                         existObj.MaNhomNguoiDung = admin.MaNhomNguoiDung;
                         existObj.TrangThai = admin.TrangThai;
+                        existObj.MaNhomNguoiDung = admin.MaNhomNguoiDung;
+                        existObj.TaiKhoan = admin.TaiKhoan;
+                        existObj.TrangThai = admin.TrangThai;
+                        existObj.MoTa = admin.MoTa;
+                        existObj.MaNhanVien = admin.MaNhanVien;
+                        existObj.NguoiDung = admin.NguoiDung;
+                        existObj.ChucNang = admin.ChucNang;
+                        existObj.Active = admin.Active;
+                        existObj.NguoiSua = Session["admss"].ToString();
+                        existObj.NgaySua = DateTime.Now;
+                         
                         db.SaveChanges();
                     }
                 }                

@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <form id="frm" action="/HeThong/SaveAdmin" method="post">
         @Html.AntiForgeryToken()
-        @Html.HiddenFor(m => m.NguoiDungID)
+        @Html.HiddenFor(m => m.NguoiDungID, new { id = "txtNguoiDungID" })
         <div class="col-md-12">
             <div class="btn-group pull-right">
                 
@@ -17,9 +17,9 @@
             <table class="table table-condensed">
                 <tr>
                     <td class="col1"><label>Tên đăng nhập</label></td>
-                    <td class="form-group">@Html.TextBoxFor(x => x.MaNguoiDung, new { id = "txtMaNguoiDung", @class = "form-control ", required = "required" , maxlength = 20 })</td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.MaNguoiDung, new { id = "txtMaNguoiDung", @class = "form-control  viewOnly", required = "required", maxlength = 20 })</td>
                     <td class="col1"><label>Mật khẩu</label></td>
-                    <td class="form-group">@Html.PasswordFor(x => x.MatKhau, new { id = "txtPassword", @class = "form-control", required = "required" ,maxlength = 50})</td>
+                    <td class="form-group">@Html.PasswordFor(x => x.MatKhau, new { id = "txtPassword", @class = "form-control", required = "required" ,maxlength = 250})</td>
                 </tr>
                 <tr>
                     <td class="col1"><label>Phân quyền</label></td>
@@ -27,6 +27,24 @@
                     <td class="col1"><label>Trạng thái</label></td>
                     <td class="form-group">@Html.DropDownListFor(x => x.TrangThai, new SelectList((System.Collections.ICollection)ViewData["status"], "ID", "Name"), new { @class = "form-control" })</td>
                 </tr>
+                <tr>
+                    <td class="col1"><label>Mã Nhân viên</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.MaNhanVien, new { id = "txtPMaNhanVien", @class = "form-control", required = "required", maxlength = 50 })</td>
+                    <td class="col1"><label>Người dùng</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.NguoiDung, new { id = "txtNguoiDung", @class = "form-control", required = "required", maxlength = 50 })</td>
+                </tr>
+                <tr>
+                    <td class="col1"><label>Chức năng</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.ChucNang, new { id = "txtChucNang", @class = "form-control", required = "required", maxlength = 50 })</td>
+                    <td class="col1"><label>Tài khoản</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.TaiKhoan, new { id = "txtTaiKhoan", @class = "form-control", required = "required", maxlength = 50 })</td>
+                </tr>
+                <tr>
+                    <td class="col1"><label>Mô tả</label></td>
+                    <td colspan="3" class="form-group">@Html.TextAreaFor(x => x.MoTa, new { id = "txtMoTa", @class = "form-control", required = "required", maxlength = 50 })</td>
+                   
+                </tr>
+
             </table>
         </div>
     </form>
@@ -42,7 +60,7 @@
             // Turn off autocomplete
             $('form,input,select,textarea').attr("autocomplete", "off");
             
-            if ($('#admin_id').val() != 0){
+            if ((typeof $('#txtNguoiDungID').val() =='undefined') || $('#txtNguoiDungID').val() != 0) {
                 $('.viewOnly').each(function() {
                     $(this).attr('disabled',true);
                 });
