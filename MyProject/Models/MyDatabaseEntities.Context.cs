@@ -33,16 +33,10 @@ namespace MyProject.Models
         public virtual DbSet<ANhatKyHeThong> ANhatKyHeThongs { get; set; }
         public virtual DbSet<ANhomMenu> ANhomMenus { get; set; }
         public virtual DbSet<ANhomNguoiDung> ANhomNguoiDungs { get; set; }
-        public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DbSet<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
         public virtual DbSet<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; }
-        public virtual DbSet<city> cities { get; set; }
-        public virtual DbSet<customer> customers { get; set; }
-        public virtual DbSet<customerlock> customerlocks { get; set; }
-        public virtual DbSet<customertype> customertypes { get; set; }
         public virtual DbSet<DinhMuc> DinhMucs { get; set; }
-        public virtual DbSet<district> districts { get; set; }
         public virtual DbSet<DMBan> DMBans { get; set; }
         public virtual DbSet<DMCa> DMCas { get; set; }
         public virtual DbSet<DMDonViTinh> DMDonViTinhs { get; set; }
@@ -55,27 +49,22 @@ namespace MyProject.Models
         public virtual DbSet<DMLoaiPhieu> DMLoaiPhieux { get; set; }
         public virtual DbSet<DMNhanVien> DMNhanViens { get; set; }
         public virtual DbSet<DMNVL> DMNVLs { get; set; }
-        public virtual DbSet<education> educations { get; set; }
         public virtual DbSet<GiaBan> GiaBans { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<HoaDon_Ban> HoaDon_Ban { get; set; }
-        public virtual DbSet<job> jobs { get; set; }
-        public virtual DbSet<LogError> LogErrors { get; set; }
         public virtual DbSet<PassChange> PassChanges { get; set; }
         public virtual DbSet<PhanCong> PhanCongs { get; set; }
         public virtual DbSet<PhieuChi> PhieuChis { get; set; }
         public virtual DbSet<PhieuNhap> PhieuNhaps { get; set; }
         public virtual DbSet<PhieuThu> PhieuThus { get; set; }
         public virtual DbSet<PhieuXuat> PhieuXuats { get; set; }
-        public virtual DbSet<product> products { get; set; }
-        public virtual DbSet<resethistory> resethistories { get; set; }
-        public virtual DbSet<RS_Branch> RS_Branch { get; set; }
         public virtual DbSet<RS_Menu> RS_Menu { get; set; }
-        public virtual DbSet<shop> shops { get; set; }
-        public virtual DbSet<shoptype> shoptypes { get; set; }
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UuDaiThanhVien> UuDaiThanhViens { get; set; }
+        public virtual DbSet<LogError> LogErrors { get; set; }
+        public virtual DbSet<GetDataSetNguoiDung> GetDataSetNguoiDungs { get; set; }
+        public virtual DbSet<phanQuyen> phanQuyens { get; set; }
     
         public virtual int AMenu_DeleteByField(string fieldName, string value)
         {

@@ -227,9 +227,6 @@
     <Compile Include="Models\ANhomNguoiDung_SelectByPrimaryKey_Result.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\category.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ChiTietHoaDon.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -239,22 +236,7 @@
     <Compile Include="Models\ChiTietPhieuXuat.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\city.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\customer.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\customerlock.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\customertype.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DinhMuc.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\district.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMBan.cs">
@@ -365,7 +347,7 @@
     <Compile Include="Models\DMNVL_SelectByPrimaryKey_Result.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\education.cs">
+    <Compile Include="Models\GetDataSetNguoiDung.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GiaBan.cs">
@@ -375,9 +357,6 @@
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon_Ban.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\job.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LogError.cs">
@@ -404,6 +383,9 @@
     <Compile Include="Models\PhanCong.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\phanQuyen.cs">
+      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PhieuChi.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -416,22 +398,7 @@
     <Compile Include="Models\PhieuXuat.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\product.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\resethistory.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RS_Branch.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\RS_Menu.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\shop.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\shoptype.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
@@ -509,11 +476,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\CustomerProductVM.cs" />
-    <Compile Include="ViewModels\CustomerVM.cs" />
-    <Compile Include="ViewModels\ListCustomerProductVM.cs" />
     <Compile Include="ViewModels\ReCaptcharVerify.cs" />
-    <Compile Include="ViewModels\ProfileVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />

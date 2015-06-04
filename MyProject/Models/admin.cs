@@ -18,8 +18,6 @@ namespace MyProject.Models
         {
             this.RS_Menu = new HashSet<RS_Menu>();
             this.RS_Menu1 = new HashSet<RS_Menu>();
-            this.RS_Branch = new HashSet<RS_Branch>();
-            this.RS_Branch1 = new HashSet<RS_Branch>();
         }
     
         public int admin_id { get; set; }
@@ -33,7 +31,5 @@ namespace MyProject.Models
         public virtual status status { get; set; }
         public virtual ICollection<RS_Menu> RS_Menu { get; set; }
         public virtual ICollection<RS_Menu> RS_Menu1 { get; set; }
-        public virtual ICollection<RS_Branch> RS_Branch { get; set; }
-        public virtual ICollection<RS_Branch> RS_Branch1 { get; set; }
     }
 }

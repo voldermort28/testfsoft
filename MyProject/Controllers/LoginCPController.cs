@@ -62,63 +62,7 @@ namespace MyProject.Controllers
         {
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ForgetPassAdmin(string email, String recaptcha)
-        {
-            if (!Common.VerifyCaptcha(recaptcha, Request.UserHostAddress))
-            {
-                return Json(new { result = "Lỗi ", msg = "Mã bảo vệ không hợp lệ" });
-            }
-            using (var db = new MyDatabaseEntities())
-            {            
-                // validate email
-                if (!Common.ValidateEmail(email)) return Json(new { result = "Lỗi ", msg = "Email không hợp lệ" });
-                var user = db.admins.FirstOrDefault(x => x.email == email);
-                if (user == null)
-                {
-                    return Json(new { result = "OK", msg = "Hệ thống đã gửi thông tin thay đổi mật khẩu. </br>Vui lòng kiểm tra email để xem hướng dẫn tạo mật khẩu mới." });
-                }
-                if (String.IsNullOrEmpty(user.admincodereg))
-                {
-                    user.admincodereg = Guid.NewGuid().ToString();
-                }
-                var pa = db.resethistories.Where(a => a.customercodereg == user.admincodereg && a.status_id == Constant.StatusActive).OrderByDescending(a => a.senttime).FirstOrDefault();
-                if (pa != null)
-                {
-                    pa.status_id = 2;
-                    db.SaveChanges();
-                }
-
-                // write reset history
-                string t = DateTime.Now.Ticks.ToString();
-                var para = new resethistory
-                {
-                    customercodereg = user.admincodereg
-                };
-                var now = DateTime.Now;
-                para.senttime = now;
-                para.expiredtime = DateTime.Now.AddHours(2);
-                para.longsenttime = t;
-                para.status_id = 1;
-                db.resethistories.Add(para);
-                db.SaveChanges();
-
-                if (Request.Url != null)
-                {
-                    string url = Request.Url.GetLeftPart(UriPartial.Authority);
-                    string code = user.admincodereg+ "!" + t;
-                    string link = url + "/LoginCP/RenewPassAdmin?" + "token=" + code;
-
-                    // send mail
-                    IUserMailer mailer = new UserMailer();
-                    mailer.PasswordReset(email, link).Send();
-                    return Json(new { result = "OK", msg = "Hệ thống đã gửi thông tin thay đổi mật khẩu. </br>Vui lòng kiểm tra email để xem hướng dẫn tạo mật khẩu mới." });
-                }
-                return Json(new { result = "Error", msg = "Có lỗi." });
-            }
-        }
-
+        
         [HttpGet]
         public ActionResult RenewPassAdmin(string token)
         {
@@ -147,28 +91,7 @@ namespace MyProject.Controllers
                 if (user == null) ViewBag.msg = "Tài khoản không tồn tại";
                 if (user != null)
                 {
-                   
-
-                    user.password = Common.MaHoa(password);
-                    var pa =
-                        db.resethistories.FirstOrDefault(
-                            a => a.customercodereg == user.admincodereg && a.longsenttime == longtime);
-                    pa.status_id = 2;
-
-                    // add history change password
-                    var hisChangePass = new PassChange
-                    {
-                        customer_id = user.admin_id,
-                        password = Common.MaHoa(password),
-                        datechange = DateTime.Now
-                    };
-                    db.PassChanges.Add(hisChangePass);
-
-                    if (ModelState.IsValid)
-                    {
-                        db.SaveChanges();
-                    }   
-                     
+                    
                     return Json(new { result = "OK", msg = "Tạo mật khẩu mới thành công." });
                 }               
                 return View();

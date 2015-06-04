@@ -187,15 +187,7 @@ namespace MyProject.Functions
             var userid = Convert.ToInt32(HttpContext.Current.Session["UserID"]); 
             using (MyProject.Models.MyDatabaseEntities db  = new MyDatabaseEntities())
             {
-                var u = db.customers.Find(userid);
-                if (u != null)
-                {
-                    return u.firstname + " " + u.lastname;
-                }
-                else
-                {
-                    return "";
-                }
+                return "Nguoi dung";
             }
         }
         public static String GetUserName()
@@ -203,15 +195,7 @@ namespace MyProject.Functions
             var userid = Convert.ToInt32(HttpContext.Current.Session["UserID"]);
             using (var db = new MyDatabaseEntities())
             {
-                var u = db.customers.Find(userid);
-                if (u != null)
-                {
-                    if (u.sex == true)
-                    {
-                        return "Chào anh  " + u.lastname;
-                    }
-                    return  "Chào chị  " + u.lastname;
-                }
+                
                 return "";
             }
         }
@@ -366,11 +350,7 @@ namespace MyProject.Functions
             bool b = false;
             try
             {
-                var city = db.cities.FirstOrDefault(x => x.city_id == cityId && x.status_id == Constant.StatusActive);
-                if (city != null)
-                {
-                    b = true;
-                }
+                
             }
             catch (Exception)
             {
@@ -378,43 +358,7 @@ namespace MyProject.Functions
             }
             return b;
         }
-
-        public static bool CheckShop(MyDatabaseEntities db, int shopId)
-        {
-            bool b = false;
-            try
-            {
-                var shop = db.shops.FirstOrDefault(x => x.shop_id == shopId && x.status_id == Constant.StatusActive);
-                if (shop != null)
-                {
-                    b = true;
-                }
-            }
-            catch (Exception)
-            {
-                b = false;
-            }
-            return b;
-        }
-
-        public static bool CheckShopByCity(MyDatabaseEntities db, int  cityId ,int shopId)
-        {
-            bool b = false;
-            try
-            {
-                var shopOfCity = db.shops.FirstOrDefault(x => x.shop_id == shopId && x.city_id == cityId && x.status_id == Constant.StatusActive);
-                if (shopOfCity != null)
-                {
-                    b = true;
-                }
-            }
-            catch (Exception)
-            {
-                b = false;
-            }
-            return b;
-        }
-
+  
         public static string Cheknull( string value)
         {
             string b = string.Empty;

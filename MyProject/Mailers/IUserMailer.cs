@@ -12,6 +12,6 @@ namespace MyProject.Mailers
 		MvcMailMessage PasswordReset(string email, string link);
         MvcMailMessage ResetPassByAdmin(string email, string customerName, string newPass);
 
-        MvcMailMessage CustomerService(customer cus, CustomerProductVM product);
+      
 	}
 }

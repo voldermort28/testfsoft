@@ -67,20 +67,6 @@ namespace MyProject.Mailers
                 x.To.Add(email);
             });
         }
-
-        public MvcMailMessage CustomerService(customer cus, CustomerProductVM product)
-        {
-            ViewBag.Email = cus.email;
-            ViewBag.Product = product.ProductName;
-            ViewBag.Serial = product.Serial;
-            ViewBag.Datebuy = product.BuyDate;
-            return Populate(x =>
-            {
-                x.Subject = "Customer Product ";
-                x.ViewName = "CustomerService";
-                x.To.Add(cus.email);
-            });
-        }
  
 	}
 }

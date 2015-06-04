@@ -17,33 +17,11 @@ namespace MyProject.Models
         public status()
         {
             this.admins = new HashSet<admin>();
-            this.categories = new HashSet<category>();
-            this.cities = new HashSet<city>();
-            this.customers = new HashSet<customer>();
-            this.customertypes = new HashSet<customertype>();
-            this.districts = new HashSet<district>();
-            this.educations = new HashSet<education>();
-            this.jobs = new HashSet<job>();
-            this.products = new HashSet<product>();
-            this.RS_Branch = new HashSet<RS_Branch>();
-            this.shops = new HashSet<shop>();
-            this.shoptypes = new HashSet<shoptype>();
         }
     
         public int status_id { get; set; }
         public string name { get; set; }
     
         public virtual ICollection<admin> admins { get; set; }
-        public virtual ICollection<category> categories { get; set; }
-        public virtual ICollection<city> cities { get; set; }
-        public virtual ICollection<customer> customers { get; set; }
-        public virtual ICollection<customertype> customertypes { get; set; }
-        public virtual ICollection<district> districts { get; set; }
-        public virtual ICollection<education> educations { get; set; }
-        public virtual ICollection<job> jobs { get; set; }
-        public virtual ICollection<product> products { get; set; }
-        public virtual ICollection<RS_Branch> RS_Branch { get; set; }
-        public virtual ICollection<shop> shops { get; set; }
-        public virtual ICollection<shoptype> shoptypes { get; set; }
     }
 }

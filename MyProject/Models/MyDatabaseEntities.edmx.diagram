@@ -11,16 +11,10 @@
         <EntityTypeShape EntityType="MyDatabaseModel.ANhatKyHeThong" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.ANhomMenu" Width="1.5" PointX="15" PointY="22.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.ANhomNguoiDung" Width="1.5" PointX="9.75" PointY="22.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.category" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.ChiTietHoaDon" Width="1.5" PointX="22.5" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.ChiTietPhieuNhap" Width="1.5" PointX="22.5" PointY="18" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.ChiTietPhieuXuat" Width="1.5" PointX="19.5" PointY="22" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.city" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.customer" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.customerlock" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.customertype" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.DinhMuc" Width="1.5" PointX="25.5" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.district" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.DMBan" Width="1.5" PointX="20.25" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.DMCa" Width="1.5" PointX="18" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.DMDonViTinh" Width="1.5" PointX="18" PointY="28.875" IsExpanded="true" />
@@ -33,37 +27,25 @@
         <EntityTypeShape EntityType="MyDatabaseModel.DMLoaiPhieu" Width="1.5" PointX="15" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.DMNhanVien" Width="1.5" PointX="15" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.DMNVL" Width="1.5" PointX="20.25" PointY="28.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.education" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.GiaBan" Width="1.5" PointX="22.5" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.HoaDon" Width="1.5" PointX="17.25" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.HoaDon_Ban" Width="1.5" PointX="22.5" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.job" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.LogError" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.PassChange" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.PhanCong" Width="1.5" PointX="20.25" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.PhieuChi" Width="1.5" PointX="20.25" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.PhieuNhap" Width="1.5" PointX="20.25" PointY="17.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.PhieuThu" Width="1.5" PointX="17.25" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.PhieuXuat" Width="1.5" PointX="17.25" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.product" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.resethistory" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.RS_Branch" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.RS_Menu" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.shop" Width="1.5" PointX="10.5" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.shoptype" Width="1.5" PointX="3" PointY="23.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.status" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.sysdiagram" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.UuDaiThanhVien" Width="1.5" PointX="15" PointY="18.625" IsExpanded="true" />
         <AssociationConnector Association="MyDatabaseModel.FK_admin_status" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_RS_Menu_admin" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_RS_Menu_admin1" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_RS_RS_Branch_admin" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_RS_RS_Branch_admin1" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_ANhomMenu_AMenu" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_ANguoiDung_ANhomNguoiDung" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_ANhomMenu_ANhomNguoiDung" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_categories_status" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_products_categories" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_ChiTietHoaDon_DMHangHoa" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_ChiTietHoaDon_HoaDon" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_ChiTietPhieuNhap_DMKhachHang" ManuallyRouted="false" />
@@ -72,20 +54,8 @@
         <AssociationConnector Association="MyDatabaseModel.FK_ChiTietPhieuXuat_DMKhachHang" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_ChiTietPhieuXuat_DMNVL" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_ChiTietPhieuXuat_PhieuXuat" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_cities_status" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_districts_cities" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_RS_Branch_cities" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_shops_cities" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_user_cities" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_user_districts" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_user_education" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_user_jobs" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_user_status" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_user_usertype" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_usertype_status" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_DinhMuc_DMHangHoa" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_DinhMuc_DMNVL" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_districts_status" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_HoaDon_Ban_DMBan" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_PhanCong_DMCa" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_DMNVL_DMDonViTinh" ManuallyRouted="false" />
@@ -116,15 +86,10 @@
         <AssociationConnector Association="MyDatabaseModel.FK_PhieuThu_DMNhanVien1" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_PhieuXuat_DMNhanVien3" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_PhieuXuat_DMNhanVien4" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_education_status" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK_HoaDon_Ban_HoaDon" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_jobs_status" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_products_status" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_RS_Branch_status" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_shops_RS_Branch" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_shops_shoptype" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_shops_status" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK_shoptype_status" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MyDatabaseModel.LogError" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MyDatabaseModel.GetDataSetNguoiDung" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MyDatabaseModel.phanQuyen" Width="1.5" PointX="8.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

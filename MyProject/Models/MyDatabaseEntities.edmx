@@ -4,347 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MyDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="MyDatabaseModelStoreContainer">
-          <EntitySet Name="admin" EntityType="MyDatabaseModel.Store.admin" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AMenu" EntityType="MyDatabaseModel.Store.AMenu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ANguoiDung" EntityType="MyDatabaseModel.Store.ANguoiDung" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ANhatKyHeThong" EntityType="MyDatabaseModel.Store.ANhatKyHeThong" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ANhomMenu" EntityType="MyDatabaseModel.Store.ANhomMenu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ANhomNguoiDung" EntityType="MyDatabaseModel.Store.ANhomNguoiDung" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="categories" EntityType="MyDatabaseModel.Store.categories" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ChiTietHoaDon" EntityType="MyDatabaseModel.Store.ChiTietHoaDon" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ChiTietPhieuNhap" EntityType="MyDatabaseModel.Store.ChiTietPhieuNhap" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ChiTietPhieuXuat" EntityType="MyDatabaseModel.Store.ChiTietPhieuXuat" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="cities" EntityType="MyDatabaseModel.Store.cities" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="customer" EntityType="MyDatabaseModel.Store.customer" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="customerlock" EntityType="MyDatabaseModel.Store.customerlock" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="customertype" EntityType="MyDatabaseModel.Store.customertype" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DinhMuc" EntityType="MyDatabaseModel.Store.DinhMuc" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="districts" EntityType="MyDatabaseModel.Store.districts" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMBan" EntityType="MyDatabaseModel.Store.DMBan" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMCa" EntityType="MyDatabaseModel.Store.DMCa" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMDonViTinh" EntityType="MyDatabaseModel.Store.DMDonViTinh" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMHangHoa" EntityType="MyDatabaseModel.Store.DMHangHoa" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMKhachHang" EntityType="MyDatabaseModel.Store.DMKhachHang" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMLoaiHang" EntityType="MyDatabaseModel.Store.DMLoaiHang" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMLoaiKhachHang" EntityType="MyDatabaseModel.Store.DMLoaiKhachHang" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMLoaiNhanVien" EntityType="MyDatabaseModel.Store.DMLoaiNhanVien" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMLoaiNVL" EntityType="MyDatabaseModel.Store.DMLoaiNVL" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMLoaiPhieu" EntityType="MyDatabaseModel.Store.DMLoaiPhieu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMNhanVien" EntityType="MyDatabaseModel.Store.DMNhanVien" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DMNVL" EntityType="MyDatabaseModel.Store.DMNVL" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="education" EntityType="MyDatabaseModel.Store.education" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="GiaBan" EntityType="MyDatabaseModel.Store.GiaBan" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="HoaDon" EntityType="MyDatabaseModel.Store.HoaDon" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="HoaDon_Ban" EntityType="MyDatabaseModel.Store.HoaDon_Ban" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="jobs" EntityType="MyDatabaseModel.Store.jobs" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="LogError" EntityType="MyDatabaseModel.Store.LogError" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PassChange" EntityType="MyDatabaseModel.Store.PassChange" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PhanCong" EntityType="MyDatabaseModel.Store.PhanCong" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PhieuChi" EntityType="MyDatabaseModel.Store.PhieuChi" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PhieuNhap" EntityType="MyDatabaseModel.Store.PhieuNhap" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PhieuThu" EntityType="MyDatabaseModel.Store.PhieuThu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PhieuXuat" EntityType="MyDatabaseModel.Store.PhieuXuat" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="products" EntityType="MyDatabaseModel.Store.products" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="resethistory" EntityType="MyDatabaseModel.Store.resethistory" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RS_Branch" EntityType="MyDatabaseModel.Store.RS_Branch" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RS_Menu" EntityType="MyDatabaseModel.Store.RS_Menu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="shops" EntityType="MyDatabaseModel.Store.shops" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="shoptype" EntityType="MyDatabaseModel.Store.shoptype" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="status" EntityType="MyDatabaseModel.Store.status" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="MyDatabaseModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UuDaiThanhVien" EntityType="MyDatabaseModel.Store.UuDaiThanhVien" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_admin_status" Association="MyDatabaseModel.Store.FK_admin_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="admin" EntitySet="admin" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ANguoiDung_ANhomNguoiDung" Association="MyDatabaseModel.Store.FK_ANguoiDung_ANhomNguoiDung">
-            <End Role="ANhomNguoiDung" EntitySet="ANhomNguoiDung" />
-            <End Role="ANguoiDung" EntitySet="ANguoiDung" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ANhomMenu_AMenu" Association="MyDatabaseModel.Store.FK_ANhomMenu_AMenu">
-            <End Role="AMenu" EntitySet="AMenu" />
-            <End Role="ANhomMenu" EntitySet="ANhomMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ANhomMenu_ANhomNguoiDung" Association="MyDatabaseModel.Store.FK_ANhomMenu_ANhomNguoiDung">
-            <End Role="ANhomNguoiDung" EntitySet="ANhomNguoiDung" />
-            <End Role="ANhomMenu" EntitySet="ANhomMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_categories_status" Association="MyDatabaseModel.Store.FK_categories_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="categories" EntitySet="categories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietHoaDon_DMHangHoa" Association="MyDatabaseModel.Store.FK_ChiTietHoaDon_DMHangHoa">
-            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
-            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="MyDatabaseModel.Store.FK_ChiTietHoaDon_HoaDon">
-            <End Role="HoaDon" EntitySet="HoaDon" />
-            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuNhap_DMKhachHang" Association="MyDatabaseModel.Store.FK_ChiTietPhieuNhap_DMKhachHang">
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuNhap_DMNVL" Association="MyDatabaseModel.Store.FK_ChiTietPhieuNhap_DMNVL">
-            <End Role="DMNVL" EntitySet="DMNVL" />
-            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuNhap_PhieuNhap" Association="MyDatabaseModel.Store.FK_ChiTietPhieuNhap_PhieuNhap">
-            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
-            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuXuat_DMKhachHang" Association="MyDatabaseModel.Store.FK_ChiTietPhieuXuat_DMKhachHang">
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuXuat_DMNVL" Association="MyDatabaseModel.Store.FK_ChiTietPhieuXuat_DMNVL">
-            <End Role="DMNVL" EntitySet="DMNVL" />
-            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChiTietPhieuXuat_PhieuXuat" Association="MyDatabaseModel.Store.FK_ChiTietPhieuXuat_PhieuXuat">
-            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
-            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_cities_status" Association="MyDatabaseModel.Store.FK_cities_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="cities" EntitySet="cities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DinhMuc_DMHangHoa" Association="MyDatabaseModel.Store.FK_DinhMuc_DMHangHoa">
-            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
-            <End Role="DinhMuc" EntitySet="DinhMuc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DinhMuc_DMNVL" Association="MyDatabaseModel.Store.FK_DinhMuc_DMNVL">
-            <End Role="DMNVL" EntitySet="DMNVL" />
-            <End Role="DinhMuc" EntitySet="DinhMuc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_districts_cities" Association="MyDatabaseModel.Store.FK_districts_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="districts" EntitySet="districts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_districts_status" Association="MyDatabaseModel.Store.FK_districts_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="districts" EntitySet="districts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMHangHoa_DMLoaiHang" Association="MyDatabaseModel.Store.FK_DMHangHoa_DMLoaiHang">
-            <End Role="DMLoaiHang" EntitySet="DMLoaiHang" />
-            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMKhachHang_DMLoaiKhachHang" Association="MyDatabaseModel.Store.FK_DMKhachHang_DMLoaiKhachHang">
-            <End Role="DMLoaiKhachHang" EntitySet="DMLoaiKhachHang" />
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNhanVien_DMLoaiNhanVien" Association="MyDatabaseModel.Store.FK_DMNhanVien_DMLoaiNhanVien">
-            <End Role="DMLoaiNhanVien" EntitySet="DMLoaiNhanVien" />
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNVL_DMDonViTinh" Association="MyDatabaseModel.Store.FK_DMNVL_DMDonViTinh">
-            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
-            <End Role="DMNVL" EntitySet="DMNVL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNVL_DMDonViTinh1" Association="MyDatabaseModel.Store.FK_DMNVL_DMDonViTinh1">
-            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
-            <End Role="DMNVL" EntitySet="DMNVL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNVL_DMDonViTinh2" Association="MyDatabaseModel.Store.FK_DMNVL_DMDonViTinh2">
-            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
-            <End Role="DMNVL" EntitySet="DMNVL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNVL_DMDonViTinh3" Association="MyDatabaseModel.Store.FK_DMNVL_DMDonViTinh3">
-            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
-            <End Role="DMNVL" EntitySet="DMNVL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DMNVL_DMLoaiNVL" Association="MyDatabaseModel.Store.FK_DMNVL_DMLoaiNVL">
-            <End Role="DMLoaiNVL" EntitySet="DMLoaiNVL" />
-            <End Role="DMNVL" EntitySet="DMNVL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_education_status" Association="MyDatabaseModel.Store.FK_education_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="education" EntitySet="education" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GiaBan_DMHangHoa" Association="MyDatabaseModel.Store.FK_GiaBan_DMHangHoa">
-            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
-            <End Role="GiaBan" EntitySet="GiaBan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_Ban_DMBan" Association="MyDatabaseModel.Store.FK_HoaDon_Ban_DMBan">
-            <End Role="DMBan" EntitySet="DMBan" />
-            <End Role="HoaDon_Ban" EntitySet="HoaDon_Ban" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_Ban_HoaDon" Association="MyDatabaseModel.Store.FK_HoaDon_Ban_HoaDon">
-            <End Role="HoaDon" EntitySet="HoaDon" />
-            <End Role="HoaDon_Ban" EntitySet="HoaDon_Ban" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_DMKhachHang" Association="MyDatabaseModel.Store.FK_HoaDon_DMKhachHang">
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-            <End Role="HoaDon" EntitySet="HoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_DMNhanVien" Association="MyDatabaseModel.Store.FK_HoaDon_DMNhanVien">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="HoaDon" EntitySet="HoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_DMNhanVien1" Association="MyDatabaseModel.Store.FK_HoaDon_DMNhanVien1">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="HoaDon" EntitySet="HoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_jobs_status" Association="MyDatabaseModel.Store.FK_jobs_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="jobs" EntitySet="jobs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhanCong_DMCa" Association="MyDatabaseModel.Store.FK_PhanCong_DMCa">
-            <End Role="DMCa" EntitySet="DMCa" />
-            <End Role="PhanCong" EntitySet="PhanCong" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhanCong_DMNhanVien" Association="MyDatabaseModel.Store.FK_PhanCong_DMNhanVien">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhanCong" EntitySet="PhanCong" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuChi_DMKhachHang" Association="MyDatabaseModel.Store.FK_PhieuChi_DMKhachHang">
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-            <End Role="PhieuChi" EntitySet="PhieuChi" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuChi_DMLoaiPhieu" Association="MyDatabaseModel.Store.FK_PhieuChi_DMLoaiPhieu">
-            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
-            <End Role="PhieuChi" EntitySet="PhieuChi" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuChi_DMNhanVien" Association="MyDatabaseModel.Store.FK_PhieuChi_DMNhanVien">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuChi" EntitySet="PhieuChi" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuChi_DMNhanVien1" Association="MyDatabaseModel.Store.FK_PhieuChi_DMNhanVien1">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuChi" EntitySet="PhieuChi" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuNhap_DMLoaiPhieu" Association="MyDatabaseModel.Store.FK_PhieuNhap_DMLoaiPhieu">
-            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
-            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuNhap_DMNhanVien2" Association="MyDatabaseModel.Store.FK_PhieuNhap_DMNhanVien2">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuNhap_DMNhanVien3" Association="MyDatabaseModel.Store.FK_PhieuNhap_DMNhanVien3">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuThu_DMKhachHang" Association="MyDatabaseModel.Store.FK_PhieuThu_DMKhachHang">
-            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
-            <End Role="PhieuThu" EntitySet="PhieuThu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuThu_DMLoaiPhieu" Association="MyDatabaseModel.Store.FK_PhieuThu_DMLoaiPhieu">
-            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
-            <End Role="PhieuThu" EntitySet="PhieuThu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuThu_DMNhanVien" Association="MyDatabaseModel.Store.FK_PhieuThu_DMNhanVien">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuThu" EntitySet="PhieuThu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuThu_DMNhanVien1" Association="MyDatabaseModel.Store.FK_PhieuThu_DMNhanVien1">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuThu" EntitySet="PhieuThu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuXuat_DMLoaiPhieu" Association="MyDatabaseModel.Store.FK_PhieuXuat_DMLoaiPhieu">
-            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
-            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuXuat_DMNhanVien3" Association="MyDatabaseModel.Store.FK_PhieuXuat_DMNhanVien3">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhieuXuat_DMNhanVien4" Association="MyDatabaseModel.Store.FK_PhieuXuat_DMNhanVien4">
-            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
-            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_products_categories" Association="MyDatabaseModel.Store.FK_products_categories">
-            <End Role="categories" EntitySet="categories" />
-            <End Role="products" EntitySet="products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_products_status" Association="MyDatabaseModel.Store.FK_products_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="products" EntitySet="products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_Branch_cities" Association="MyDatabaseModel.Store.FK_RS_Branch_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_Branch_status" Association="MyDatabaseModel.Store.FK_RS_Branch_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_Menu_admin" Association="MyDatabaseModel.Store.FK_RS_Menu_admin">
-            <End Role="admin" EntitySet="admin" />
-            <End Role="RS_Menu" EntitySet="RS_Menu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_Menu_admin1" Association="MyDatabaseModel.Store.FK_RS_Menu_admin1">
-            <End Role="admin" EntitySet="admin" />
-            <End Role="RS_Menu" EntitySet="RS_Menu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_RS_Branch_admin" Association="MyDatabaseModel.Store.FK_RS_RS_Branch_admin">
-            <End Role="admin" EntitySet="admin" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_RS_Branch_admin1" Association="MyDatabaseModel.Store.FK_RS_RS_Branch_admin1">
-            <End Role="admin" EntitySet="admin" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_cities" Association="MyDatabaseModel.Store.FK_shops_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_RS_Branch" Association="MyDatabaseModel.Store.FK_shops_RS_Branch">
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_shoptype" Association="MyDatabaseModel.Store.FK_shops_shoptype">
-            <End Role="shoptype" EntitySet="shoptype" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_status" Association="MyDatabaseModel.Store.FK_shops_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shoptype_status" Association="MyDatabaseModel.Store.FK_shoptype_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="shoptype" EntitySet="shoptype" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_cities" Association="MyDatabaseModel.Store.FK_user_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_districts" Association="MyDatabaseModel.Store.FK_user_districts">
-            <End Role="districts" EntitySet="districts" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_education" Association="MyDatabaseModel.Store.FK_user_education">
-            <End Role="education" EntitySet="education" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_jobs" Association="MyDatabaseModel.Store.FK_user_jobs">
-            <End Role="jobs" EntitySet="jobs" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_status" Association="MyDatabaseModel.Store.FK_user_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_usertype" Association="MyDatabaseModel.Store.FK_user_usertype">
-            <End Role="customertype" EntitySet="customertype" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usertype_status" Association="MyDatabaseModel.Store.FK_usertype_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="customertype" EntitySet="customertype" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UuDaiThanhVien_DMLoaiKhachHang" Association="MyDatabaseModel.Store.FK_UuDaiThanhVien_DMLoaiKhachHang">
-            <End Role="DMLoaiKhachHang" EntitySet="DMLoaiKhachHang" />
-            <End Role="UuDaiThanhVien" EntitySet="UuDaiThanhVien" />
-          </AssociationSet>
-        </EntityContainer>
+    <Schema Namespace="MyDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="admin_id" />
           </Key>
-          <Property Name="admin_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="nvarchar(max)" />
           <Property Name="password" Type="nvarchar(max)" />
           <Property Name="admin_type" Type="int" />
@@ -356,15 +21,15 @@
           <Key>
             <PropertyRef Name="MaMenu" />
           </Key>
-          <Property Name="MenuID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="MaMenu" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="TenMenu" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaMenu" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TenMenu" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
           <Property Name="MoTa" Type="text" />
-          <Property Name="NguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="ChucNang" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="NguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChucNang" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
-          <Property Name="NguoiTao" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="NguoiTao" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="NgaySua" Type="datetime" />
           <Property Name="NguoiSua" Type="varchar" MaxLength="20" />
           <Property Name="Active" Type="bit" />
@@ -373,18 +38,18 @@
           <Key>
             <PropertyRef Name="MaNguoiDung" />
           </Key>
-          <Property Name="NguoiDungID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="MaNguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="MaNhomNguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="MatKhau" Type="varchar" Nullable="false" MaxLength="250" />
-          <Property Name="TaiKhoan" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="NguoiDungID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaNhomNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="TaiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
           <Property Name="MaNhanVien" Type="varchar" MaxLength="20" />
-          <Property Name="NguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="ChucNang" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="NguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChucNang" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
-          <Property Name="NguoiTao" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="NguoiTao" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="NgaySua" Type="datetime" />
           <Property Name="NguoiSua" Type="varchar" MaxLength="20" />
           <Property Name="Active" Type="bit" />
@@ -393,7 +58,7 @@
           <Key>
             <PropertyRef Name="ThongTin_ID" />
           </Key>
-          <Property Name="ThongTin_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ThongTin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NguoiDung" Type="varchar" MaxLength="20" />
           <Property Name="ThoiGian" Type="datetime" />
           <Property Name="ChucNang" Type="nvarchar" MaxLength="100" />
@@ -406,9 +71,9 @@
             <PropertyRef Name="MaMenu" />
             <PropertyRef Name="MaNhomNguoiDung" />
           </Key>
-          <Property Name="NhomMenuID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="MaMenu" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="MaNhomNguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="NhomMenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaMenu" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaNhomNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="VIEW" Type="bit" Nullable="false" />
           <Property Name="ADD" Type="bit" Nullable="false" />
           <Property Name="EDIT" Type="bit" Nullable="false" />
@@ -417,10 +82,10 @@
           <Property Name="EXPORT" Type="bit" Nullable="false" />
           <Property Name="PRINT" Type="bit" Nullable="false" />
           <Property Name="CONTROL" Type="bit" Nullable="false" />
-          <Property Name="NguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="ChucNang" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="NguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChucNang" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
-          <Property Name="NguoiTao" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="NguoiTao" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="NgaySua" Type="datetime" />
           <Property Name="NguoiSua" Type="nchar" MaxLength="10" />
           <Property Name="Active" Type="bit" />
@@ -429,32 +94,18 @@
           <Key>
             <PropertyRef Name="MaNhomNguoiDung" />
           </Key>
-          <Property Name="NhomNguoiDungID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="MaNhomNguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="TenNhomNguoiDung" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="NhomNguoiDungID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNhomNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TenNhomNguoiDung" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
-          <Property Name="NguoiDung" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="ChucNang" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="NguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChucNang" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
-          <Property Name="NguoiTao" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="NguoiTao" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="NgaySua" Type="datetime" />
           <Property Name="NguoiSua" Type="varchar" MaxLength="20" />
           <Property Name="Active" Type="bit" />
-        </EntityType>
-        <EntityType Name="categories">
-          <Key>
-            <PropertyRef Name="category_id" />
-          </Key>
-          <Property Name="category_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="nvarchar(max)" />
-          <Property Name="modelImage" Type="nvarchar(max)" />
-          <Property Name="serialImage" Type="nvarchar(max)" />
-          <Property Name="nameImage" Type="nvarchar(max)" />
-          <Property Name="status_id" Type="int" />
-          <Property Name="viewModelImage" Type="nvarchar(max)" />
-          <Property Name="viewSerialImage" Type="nvarchar(max)" />
-          <Property Name="RS_base_warranty_months" Type="int" />
         </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
@@ -489,62 +140,6 @@
           <Property Name="DonViTinh" Type="int" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="cities">
-          <Key>
-            <PropertyRef Name="city_id" />
-          </Key>
-          <Property Name="city_id" Type="int" Nullable="false" />
-          <Property Name="name" Type="nvarchar(max)" />
-          <Property Name="porder" Type="int" />
-          <Property Name="status_id" Type="int" />
-        </EntityType>
-        <EntityType Name="customer">
-          <Key>
-            <PropertyRef Name="customer_id" />
-          </Key>
-          <Property Name="customer_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="email" Type="nvarchar(max)" />
-          <Property Name="password" Type="nvarchar(max)" />
-          <Property Name="firstname" Type="nvarchar(max)" />
-          <Property Name="lastname" Type="nvarchar(max)" />
-          <Property Name="sex" Type="bit" />
-          <Property Name="birthday" Type="date" />
-          <Property Name="homephone" Type="nvarchar(max)" />
-          <Property Name="mobilephone" Type="nvarchar(max)" />
-          <Property Name="address" Type="nvarchar(max)" />
-          <Property Name="district_id" Type="int" />
-          <Property Name="city_id" Type="int" />
-          <Property Name="identitycard" Type="nvarchar(max)" />
-          <Property Name="job_id" Type="int" />
-          <Property Name="education_id" Type="int" />
-          <Property Name="status_id" Type="int" />
-          <Property Name="customertype_id" Type="int" />
-          <Property Name="customercodereg" Type="nvarchar(max)" />
-          <Property Name="datereg" Type="datetime" />
-          <Property Name="status_active" Type="int" />
-          <Property Name="modifieddate" Type="datetime" />
-          <Property Name="RM" Type="nvarchar(max)" />
-          <Property Name="RM1" Type="nvarchar(max)" />
-          <Property Name="RM2" Type="nvarchar(max)" />
-          <Property Name="IsPending" Type="bit" />
-        </EntityType>
-        <EntityType Name="customerlock">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="email" Type="nvarchar(max)" />
-          <Property Name="timelock" Type="nvarchar(max)" />
-          <Property Name="status_id" Type="int" />
-        </EntityType>
-        <EntityType Name="customertype">
-          <Key>
-            <PropertyRef Name="customertype_id" />
-          </Key>
-          <Property Name="customertype_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="nvarchar(max)" />
-          <Property Name="status_id" Type="int" />
-        </EntityType>
         <EntityType Name="DinhMuc">
           <Key>
             <PropertyRef Name="HangHoaID" />
@@ -556,20 +151,11 @@
           <Property Name="TuNgay" Type="datetime" />
           <Property Name="DenNgay" Type="datetime" />
         </EntityType>
-        <EntityType Name="districts">
-          <Key>
-            <PropertyRef Name="district_id" />
-          </Key>
-          <Property Name="district_id" Type="int" Nullable="false" />
-          <Property Name="city_id" Type="int" />
-          <Property Name="name" Type="nvarchar(max)" />
-          <Property Name="status_id" Type="int" />
-        </EntityType>
         <EntityType Name="DMBan">
           <Key>
             <PropertyRef Name="BanID" />
           </Key>
-          <Property Name="BanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaBan" Type="varchar" MaxLength="5" />
           <Property Name="TenBan" Type="nvarchar" MaxLength="50" />
           <Property Name="SoLuong" Type="int" />
@@ -580,7 +166,7 @@
           <Key>
             <PropertyRef Name="CaID" />
           </Key>
-          <Property Name="CaID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaCa" Type="varchar" MaxLength="1" />
           <Property Name="TenCa" Type="nvarchar" MaxLength="50" />
           <Property Name="TuGio" Type="int" />
@@ -591,7 +177,7 @@
           <Key>
             <PropertyRef Name="DonViTinhID" />
           </Key>
-          <Property Name="DonViTinhID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DonViTinhID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenDonViTinh" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
         </EntityType>
@@ -599,7 +185,7 @@
           <Key>
             <PropertyRef Name="HangHoaID" />
           </Key>
-          <Property Name="HangHoaID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HangHoaID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LoaiHangID" Type="int" />
           <Property Name="MaHangHoa" Type="varchar" MaxLength="50" />
           <Property Name="TenHangHoa" Type="nvarchar" MaxLength="50" />
@@ -609,7 +195,7 @@
           <Key>
             <PropertyRef Name="KhachHangID" />
           </Key>
-          <Property Name="KhachHangID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="KhachHangID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaKhachHang" Type="varchar" MaxLength="20" />
           <Property Name="TenKhachHang" Type="nvarchar" MaxLength="50" />
           <Property Name="NgaySinh" Type="datetime" />
@@ -627,7 +213,7 @@
           <Key>
             <PropertyRef Name="LoaiHangID" />
           </Key>
-          <Property Name="LoaiHangID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiHangID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaLoaiHang" Type="varchar" MaxLength="3" />
           <Property Name="TenLoaiHang" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
@@ -636,7 +222,7 @@
           <Key>
             <PropertyRef Name="LoaiKhachHangID" />
           </Key>
-          <Property Name="LoaiKhachHangID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiKhachHangID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaLoaiKhachHang" Type="varchar" MaxLength="2" />
           <Property Name="TenLoaiKhachHang" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -644,7 +230,7 @@
           <Key>
             <PropertyRef Name="LoaiNhanVienID" />
           </Key>
-          <Property Name="LoaiNhanVienID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiNhanVienID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaLoaiNhanVien" Type="varchar" MaxLength="2" />
           <Property Name="TenLoaiNhanVien" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -652,7 +238,7 @@
           <Key>
             <PropertyRef Name="LoaiNVLID" />
           </Key>
-          <Property Name="LoaiNVLID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiNVLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaLoaiNVL" Type="varchar" MaxLength="3" />
           <Property Name="TenLoaiNVL" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
@@ -661,7 +247,7 @@
           <Key>
             <PropertyRef Name="LoaiPhieuID" />
           </Key>
-          <Property Name="LoaiPhieuID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiPhieuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaLoaiPhieu" Type="varchar" MaxLength="2" />
           <Property Name="TenLoaiPhieu" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
@@ -670,7 +256,7 @@
           <Key>
             <PropertyRef Name="NhanVienID" />
           </Key>
-          <Property Name="NhanVienID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NhanVienID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaNhanVien" Type="varchar" MaxLength="5" />
           <Property Name="LoaiNhanVienID" Type="int" />
           <Property Name="TenNhanVien" Type="nvarchar" MaxLength="50" />
@@ -686,7 +272,7 @@
           <Key>
             <PropertyRef Name="NVLID" />
           </Key>
-          <Property Name="NVLID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NVLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaNVL" Type="varchar" MaxLength="10" />
           <Property Name="LoaiNVLID" Type="int" />
           <Property Name="TenNVL" Type="nvarchar" MaxLength="50" />
@@ -701,19 +287,11 @@
           <Property Name="Min" Type="float" />
           <Property Name="Max" Type="float" />
         </EntityType>
-        <EntityType Name="education">
-          <Key>
-            <PropertyRef Name="education_id" />
-          </Key>
-          <Property Name="education_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="nvarchar(max)" />
-          <Property Name="status_id" Type="int" />
-        </EntityType>
         <EntityType Name="GiaBan">
           <Key>
             <PropertyRef Name="GiaBanID" />
           </Key>
-          <Property Name="GiaBanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GiaBanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="HangHoaID" Type="bigint" />
           <Property Name="Gia" Type="float" />
           <Property Name="TuNgay" Type="datetime" />
@@ -726,7 +304,7 @@
           <Key>
             <PropertyRef Name="HoaDonID" />
           </Key>
-          <Property Name="HoaDonID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HoaDonID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaHoaDon" Type="varchar" MaxLength="12" />
           <Property Name="KhachHangID" Type="bigint" />
           <Property Name="NhanVienID" Type="int" />
@@ -754,25 +332,17 @@
           <Key>
             <PropertyRef Name="STT" />
           </Key>
-          <Property Name="STT" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="STT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="HoaDonID" Type="bigint" />
           <Property Name="BanID" Type="int" />
           <Property Name="ThoiGianBatDau" Type="datetime" />
           <Property Name="ThoiGian" Type="datetime" />
         </EntityType>
-        <EntityType Name="jobs">
-          <Key>
-            <PropertyRef Name="job_id" />
-          </Key>
-          <Property Name="job_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="nvarchar(max)" />
-          <Property Name="status_id" Type="int" />
-        </EntityType>
         <EntityType Name="LogError">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Content" Type="nvarchar(max)" />
           <Property Name="Created" Type="datetime" />
         </EntityType>
@@ -780,7 +350,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="customer_id" Type="int" />
           <Property Name="password" Type="nvarchar(max)" />
           <Property Name="datechange" Type="datetime" />
@@ -823,7 +393,7 @@
           <Key>
             <PropertyRef Name="PhieuNhapID" />
           </Key>
-          <Property Name="PhieuNhapID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PhieuNhapID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaPhieuNhap" Type="varchar" MaxLength="9" />
           <Property Name="LoaiPhieu" Type="int" />
           <Property Name="NgayNhap" Type="datetime" />
@@ -859,7 +429,7 @@
           <Key>
             <PropertyRef Name="PhieuXuatID" />
           </Key>
-          <Property Name="PhieuXuatID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PhieuXuatID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaPhieuXuat" Type="varchar" MaxLength="9" />
           <Property Name="LoaiPhieuID" Type="int" />
           <Property Name="NgayXuat" Type="datetime" />
@@ -870,45 +440,11 @@
           <Property Name="LyDo" Type="nvarchar" MaxLength="100" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="products">
-          <Key>
-            <PropertyRef Name="product_id" />
-          </Key>
-          <Property Name="product_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="category_id" Type="int" />
-          <Property Name="productcode" Type="nvarchar(max)" />
-          <Property Name="name" Type="nvarchar(max)" />
-          <Property Name="status_id" Type="int" />
-        </EntityType>
-        <EntityType Name="resethistory">
-          <Key>
-            <PropertyRef Name="para_id" />
-          </Key>
-          <Property Name="para_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="customercodereg" Type="nvarchar(max)" />
-          <Property Name="senttime" Type="datetime" />
-          <Property Name="expiredtime" Type="datetime" />
-          <Property Name="longsenttime" Type="nvarchar(max)" />
-          <Property Name="status_id" Type="int" />
-        </EntityType>
-        <EntityType Name="RS_Branch">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="city_id" Type="int" Nullable="false" />
-          <Property Name="status_id" Type="int" Nullable="false" />
-          <Property Name="Created" Type="datetime" />
-          <Property Name="Modified" Type="datetime" />
-          <Property Name="CreatedBy" Type="int" />
-          <Property Name="ModifiedBy" Type="int" />
-        </EntityType>
         <EntityType Name="RS_Menu">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="CssClass" Type="nvarchar" MaxLength="50" />
           <Property Name="Url" Type="nvarchar" MaxLength="100" />
@@ -917,39 +453,20 @@
           <Property Name="CreatedBy" Type="int" />
           <Property Name="ModifiedBy" Type="int" />
         </EntityType>
-        <EntityType Name="shops">
-          <Key>
-            <PropertyRef Name="shop_id" />
-          </Key>
-          <Property Name="shop_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="nvarchar(max)" />
-          <Property Name="city_id" Type="int" />
-          <Property Name="shoptype_id" Type="int" />
-          <Property Name="status_id" Type="int" />
-          <Property Name="branch_id" Type="int" />
-        </EntityType>
-        <EntityType Name="shoptype">
-          <Key>
-            <PropertyRef Name="shoptype_id" />
-          </Key>
-          <Property Name="shoptype_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="nvarchar(max)" />
-          <Property Name="status_id" Type="int" />
-        </EntityType>
         <EntityType Name="status">
           <Key>
             <PropertyRef Name="status_id" />
           </Key>
-          <Property Name="status_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
@@ -957,7 +474,7 @@
           <Key>
             <PropertyRef Name="UuDaiID" />
           </Key>
-          <Property Name="UuDaiID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UuDaiID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LoaiKhachHangID" Type="int" />
           <Property Name="GiamGia" Type="float" />
           <Property Name="KhuyenMai" Type="float" />
@@ -965,9 +482,79 @@
           <Property Name="DenNgay" Type="datetime" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyDatabase.dbo.GetDataSetNguoiDung' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GetDataSetNguoiDung">
+          <Key>
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+            <PropertyRef Name="Expr3" />
+            <PropertyRef Name="Expr4" />
+            <PropertyRef Name="NguoiDungID" />
+            <PropertyRef Name="MaNguoiDung" />
+            <PropertyRef Name="MaNhomNguoiDung" />
+            <PropertyRef Name="MatKhau" />
+            <PropertyRef Name="TaiKhoan" />
+            <PropertyRef Name="TrangThai" />
+            <PropertyRef Name="NguoiDung" />
+            <PropertyRef Name="ChucNang" />
+            <PropertyRef Name="NgayTao" />
+            <PropertyRef Name="NguoiTao" />
+            <PropertyRef Name="Expr8" />
+          </Key>
+          <Property Name="Expr1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Expr2" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Expr3" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Expr4" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Expr5" Type="nvarchar" MaxLength="500" />
+          <Property Name="Expr6" Type="bit" />
+          <Property Name="Expr7" Type="varchar" MaxLength="20" />
+          <Property Name="NguoiDungID" Type="int" Nullable="false" />
+          <Property Name="MaNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaNhomNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="TaiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TrangThai" Type="bit" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
+          <Property Name="MaNhanVien" Type="varchar" MaxLength="20" />
+          <Property Name="NguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChucNang" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NgayTao" Type="datetime" Nullable="false" />
+          <Property Name="NguoiTao" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NgaySua" Type="datetime" />
+          <Property Name="NguoiSua" Type="varchar" MaxLength="20" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Expr8" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="phanQuyen">
+          <Key>
+            <PropertyRef Name="TenMenu" />
+            <PropertyRef Name="VIEW" />
+            <PropertyRef Name="ADD" />
+            <PropertyRef Name="EDIT" />
+            <PropertyRef Name="DELETE" />
+            <PropertyRef Name="IMPORT" />
+            <PropertyRef Name="EXPORT" />
+            <PropertyRef Name="PRINT" />
+            <PropertyRef Name="CONTROL" />
+            <PropertyRef Name="TaiKhoan" />
+          </Key>
+          <Property Name="TenMenu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="VIEW" Type="bit" Nullable="false" />
+          <Property Name="ADD" Type="bit" Nullable="false" />
+          <Property Name="EDIT" Type="bit" Nullable="false" />
+          <Property Name="DELETE" Type="bit" Nullable="false" />
+          <Property Name="IMPORT" Type="bit" Nullable="false" />
+          <Property Name="EXPORT" Type="bit" Nullable="false" />
+          <Property Name="PRINT" Type="bit" Nullable="false" />
+          <Property Name="CONTROL" Type="bit" Nullable="false" />
+          <Property Name="TaiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <Association Name="FK_admin_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="admin" Type="MyDatabaseModel.Store.admin" Multiplicity="*" />
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="admin" Type="Self.admin" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
               <PropertyRef Name="status_id" />
@@ -978,8 +565,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ANguoiDung_ANhomNguoiDung">
-          <End Role="ANhomNguoiDung" Type="MyDatabaseModel.Store.ANhomNguoiDung" Multiplicity="1" />
-          <End Role="ANguoiDung" Type="MyDatabaseModel.Store.ANguoiDung" Multiplicity="*" />
+          <End Role="ANhomNguoiDung" Type="Self.ANhomNguoiDung" Multiplicity="1" />
+          <End Role="ANguoiDung" Type="Self.ANguoiDung" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ANhomNguoiDung">
               <PropertyRef Name="MaNhomNguoiDung" />
@@ -990,8 +577,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ANhomMenu_AMenu">
-          <End Role="AMenu" Type="MyDatabaseModel.Store.AMenu" Multiplicity="1" />
-          <End Role="ANhomMenu" Type="MyDatabaseModel.Store.ANhomMenu" Multiplicity="*" />
+          <End Role="AMenu" Type="Self.AMenu" Multiplicity="1" />
+          <End Role="ANhomMenu" Type="Self.ANhomMenu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AMenu">
               <PropertyRef Name="MaMenu" />
@@ -1002,8 +589,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ANhomMenu_ANhomNguoiDung">
-          <End Role="ANhomNguoiDung" Type="MyDatabaseModel.Store.ANhomNguoiDung" Multiplicity="1" />
-          <End Role="ANhomMenu" Type="MyDatabaseModel.Store.ANhomMenu" Multiplicity="*" />
+          <End Role="ANhomNguoiDung" Type="Self.ANhomNguoiDung" Multiplicity="1" />
+          <End Role="ANhomMenu" Type="Self.ANhomMenu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ANhomNguoiDung">
               <PropertyRef Name="MaNhomNguoiDung" />
@@ -1013,21 +600,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_categories_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="categories" Type="MyDatabaseModel.Store.categories" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="categories">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ChiTietHoaDon_DMHangHoa">
-          <End Role="DMHangHoa" Type="MyDatabaseModel.Store.DMHangHoa" Multiplicity="1" />
-          <End Role="ChiTietHoaDon" Type="MyDatabaseModel.Store.ChiTietHoaDon" Multiplicity="*" />
+          <End Role="DMHangHoa" Type="Self.DMHangHoa" Multiplicity="1" />
+          <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMHangHoa">
               <PropertyRef Name="HangHoaID" />
@@ -1038,8 +613,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietHoaDon_HoaDon">
-          <End Role="HoaDon" Type="MyDatabaseModel.Store.HoaDon" Multiplicity="1" />
-          <End Role="ChiTietHoaDon" Type="MyDatabaseModel.Store.ChiTietHoaDon" Multiplicity="*" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
               <PropertyRef Name="HoaDonID" />
@@ -1050,8 +625,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuNhap_DMKhachHang">
-          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="0..1" />
-          <End Role="ChiTietPhieuNhap" Type="MyDatabaseModel.Store.ChiTietPhieuNhap" Multiplicity="*" />
+          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="0..1" />
+          <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMKhachHang">
               <PropertyRef Name="KhachHangID" />
@@ -1062,8 +637,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuNhap_DMNVL">
-          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="1" />
-          <End Role="ChiTietPhieuNhap" Type="MyDatabaseModel.Store.ChiTietPhieuNhap" Multiplicity="*" />
+          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="1" />
+          <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNVL">
               <PropertyRef Name="NVLID" />
@@ -1074,8 +649,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuNhap_PhieuNhap">
-          <End Role="PhieuNhap" Type="MyDatabaseModel.Store.PhieuNhap" Multiplicity="1" />
-          <End Role="ChiTietPhieuNhap" Type="MyDatabaseModel.Store.ChiTietPhieuNhap" Multiplicity="*" />
+          <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="1" />
+          <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PhieuNhap">
               <PropertyRef Name="PhieuNhapID" />
@@ -1086,8 +661,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuXuat_DMKhachHang">
-          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="0..1" />
-          <End Role="ChiTietPhieuXuat" Type="MyDatabaseModel.Store.ChiTietPhieuXuat" Multiplicity="*" />
+          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="0..1" />
+          <End Role="ChiTietPhieuXuat" Type="Self.ChiTietPhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMKhachHang">
               <PropertyRef Name="KhachHangID" />
@@ -1098,8 +673,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuXuat_DMNVL">
-          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="1" />
-          <End Role="ChiTietPhieuXuat" Type="MyDatabaseModel.Store.ChiTietPhieuXuat" Multiplicity="*" />
+          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="1" />
+          <End Role="ChiTietPhieuXuat" Type="Self.ChiTietPhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNVL">
               <PropertyRef Name="NVLID" />
@@ -1110,8 +685,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChiTietPhieuXuat_PhieuXuat">
-          <End Role="PhieuXuat" Type="MyDatabaseModel.Store.PhieuXuat" Multiplicity="1" />
-          <End Role="ChiTietPhieuXuat" Type="MyDatabaseModel.Store.ChiTietPhieuXuat" Multiplicity="*" />
+          <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="1" />
+          <End Role="ChiTietPhieuXuat" Type="Self.ChiTietPhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PhieuXuat">
               <PropertyRef Name="PhieuXuatID" />
@@ -1121,21 +696,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_cities_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="cities" Type="MyDatabaseModel.Store.cities" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="cities">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_DinhMuc_DMHangHoa">
-          <End Role="DMHangHoa" Type="MyDatabaseModel.Store.DMHangHoa" Multiplicity="1" />
-          <End Role="DinhMuc" Type="MyDatabaseModel.Store.DinhMuc" Multiplicity="*" />
+          <End Role="DMHangHoa" Type="Self.DMHangHoa" Multiplicity="1" />
+          <End Role="DinhMuc" Type="Self.DinhMuc" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMHangHoa">
               <PropertyRef Name="HangHoaID" />
@@ -1146,8 +709,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DinhMuc_DMNVL">
-          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="1" />
-          <End Role="DinhMuc" Type="MyDatabaseModel.Store.DinhMuc" Multiplicity="*" />
+          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="1" />
+          <End Role="DinhMuc" Type="Self.DinhMuc" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNVL">
               <PropertyRef Name="NVLID" />
@@ -1157,33 +720,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_districts_cities">
-          <End Role="cities" Type="MyDatabaseModel.Store.cities" Multiplicity="0..1" />
-          <End Role="districts" Type="MyDatabaseModel.Store.districts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cities">
-              <PropertyRef Name="city_id" />
-            </Principal>
-            <Dependent Role="districts">
-              <PropertyRef Name="city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_districts_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="districts" Type="MyDatabaseModel.Store.districts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="districts">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_DMHangHoa_DMLoaiHang">
-          <End Role="DMLoaiHang" Type="MyDatabaseModel.Store.DMLoaiHang" Multiplicity="0..1" />
-          <End Role="DMHangHoa" Type="MyDatabaseModel.Store.DMHangHoa" Multiplicity="*" />
+          <End Role="DMLoaiHang" Type="Self.DMLoaiHang" Multiplicity="0..1" />
+          <End Role="DMHangHoa" Type="Self.DMHangHoa" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiHang">
               <PropertyRef Name="LoaiHangID" />
@@ -1194,8 +733,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMKhachHang_DMLoaiKhachHang">
-          <End Role="DMLoaiKhachHang" Type="MyDatabaseModel.Store.DMLoaiKhachHang" Multiplicity="0..1" />
-          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="*" />
+          <End Role="DMLoaiKhachHang" Type="Self.DMLoaiKhachHang" Multiplicity="0..1" />
+          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiKhachHang">
               <PropertyRef Name="LoaiKhachHangID" />
@@ -1206,8 +745,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNhanVien_DMLoaiNhanVien">
-          <End Role="DMLoaiNhanVien" Type="MyDatabaseModel.Store.DMLoaiNhanVien" Multiplicity="0..1" />
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="*" />
+          <End Role="DMLoaiNhanVien" Type="Self.DMLoaiNhanVien" Multiplicity="0..1" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiNhanVien">
               <PropertyRef Name="LoaiNhanVienID" />
@@ -1218,8 +757,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNVL_DMDonViTinh">
-          <End Role="DMDonViTinh" Type="MyDatabaseModel.Store.DMDonViTinh" Multiplicity="0..1" />
-          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="*" />
+          <End Role="DMDonViTinh" Type="Self.DMDonViTinh" Multiplicity="0..1" />
+          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMDonViTinh">
               <PropertyRef Name="DonViTinhID" />
@@ -1230,8 +769,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNVL_DMDonViTinh1">
-          <End Role="DMDonViTinh" Type="MyDatabaseModel.Store.DMDonViTinh" Multiplicity="0..1" />
-          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="*" />
+          <End Role="DMDonViTinh" Type="Self.DMDonViTinh" Multiplicity="0..1" />
+          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMDonViTinh">
               <PropertyRef Name="DonViTinhID" />
@@ -1242,8 +781,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNVL_DMDonViTinh2">
-          <End Role="DMDonViTinh" Type="MyDatabaseModel.Store.DMDonViTinh" Multiplicity="0..1" />
-          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="*" />
+          <End Role="DMDonViTinh" Type="Self.DMDonViTinh" Multiplicity="0..1" />
+          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMDonViTinh">
               <PropertyRef Name="DonViTinhID" />
@@ -1254,8 +793,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNVL_DMDonViTinh3">
-          <End Role="DMDonViTinh" Type="MyDatabaseModel.Store.DMDonViTinh" Multiplicity="0..1" />
-          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="*" />
+          <End Role="DMDonViTinh" Type="Self.DMDonViTinh" Multiplicity="0..1" />
+          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMDonViTinh">
               <PropertyRef Name="DonViTinhID" />
@@ -1266,8 +805,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DMNVL_DMLoaiNVL">
-          <End Role="DMLoaiNVL" Type="MyDatabaseModel.Store.DMLoaiNVL" Multiplicity="0..1" />
-          <End Role="DMNVL" Type="MyDatabaseModel.Store.DMNVL" Multiplicity="*" />
+          <End Role="DMLoaiNVL" Type="Self.DMLoaiNVL" Multiplicity="0..1" />
+          <End Role="DMNVL" Type="Self.DMNVL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiNVL">
               <PropertyRef Name="LoaiNVLID" />
@@ -1277,21 +816,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_education_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="education" Type="MyDatabaseModel.Store.education" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="education">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_GiaBan_DMHangHoa">
-          <End Role="DMHangHoa" Type="MyDatabaseModel.Store.DMHangHoa" Multiplicity="0..1" />
-          <End Role="GiaBan" Type="MyDatabaseModel.Store.GiaBan" Multiplicity="*" />
+          <End Role="DMHangHoa" Type="Self.DMHangHoa" Multiplicity="0..1" />
+          <End Role="GiaBan" Type="Self.GiaBan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMHangHoa">
               <PropertyRef Name="HangHoaID" />
@@ -1302,8 +829,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_Ban_DMBan">
-          <End Role="DMBan" Type="MyDatabaseModel.Store.DMBan" Multiplicity="0..1" />
-          <End Role="HoaDon_Ban" Type="MyDatabaseModel.Store.HoaDon_Ban" Multiplicity="*" />
+          <End Role="DMBan" Type="Self.DMBan" Multiplicity="0..1" />
+          <End Role="HoaDon_Ban" Type="Self.HoaDon_Ban" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMBan">
               <PropertyRef Name="BanID" />
@@ -1314,8 +841,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_Ban_HoaDon">
-          <End Role="HoaDon" Type="MyDatabaseModel.Store.HoaDon" Multiplicity="0..1" />
-          <End Role="HoaDon_Ban" Type="MyDatabaseModel.Store.HoaDon_Ban" Multiplicity="*" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="0..1" />
+          <End Role="HoaDon_Ban" Type="Self.HoaDon_Ban" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
               <PropertyRef Name="HoaDonID" />
@@ -1326,8 +853,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_DMKhachHang">
-          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="0..1" />
-          <End Role="HoaDon" Type="MyDatabaseModel.Store.HoaDon" Multiplicity="*" />
+          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMKhachHang">
               <PropertyRef Name="KhachHangID" />
@@ -1338,8 +865,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_DMNhanVien">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
-          <End Role="HoaDon" Type="MyDatabaseModel.Store.HoaDon" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1350,8 +877,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_DMNhanVien1">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
-          <End Role="HoaDon" Type="MyDatabaseModel.Store.HoaDon" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1361,21 +888,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_jobs_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="jobs" Type="MyDatabaseModel.Store.jobs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="jobs">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PhanCong_DMCa">
-          <End Role="DMCa" Type="MyDatabaseModel.Store.DMCa" Multiplicity="1" />
-          <End Role="PhanCong" Type="MyDatabaseModel.Store.PhanCong" Multiplicity="*" />
+          <End Role="DMCa" Type="Self.DMCa" Multiplicity="1" />
+          <End Role="PhanCong" Type="Self.PhanCong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMCa">
               <PropertyRef Name="CaID" />
@@ -1386,8 +901,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhanCong_DMNhanVien">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="1" />
-          <End Role="PhanCong" Type="MyDatabaseModel.Store.PhanCong" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="1" />
+          <End Role="PhanCong" Type="Self.PhanCong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1398,8 +913,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuChi_DMKhachHang">
-          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="0..1" />
-          <End Role="PhieuChi" Type="MyDatabaseModel.Store.PhieuChi" Multiplicity="*" />
+          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="0..1" />
+          <End Role="PhieuChi" Type="Self.PhieuChi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMKhachHang">
               <PropertyRef Name="KhachHangID" />
@@ -1410,8 +925,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuChi_DMLoaiPhieu">
-          <End Role="DMLoaiPhieu" Type="MyDatabaseModel.Store.DMLoaiPhieu" Multiplicity="0..1" />
-          <End Role="PhieuChi" Type="MyDatabaseModel.Store.PhieuChi" Multiplicity="*" />
+          <End Role="DMLoaiPhieu" Type="Self.DMLoaiPhieu" Multiplicity="0..1" />
+          <End Role="PhieuChi" Type="Self.PhieuChi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiPhieu">
               <PropertyRef Name="LoaiPhieuID" />
@@ -1422,8 +937,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuChi_DMNhanVien">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuChi" Type="MyDatabaseModel.Store.PhieuChi" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuChi" Type="Self.PhieuChi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1434,8 +949,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuChi_DMNhanVien1">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuChi" Type="MyDatabaseModel.Store.PhieuChi" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuChi" Type="Self.PhieuChi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1446,8 +961,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuNhap_DMLoaiPhieu">
-          <End Role="DMLoaiPhieu" Type="MyDatabaseModel.Store.DMLoaiPhieu" Multiplicity="0..1" />
-          <End Role="PhieuNhap" Type="MyDatabaseModel.Store.PhieuNhap" Multiplicity="*" />
+          <End Role="DMLoaiPhieu" Type="Self.DMLoaiPhieu" Multiplicity="0..1" />
+          <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiPhieu">
               <PropertyRef Name="LoaiPhieuID" />
@@ -1458,8 +973,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuNhap_DMNhanVien2">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuNhap" Type="MyDatabaseModel.Store.PhieuNhap" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1470,8 +985,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuNhap_DMNhanVien3">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuNhap" Type="MyDatabaseModel.Store.PhieuNhap" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1482,8 +997,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuThu_DMKhachHang">
-          <End Role="DMKhachHang" Type="MyDatabaseModel.Store.DMKhachHang" Multiplicity="0..1" />
-          <End Role="PhieuThu" Type="MyDatabaseModel.Store.PhieuThu" Multiplicity="*" />
+          <End Role="DMKhachHang" Type="Self.DMKhachHang" Multiplicity="0..1" />
+          <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMKhachHang">
               <PropertyRef Name="KhachHangID" />
@@ -1494,8 +1009,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuThu_DMLoaiPhieu">
-          <End Role="DMLoaiPhieu" Type="MyDatabaseModel.Store.DMLoaiPhieu" Multiplicity="0..1" />
-          <End Role="PhieuThu" Type="MyDatabaseModel.Store.PhieuThu" Multiplicity="*" />
+          <End Role="DMLoaiPhieu" Type="Self.DMLoaiPhieu" Multiplicity="0..1" />
+          <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiPhieu">
               <PropertyRef Name="LoaiPhieuID" />
@@ -1506,8 +1021,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuThu_DMNhanVien">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuThu" Type="MyDatabaseModel.Store.PhieuThu" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1518,8 +1033,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuThu_DMNhanVien1">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuThu" Type="MyDatabaseModel.Store.PhieuThu" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1530,8 +1045,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuXuat_DMLoaiPhieu">
-          <End Role="DMLoaiPhieu" Type="MyDatabaseModel.Store.DMLoaiPhieu" Multiplicity="0..1" />
-          <End Role="PhieuXuat" Type="MyDatabaseModel.Store.PhieuXuat" Multiplicity="*" />
+          <End Role="DMLoaiPhieu" Type="Self.DMLoaiPhieu" Multiplicity="0..1" />
+          <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiPhieu">
               <PropertyRef Name="LoaiPhieuID" />
@@ -1542,8 +1057,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuXuat_DMNhanVien3">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuXuat" Type="MyDatabaseModel.Store.PhieuXuat" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1554,8 +1069,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhieuXuat_DMNhanVien4">
-          <End Role="DMNhanVien" Type="MyDatabaseModel.Store.DMNhanVien" Multiplicity="0..1" />
-          <End Role="PhieuXuat" Type="MyDatabaseModel.Store.PhieuXuat" Multiplicity="*" />
+          <End Role="DMNhanVien" Type="Self.DMNhanVien" Multiplicity="0..1" />
+          <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMNhanVien">
               <PropertyRef Name="NhanVienID" />
@@ -1565,57 +1080,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_products_categories">
-          <End Role="categories" Type="MyDatabaseModel.Store.categories" Multiplicity="0..1" />
-          <End Role="products" Type="MyDatabaseModel.Store.products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="categories">
-              <PropertyRef Name="category_id" />
-            </Principal>
-            <Dependent Role="products">
-              <PropertyRef Name="category_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_products_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="products" Type="MyDatabaseModel.Store.products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="products">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RS_Branch_cities">
-          <End Role="cities" Type="MyDatabaseModel.Store.cities" Multiplicity="1" />
-          <End Role="RS_Branch" Type="MyDatabaseModel.Store.RS_Branch" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cities">
-              <PropertyRef Name="city_id" />
-            </Principal>
-            <Dependent Role="RS_Branch">
-              <PropertyRef Name="city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RS_Branch_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="1" />
-          <End Role="RS_Branch" Type="MyDatabaseModel.Store.RS_Branch" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="RS_Branch">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_RS_Menu_admin">
-          <End Role="admin" Type="MyDatabaseModel.Store.admin" Multiplicity="0..1" />
-          <End Role="RS_Menu" Type="MyDatabaseModel.Store.RS_Menu" Multiplicity="*" />
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="RS_Menu" Type="Self.RS_Menu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="admin">
               <PropertyRef Name="admin_id" />
@@ -1626,8 +1093,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RS_Menu_admin1">
-          <End Role="admin" Type="MyDatabaseModel.Store.admin" Multiplicity="0..1" />
-          <End Role="RS_Menu" Type="MyDatabaseModel.Store.RS_Menu" Multiplicity="*" />
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="RS_Menu" Type="Self.RS_Menu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="admin">
               <PropertyRef Name="admin_id" />
@@ -1637,177 +1104,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RS_RS_Branch_admin">
-          <End Role="admin" Type="MyDatabaseModel.Store.admin" Multiplicity="0..1" />
-          <End Role="RS_Branch" Type="MyDatabaseModel.Store.RS_Branch" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="admin">
-              <PropertyRef Name="admin_id" />
-            </Principal>
-            <Dependent Role="RS_Branch">
-              <PropertyRef Name="CreatedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RS_RS_Branch_admin1">
-          <End Role="admin" Type="MyDatabaseModel.Store.admin" Multiplicity="0..1" />
-          <End Role="RS_Branch" Type="MyDatabaseModel.Store.RS_Branch" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="admin">
-              <PropertyRef Name="admin_id" />
-            </Principal>
-            <Dependent Role="RS_Branch">
-              <PropertyRef Name="ModifiedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_shops_cities">
-          <End Role="cities" Type="MyDatabaseModel.Store.cities" Multiplicity="0..1" />
-          <End Role="shops" Type="MyDatabaseModel.Store.shops" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cities">
-              <PropertyRef Name="city_id" />
-            </Principal>
-            <Dependent Role="shops">
-              <PropertyRef Name="city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_shops_RS_Branch">
-          <End Role="RS_Branch" Type="MyDatabaseModel.Store.RS_Branch" Multiplicity="0..1" />
-          <End Role="shops" Type="MyDatabaseModel.Store.shops" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RS_Branch">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="shops">
-              <PropertyRef Name="branch_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_shops_shoptype">
-          <End Role="shoptype" Type="MyDatabaseModel.Store.shoptype" Multiplicity="0..1" />
-          <End Role="shops" Type="MyDatabaseModel.Store.shops" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="shoptype">
-              <PropertyRef Name="shoptype_id" />
-            </Principal>
-            <Dependent Role="shops">
-              <PropertyRef Name="shoptype_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_shops_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="shops" Type="MyDatabaseModel.Store.shops" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="shops">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_shoptype_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="shoptype" Type="MyDatabaseModel.Store.shoptype" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="shoptype">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_cities">
-          <End Role="cities" Type="MyDatabaseModel.Store.cities" Multiplicity="0..1" />
-          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cities">
-              <PropertyRef Name="city_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_districts">
-          <End Role="districts" Type="MyDatabaseModel.Store.districts" Multiplicity="0..1" />
-          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="districts">
-              <PropertyRef Name="district_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="district_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_education">
-          <End Role="education" Type="MyDatabaseModel.Store.education" Multiplicity="0..1" />
-          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="education">
-              <PropertyRef Name="education_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="education_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_jobs">
-          <End Role="jobs" Type="MyDatabaseModel.Store.jobs" Multiplicity="0..1" />
-          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="jobs">
-              <PropertyRef Name="job_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="job_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_usertype">
-          <End Role="customertype" Type="MyDatabaseModel.Store.customertype" Multiplicity="0..1" />
-          <End Role="customer" Type="MyDatabaseModel.Store.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customertype">
-              <PropertyRef Name="customertype_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="customertype_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_usertype_status">
-          <End Role="status" Type="MyDatabaseModel.Store.status" Multiplicity="0..1" />
-          <End Role="customertype" Type="MyDatabaseModel.Store.customertype" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="customertype">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UuDaiThanhVien_DMLoaiKhachHang">
-          <End Role="DMLoaiKhachHang" Type="MyDatabaseModel.Store.DMLoaiKhachHang" Multiplicity="0..1" />
-          <End Role="UuDaiThanhVien" Type="MyDatabaseModel.Store.UuDaiThanhVien" Multiplicity="*" />
+          <End Role="DMLoaiKhachHang" Type="Self.DMLoaiKhachHang" Multiplicity="0..1" />
+          <End Role="UuDaiThanhVien" Type="Self.UuDaiThanhVien" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DMLoaiKhachHang">
               <PropertyRef Name="LoaiKhachHangID" />
@@ -2413,7 +1712,7 @@
           <Parameter Name="Min" Type="float" Mode="In" />
           <Parameter Name="Max" Type="float" Mode="In" />
         </Function>
-        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="GetCustomerProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StartDate" Type="datetime" Mode="In" />
           <Parameter Name="EndDate" Type="datetime" Mode="In" />
@@ -2421,11 +1720,6 @@
         <Function Name="GetCustomerShop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StartDate" Type="datetime" Mode="In" />
           <Parameter Name="EndDate" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetRegisteredProductByMonth" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ShopId" Type="int" Mode="In" />
-          <Parameter Name="Month" Type="int" Mode="In" />
-          <Parameter Name="Year" Type="int" Mode="In" />
         </Function>
         <Function Name="GetSerial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ProductReportByMonthCenter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2499,6 +1793,273 @@
         <Function Name="ZTimKiemCa_M" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ma" Type="nvarchar" Mode="In" />
         </Function>
+        <EntityContainer Name="MyDatabaseModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AMenu" EntityType="Self.AMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ANguoiDung" EntityType="Self.ANguoiDung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ANhatKyHeThong" EntityType="Self.ANhatKyHeThong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ANhomMenu" EntityType="Self.ANhomMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ANhomNguoiDung" EntityType="Self.ANhomNguoiDung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietPhieuNhap" EntityType="Self.ChiTietPhieuNhap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietPhieuXuat" EntityType="Self.ChiTietPhieuXuat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DinhMuc" EntityType="Self.DinhMuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMBan" EntityType="Self.DMBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMCa" EntityType="Self.DMCa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMDonViTinh" EntityType="Self.DMDonViTinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMHangHoa" EntityType="Self.DMHangHoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMKhachHang" EntityType="Self.DMKhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMLoaiHang" EntityType="Self.DMLoaiHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMLoaiKhachHang" EntityType="Self.DMLoaiKhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMLoaiNhanVien" EntityType="Self.DMLoaiNhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMLoaiNVL" EntityType="Self.DMLoaiNVL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMLoaiPhieu" EntityType="Self.DMLoaiPhieu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMNhanVien" EntityType="Self.DMNhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMNVL" EntityType="Self.DMNVL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GiaBan" EntityType="Self.GiaBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDon_Ban" EntityType="Self.HoaDon_Ban" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogError" EntityType="Self.LogError" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PassChange" EntityType="Self.PassChange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhanCong" EntityType="Self.PhanCong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuChi" EntityType="Self.PhieuChi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuNhap" EntityType="Self.PhieuNhap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuThu" EntityType="Self.PhieuThu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuXuat" EntityType="Self.PhieuXuat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Menu" EntityType="Self.RS_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UuDaiThanhVien" EntityType="Self.UuDaiThanhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GetDataSetNguoiDung" EntityType="Self.GetDataSetNguoiDung" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetDataSetNguoiDung].[Expr1] AS [Expr1], 
+    [GetDataSetNguoiDung].[Expr2] AS [Expr2], 
+    [GetDataSetNguoiDung].[Expr3] AS [Expr3], 
+    [GetDataSetNguoiDung].[Expr4] AS [Expr4], 
+    [GetDataSetNguoiDung].[Expr5] AS [Expr5], 
+    [GetDataSetNguoiDung].[Expr6] AS [Expr6], 
+    [GetDataSetNguoiDung].[Expr7] AS [Expr7], 
+    [GetDataSetNguoiDung].[NguoiDungID] AS [NguoiDungID], 
+    [GetDataSetNguoiDung].[MaNguoiDung] AS [MaNguoiDung], 
+    [GetDataSetNguoiDung].[MaNhomNguoiDung] AS [MaNhomNguoiDung], 
+    [GetDataSetNguoiDung].[MatKhau] AS [MatKhau], 
+    [GetDataSetNguoiDung].[TaiKhoan] AS [TaiKhoan], 
+    [GetDataSetNguoiDung].[TrangThai] AS [TrangThai], 
+    [GetDataSetNguoiDung].[MoTa] AS [MoTa], 
+    [GetDataSetNguoiDung].[MaNhanVien] AS [MaNhanVien], 
+    [GetDataSetNguoiDung].[NguoiDung] AS [NguoiDung], 
+    [GetDataSetNguoiDung].[ChucNang] AS [ChucNang], 
+    [GetDataSetNguoiDung].[NgayTao] AS [NgayTao], 
+    [GetDataSetNguoiDung].[NguoiTao] AS [NguoiTao], 
+    [GetDataSetNguoiDung].[NgaySua] AS [NgaySua], 
+    [GetDataSetNguoiDung].[NguoiSua] AS [NguoiSua], 
+    [GetDataSetNguoiDung].[Active] AS [Active], 
+    [GetDataSetNguoiDung].[Expr8] AS [Expr8]
+    FROM [dbo].[GetDataSetNguoiDung] AS [GetDataSetNguoiDung]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="phanQuyen" EntityType="Self.phanQuyen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [phanQuyen].[TenMenu] AS [TenMenu], 
+    [phanQuyen].[VIEW] AS [VIEW], 
+    [phanQuyen].[ADD] AS [ADD], 
+    [phanQuyen].[EDIT] AS [EDIT], 
+    [phanQuyen].[DELETE] AS [DELETE], 
+    [phanQuyen].[IMPORT] AS [IMPORT], 
+    [phanQuyen].[EXPORT] AS [EXPORT], 
+    [phanQuyen].[PRINT] AS [PRINT], 
+    [phanQuyen].[CONTROL] AS [CONTROL], 
+    [phanQuyen].[TaiKhoan] AS [TaiKhoan]
+    FROM [dbo].[phanQuyen] AS [phanQuyen]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_admin_status" Association="Self.FK_admin_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="admin" EntitySet="admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ANguoiDung_ANhomNguoiDung" Association="Self.FK_ANguoiDung_ANhomNguoiDung">
+            <End Role="ANhomNguoiDung" EntitySet="ANhomNguoiDung" />
+            <End Role="ANguoiDung" EntitySet="ANguoiDung" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ANhomMenu_AMenu" Association="Self.FK_ANhomMenu_AMenu">
+            <End Role="AMenu" EntitySet="AMenu" />
+            <End Role="ANhomMenu" EntitySet="ANhomMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ANhomMenu_ANhomNguoiDung" Association="Self.FK_ANhomMenu_ANhomNguoiDung">
+            <End Role="ANhomNguoiDung" EntitySet="ANhomNguoiDung" />
+            <End Role="ANhomMenu" EntitySet="ANhomMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietHoaDon_DMHangHoa" Association="Self.FK_ChiTietHoaDon_DMHangHoa">
+            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
+            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Self.FK_ChiTietHoaDon_HoaDon">
+            <End Role="HoaDon" EntitySet="HoaDon" />
+            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuNhap_DMKhachHang" Association="Self.FK_ChiTietPhieuNhap_DMKhachHang">
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuNhap_DMNVL" Association="Self.FK_ChiTietPhieuNhap_DMNVL">
+            <End Role="DMNVL" EntitySet="DMNVL" />
+            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuNhap_PhieuNhap" Association="Self.FK_ChiTietPhieuNhap_PhieuNhap">
+            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+            <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuXuat_DMKhachHang" Association="Self.FK_ChiTietPhieuXuat_DMKhachHang">
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuXuat_DMNVL" Association="Self.FK_ChiTietPhieuXuat_DMNVL">
+            <End Role="DMNVL" EntitySet="DMNVL" />
+            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietPhieuXuat_PhieuXuat" Association="Self.FK_ChiTietPhieuXuat_PhieuXuat">
+            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
+            <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DinhMuc_DMHangHoa" Association="Self.FK_DinhMuc_DMHangHoa">
+            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
+            <End Role="DinhMuc" EntitySet="DinhMuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DinhMuc_DMNVL" Association="Self.FK_DinhMuc_DMNVL">
+            <End Role="DMNVL" EntitySet="DMNVL" />
+            <End Role="DinhMuc" EntitySet="DinhMuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMHangHoa_DMLoaiHang" Association="Self.FK_DMHangHoa_DMLoaiHang">
+            <End Role="DMLoaiHang" EntitySet="DMLoaiHang" />
+            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMKhachHang_DMLoaiKhachHang" Association="Self.FK_DMKhachHang_DMLoaiKhachHang">
+            <End Role="DMLoaiKhachHang" EntitySet="DMLoaiKhachHang" />
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNhanVien_DMLoaiNhanVien" Association="Self.FK_DMNhanVien_DMLoaiNhanVien">
+            <End Role="DMLoaiNhanVien" EntitySet="DMLoaiNhanVien" />
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNVL_DMDonViTinh" Association="Self.FK_DMNVL_DMDonViTinh">
+            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
+            <End Role="DMNVL" EntitySet="DMNVL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNVL_DMDonViTinh1" Association="Self.FK_DMNVL_DMDonViTinh1">
+            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
+            <End Role="DMNVL" EntitySet="DMNVL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNVL_DMDonViTinh2" Association="Self.FK_DMNVL_DMDonViTinh2">
+            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
+            <End Role="DMNVL" EntitySet="DMNVL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNVL_DMDonViTinh3" Association="Self.FK_DMNVL_DMDonViTinh3">
+            <End Role="DMDonViTinh" EntitySet="DMDonViTinh" />
+            <End Role="DMNVL" EntitySet="DMNVL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMNVL_DMLoaiNVL" Association="Self.FK_DMNVL_DMLoaiNVL">
+            <End Role="DMLoaiNVL" EntitySet="DMLoaiNVL" />
+            <End Role="DMNVL" EntitySet="DMNVL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiaBan_DMHangHoa" Association="Self.FK_GiaBan_DMHangHoa">
+            <End Role="DMHangHoa" EntitySet="DMHangHoa" />
+            <End Role="GiaBan" EntitySet="GiaBan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_Ban_DMBan" Association="Self.FK_HoaDon_Ban_DMBan">
+            <End Role="DMBan" EntitySet="DMBan" />
+            <End Role="HoaDon_Ban" EntitySet="HoaDon_Ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_Ban_HoaDon" Association="Self.FK_HoaDon_Ban_HoaDon">
+            <End Role="HoaDon" EntitySet="HoaDon" />
+            <End Role="HoaDon_Ban" EntitySet="HoaDon_Ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_DMKhachHang" Association="Self.FK_HoaDon_DMKhachHang">
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_DMNhanVien" Association="Self.FK_HoaDon_DMNhanVien">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_DMNhanVien1" Association="Self.FK_HoaDon_DMNhanVien1">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhanCong_DMCa" Association="Self.FK_PhanCong_DMCa">
+            <End Role="DMCa" EntitySet="DMCa" />
+            <End Role="PhanCong" EntitySet="PhanCong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhanCong_DMNhanVien" Association="Self.FK_PhanCong_DMNhanVien">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhanCong" EntitySet="PhanCong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuChi_DMKhachHang" Association="Self.FK_PhieuChi_DMKhachHang">
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+            <End Role="PhieuChi" EntitySet="PhieuChi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuChi_DMLoaiPhieu" Association="Self.FK_PhieuChi_DMLoaiPhieu">
+            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
+            <End Role="PhieuChi" EntitySet="PhieuChi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuChi_DMNhanVien" Association="Self.FK_PhieuChi_DMNhanVien">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuChi" EntitySet="PhieuChi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuChi_DMNhanVien1" Association="Self.FK_PhieuChi_DMNhanVien1">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuChi" EntitySet="PhieuChi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuNhap_DMLoaiPhieu" Association="Self.FK_PhieuNhap_DMLoaiPhieu">
+            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
+            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuNhap_DMNhanVien2" Association="Self.FK_PhieuNhap_DMNhanVien2">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuNhap_DMNhanVien3" Association="Self.FK_PhieuNhap_DMNhanVien3">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuThu_DMKhachHang" Association="Self.FK_PhieuThu_DMKhachHang">
+            <End Role="DMKhachHang" EntitySet="DMKhachHang" />
+            <End Role="PhieuThu" EntitySet="PhieuThu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuThu_DMLoaiPhieu" Association="Self.FK_PhieuThu_DMLoaiPhieu">
+            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
+            <End Role="PhieuThu" EntitySet="PhieuThu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuThu_DMNhanVien" Association="Self.FK_PhieuThu_DMNhanVien">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuThu" EntitySet="PhieuThu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuThu_DMNhanVien1" Association="Self.FK_PhieuThu_DMNhanVien1">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuThu" EntitySet="PhieuThu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuXuat_DMLoaiPhieu" Association="Self.FK_PhieuXuat_DMLoaiPhieu">
+            <End Role="DMLoaiPhieu" EntitySet="DMLoaiPhieu" />
+            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuXuat_DMNhanVien3" Association="Self.FK_PhieuXuat_DMNhanVien3">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuXuat_DMNhanVien4" Association="Self.FK_PhieuXuat_DMNhanVien4">
+            <End Role="DMNhanVien" EntitySet="DMNhanVien" />
+            <End Role="PhieuXuat" EntitySet="PhieuXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Menu_admin" Association="Self.FK_RS_Menu_admin">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Menu_admin1" Association="Self.FK_RS_Menu_admin1">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UuDaiThanhVien_DMLoaiKhachHang" Association="Self.FK_UuDaiThanhVien_DMLoaiKhachHang">
+            <End Role="DMLoaiKhachHang" EntitySet="DMLoaiKhachHang" />
+            <End Role="UuDaiThanhVien" EntitySet="UuDaiThanhVien" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -2517,9 +2078,7 @@
           <NavigationProperty Name="status" Relationship="Self.FK_admin_status" FromRole="admin" ToRole="status" />
           <NavigationProperty Name="RS_Menu" Relationship="Self.FK_RS_Menu_admin" FromRole="admin" ToRole="RS_Menu" />
           <NavigationProperty Name="RS_Menu1" Relationship="Self.FK_RS_Menu_admin1" FromRole="admin" ToRole="RS_Menu" />
-          <NavigationProperty Name="RS_Branch" Relationship="Self.FK_RS_RS_Branch_admin" FromRole="admin" ToRole="RS_Branch" />
-          <NavigationProperty Name="RS_Branch1" Relationship="Self.FK_RS_RS_Branch_admin1" FromRole="admin" ToRole="RS_Branch" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="AMenu">
           <Key>
             <PropertyRef Name="MaMenu" />
@@ -2616,22 +2175,6 @@
           <NavigationProperty Name="ANguoiDungs" Relationship="Self.FK_ANguoiDung_ANhomNguoiDung" FromRole="ANhomNguoiDung" ToRole="ANguoiDung" />
           <NavigationProperty Name="ANhomMenus" Relationship="Self.FK_ANhomMenu_ANhomNguoiDung" FromRole="ANhomNguoiDung" ToRole="ANhomMenu" />
         </EntityType>
-        <EntityType Name="category">
-          <Key>
-            <PropertyRef Name="category_id" />
-          </Key>
-          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="modelImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="serialImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="nameImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="status_id" Type="Int32" />
-          <Property Name="viewModelImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="viewSerialImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="RS_base_warranty_months" Type="Int32" />
-          <NavigationProperty Name="status" Relationship="Self.FK_categories_status" FromRole="categories" ToRole="status" />
-          <NavigationProperty Name="products" Relationship="Self.FK_products_categories" FromRole="categories" ToRole="products" />
-        </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
             <PropertyRef Name="HoaDonID" />
@@ -2673,75 +2216,6 @@
           <NavigationProperty Name="DMNVL" Relationship="Self.FK_ChiTietPhieuXuat_DMNVL" FromRole="ChiTietPhieuXuat" ToRole="DMNVL" />
           <NavigationProperty Name="PhieuXuat" Relationship="Self.FK_ChiTietPhieuXuat_PhieuXuat" FromRole="ChiTietPhieuXuat" ToRole="PhieuXuat" />
         </EntityType>
-        <EntityType Name="city">
-          <Key>
-            <PropertyRef Name="city_id" />
-          </Key>
-          <Property Name="city_id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="porder" Type="Int32" />
-          <Property Name="status_id" Type="Int32" />
-          <NavigationProperty Name="status" Relationship="Self.FK_cities_status" FromRole="cities" ToRole="status" />
-          <NavigationProperty Name="districts" Relationship="Self.FK_districts_cities" FromRole="cities" ToRole="districts" />
-          <NavigationProperty Name="RS_Branch" Relationship="Self.FK_RS_Branch_cities" FromRole="cities" ToRole="RS_Branch" />
-          <NavigationProperty Name="shops" Relationship="Self.FK_shops_cities" FromRole="cities" ToRole="shops" />
-          <NavigationProperty Name="customers" Relationship="Self.FK_user_cities" FromRole="cities" ToRole="customer" />
-        </EntityType>
-        <EntityType Name="customer">
-          <Key>
-            <PropertyRef Name="customer_id" />
-          </Key>
-          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="sex" Type="Boolean" />
-          <Property Name="birthday" Type="DateTime" Precision="0" />
-          <Property Name="homephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="mobilephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="district_id" Type="Int32" />
-          <Property Name="city_id" Type="Int32" />
-          <Property Name="identitycard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="job_id" Type="Int32" />
-          <Property Name="education_id" Type="Int32" />
-          <Property Name="status_id" Type="Int32" />
-          <Property Name="customertype_id" Type="Int32" />
-          <Property Name="customercodereg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="datereg" Type="DateTime" Precision="3" />
-          <Property Name="status_active" Type="Int32" />
-          <Property Name="modifieddate" Type="DateTime" Precision="3" />
-          <Property Name="RM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="RM1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="RM2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsPending" Type="Boolean" />
-          <NavigationProperty Name="city" Relationship="Self.FK_user_cities" FromRole="customer" ToRole="cities" />
-          <NavigationProperty Name="district" Relationship="Self.FK_user_districts" FromRole="customer" ToRole="districts" />
-          <NavigationProperty Name="education" Relationship="Self.FK_user_education" FromRole="customer" ToRole="education" />
-          <NavigationProperty Name="job" Relationship="Self.FK_user_jobs" FromRole="customer" ToRole="jobs" />
-          <NavigationProperty Name="status" Relationship="Self.FK_user_status" FromRole="customer" ToRole="status" />
-          <NavigationProperty Name="customertype" Relationship="Self.FK_user_usertype" FromRole="customer" ToRole="customertype" />
-        </EntityType>
-        <EntityType Name="customerlock">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="timelock" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="status_id" Type="Int32" />
-        </EntityType>
-        <EntityType Name="customertype">
-          <Key>
-            <PropertyRef Name="customertype_id" />
-          </Key>
-          <Property Name="customertype_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="status_id" Type="Int32" />
-          <NavigationProperty Name="customers" Relationship="Self.FK_user_usertype" FromRole="customertype" ToRole="customer" />
-          <NavigationProperty Name="status" Relationship="Self.FK_usertype_status" FromRole="customertype" ToRole="status" />
-        </EntityType>
         <EntityType Name="DinhMuc">
           <Key>
             <PropertyRef Name="HangHoaID" />
@@ -2754,18 +2228,6 @@
           <Property Name="DenNgay" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DMHangHoa" Relationship="Self.FK_DinhMuc_DMHangHoa" FromRole="DinhMuc" ToRole="DMHangHoa" />
           <NavigationProperty Name="DMNVL" Relationship="Self.FK_DinhMuc_DMNVL" FromRole="DinhMuc" ToRole="DMNVL" />
-        </EntityType>
-        <EntityType Name="district">
-          <Key>
-            <PropertyRef Name="district_id" />
-          </Key>
-          <Property Name="district_id" Type="Int32" Nullable="false" />
-          <Property Name="city_id" Type="Int32" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="status_id" Type="Int32" />
-          <NavigationProperty Name="city" Relationship="Self.FK_districts_cities" FromRole="districts" ToRole="cities" />
-          <NavigationProperty Name="customers" Relationship="Self.FK_user_districts" FromRole="districts" ToRole="customer" />
-          <NavigationProperty Name="status" Relationship="Self.FK_districts_status" FromRole="districts" ToRole="status" />
         </EntityType>
         <EntityType Name="DMBan">
           <Key>
@@ -2948,16 +2410,6 @@
           <NavigationProperty Name="DMDonViTinh3" Relationship="Self.FK_DMNVL_DMDonViTinh3" FromRole="DMNVL" ToRole="DMDonViTinh" />
           <NavigationProperty Name="DMLoaiNVL" Relationship="Self.FK_DMNVL_DMLoaiNVL" FromRole="DMNVL" ToRole="DMLoaiNVL" />
         </EntityType>
-        <EntityType Name="education">
-          <Key>
-            <PropertyRef Name="education_id" />
-          </Key>
-          <Property Name="education_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="status_id" Type="Int32" />
-          <NavigationProperty Name="customers" Relationship="Self.FK_user_education" FromRole="education" ToRole="customer" />
-          <NavigationProperty Name="status" Relationship="Self.FK_education_status" FromRole="education" ToRole="status" />
-        </EntityType>
         <EntityType Name="GiaBan">
           <Key>
             <PropertyRef Name="GiaBanID" />
@@ -3016,24 +2468,6 @@
           <Property Name="ThoiGian" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DMBan" Relationship="Self.FK_HoaDon_Ban_DMBan" FromRole="HoaDon_Ban" ToRole="DMBan" />
           <NavigationProperty Name="HoaDon" Relationship="Self.FK_HoaDon_Ban_HoaDon" FromRole="HoaDon_Ban" ToRole="HoaDon" />
-        </EntityType>
-        <EntityType Name="job">
-          <Key>
-            <PropertyRef Name="job_id" />
-          </Key>
-          <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="status_id" Type="Int32" />
-          <NavigationProperty Name="customers" Relationship="Self.FK_user_jobs" FromRole="jobs" ToRole="customer" />
-          <NavigationProperty Name="status" Relationship="Self.FK_jobs_status" FromRole="jobs" ToRole="status" />
-        </EntityType>
-        <EntityType Name="LogError">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Created" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="PassChange">
           <Key>
@@ -3147,47 +2581,6 @@
           <NavigationProperty Name="DMNhanVien" Relationship="Self.FK_PhieuXuat_DMNhanVien3" FromRole="PhieuXuat" ToRole="DMNhanVien" />
           <NavigationProperty Name="DMNhanVien1" Relationship="Self.FK_PhieuXuat_DMNhanVien4" FromRole="PhieuXuat" ToRole="DMNhanVien" />
         </EntityType>
-        <EntityType Name="product">
-          <Key>
-            <PropertyRef Name="product_id" />
-          </Key>
-          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="category_id" Type="Int32" />
-          <Property Name="productcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="status_id" Type="Int32" />
-          <NavigationProperty Name="category" Relationship="Self.FK_products_categories" FromRole="products" ToRole="categories" />
-          <NavigationProperty Name="status" Relationship="Self.FK_products_status" FromRole="products" ToRole="status" />
-        </EntityType>
-        <EntityType Name="resethistory">
-          <Key>
-            <PropertyRef Name="para_id" />
-          </Key>
-          <Property Name="para_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="customercodereg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="senttime" Type="DateTime" Precision="3" />
-          <Property Name="expiredtime" Type="DateTime" Precision="3" />
-          <Property Name="longsenttime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="status_id" Type="Int32" />
-        </EntityType>
-        <EntityType Name="RS_Branch">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="city_id" Type="Int32" Nullable="false" />
-          <Property Name="status_id" Type="Int32" Nullable="false" />
-          <Property Name="Created" Type="DateTime" Precision="3" />
-          <Property Name="Modified" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <NavigationProperty Name="admin" Relationship="Self.FK_RS_RS_Branch_admin" FromRole="RS_Branch" ToRole="admin" />
-          <NavigationProperty Name="admin1" Relationship="Self.FK_RS_RS_Branch_admin1" FromRole="RS_Branch" ToRole="admin" />
-          <NavigationProperty Name="city" Relationship="Self.FK_RS_Branch_cities" FromRole="RS_Branch" ToRole="cities" />
-          <NavigationProperty Name="status" Relationship="Self.FK_RS_Branch_status" FromRole="RS_Branch" ToRole="status" />
-          <NavigationProperty Name="shops" Relationship="Self.FK_shops_RS_Branch" FromRole="RS_Branch" ToRole="shops" />
-        </EntityType>
         <EntityType Name="RS_Menu">
           <Key>
             <PropertyRef Name="ID" />
@@ -3203,31 +2596,6 @@
           <NavigationProperty Name="admin" Relationship="Self.FK_RS_Menu_admin" FromRole="RS_Menu" ToRole="admin" />
           <NavigationProperty Name="admin1" Relationship="Self.FK_RS_Menu_admin1" FromRole="RS_Menu" ToRole="admin" />
         </EntityType>
-        <EntityType Name="shop">
-          <Key>
-            <PropertyRef Name="shop_id" />
-          </Key>
-          <Property Name="shop_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="city_id" Type="Int32" />
-          <Property Name="shoptype_id" Type="Int32" />
-          <Property Name="status_id" Type="Int32" />
-          <Property Name="branch_id" Type="Int32" />
-          <NavigationProperty Name="city" Relationship="Self.FK_shops_cities" FromRole="shops" ToRole="cities" />
-          <NavigationProperty Name="RS_Branch" Relationship="Self.FK_shops_RS_Branch" FromRole="shops" ToRole="RS_Branch" />
-          <NavigationProperty Name="shoptype" Relationship="Self.FK_shops_shoptype" FromRole="shops" ToRole="shoptype" />
-          <NavigationProperty Name="status" Relationship="Self.FK_shops_status" FromRole="shops" ToRole="status" />
-        </EntityType>
-        <EntityType Name="shoptype">
-          <Key>
-            <PropertyRef Name="shoptype_id" />
-          </Key>
-          <Property Name="shoptype_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="status_id" Type="Int32" />
-          <NavigationProperty Name="shops" Relationship="Self.FK_shops_shoptype" FromRole="shoptype" ToRole="shops" />
-          <NavigationProperty Name="status" Relationship="Self.FK_shoptype_status" FromRole="shoptype" ToRole="status" />
-        </EntityType>
         <EntityType Name="status">
           <Key>
             <PropertyRef Name="status_id" />
@@ -3235,17 +2603,6 @@
           <Property Name="status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="admins" Relationship="Self.FK_admin_status" FromRole="status" ToRole="admin" />
-          <NavigationProperty Name="categories" Relationship="Self.FK_categories_status" FromRole="status" ToRole="categories" />
-          <NavigationProperty Name="cities" Relationship="Self.FK_cities_status" FromRole="status" ToRole="cities" />
-          <NavigationProperty Name="customers" Relationship="Self.FK_user_status" FromRole="status" ToRole="customer" />
-          <NavigationProperty Name="customertypes" Relationship="Self.FK_usertype_status" FromRole="status" ToRole="customertype" />
-          <NavigationProperty Name="districts" Relationship="Self.FK_districts_status" FromRole="status" ToRole="districts" />
-          <NavigationProperty Name="educations" Relationship="Self.FK_education_status" FromRole="status" ToRole="education" />
-          <NavigationProperty Name="jobs" Relationship="Self.FK_jobs_status" FromRole="status" ToRole="jobs" />
-          <NavigationProperty Name="products" Relationship="Self.FK_products_status" FromRole="status" ToRole="products" />
-          <NavigationProperty Name="RS_Branch" Relationship="Self.FK_RS_Branch_status" FromRole="status" ToRole="RS_Branch" />
-          <NavigationProperty Name="shops" Relationship="Self.FK_shops_status" FromRole="status" ToRole="shops" />
-          <NavigationProperty Name="shoptypes" Relationship="Self.FK_shoptype_status" FromRole="status" ToRole="shoptype" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -3306,30 +2663,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RS_RS_Branch_admin">
-          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
-          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="admin">
-              <PropertyRef Name="admin_id" />
-            </Principal>
-            <Dependent Role="RS_Branch">
-              <PropertyRef Name="CreatedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RS_RS_Branch_admin1">
-          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
-          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="admin">
-              <PropertyRef Name="admin_id" />
-            </Principal>
-            <Dependent Role="RS_Branch">
-              <PropertyRef Name="ModifiedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ANhomMenu_AMenu">
           <End Role="AMenu" Type="Self.AMenu" Multiplicity="1" />
           <End Role="ANhomMenu" Type="Self.ANhomMenu" Multiplicity="*" />
@@ -3363,30 +2696,6 @@
             </Principal>
             <Dependent Role="ANhomMenu">
               <PropertyRef Name="MaNhomNguoiDung" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_categories_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="categories" Type="Self.category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="categories">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_products_categories">
-          <End Role="categories" Type="Self.category" Multiplicity="0..1" />
-          <End Role="products" Type="Self.product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="categories">
-              <PropertyRef Name="category_id" />
-            </Principal>
-            <Dependent Role="products">
-              <PropertyRef Name="category_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3486,138 +2795,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_cities_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="cities" Type="Self.city" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="cities">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_districts_cities">
-          <End Role="cities" Type="Self.city" Multiplicity="0..1" />
-          <End Role="districts" Type="Self.district" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cities">
-              <PropertyRef Name="city_id" />
-            </Principal>
-            <Dependent Role="districts">
-              <PropertyRef Name="city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RS_Branch_cities">
-          <End Role="cities" Type="Self.city" Multiplicity="1" />
-          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cities">
-              <PropertyRef Name="city_id" />
-            </Principal>
-            <Dependent Role="RS_Branch">
-              <PropertyRef Name="city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_shops_cities">
-          <End Role="cities" Type="Self.city" Multiplicity="0..1" />
-          <End Role="shops" Type="Self.shop" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cities">
-              <PropertyRef Name="city_id" />
-            </Principal>
-            <Dependent Role="shops">
-              <PropertyRef Name="city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_cities">
-          <End Role="cities" Type="Self.city" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cities">
-              <PropertyRef Name="city_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_districts">
-          <End Role="districts" Type="Self.district" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="districts">
-              <PropertyRef Name="district_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="district_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_education">
-          <End Role="education" Type="Self.education" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="education">
-              <PropertyRef Name="education_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="education_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_jobs">
-          <End Role="jobs" Type="Self.job" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="jobs">
-              <PropertyRef Name="job_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="job_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_usertype">
-          <End Role="customertype" Type="Self.customertype" Multiplicity="0..1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customertype">
-              <PropertyRef Name="customertype_id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="customertype_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_usertype_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="customertype" Type="Self.customertype" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="customertype">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_DinhMuc_DMHangHoa">
           <End Role="DMHangHoa" Type="Self.DMHangHoa" Multiplicity="1" />
           <End Role="DinhMuc" Type="Self.DinhMuc" Multiplicity="*" />
@@ -3639,18 +2816,6 @@
             </Principal>
             <Dependent Role="DinhMuc">
               <PropertyRef Name="NVLID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_districts_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="districts" Type="Self.district" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="districts">
-              <PropertyRef Name="status_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4014,18 +3179,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_education_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="education" Type="Self.education" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="education">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_HoaDon_Ban_HoaDon">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="0..1" />
           <End Role="HoaDon_Ban" Type="Self.HoaDon_Ban" Multiplicity="*" />
@@ -4038,90 +3191,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_jobs_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="jobs" Type="Self.job" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="jobs">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_products_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="products" Type="Self.product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="products">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RS_Branch_status">
-          <End Role="status" Type="Self.status" Multiplicity="1" />
-          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="RS_Branch">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_shops_RS_Branch">
-          <End Role="RS_Branch" Type="Self.RS_Branch" Multiplicity="0..1" />
-          <End Role="shops" Type="Self.shop" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RS_Branch">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="shops">
-              <PropertyRef Name="branch_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_shops_shoptype">
-          <End Role="shoptype" Type="Self.shoptype" Multiplicity="0..1" />
-          <End Role="shops" Type="Self.shop" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="shoptype">
-              <PropertyRef Name="shoptype_id" />
-            </Principal>
-            <Dependent Role="shops">
-              <PropertyRef Name="shoptype_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_shops_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="shops" Type="Self.shop" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="shops">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_shoptype_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="shoptype" Type="Self.shoptype" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="status_id" />
-            </Principal>
-            <Dependent Role="shoptype">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="MyDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admins" EntityType="Self.admin" />
           <EntitySet Name="AMenus" EntityType="Self.AMenu" />
@@ -4129,16 +3198,10 @@
           <EntitySet Name="ANhatKyHeThongs" EntityType="Self.ANhatKyHeThong" />
           <EntitySet Name="ANhomMenus" EntityType="Self.ANhomMenu" />
           <EntitySet Name="ANhomNguoiDungs" EntityType="Self.ANhomNguoiDung" />
-          <EntitySet Name="categories" EntityType="Self.category" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="ChiTietPhieuNhaps" EntityType="Self.ChiTietPhieuNhap" />
           <EntitySet Name="ChiTietPhieuXuats" EntityType="Self.ChiTietPhieuXuat" />
-          <EntitySet Name="cities" EntityType="Self.city" />
-          <EntitySet Name="customers" EntityType="Self.customer" />
-          <EntitySet Name="customerlocks" EntityType="Self.customerlock" />
-          <EntitySet Name="customertypes" EntityType="Self.customertype" />
           <EntitySet Name="DinhMucs" EntityType="Self.DinhMuc" />
-          <EntitySet Name="districts" EntityType="Self.district" />
           <EntitySet Name="DMBans" EntityType="Self.DMBan" />
           <EntitySet Name="DMCas" EntityType="Self.DMCa" />
           <EntitySet Name="DMDonViTinhs" EntityType="Self.DMDonViTinh" />
@@ -4151,24 +3214,16 @@
           <EntitySet Name="DMLoaiPhieux" EntityType="Self.DMLoaiPhieu" />
           <EntitySet Name="DMNhanViens" EntityType="Self.DMNhanVien" />
           <EntitySet Name="DMNVLs" EntityType="Self.DMNVL" />
-          <EntitySet Name="educations" EntityType="Self.education" />
           <EntitySet Name="GiaBans" EntityType="Self.GiaBan" />
           <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
           <EntitySet Name="HoaDon_Ban" EntityType="Self.HoaDon_Ban" />
-          <EntitySet Name="jobs" EntityType="Self.job" />
-          <EntitySet Name="LogErrors" EntityType="Self.LogError" />
           <EntitySet Name="PassChanges" EntityType="Self.PassChange" />
           <EntitySet Name="PhanCongs" EntityType="Self.PhanCong" />
           <EntitySet Name="PhieuChis" EntityType="Self.PhieuChi" />
           <EntitySet Name="PhieuNhaps" EntityType="Self.PhieuNhap" />
           <EntitySet Name="PhieuThus" EntityType="Self.PhieuThu" />
           <EntitySet Name="PhieuXuats" EntityType="Self.PhieuXuat" />
-          <EntitySet Name="products" EntityType="Self.product" />
-          <EntitySet Name="resethistories" EntityType="Self.resethistory" />
-          <EntitySet Name="RS_Branch" EntityType="Self.RS_Branch" />
           <EntitySet Name="RS_Menu" EntityType="Self.RS_Menu" />
-          <EntitySet Name="shops" EntityType="Self.shop" />
-          <EntitySet Name="shoptypes" EntityType="Self.shoptype" />
           <EntitySet Name="status" EntityType="Self.status" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="UuDaiThanhViens" EntityType="Self.UuDaiThanhVien" />
@@ -4184,14 +3239,6 @@
             <End Role="admin" EntitySet="admins" />
             <End Role="RS_Menu" EntitySet="RS_Menu" />
           </AssociationSet>
-          <AssociationSet Name="FK_RS_RS_Branch_admin" Association="Self.FK_RS_RS_Branch_admin">
-            <End Role="admin" EntitySet="admins" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_RS_Branch_admin1" Association="Self.FK_RS_RS_Branch_admin1">
-            <End Role="admin" EntitySet="admins" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
           <AssociationSet Name="FK_ANhomMenu_AMenu" Association="Self.FK_ANhomMenu_AMenu">
             <End Role="AMenu" EntitySet="AMenus" />
             <End Role="ANhomMenu" EntitySet="ANhomMenus" />
@@ -4203,14 +3250,6 @@
           <AssociationSet Name="FK_ANhomMenu_ANhomNguoiDung" Association="Self.FK_ANhomMenu_ANhomNguoiDung">
             <End Role="ANhomNguoiDung" EntitySet="ANhomNguoiDungs" />
             <End Role="ANhomMenu" EntitySet="ANhomMenus" />
-          </AssociationSet>
-          <AssociationSet Name="FK_categories_status" Association="Self.FK_categories_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="categories" EntitySet="categories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_products_categories" Association="Self.FK_products_categories">
-            <End Role="categories" EntitySet="categories" />
-            <End Role="products" EntitySet="products" />
           </AssociationSet>
           <AssociationSet Name="FK_ChiTietHoaDon_DMHangHoa" Association="Self.FK_ChiTietHoaDon_DMHangHoa">
             <End Role="DMHangHoa" EntitySet="DMHangHoas" />
@@ -4244,50 +3283,6 @@
             <End Role="PhieuXuat" EntitySet="PhieuXuats" />
             <End Role="ChiTietPhieuXuat" EntitySet="ChiTietPhieuXuats" />
           </AssociationSet>
-          <AssociationSet Name="FK_cities_status" Association="Self.FK_cities_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="cities" EntitySet="cities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_districts_cities" Association="Self.FK_districts_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="districts" EntitySet="districts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_Branch_cities" Association="Self.FK_RS_Branch_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_cities" Association="Self.FK_shops_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_cities" Association="Self.FK_user_cities">
-            <End Role="cities" EntitySet="cities" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_districts" Association="Self.FK_user_districts">
-            <End Role="districts" EntitySet="districts" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_education" Association="Self.FK_user_education">
-            <End Role="education" EntitySet="educations" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_jobs" Association="Self.FK_user_jobs">
-            <End Role="jobs" EntitySet="jobs" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_status" Association="Self.FK_user_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_usertype" Association="Self.FK_user_usertype">
-            <End Role="customertype" EntitySet="customertypes" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usertype_status" Association="Self.FK_usertype_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="customertype" EntitySet="customertypes" />
-          </AssociationSet>
           <AssociationSet Name="FK_DinhMuc_DMHangHoa" Association="Self.FK_DinhMuc_DMHangHoa">
             <End Role="DMHangHoa" EntitySet="DMHangHoas" />
             <End Role="DinhMuc" EntitySet="DinhMucs" />
@@ -4295,10 +3290,6 @@
           <AssociationSet Name="FK_DinhMuc_DMNVL" Association="Self.FK_DinhMuc_DMNVL">
             <End Role="DMNVL" EntitySet="DMNVLs" />
             <End Role="DinhMuc" EntitySet="DinhMucs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_districts_status" Association="Self.FK_districts_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="districts" EntitySet="districts" />
           </AssociationSet>
           <AssociationSet Name="FK_HoaDon_Ban_DMBan" Association="Self.FK_HoaDon_Ban_DMBan">
             <End Role="DMBan" EntitySet="DMBans" />
@@ -4420,41 +3411,9 @@
             <End Role="DMNhanVien" EntitySet="DMNhanViens" />
             <End Role="PhieuXuat" EntitySet="PhieuXuats" />
           </AssociationSet>
-          <AssociationSet Name="FK_education_status" Association="Self.FK_education_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="education" EntitySet="educations" />
-          </AssociationSet>
           <AssociationSet Name="FK_HoaDon_Ban_HoaDon" Association="Self.FK_HoaDon_Ban_HoaDon">
             <End Role="HoaDon" EntitySet="HoaDons" />
             <End Role="HoaDon_Ban" EntitySet="HoaDon_Ban" />
-          </AssociationSet>
-          <AssociationSet Name="FK_jobs_status" Association="Self.FK_jobs_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="jobs" EntitySet="jobs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_products_status" Association="Self.FK_products_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="products" EntitySet="products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RS_Branch_status" Association="Self.FK_RS_Branch_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_RS_Branch" Association="Self.FK_shops_RS_Branch">
-            <End Role="RS_Branch" EntitySet="RS_Branch" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_shoptype" Association="Self.FK_shops_shoptype">
-            <End Role="shoptype" EntitySet="shoptypes" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shops_status" Association="Self.FK_shops_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="shops" EntitySet="shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_shoptype_status" Association="Self.FK_shoptype_status">
-            <End Role="status" EntitySet="status" />
-            <End Role="shoptype" EntitySet="shoptypes" />
           </AssociationSet>
           <FunctionImport Name="AMenu_DeleteByField">
             <Parameter Name="FieldName" Mode="In" Type="String" />
@@ -5132,6 +4091,9 @@
           <FunctionImport Name="ZTimKiemCa_M">
           <Parameter Name="ma" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="LogErrors" EntityType="MyDatabaseModel.LogError" />
+          <EntitySet Name="GetDataSetNguoiDungs" EntityType="MyDatabaseModel.GetDataSetNguoiDung" />
+          <EntitySet Name="phanQuyens" EntityType="MyDatabaseModel.phanQuyen" />
         </EntityContainer>
         <ComplexType Name="AMenu_SelectAll_Result">
           <Property Type="Int32" Name="MenuID" Nullable="false" />
@@ -5643,6 +4605,80 @@
           <Property Type="Boolean" Name="CONTROL" Nullable="false" />
           <Property Type="String" Name="TaiKhoan" Nullable="false" MaxLength="20" />
         </ComplexType>
+        <EntityType Name="LogError">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GetDataSetNguoiDung">
+          <Key>
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+            <PropertyRef Name="Expr3" />
+            <PropertyRef Name="Expr4" />
+            <PropertyRef Name="NguoiDungID" />
+            <PropertyRef Name="MaNguoiDung" />
+            <PropertyRef Name="MaNhomNguoiDung" />
+            <PropertyRef Name="MatKhau" />
+            <PropertyRef Name="TaiKhoan" />
+            <PropertyRef Name="TrangThai" />
+            <PropertyRef Name="NguoiDung" />
+            <PropertyRef Name="ChucNang" />
+            <PropertyRef Name="NgayTao" />
+            <PropertyRef Name="NguoiTao" />
+            <PropertyRef Name="Expr8" />
+          </Key>
+          <Property Name="Expr1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Expr2" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Expr3" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Expr4" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Expr5" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Expr6" Type="Boolean" />
+          <Property Name="Expr7" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NguoiDungID" Type="Int32" Nullable="false" />
+          <Property Name="MaNguoiDung" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MaNhomNguoiDung" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TaiKhoan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MaNhanVien" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NguoiDung" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChucNang" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NguoiTao" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NgaySua" Type="DateTime" Precision="3" />
+          <Property Name="NguoiSua" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Expr8" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="phanQuyen">
+          <Key>
+            <PropertyRef Name="TenMenu" />
+            <PropertyRef Name="VIEW" />
+            <PropertyRef Name="ADD" />
+            <PropertyRef Name="EDIT" />
+            <PropertyRef Name="DELETE" />
+            <PropertyRef Name="IMPORT" />
+            <PropertyRef Name="EXPORT" />
+            <PropertyRef Name="PRINT" />
+            <PropertyRef Name="CONTROL" />
+            <PropertyRef Name="TaiKhoan" />
+          </Key>
+          <Property Name="TenMenu" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VIEW" Type="Boolean" Nullable="false" />
+          <Property Name="ADD" Type="Boolean" Nullable="false" />
+          <Property Name="EDIT" Type="Boolean" Nullable="false" />
+          <Property Name="DELETE" Type="Boolean" Nullable="false" />
+          <Property Name="IMPORT" Type="Boolean" Nullable="false" />
+          <Property Name="EXPORT" Type="Boolean" Nullable="false" />
+          <Property Name="PRINT" Type="Boolean" Nullable="false" />
+          <Property Name="CONTROL" Type="Boolean" Nullable="false" />
+          <Property Name="TaiKhoan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5756,21 +4792,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="categories">
-            <EntityTypeMapping TypeName="MyDatabaseModel.category">
-              <MappingFragment StoreEntitySet="categories">
-                <ScalarProperty Name="category_id" ColumnName="category_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="modelImage" ColumnName="modelImage" />
-                <ScalarProperty Name="serialImage" ColumnName="serialImage" />
-                <ScalarProperty Name="nameImage" ColumnName="nameImage" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="viewModelImage" ColumnName="viewModelImage" />
-                <ScalarProperty Name="viewSerialImage" ColumnName="viewSerialImage" />
-                <ScalarProperty Name="RS_base_warranty_months" ColumnName="RS_base_warranty_months" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ChiTietHoaDons">
             <EntityTypeMapping TypeName="MyDatabaseModel.ChiTietHoaDon">
               <MappingFragment StoreEntitySet="ChiTietHoaDon">
@@ -5804,66 +4825,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="cities">
-            <EntityTypeMapping TypeName="MyDatabaseModel.city">
-              <MappingFragment StoreEntitySet="cities">
-                <ScalarProperty Name="city_id" ColumnName="city_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="porder" ColumnName="porder" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="customers">
-            <EntityTypeMapping TypeName="MyDatabaseModel.customer">
-              <MappingFragment StoreEntitySet="customer">
-                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="firstname" ColumnName="firstname" />
-                <ScalarProperty Name="lastname" ColumnName="lastname" />
-                <ScalarProperty Name="sex" ColumnName="sex" />
-                <ScalarProperty Name="birthday" ColumnName="birthday" />
-                <ScalarProperty Name="homephone" ColumnName="homephone" />
-                <ScalarProperty Name="mobilephone" ColumnName="mobilephone" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="district_id" ColumnName="district_id" />
-                <ScalarProperty Name="city_id" ColumnName="city_id" />
-                <ScalarProperty Name="identitycard" ColumnName="identitycard" />
-                <ScalarProperty Name="job_id" ColumnName="job_id" />
-                <ScalarProperty Name="education_id" ColumnName="education_id" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="customertype_id" ColumnName="customertype_id" />
-                <ScalarProperty Name="customercodereg" ColumnName="customercodereg" />
-                <ScalarProperty Name="datereg" ColumnName="datereg" />
-                <ScalarProperty Name="status_active" ColumnName="status_active" />
-                <ScalarProperty Name="modifieddate" ColumnName="modifieddate" />
-                <ScalarProperty Name="RM" ColumnName="RM" />
-                <ScalarProperty Name="RM1" ColumnName="RM1" />
-                <ScalarProperty Name="RM2" ColumnName="RM2" />
-                <ScalarProperty Name="IsPending" ColumnName="IsPending" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="customerlocks">
-            <EntityTypeMapping TypeName="MyDatabaseModel.customerlock">
-              <MappingFragment StoreEntitySet="customerlock">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="timelock" ColumnName="timelock" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="customertypes">
-            <EntityTypeMapping TypeName="MyDatabaseModel.customertype">
-              <MappingFragment StoreEntitySet="customertype">
-                <ScalarProperty Name="customertype_id" ColumnName="customertype_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DinhMucs">
             <EntityTypeMapping TypeName="MyDatabaseModel.DinhMuc">
               <MappingFragment StoreEntitySet="DinhMuc">
@@ -5872,16 +4833,6 @@
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="TuNgay" ColumnName="TuNgay" />
                 <ScalarProperty Name="DenNgay" ColumnName="DenNgay" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="districts">
-            <EntityTypeMapping TypeName="MyDatabaseModel.district">
-              <MappingFragment StoreEntitySet="districts">
-                <ScalarProperty Name="district_id" ColumnName="district_id" />
-                <ScalarProperty Name="city_id" ColumnName="city_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -6033,15 +4984,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="educations">
-            <EntityTypeMapping TypeName="MyDatabaseModel.education">
-              <MappingFragment StoreEntitySet="education">
-                <ScalarProperty Name="education_id" ColumnName="education_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GiaBans">
             <EntityTypeMapping TypeName="MyDatabaseModel.GiaBan">
               <MappingFragment StoreEntitySet="GiaBan">
@@ -6093,24 +5035,6 @@
                 <ScalarProperty Name="BanID" ColumnName="BanID" />
                 <ScalarProperty Name="ThoiGianBatDau" ColumnName="ThoiGianBatDau" />
                 <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="jobs">
-            <EntityTypeMapping TypeName="MyDatabaseModel.job">
-              <MappingFragment StoreEntitySet="jobs">
-                <ScalarProperty Name="job_id" ColumnName="job_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LogErrors">
-            <EntityTypeMapping TypeName="MyDatabaseModel.LogError">
-              <MappingFragment StoreEntitySet="LogError">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -6213,43 +5137,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="products">
-            <EntityTypeMapping TypeName="MyDatabaseModel.product">
-              <MappingFragment StoreEntitySet="products">
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="category_id" ColumnName="category_id" />
-                <ScalarProperty Name="productcode" ColumnName="productcode" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="resethistories">
-            <EntityTypeMapping TypeName="MyDatabaseModel.resethistory">
-              <MappingFragment StoreEntitySet="resethistory">
-                <ScalarProperty Name="para_id" ColumnName="para_id" />
-                <ScalarProperty Name="customercodereg" ColumnName="customercodereg" />
-                <ScalarProperty Name="senttime" ColumnName="senttime" />
-                <ScalarProperty Name="expiredtime" ColumnName="expiredtime" />
-                <ScalarProperty Name="longsenttime" ColumnName="longsenttime" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RS_Branch">
-            <EntityTypeMapping TypeName="MyDatabaseModel.RS_Branch">
-              <MappingFragment StoreEntitySet="RS_Branch">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="city_id" ColumnName="city_id" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="Modified" ColumnName="Modified" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="RS_Menu">
             <EntityTypeMapping TypeName="MyDatabaseModel.RS_Menu">
               <MappingFragment StoreEntitySet="RS_Menu">
@@ -6261,27 +5148,6 @@
                 <ScalarProperty Name="Modified" ColumnName="Modified" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="shops">
-            <EntityTypeMapping TypeName="MyDatabaseModel.shop">
-              <MappingFragment StoreEntitySet="shops">
-                <ScalarProperty Name="shop_id" ColumnName="shop_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="city_id" ColumnName="city_id" />
-                <ScalarProperty Name="shoptype_id" ColumnName="shoptype_id" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="shoptypes">
-            <EntityTypeMapping TypeName="MyDatabaseModel.shoptype">
-              <MappingFragment StoreEntitySet="shoptype">
-                <ScalarProperty Name="shoptype_id" ColumnName="shoptype_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7141,6 +6007,60 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ZTimKiemCa_M" FunctionName="MyDatabaseModel.Store.ZTimKiemCa_M" />
+          <EntitySetMapping Name="LogErrors">
+            <EntityTypeMapping TypeName="MyDatabaseModel.LogError">
+              <MappingFragment StoreEntitySet="LogError">
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetDataSetNguoiDungs">
+            <EntityTypeMapping TypeName="MyDatabaseModel.GetDataSetNguoiDung">
+              <MappingFragment StoreEntitySet="GetDataSetNguoiDung">
+                <ScalarProperty Name="Expr8" ColumnName="Expr8" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="NguoiSua" ColumnName="NguoiSua" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="ChucNang" ColumnName="ChucNang" />
+                <ScalarProperty Name="NguoiDung" ColumnName="NguoiDung" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="MaNhomNguoiDung" ColumnName="MaNhomNguoiDung" />
+                <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
+                <ScalarProperty Name="NguoiDungID" ColumnName="NguoiDungID" />
+                <ScalarProperty Name="Expr7" ColumnName="Expr7" />
+                <ScalarProperty Name="Expr6" ColumnName="Expr6" />
+                <ScalarProperty Name="Expr5" ColumnName="Expr5" />
+                <ScalarProperty Name="Expr4" ColumnName="Expr4" />
+                <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="phanQuyens">
+            <EntityTypeMapping TypeName="MyDatabaseModel.phanQuyen">
+              <MappingFragment StoreEntitySet="phanQuyen">
+                <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+                <ScalarProperty Name="CONTROL" ColumnName="CONTROL" />
+                <ScalarProperty Name="PRINT" ColumnName="PRINT" />
+                <ScalarProperty Name="EXPORT" ColumnName="EXPORT" />
+                <ScalarProperty Name="IMPORT" ColumnName="IMPORT" />
+                <ScalarProperty Name="DELETE" ColumnName="DELETE" />
+                <ScalarProperty Name="EDIT" ColumnName="EDIT" />
+                <ScalarProperty Name="ADD" ColumnName="ADD" />
+                <ScalarProperty Name="VIEW" ColumnName="VIEW" />
+                <ScalarProperty Name="TenMenu" ColumnName="TenMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,15 +12,17 @@ namespace MyProject.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class product
+    public partial class phanQuyen
     {
-        public int product_id { get; set; }
-        public Nullable<int> category_id { get; set; }
-        public string productcode { get; set; }
-        public string name { get; set; }
-        public Nullable<int> status_id { get; set; }
-    
-        public virtual category category { get; set; }
-        public virtual status status { get; set; }
+        public string TenMenu { get; set; }
+        public bool VIEW { get; set; }
+        public bool ADD { get; set; }
+        public bool EDIT { get; set; }
+        public bool DELETE { get; set; }
+        public bool IMPORT { get; set; }
+        public bool EXPORT { get; set; }
+        public bool PRINT { get; set; }
+        public bool CONTROL { get; set; }
+        public string TaiKhoan { get; set; }
     }
 }
