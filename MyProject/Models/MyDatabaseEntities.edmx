@@ -470,13 +470,6 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="TrangThai">
-          <Key>
-            <PropertyRef Name="MaTrangThai" />
-          </Key>
-          <Property Name="MaTrangThai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenTrangThai" Type="nvarchar" MaxLength="255" />
-        </EntityType>
         <EntityType Name="UuDaiThanhVien">
           <Key>
             <PropertyRef Name="UuDaiID" />
@@ -1836,7 +1829,6 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <EntitySet Name="RS_Menu" EntityType="Self.RS_Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TrangThai" EntityType="Self.TrangThai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UuDaiThanhVien" EntityType="Self.UuDaiThanhVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GetDataSetNguoiDung" EntityType="Self.GetDataSetNguoiDung" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -4102,7 +4094,6 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <EntitySet Name="LogErrors" EntityType="MyDatabaseModel.LogError" />
           <EntitySet Name="GetDataSetNguoiDungs" EntityType="MyDatabaseModel.GetDataSetNguoiDung" />
           <EntitySet Name="phanQuyens" EntityType="MyDatabaseModel.phanQuyen" />
-          <EntitySet Name="TrangThais" EntityType="MyDatabaseModel.TrangThai" />
         </EntityContainer>
         <ComplexType Name="AMenu_SelectAll_Result">
           <Property Type="Int32" Name="MenuID" Nullable="false" />
@@ -4687,13 +4678,6 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <Property Name="PRINT" Type="Boolean" Nullable="false" />
           <Property Name="CONTROL" Type="Boolean" Nullable="false" />
           <Property Name="TaiKhoan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="TrangThai">
-          <Key>
-            <PropertyRef Name="MaTrangThai" />
-          </Key>
-          <Property Name="MaTrangThai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenTrangThai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -6074,14 +6058,6 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
                 <ScalarProperty Name="ADD" ColumnName="ADD" />
                 <ScalarProperty Name="VIEW" ColumnName="VIEW" />
                 <ScalarProperty Name="TenMenu" ColumnName="TenMenu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TrangThais">
-            <EntityTypeMapping TypeName="MyDatabaseModel.TrangThai">
-              <MappingFragment StoreEntitySet="TrangThai">
-                <ScalarProperty Name="TenTrangThai" ColumnName="TenTrangThai" />
-                <ScalarProperty Name="MaTrangThai" ColumnName="MaTrangThai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
