@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="MyDatabaseModel.ANguoiDung" Width="1.5" PointX="12" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.ANhatKyHeThong" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.ANhomMenu" Width="1.5" PointX="15" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.ANhomNguoiDung" Width="1.5" PointX="9.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.ANhomNguoiDung" Width="3.625" PointX="7.75" PointY="22.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.ChiTietHoaDon" Width="1.5" PointX="22.5" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.ChiTietPhieuNhap" Width="1.5" PointX="22.5" PointY="18" IsExpanded="true" />
         <EntityTypeShape EntityType="MyDatabaseModel.ChiTietPhieuXuat" Width="1.5" PointX="19.5" PointY="22" IsExpanded="true" />
@@ -90,6 +90,7 @@
         <EntityTypeShape EntityType="MyDatabaseModel.LogError" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="MyDatabaseModel.GetDataSetNguoiDung" Width="1.5" PointX="8.375" PointY="0.75" />
         <EntityTypeShape EntityType="MyDatabaseModel.phanQuyen" Width="1.5" PointX="8.375" PointY="6.75" />
+        <EntityTypeShape EntityType="MyDatabaseModel.TrangThai" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

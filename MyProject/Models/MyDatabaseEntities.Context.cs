@@ -65,6 +65,7 @@ namespace MyProject.Models
         public virtual DbSet<LogError> LogErrors { get; set; }
         public virtual DbSet<GetDataSetNguoiDung> GetDataSetNguoiDungs { get; set; }
         public virtual DbSet<phanQuyen> phanQuyens { get; set; }
+        public virtual DbSet<TrangThai> TrangThais { get; set; }
     
         public virtual int AMenu_DeleteByField(string fieldName, string value)
         {

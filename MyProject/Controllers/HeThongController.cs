@@ -22,9 +22,7 @@ using System.Data.Entity.Core.Objects;
 namespace MyProject.Controllers
 {
     [AuthorizeIPAddressAttribute]
-    [CheckPermissionActionFilter]
-   // [OutputCache(Duration = 60 * 5, VaryByParam = "none", Location=System.Web.UI.OutputCacheLocation.Client)]
-    [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
+    [CheckPermissionActionFilter] 
     public class HeThongController : Controller
     {
         MyDatabaseEntities db = new MyDatabaseEntities();
@@ -217,7 +215,7 @@ namespace MyProject.Controllers
         }
         #endregion
 
-        #region Admin
+        #region NguoiDung
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Admin()
@@ -247,10 +245,12 @@ namespace MyProject.Controllers
         public ActionResult AdminEditor(int ID = 0)
         {
             try
-            {
-                ViewData["status"] = db.status.Select(x => new { ID = x.status_id, Name = x.name }).ToList();
-
-                ViewData["type"] =
+            {  
+                List<SelectListItem> lstTrangThai = new List<SelectListItem>();
+                lstTrangThai.Add(new SelectListItem { Value = "False", Text = "Chưa kích hoạt" });
+                lstTrangThai.Add(new SelectListItem { Value = "True", Text = "Đã kích hoạt" });
+                ViewData["TrangThai"] = lstTrangThai;
+                ViewData["MaNhomNguoiDung"] =
                     db.ANhomNguoiDungs.Select(
                         x => new {MaNhomNguoiDung = x.MaNhomNguoiDung, TenNhomNguoiDung = x.TenNhomNguoiDung}).ToList();
                  
@@ -350,13 +350,13 @@ namespace MyProject.Controllers
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Post)]        
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteAdmin(int Id)
+        public ActionResult DeleteNguoiDung(int Id)
         {
             try
             {
-                var admin = db.admins.FirstOrDefault(x => x.admin_id == Id);
+                var admin = db.ANguoiDungs.FirstOrDefault(x => x.NguoiDungID == Id);
                 if (admin == null) return HttpNotFound();
-                admin.status_id = 2; // set status delete
+                admin.TrangThai = false ; // set status delete
                 db.SaveChanges();
             }
             catch (Exception ex)

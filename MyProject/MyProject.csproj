@@ -413,6 +413,9 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TrangThai.cs">
+      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UuDaiThanhVien.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>

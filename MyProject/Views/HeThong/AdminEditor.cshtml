@@ -19,14 +19,15 @@
                     <td class="col1"><label>Tên đăng nhập</label></td>
                     <td class="form-group">@Html.TextBoxFor(x => x.MaNguoiDung, new { id = "txtMaNguoiDung", @class = "form-control  viewOnly", required = "required", maxlength = 20 })</td>
                     <td class="col1"><label>Mật khẩu</label></td>
-                    <td class="form-group">@Html.PasswordFor(x => x.MatKhau, new { id = "txtPassword", @class = "form-control", required = "required" ,maxlength = 250})</td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.MatKhau, new { id = "txtPassword", @class = "form-control", required = "required", maxlength = 250 })</td>
                 </tr>
                 <tr>
                     <td class="col1"><label>Phân quyền</label></td>
-                    <td class="form-group">@Html.DropDownListFor(x => x.MaNhomNguoiDung, new SelectList((System.Collections.ICollection)ViewData["type"], "MaNhomNguoiDung", "TenNhomNguoiDung"), new { @class = "form-control" })</td>
+                    <td class="form-group">@Html.DropDownListFor(x => x.MaNhomNguoiDung, new SelectList((System.Collections.ICollection)ViewData["MaNhomNguoiDung"], "MaNhomNguoiDung", "TenNhomNguoiDung"), new { @class = "form-control" })</td>
                     <td class="col1"><label>Trạng thái</label></td>
-                    <td class="form-group">@Html.DropDownListFor(x => x.TrangThai, new SelectList((System.Collections.ICollection)ViewData["status"], "ID", "Name"), new { @class = "form-control" })</td>
+                    <td class="form-group">@Html.DropDownListFor(x => x.TrangThai, new SelectList((System.Collections.ICollection)ViewData["TrangThai"], "Value", "Text"), new { @class = "form-control" })</td>
                 </tr>
+
                 <tr>
                     <td class="col1"><label>Mã Nhân viên</label></td>
                     <td class="form-group">@Html.TextBoxFor(x => x.MaNhanVien, new { id = "txtPMaNhanVien", @class = "form-control", required = "required", maxlength = 50 })</td>
@@ -38,11 +39,10 @@
                     <td class="form-group">@Html.TextBoxFor(x => x.ChucNang, new { id = "txtChucNang", @class = "form-control", required = "required", maxlength = 50 })</td>
                     <td class="col1"><label>Tài khoản</label></td>
                     <td class="form-group">@Html.TextBoxFor(x => x.TaiKhoan, new { id = "txtTaiKhoan", @class = "form-control", required = "required", maxlength = 50 })</td>
-                </tr>
+                </tr>                 
                 <tr>
                     <td class="col1"><label>Mô tả</label></td>
                     <td colspan="3" class="form-group">@Html.TextAreaFor(x => x.MoTa, new { id = "txtMoTa", @class = "form-control", required = "required", maxlength = 50 })</td>
-                   
                 </tr>
 
             </table>
@@ -76,8 +76,8 @@
 
             $('#btnDelete').click(function () {
                 if (confirm('Bạn có chắc không?')) {
-                    if ($('#admin_id').val() == 0) window.location.href = '/HeThong/Admin';
-                    $.post('/HeThong/DeleteAdmin', { Id: $('#admin_id').val() }, function () {
+                    if ($('#txtNguoiDungID').val() == 0) window.location.href = '/HeThong/Admin';
+                    $.post('/HeThong/DeleteNguoiDung', { Id: $('#txtNguoiDungID').val() }, function () {
                         window.location.href = '/HeThong/Admin';
                     });
                 }
