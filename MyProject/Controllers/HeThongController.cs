@@ -551,11 +551,14 @@ namespace MyProject.Controllers
         {
             try
             {
-                // add a new item
+              
                 if (menu.MenuID == 0)
                 {
                     if (db.AMenus.FirstOrDefault(x => x.MenuID == menu.MenuID) == null)
                     {
+                        //GhiLog
+                        Common.NhatKiHeThong("Save Menu", "Thêm mới", "Menu", "Thêm mới menu " + menu.MaMenu);
+                        // add a new item
                         db.AMenus.Add(menu);
                         db.SaveChanges();
                     }
@@ -570,6 +573,8 @@ namespace MyProject.Controllers
                     var existObj = db.AMenus.FirstOrDefault(x => x.MenuID == menu.MenuID);
                     if (existObj != null)
                     {
+                        //GhiLog
+                        Common.NhatKiHeThong("Save Menu", "Sửa menu", "Menu", "Sửa menu " + menu.MaMenu);
                         existObj.TenMenu = menu.TenMenu;
                         existObj.TrangThai = menu.TrangThai;
                         existObj.MoTa = menu.MoTa;

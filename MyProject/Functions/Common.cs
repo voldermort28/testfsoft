@@ -394,7 +394,7 @@ namespace MyProject.Functions
                     {
                         status = false;
                     }
-                }                 
+                }
             }
             catch (Exception ex)
             {
@@ -405,6 +405,37 @@ namespace MyProject.Functions
             status = true;
             return status;
         }
+
+        public static bool NhatKiHeThong(string ChucNang, string HanhDong, string DoiTuong, string NoiDung)
+        {
+            bool status  = true ;
+            try
+            {
+                using (var db = new MyDatabaseEntities())
+                {
+                    var adminId = (int)HttpContext.Current.Session["admss"];
+                    var adminEmail = (string)HttpContext.Current.Session["admssemail"];
+                    var nhatki = new ANhatKyHeThong();
+                    nhatki.NguoiDung = (string)HttpContext.Current.Session["admss"];
+                    nhatki.ThoiGian  = DateTime.Now;
+                    nhatki.ChucNang = ChucNang;
+                    nhatki.HanhDong = HanhDong;
+                    nhatki.DoiTuong = DoiTuong;
+                    nhatki.NoiDung = NoiDung;
+                    db.ANhatKyHeThongs.Add(nhatki);
+                    db.SaveChanges(); 
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog(ex.Message + "\n" + ex.StackTrace);
+                status = false;
+            }
+            
+            return status;
+        }
+
+
         public static int GetAdminType()
         {
             
@@ -476,5 +507,6 @@ namespace MyProject.Functions
             }
             return b;
         }
+ 
     }
 }
