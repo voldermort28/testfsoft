@@ -8,16 +8,16 @@
     </div>
     <div class="row">
         @Html.AntiForgeryToken()
-        @(Html.Kendo().Grid<MyProject.Models.admin>()
+        @(Html.Kendo().Grid<MyProject.Models.ANguoiDung>()
               .Name("grid")
               .Columns(columns =>
               {
-                  columns.Bound(p => p.email).Title("Tên đăng nhập");
+                  columns.Bound(p => p.MaNguoiDung).Title("Tên đăng nhập");
                   //columns.Bound(p => p.password).Title("Mật khẩu").ClientTemplate("<input id='password' name='password' type='password' value='#=password#' />");
-                  columns.Bound(p => p.admin_type).Title("Phân quyền").ClientTemplate("<span>#=admin_type == 1 ? 'Super admin' : 'Normal admin'#</span>").Width(80);
-                  columns.Bound(p => p.status_id).Title("Trạng thái").ClientTemplate("<span class='fa fa-2x #=status_id == 1 ? 'fa-check text-success' : 'fa-remove text-danger' #'></span>").Filterable(false).Width(80);
+                  columns.Bound(p => p.MaNhomNguoiDung).Title("Phân quyền").ClientTemplate("<span>#=MaNhomNguoiDung == 1 ? 'Super admin' : 'Normal admin'#</span>").Width(80);
+                  columns.Bound(p => p.TrangThai).Title("Trạng thái").ClientTemplate("<span class='fa fa-2x #=TrangThai == 1 ? 'fa-check text-success' : 'fa-remove text-danger' #'></span>").Filterable(false).Width(80);
                   //columns.ForeignKey(p => p.status_id, (System.Collections.IEnumerable)ViewData["status"], "status_id", "name").EditorTemplateName("StatusEditor").Title("Trạng thái");
-                  columns.Bound(p => p.admin_id).ClientTemplate("<a href='/HeThong/AdminEditor?ID=" + "#=admin_id#'>Chi tiết</a>").Filterable(false).Title("Cập nhật").Filterable(false).Width(60);
+                  columns.Bound(p => p.NguoiDungID).ClientTemplate("<a href='/HeThong/AdminEditor?ID=" + "#=NguoiDungID#'>Chi tiết</a>").Filterable(false).Title("Cập nhật").Filterable(false).Width(60);
                   //columns.Command(command => { command.Destroy().Text(" "); }).Width(110).Title("Xóa").Width(60);
               })
               .ToolBar(toolbar => toolbar.Custom().Action("AdminEditor","HeThong").Text("Thêm mới")) 
@@ -38,12 +38,12 @@
                   .Ajax()
                   .PageSize(20)
                   .ServerOperation(false)
-                  .Sort(sort => sort.Add("admin_id").Descending())
+                          .Sort(sort => sort.Add("NguoiDungID").Descending())
                   .Events(events => { events.Error("error_handler"); events.RequestEnd("onRequestEnd"); })
                   .Model(model =>
                   {
-                      model.Id(p => p.admin_id);
-                      model.Field(p => p.admin_id).Editable(false);
+                      model.Id(p => p.NguoiDungID);
+                      model.Field(p => p.NguoiDungID).Editable(false);
                   })
                   .Read(read => read.Action("Admin_Read", "HeThong"))
               //.Create(update => update.Action("Admin_Create", "HeThong"))

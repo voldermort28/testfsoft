@@ -230,11 +230,10 @@ namespace MyProject.Controllers
         {
             var objs = db.ANguoiDungs.Select(x => new
             {
-                admin_id = x.NguoiDungID,
-                admin_type = x.MaNhomNguoiDung,
-                email = x.MaNguoiDung,
-                password = x.MatKhau,
-                status_id = x.TrangThai  ? 1:0
+                NguoiDungID = x.NguoiDungID,
+                MaNhomNguoiDung = x.MaNhomNguoiDung,
+         MaNguoiDung   = x.MaNguoiDung , 
+                TrangThai = x.TrangThai ? 1 : 0
             }).ToList();
             return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
@@ -398,7 +397,7 @@ namespace MyProject.Controllers
         }
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult AdminTypeEditor(int ID = 0)
+        public ActionResult AdminTypeEditor(string ID = "0")
         {
             try
             {
@@ -407,9 +406,8 @@ namespace MyProject.Controllers
                 ViewData["type"] =
                     db.ANhomNguoiDungs.Select(
                         x => new { MaNhomNguoiDung = x.MaNhomNguoiDung, TenNhomNguoiDung = x.TenNhomNguoiDung }).ToList();
-
-
-                if (ID == 0) return View();
+                 
+                if (ID.Equals("0")) return View();
                 else
                 {
                     var obj = db.ANhomNguoiDungs.FirstOrDefault(x => x.MaNhomNguoiDung == ID.ToString());
@@ -486,6 +484,115 @@ namespace MyProject.Controllers
 
         #endregion
 
+
+        #region Menu
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult AMenu()
+        {
+            ViewData["status"] = db.status.Select(x => new { status_id = x.status_id, name = x.name }).ToList();
+            return View();
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AMenu_Read([DataSourceRequest]DataSourceRequest request)
+        {
+            var objs = db.AMenus.Select(x => new
+            {
+                MenuID = x.MenuID,
+                MaMenu = x.MaMenu,
+                TenMenu = x.TenMenu,
+                TrangThai = x.TrangThai,
+                MoTa = x.MoTa ,
+                NguoiDung = x.NguoiDung ,
+                ChucNang = x.ChucNang ,
+                Active = x.Active
+            }).ToList();
+            return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult AMenuEditor(int ID = 0)
+        {
+            try
+            {
+                ViewData["status"] = db.status.Select(x => new { ID = x.status_id, Name = x.name }).ToList();
+                List<SelectListItem> lstType = new List<SelectListItem>();
+                lstType.Add(new SelectListItem { Value = "1", Text = "Head account" });
+                lstType.Add(new SelectListItem { Value = "2", Text = "CIC account" });
+                lstType.Add(new SelectListItem { Value = "3", Text = "ASC account" });
+                ViewData["type"] = lstType;
+
+                if (ID == 0) return View();
+                else
+                {
+                    var obj = db.AMenus.FirstOrDefault(x => x.MenuID == ID);
+                    if (obj == null) return HttpNotFound();
+                    return View(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveAMenu(AMenu menu)
+        {
+            try
+            {
+                // add a new item
+                if (menu.MenuID == 0)
+                {
+                    if (db.AMenus.FirstOrDefault(x => x.MenuID == menu.MenuID) == null)
+                    {
+                        db.AMenus.Add(menu);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        TempData["Notice"] = "Mã menu đã được đăng kí";
+                        TempData["ShowPopup"] = true;
+                    }
+                }
+                else // modify item
+                {
+                    var existObj = db.AMenus.FirstOrDefault(x => x.MenuID == menu.MenuID);
+                    if (existObj != null)
+                    {
+                        existObj.TenMenu = menu.TenMenu;
+                        existObj.TrangThai = menu.TrangThai;
+                        existObj.MoTa = menu.MoTa;
+                        existObj.NguoiDung = menu.NguoiDung;
+                        existObj.ChucNang = menu.ChucNang;
+                        existObj.NgaySua = DateTime.Now;
+                        existObj.NguoiSua = Session["admss"].ToString();  
+                        db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("AMenu");
+        }
+
+
+        #endregion
         #region Log
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]

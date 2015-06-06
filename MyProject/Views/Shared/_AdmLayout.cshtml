@@ -92,6 +92,7 @@
                                              
                                             <li>@Html.ActionLink("Quản lý tài khoản", "Admin", "HeThong")</li>
                                             <li>@Html.ActionLink("Quản lý loại tài khoản", "AdminType", "HeThong")</li>
+                                            <li>@Html.ActionLink("Thông tin menu", "AMenu", "HeThong")</li>
                                             <li>@Html.ActionLink("Log", "ViewLog", "HeThong")</li>
                                         </ul>
                                     </li>
@@ -244,58 +245,7 @@
                 });
             </script>
         }
-        // show butoon export data customer
-        var isShowMenu = Common.ChekSuperAdmin();
-        if (isShowMenu == true)
-        {
-            <script>
-                $(function () {
-                    $(".showsuperAdmin").show();
-
-                    $("#btnExport").show();
-                });
-            </script>
-        }
-        else
-        {
-            <script>
-                $(function () {                    
-                    $(".showsuperAdmin").hide();
-                    $(".showsuperAdmin").html('');
-                    $("#btnExport").hide();
-                });
-            </script>         
-        }
-
-        // show button add new customer
-        if (Common.GetAdminType() == 3 || Common.GetAdminType() == 0)
-        {
-            <script>
-                $(function () {
-                    $(".btn-addcustomer").hide();
-                    $(".btn-addcustomer").html('');
-                    $(".btn-profile-customer").hide();
-                    $(".btn-profile-customer").html('');
-                    $(".btn-save-product").hide();
-                    $(".btn-save-product").html('');
-                });
-            </script>
-            
-        } 
-         // show button add new customer
-        if (Common.GetAdminType() != 1 )
-        {
-            
-            <script>
-                $(function () {
-                    var grdView = $('#grid').data('kendoGrid');
-                    grdView.hideColumn("status_id"); //By Using Columns Name.
-
-                    $("#btnDeletePhysical").hide();                    
-                });
-            </script>
-            
-        } 
+         
 }    
     @RenderSection("scripts", required: false)
 </body>

@@ -401,6 +401,8 @@ namespace MyProject.Functions
                 WriteLog(ex.Message + "\n" + ex.StackTrace);
                 status = false;
             }
+            // hien tai deu vao duoc
+            status = true;
             return status;
         }
         public static int GetAdminType()

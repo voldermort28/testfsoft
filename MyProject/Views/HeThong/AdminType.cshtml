@@ -16,9 +16,9 @@
                   columns.Bound(p => p.TenNhomNguoiDung).Title("Tên Nhóm").Width(100);
                   columns.Bound(p => p.MoTa).Title("Mô tả").Width(100);
                   columns.Bound(p => p.NguoiDung).Title("Người dùng").Width(100);
-                  columns.Bound(p => p.ChucNang).Title("Chức năng").Width(100); 
-                  columns.Bound(p => p.TrangThai).Title("Trạng thái").ClientTemplate("<span class='fa fa-2x #=status_id == 1 ? 'fa-check text-success' : 'fa-remove text-danger' #'></span>").Filterable(false).Width(80);                  
-                  columns.Bound(p => p.NhomNguoiDungID).ClientTemplate("<a href='/HeThong/AdminEditor?ID=" + "#=NhomNguoiDungID#'>Chi tiết</a>").Filterable(false).Title("Cập nhật").Filterable(false).Width(60);
+                  columns.Bound(p => p.ChucNang).Title("Chức năng").Width(100);
+                  columns.Bound(p => p.TrangThai).Title("Trạng thái").ClientTemplate("<span class='fa fa-2x #=status_id == 1 ? 'fa-check text-success' : 'fa-remove text-danger' #'></span>").Filterable(false).Width(80);
+                  columns.Bound(p => p.NhomNguoiDungID).ClientTemplate("<a href='/HeThong/AdminTypeEditor?ID=" + "#=MaNhomNguoiDung#'>Chi tiết</a>").Filterable(false).Title("Cập nhật").Filterable(false).Width(60);
                   //columns.Command(command => { command.Destroy().Text(" "); }).Width(110).Title("Xóa").Width(60);
               })
               .ToolBar(toolbar => toolbar.Custom().Action("AdminTypeEditor","HeThong").Text("Thêm mới")) 

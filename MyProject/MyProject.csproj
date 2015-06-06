@@ -1212,6 +1212,8 @@
     <Content Include="static\js\vendor\jquery-1.10.2.min.map" />
     <Content Include="Views\HeThong\AdminType.cshtml" />
     <Content Include="Views\HeThong\AdminTypeEditor.cshtml" />
+    <Content Include="Views\HeThong\AMenu.cshtml" />
+    <Content Include="Views\HeThong\AMenuEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
