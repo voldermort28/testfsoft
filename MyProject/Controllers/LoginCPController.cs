@@ -34,8 +34,7 @@ namespace MyProject.Controllers
                     {
                         if (Common.MaHoa(txtPassword.Trim()).Equals(obj.password))
                         {
-                            Session["admss"] = obj.admin_id;
-                            Session["SuperAdmin"] = obj.admin_type;
+                            Session["admss"] = obj.admin_id;                             
                             Session["admsstype"] = obj.admin_type;
                             Session["admssemail"] = obj.email;
                             if (!String.IsNullOrEmpty(returnUrl)) return Redirect(returnUrl);

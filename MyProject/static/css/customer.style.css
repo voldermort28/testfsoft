@@ -858,16 +858,8 @@ img, media {
   background: url("../images/site-icons.png") no-repeat 0 0;
   background-size: 600px 600px;
 }
+ 
 
-/* line 15, ../sass/base/_media.scss */
-.sony-header-light {
-  background: url("../images/site-headerlight.png") no-repeat 0 0;
-}
-
-/* line 18, ../sass/base/_media.scss */
-.sony-header-top, .header.site-header-top:after {
-  background: url("../images/site-header-top.png") no-repeat center center;
-}
 
 /* line 35, ../sass/base/_media.scss */
 .sony-home:before,

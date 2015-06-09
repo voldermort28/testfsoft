@@ -416,7 +416,7 @@ namespace MyProject.Functions
                     var adminId = (int)HttpContext.Current.Session["admss"];
                     var adminEmail = (string)HttpContext.Current.Session["admssemail"];
                     var nhatki = new ANhatKyHeThong();
-                    nhatki.NguoiDung = (string)HttpContext.Current.Session["admss"];
+                    nhatki.NguoiDung = (string)HttpContext.Current.Session["admssemail"];
                     nhatki.ThoiGian  = DateTime.Now;
                     nhatki.ChucNang = ChucNang;
                     nhatki.HanhDong = HanhDong;

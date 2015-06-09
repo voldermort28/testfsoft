@@ -521,10 +521,14 @@ namespace MyProject.Controllers
             {
                 ViewData["status"] = db.status.Select(x => new { ID = x.status_id, Name = x.name }).ToList();
                 List<SelectListItem> lstType = new List<SelectListItem>();
-                lstType.Add(new SelectListItem { Value = "1", Text = "Head account" });
-                lstType.Add(new SelectListItem { Value = "2", Text = "CIC account" });
-                lstType.Add(new SelectListItem { Value = "3", Text = "ASC account" });
+                lstType.Add(new SelectListItem { Value = "0", Text = "Đang hoạt động" });
+                lstType.Add(new SelectListItem { Value = "1", Text = "Ngừng hoạt động" }); 
                 ViewData["type"] = lstType;
+
+                List<SelectListItem> lstActive = new List<SelectListItem>();
+                lstActive.Add(new SelectListItem { Value = "0", Text = "Xóa" });
+                lstActive.Add(new SelectListItem { Value = "1", Text = "Hoạt động" });
+                ViewData["lstActive"] = lstActive;
 
                 if (ID == 0) return View();
                 else
@@ -556,11 +560,19 @@ namespace MyProject.Controllers
                 {
                     if (db.AMenus.FirstOrDefault(x => x.MenuID == menu.MenuID) == null)
                     {
-                        //GhiLog
-                        Common.NhatKiHeThong("Save Menu", "Thêm mới", "Menu", "Thêm mới menu " + menu.MaMenu);
+                        
                         // add a new item
+                        menu.NguoiTao = Session["admss"].ToString();
+                        menu.NgayTao = DateTime.Now;
+                        menu.NguoiSua = Session["admss"].ToString();
+                        menu.NgaySua = DateTime.Now;
+
                         db.AMenus.Add(menu);
                         db.SaveChanges();
+                        //GhiLog
+                        Common.NhatKiHeThong("Save Menu", "Thêm mới", "Menu", "Thêm mới menu " + menu.MaMenu);
+                        TempData["Notice"] = "Thêm thành công";
+                        TempData["ShowPopup"] = true;
                     }
                     else
                     {
@@ -573,8 +585,7 @@ namespace MyProject.Controllers
                     var existObj = db.AMenus.FirstOrDefault(x => x.MenuID == menu.MenuID);
                     if (existObj != null)
                     {
-                        //GhiLog
-                        Common.NhatKiHeThong("Save Menu", "Sửa menu", "Menu", "Sửa menu " + menu.MaMenu);
+                       
                         existObj.TenMenu = menu.TenMenu;
                         existObj.TrangThai = menu.TrangThai;
                         existObj.MoTa = menu.MoTa;
@@ -583,6 +594,10 @@ namespace MyProject.Controllers
                         existObj.NgaySua = DateTime.Now;
                         existObj.NguoiSua = Session["admss"].ToString();  
                         db.SaveChanges();
+                        //GhiLog
+                        Common.NhatKiHeThong("Save Menu", "Sửa menu", "Menu", "Sửa menu " + menu.MaMenu);
+                        TempData["Notice"] = "Cập nhật dữ liệu thành công";
+                        TempData["ShowPopup"] = true;
                     }
                 }
             }
