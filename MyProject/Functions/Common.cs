@@ -247,33 +247,7 @@ namespace MyProject.Functions
             }
             return b;
         }
-        /// <summary>
-        /// Check string input
-        /// </summary>
-        /// <param name="input">input</param>
-        /// <returns>True  hava special
-        /// or False</returns>
-        public static bool ValidateString(String input)
-        {
-            bool b = false;
-            var specialChars = new List<char> { '<', '>' };
-            try
-            {
-            //    var withoutSpecial = new string(input.Where(c => Char.IsLetterOrDigit(c)
-            //                                    || Char.IsWhiteSpace(c)).ToArray());
-
-            //    b = input != withoutSpecial;
-                var withoutSpecial = new string(input.Where(c => !specialChars.Contains(c)).ToArray());
-
-                b = input != withoutSpecial;
-
-            }
-            catch (Exception ex)
-            {
-                WriteLog(ex.Message + "\n" + ex.StackTrace);
-            }
-            return b;
-        }
+        
 
         public static bool ValidatePassUser(String pass)
         {
@@ -385,8 +359,8 @@ namespace MyProject.Functions
                 {
                     var adminId = (int)HttpContext.Current.Session["admss"];
                     var adminEmail = (string)HttpContext.Current.Session["admssemail"];
-                    var obj = db.admins.FirstOrDefault(x => x.admin_id == adminId && x.email.Equals(adminEmail) && x.status_id == Constant.StatusActive);
-                    if (obj != null && obj.admin_type == Constant.SuperAdmin)
+                    var obj = db.admins.FirstOrDefault(x => x.admin_id == adminId && x.email.Equals(adminEmail) && x.status_id == 1);
+                    if (obj != null && obj.admin_type == 1)
                     {
                         status = true;
                     }
@@ -474,39 +448,6 @@ namespace MyProject.Functions
 
             return result5;
         }
-
-        
-        public static Boolean VerifyCaptcha(String responseCaptchar, String ip)
-        { 
-            String secret = ConfigurationManager.AppSettings["recaptcha_secret"];//"6LdncgATAAAAAGQ7JX2P-rb1D0ZNe438qy6g1XB-";
-            String url = String.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}&remoteip={2}",secret,responseCaptchar,ip);
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
-            request.Method = "GET";
-            String test = String.Empty;
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            {
-                Stream dataStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(dataStream);
-                test = reader.ReadToEnd();
-                reader.Close();
-                dataStream.Close();
-            }
-
-            JavaScriptSerializer j = new JavaScriptSerializer();
-            ReCaptcharVerify res = j.Deserialize<ReCaptcharVerify>(test);
-            return Convert.ToBoolean(res.Success);
-        }
-
-        public static Boolean NeedVerifyHuman()
-        {
-            Boolean b = false;
-            String userIP = HttpContext.Current.Request.UserHostAddress;
-            if (HttpContext.Current.Cache[userIP] != null)
-            {
-                b = true;
-            }
-            return b;
-        }
- 
+         
     }
 }

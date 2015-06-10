@@ -13,15 +13,13 @@ using System.Data.Entity;
 using System.Text.RegularExpressions;
 using System.Text;
 using MyProject.ViewModels;
-using System.IO;
-using MyProject.Mailers;
+using System.IO; 
 using Kendo.Mvc;
 using System.ComponentModel;
 using System.Data.Entity.Core.Objects;
 
 namespace MyProject.Controllers
-{
-    [AuthorizeIPAddressAttribute]
+{ 
     [CheckPermissionActionFilter] 
     public class HeThongController : Controller
     {
@@ -122,99 +120,7 @@ namespace MyProject.Controllers
   
         #endregion        
          
-        #region Menu
-        [SuperAdminAttributes.SuperAdmin]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Menu()
-        {
-            return View();
-        }
-
-        [SuperAdminAttributes.SuperAdmin]
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public ActionResult Menu_Read([DataSourceRequest]DataSourceRequest request)
-        {
-            var objs = db.RS_Menu.Select(x => new
-            {
-                ID = x.ID,
-                Name = x.Name,
-                CssClass = x.CssClass,
-                Url = x.Url
-            }).ToList();
-            return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        [SuperAdminAttributes.SuperAdmin]
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public ActionResult Menu_Create([DataSourceRequest] DataSourceRequest request, RS_Menu item)
-        {
-            if (item != null && ModelState.IsValid)
-            {
-                try
-                {
-                    if (GetCurrentAdminId() > 0) item.CreatedBy = item.ModifiedBy = GetCurrentAdminId();
-                    //item.ID = (db.RS_Menu.Count() > 0) ? db.RS_Menu.Max(x => x.ID) + 1 : 1;
-                    item.Created = item.Modified = DateTime.Now;
-                    db.RS_Menu.Add(item);
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
-                }
-            }
-            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
-        }
-
-        [SuperAdminAttributes.SuperAdmin]
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public ActionResult Menu_Update([DataSourceRequest] DataSourceRequest request, RS_Menu item)
-        {
-            //var obj = db.RS_Menu.FirstOrDefault(x => x.ID == item.ID);
-            //if (obj == null) return HttpNotFound();
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    //obj.Name = item.Name;
-                    //obj.CssClass = item.CssClass;
-                    //obj.Url = item.Url;
-                    db.Entry(item).State = EntityState.Modified;
-                    if (GetCurrentAdminId() > 0) item.ModifiedBy = GetCurrentAdminId();
-                    item.Modified = DateTime.Now;
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
-                }
-            }
-            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
-        }
-
-        [SuperAdminAttributes.SuperAdmin]
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        public ActionResult Menu_Destroy([DataSourceRequest] DataSourceRequest request, RS_Menu item)
-        {
-            var obj = db.RS_Menu.FirstOrDefault(x => x.ID == item.ID);
-            if (obj == null) return HttpNotFound();
-            try
-            {
-                db.RS_Menu.Remove(obj);            
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
-            }
-            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
-        }
-        #endregion
-
+         
         #region NguoiDung
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -368,6 +274,7 @@ namespace MyProject.Controllers
             return RedirectToAction("Admin");
         }
         #endregion
+
         #region AdminType
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -483,8 +390,7 @@ namespace MyProject.Controllers
 
 
         #endregion
-
-
+         
         #region Menu
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -613,6 +519,7 @@ namespace MyProject.Controllers
 
 
         #endregion
+
         #region Log
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -757,17 +664,15 @@ namespace MyProject.Controllers
             string returnSlug = "/" + Regex.Replace(temp2, "[^0-9a-zA-Z -]", String.Empty) + ".html";
             return Json(returnSlug, JsonRequestBehavior.AllowGet);
         }
- 
- 
-        #endregion
 
         public ActionResult ForeignKeyColumn()
         {
-           // PopulateCategories();
+            // PopulateCategories();
             return View();
         }
+        #endregion
 
+        
          
-
     }
 }

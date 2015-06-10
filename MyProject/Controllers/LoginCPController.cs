@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 using System.Web.Security;
-using MyProject.Functions;
-using MyProject.Mailers;
+using MyProject.Functions; 
 using MyProject.Models;
 using System;
 using System.Collections.Generic;
@@ -54,49 +53,6 @@ namespace MyProject.Controllers
             Session.Clear();
             Session.Abandon();
             return RedirectToAction("Index", "LoginCP");
-        }
-
-        [HttpGet]
-        public ActionResult ForgetPassAdmin()
-        {
-            return View();
-        }
-        
-        [HttpGet]
-        public ActionResult RenewPassAdmin(string token)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult RenewPassAdmin(string email, string password, string longtime)
-        {
-            string deccryptEmail = Common.Decrypt(Common.Base64Decode(email)); 
-            // validate
-            if (!Common.ValidatePassAdmin(password))
-            {
-                return Json(new { result = "ERROR", msg = "Mật khẩu không hợp lệ" });
-            }
-            if ((deccryptEmail.ToLower() == password.ToLower())
-                || (deccryptEmail.Substring(0, deccryptEmail.IndexOf('@')).ToLower() == password.ToLower()))
-            {
-                return Json(new { result = "ERROR", msg = "Mật khẩu trùng email" });
-            }
-
-            using (var db = new MyDatabaseEntities())
-            {
-                var user = db.admins.FirstOrDefault(x => x.email == deccryptEmail);
-                if (user == null) ViewBag.msg = "Tài khoản không tồn tại";
-                if (user != null)
-                {
-                    
-                    return Json(new { result = "OK", msg = "Tạo mật khẩu mới thành công." });
-                }               
-                return View();
-            }
-        }
-
-
+        } 
     }
 }

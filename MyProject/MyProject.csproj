@@ -166,19 +166,15 @@
     <Compile Include="Controllers\HeThongController.cs" />
     <Compile Include="Controllers\ImageBrowserController.cs" />
     <Compile Include="Controllers\LoginCPController.cs" />
-    <Compile Include="Filters\AuthorizeIPAddressAttribute.cs" />
     <Compile Include="Filters\CheckPermissionActionFilter.cs" />
     <Compile Include="Filters\SuperAdminAttributes.cs" />
     <Compile Include="Filters\LoginRequriedAttribute.cs" />
     <Compile Include="Functions\Common.cs" />
     <Compile Include="Functions\Constant.cs" />
     <Compile Include="Functions\CreateExcelFile.cs" />
-    <Compile Include="Functions\CsvActionResult.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mailers\IUserMailer.cs" />
-    <Compile Include="Mailers\UserMailer.cs" />
     <Compile Include="Models\admin.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -1204,8 +1200,6 @@
     <Content Include="Views\Shared\_AdmLayout.cshtml" />
     <Content Include="Views\LoginCP\Index.cshtml" />
     <Content Include="Views\HeThong\Index.cshtml" />
-    <Content Include="Views\LoginCP\ForgetPassAdmin.cshtml" />
-    <Content Include="Views\LoginCP\RenewPassAdmin.cshtml" />
     <Content Include="Views\HeThong\AdminEditor.cshtml" />
     <Content Include="static\images\icon-sidebar.psd" />
     <Content Include="static\images\site-icons.psd" />
