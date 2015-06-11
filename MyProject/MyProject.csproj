@@ -472,6 +472,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ProfileVM.cs" />
     <Compile Include="ViewModels\ReCaptcharVerify.cs" />
   </ItemGroup>
   <ItemGroup>

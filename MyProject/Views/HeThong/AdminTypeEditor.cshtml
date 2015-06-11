@@ -26,11 +26,61 @@
                     <td class="col1"><label>Người dùng</label></td>
                     <td class="form-group">@Html.TextBoxFor(x => x.NguoiDung, new { id = "txtNguoiDung", @class = "form-control", required = "required" ,maxlength = 250})</td>
                 </tr>
-               <tr>
+                <tr>
                     <td class="col1"><label>Chức năng</label></td>
                     <td class="form-group">@Html.TextBoxFor(x => x.ChucNang, new { id = "txtChucNang", @class = "form-control ", required = "required" , maxlength = 20 })</td>
                     <td class="col1"><label>Trạng thái</label></td>
                     <td class="form-group">@Html.TextBoxFor(x => x.TrangThai, new { id = "txtTrangThai", @class = "form-control", required = "required" ,maxlength = 250})</td>
+                </tr>
+                <tr>
+                    <td class="col1"><label>QUyền Menu</label></td>
+                    <td colspan="3" class="form-group">
+                         @Html.AntiForgeryToken()
+        @(Html.Kendo().Grid<MyProject.Models.ANhomMenu>()
+              .Name("grid")
+              .Columns(columns =>
+              {
+                    columns.Bound(p => p.NhomMenuID).Title("Mã nhóm Menu");                  
+                    columns.Bound(p => p.MaMenu).Title("Mã Menu").Width(80);
+                    columns.Bound(p => p.MaNhomNguoiDung).Title("Mã Nhóm người dùng").Width(80);
+                    columns.Bound(p => p.VIEW).Title("Trạng thái").Template(@<input type="checkbox" />);
+                    columns.Bound(p => p.ADD).Title("Trạng thái").Template(@<input type="checkbox" />);
+                    columns.Bound(p => p.EDIT).Title("Trạng thái").Template(@<input type="checkbox" />);
+                    columns.Bound(p => p.DELETE).Title("Trạng thái").Template(@<input type="checkbox" />);
+                    columns.Bound(p => p.IMPORT).Title("Trạng thái").Template(@<input type="checkbox" />);
+                    columns.Bound(p => p.EXPORT).Title("Trạng thái").Template(@<input type="checkbox" />);
+                    columns.Bound(p => p.PRINT).Title("Trạng thái").Template(@<input type="checkbox" />);
+                    columns.Bound(p => p.CONTROL).Title("Trạng thái").Template(@<input type="checkbox" />);
+              })
+              .ToolBar(toolbar => toolbar.Custom().Action("AdminEditor","HeThong").Text("Thêm mới")) 
+              //.Editable(editable => editable.Mode(GridEditMode.InLine))
+              .Sortable()
+              .Resizable(resize => resize.Columns(true))
+              .Pageable(pageable => pageable
+                  .Refresh(true)
+                  .PageSizes(true)
+                  .ButtonCount(5))
+              .Filterable(filterable => filterable
+                  .Extra(false)
+                  .Operators(operators => operators
+                      .ForString(str => str.Clear().Contains("Contains"))
+                  )
+              )
+              .DataSource(dataSource => dataSource
+                  .Ajax()
+                  .PageSize(20)
+                  .ServerOperation(false)
+                          .Sort(sort => sort.Add("NhomMenuID").Descending())
+                  .Events(events => { events.Error("error_handler"); events.RequestEnd("onRequestEnd"); })
+                  .Model(model =>
+                  {
+                      model.Id(p => p.NhomMenuID);
+                      model.Field(p => p.NhomMenuID).Editable(false);
+                  })
+                  .Read(read => read.Action("AdminTypeUserMenu_Read", "HeThong").Data("additionalInfo"))       
+              )
+              )
+                    </td>
                 </tr>
                
             </table>
@@ -40,6 +90,10 @@
 @section scripts{
     <script>
         $(function () {
+            function additionalInfo() {
+                return { admintypeId: $('#admintypeId').val() };
+            }
+
             // Disable button submit when submit form
             $('form').submit(function () {
                 $('#btnSave').attr('disabled', 'disabled');

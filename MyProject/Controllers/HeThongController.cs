@@ -297,11 +297,40 @@ namespace MyProject.Controllers
                 status_id = x.TrangThai ? 1 : 0,
                 NguoiDung = x.NguoiDung,
                 ChucNang = x.ChucNang,
-                Active = x.Active ==true ? 1 : 0,
-             
+                Active = x.Active == true ? 1 : 0,
+
             }).ToList();
             return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AdminTypeUserMenu_Read([DataSourceRequest]DataSourceRequest request ,  int admintypeId = 0)
+        {
+            var  lstObj = (from profile in db.ANhomNguoiDungs
+                        join products in db.ANhomMenus on profile.MaNhomNguoiDung equals products.MaNhomNguoiDung into temp
+                        from x in temp.DefaultIfEmpty()
+                        where profile.NhomNguoiDungID ==  admintypeId
+                              orderby profile.NhomNguoiDungID ascending 
+                        select new ANhomMenu()
+                        {
+                            NhomMenuID = x.NhomMenuID,
+                            MaMenu = x.MaMenu,
+                            MaNhomNguoiDung = x.MaNhomNguoiDung,
+                            VIEW = x.VIEW,
+                            ADD = x.ADD,
+                            EDIT = x.EDIT,
+                            DELETE = x.DELETE,
+                            IMPORT = x.IMPORT,
+                            EXPORT = x.EXPORT,
+                            PRINT = x.PRINT,
+                            CONTROL = x.CONTROL
+                        }).ToList();
+
+            return Json(lstObj.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult AdminTypeEditor(string ID = "0")
