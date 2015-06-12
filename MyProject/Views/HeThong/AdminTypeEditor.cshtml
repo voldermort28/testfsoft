@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <form id="frm" action="/HeThong/SaveAdminType" method="post">
         @Html.AntiForgeryToken()
-        @Html.HiddenFor(m => m.NhomNguoiDungID)
+        @Html.HiddenFor(m => m.NhomNguoiDungID ,new { id = "txtMaNhomNguoiDung"})
         <div class="col-md-12">
             <div class="btn-group pull-right"> 
                 <button type="button" class="btn btn-primary" id="btnSave">Lưu</button>                
@@ -20,7 +20,7 @@
                     <td class="col1"><label>Mật khẩu</label></td>
                     <td class="form-group">@Html.TextBoxFor(x => x.TenNhomNguoiDung, new { id = "txtTenNhomNguoiDung", @class = "form-control", required = "required" ,maxlength = 250})</td>
                 </tr>
-               <tr>
+                <tr>
                     <td class="col1"><label>Mô tả</label></td>
                     <td class="form-group">@Html.TextBoxFor(x => x.MoTa, new { id = "txtMoTa", @class = "form-control ", required = "required" , maxlength = 220 })</td>
                     <td class="col1"><label>Người dùng</label></td>
@@ -33,66 +33,99 @@
                     <td class="form-group">@Html.TextBoxFor(x => x.TrangThai, new { id = "txtTrangThai", @class = "form-control", required = "required" ,maxlength = 250})</td>
                 </tr>
                 <tr>
-                    <td class="col1"><label>QUyền Menu</label></td>
-                    <td colspan="3" class="form-group">
-                         @Html.AntiForgeryToken()
-        @(Html.Kendo().Grid<MyProject.Models.ANhomMenu>()
-              .Name("grid")
-              .Columns(columns =>
-              {
-                    columns.Bound(p => p.NhomMenuID).Title("Mã nhóm Menu");                  
-                    columns.Bound(p => p.MaMenu).Title("Mã Menu").Width(80);
-                    columns.Bound(p => p.MaNhomNguoiDung).Title("Mã Nhóm người dùng").Width(80);
-                    columns.Bound(p => p.VIEW).Title("Trạng thái").Template(@<input type="checkbox" />);
-                    columns.Bound(p => p.ADD).Title("Trạng thái").Template(@<input type="checkbox" />);
-                    columns.Bound(p => p.EDIT).Title("Trạng thái").Template(@<input type="checkbox" />);
-                    columns.Bound(p => p.DELETE).Title("Trạng thái").Template(@<input type="checkbox" />);
-                    columns.Bound(p => p.IMPORT).Title("Trạng thái").Template(@<input type="checkbox" />);
-                    columns.Bound(p => p.EXPORT).Title("Trạng thái").Template(@<input type="checkbox" />);
-                    columns.Bound(p => p.PRINT).Title("Trạng thái").Template(@<input type="checkbox" />);
-                    columns.Bound(p => p.CONTROL).Title("Trạng thái").Template(@<input type="checkbox" />);
-              })
-              .ToolBar(toolbar => toolbar.Custom().Action("AdminEditor","HeThong").Text("Thêm mới")) 
-              //.Editable(editable => editable.Mode(GridEditMode.InLine))
-              .Sortable()
-              .Resizable(resize => resize.Columns(true))
-              .Pageable(pageable => pageable
-                  .Refresh(true)
-                  .PageSizes(true)
-                  .ButtonCount(5))
-              .Filterable(filterable => filterable
-                  .Extra(false)
-                  .Operators(operators => operators
-                      .ForString(str => str.Clear().Contains("Contains"))
-                  )
-              )
-              .DataSource(dataSource => dataSource
-                  .Ajax()
-                  .PageSize(20)
-                  .ServerOperation(false)
-                          .Sort(sort => sort.Add("NhomMenuID").Descending())
-                  .Events(events => { events.Error("error_handler"); events.RequestEnd("onRequestEnd"); })
-                  .Model(model =>
-                  {
-                      model.Id(p => p.NhomMenuID);
-                      model.Field(p => p.NhomMenuID).Editable(false);
-                  })
-                  .Read(read => read.Action("AdminTypeUserMenu_Read", "HeThong").Data("additionalInfo"))       
-              )
-              )
+                    
+                    <td colspan="4" class="form-group"> 
+                        @(Html.Kendo().Grid<MyProject.Models.ANhomMenu>()
+                              .Name("grid")
+                              .Columns(columns =>
+                              {
+                                  columns.Bound(p => p.NhomMenuID).Title("Mã nhóm Menu");                  
+                                  columns.Bound(p => p.MaMenu).Title("Mã Menu").Width(80);
+                                  columns.Bound(p => p.MaNhomNguoiDung).Title("Mã Nhóm người dùng").Width(80);
+                                  columns.Bound(p => p.VIEW).Title("View").Template(@<input type="checkbox" />);
+                                  columns.Bound(p => p.ADD).Title("Add").Template(@<input type="checkbox" />);
+                                  columns.Bound(p => p.EDIT).Title("Edit").Template(@<input type="checkbox" />);
+                                  columns.Bound(p => p.DELETE).Title("Delete").Template(@<input type="checkbox" />);
+                                  columns.Bound(p => p.IMPORT).Title("Import").Template(@<input type="checkbox" />);
+                                  columns.Bound(p => p.EXPORT).Title("Export").Template(@<input type="checkbox" />);
+                                  columns.Bound(p => p.PRINT).Title("Print").Template(@<input type="checkbox" />);
+                                  columns.Bound(p => p.CONTROL).Title("Control").Template(@<input type="checkbox" />);
+                              })
+                              //.ToolBar(toolbar => toolbar.Custom().Action("AdminEditor","HeThong").Text("Thêm mới")) 
+                              //.Editable(editable => editable.Mode(GridEditMode.InLine))
+                              .Sortable()
+                              .Resizable(resize => resize.Columns(true))
+                              .Pageable(pageable => pageable
+                                  .Refresh(true)
+                                  .PageSizes(true)
+                                  .ButtonCount(5))
+                              .Filterable(filterable => filterable
+                                  .Extra(false)
+                                  .Operators(operators => operators
+                                      .ForString(str => str.Clear().Contains("Contains"))
+                                  )
+                              )
+                              .DataSource(dataSource => dataSource
+                                  .Ajax()
+                                  .PageSize(20)
+                                  .ServerOperation(false)
+                                  .Sort(sort => sort.Add("NhomMenuID").Descending())
+                                  .Events(events => { events.Error("error_handler"); events.RequestEnd("onRequestEnd"); })
+                                  .Model(model =>
+                                  {
+                                      model.Id(p => p.NhomMenuID);
+                                      model.Field(p => p.NhomMenuID).Editable(false);
+                                  })
+                                  .Read(read => read.Action("AdminTypeUserMenu_Read", "HeThong").Data("additionalInfo"))       
+                              )
+                              )
                     </td>
                 </tr>
                
             </table>
         </div>
     </form>
+
 </div>
+ 
+<script>
+    function additionalInfo() {
+        alert(1);
+        return { customer_id: $('#customer_id').val() };
+    }
+
+    function onDataBound(e) {
+        $(".k-grid-Sửa > span").addClass("k-grid-edit").addClass("k-icon k-edit");
+    }
+
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            console.info(message);
+        }
+    }
+
+    function onRequestEnd(e) {
+        if (e.type == "create" && !e.response.Errors) alert("Tạo mới thành công");
+        else if (e.type == "update" && !e.response.Errors) alert("Cập nhật thông tin thành công");
+        else if (e.type == "destroy" && !e.response.Errors) alert("Xóa thông tin thành công");
+    }
+ 
+</script>
+
+
 @section scripts{
     <script>
+         
         $(function () {
-            function additionalInfo() {
-                return { admintypeId: $('#admintypeId').val() };
-            }
+            
 
             // Disable button submit when submit form
             $('form').submit(function () {

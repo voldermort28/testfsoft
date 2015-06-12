@@ -307,6 +307,7 @@ namespace MyProject.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AdminTypeUserMenu_Read([DataSourceRequest]DataSourceRequest request ,  int admintypeId = 0)
         {
+            var test = new ANhomMenu();
             var  lstObj = (from profile in db.ANhomNguoiDungs
                         join products in db.ANhomMenus on profile.MaNhomNguoiDung equals products.MaNhomNguoiDung into temp
                         from x in temp.DefaultIfEmpty()
