@@ -2144,15 +2144,7 @@ div.checker.focus span.checked, div.checker:hover span.checked, div.checker span
     border-bottom-color: #2e7d32;
     color: #808080;
   }
-  /* line 162, ../sass/components/blocks/_view-hot-article.scss */
-  .filter-hot-article .filter-list .filter-item:first-child a {
-    padding-left: 0;
-  }
-  /* line 167, ../sass/components/blocks/_view-hot-article.scss */
-  .filter-hot-article .filter-list .filter-item:lasst-child a {
-    margin-right: 0;
-  }
-
+   
   /* line 174, ../sass/components/blocks/_view-hot-article.scss */
   .hot-article-wrapper {
     padding: 15px 37px;

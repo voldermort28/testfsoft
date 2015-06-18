@@ -36,8 +36,16 @@ namespace MyProject.Controllers
                             Session["admss"] = obj.admin_id;                             
                             Session["admsstype"] = obj.admin_type;
                             Session["admssemail"] = obj.email;
-                            if (!String.IsNullOrEmpty(returnUrl)) return Redirect(returnUrl);
-                            else return Redirect("/HeThong");
+                            if (!String.IsNullOrEmpty(returnUrl))
+                            {
+                                //Ghi log login
+                                Common.NhatKiHeThong("Đăng nhập hệ thống", "Đăng nhập", "Login Form", "Đăng nhập hệ thống ");
+                                return Redirect(returnUrl);
+                            }
+                            else
+                            {
+                                return Redirect("/HeThong");
+                            }
                         }
                         else ViewBag.Alert = "Username or password is wrong";
                     }

@@ -90,6 +90,9 @@
         <EntityTypeShape EntityType="MyDatabaseModel.LogError" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="MyDatabaseModel.GetDataSetNguoiDung" Width="1.5" PointX="8.375" PointY="0.75" />
         <EntityTypeShape EntityType="MyDatabaseModel.phanQuyen" Width="1.5" PointX="8.375" PointY="6.75" />
+        <EntityTypeShape EntityType="MyDatabaseModel.DMPhong" Width="1.5" PointX="9.625" PointY="10.875" />
+        <EntityTypeShape EntityType="MyDatabaseModel.DMTang" Width="1.5" PointX="7.375" PointY="11.125" />
+        <AssociationConnector Association="MyDatabaseModel.FK_DMPhong_DMTang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

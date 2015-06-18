@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Danh Sách Các Tầng";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">         
+        <a id="export" href="#modalContainer" role="button" class="btn btn-primary" data-toggle="modal">Export</a>
+    </div>
+    <div class="row">
+        @Html.AntiForgeryToken()
+        @(Html.Kendo().Grid<MyProject.Models.DMTang>()
+              .Name("grid")
+              .Columns(columns =>
+              {
+                  columns.Bound(p => p.MaTang).Title("Mã tầng");
+                  columns.Bound(p => p.TenTang).Title("Tên tầng").Width(80);
+                  columns.Bound(p => p.TrangThai).Title("Trạng thái").ClientTemplate("<span class='fa fa-2x #=TrangThai == 1 ? 'fa-check text-success' : 'fa-remove text-danger' #'></span>").Filterable(false).Width(80);
+
+                  columns.Bound(p => p.TangID).ClientTemplate("<a href='/HeThong/DMTangEditor?ID=" + "#=TangID#'>Chi tiết</a>").Filterable(false).Title("Cập nhật").Filterable(false).Width(60);                  
+              })
+              .ToolBar(toolbar => toolbar.Custom().Action("DMTangEditor","HeThong").Text("Thêm mới")) 
+              //.Editable(editable => editable.Mode(GridEditMode.InLine))
+              .Sortable()
+              .Resizable(resize => resize.Columns(true))
+              .Pageable(pageable => pageable
+                  .Refresh(true)
+                  .PageSizes(true)
+                  .ButtonCount(5))
+              .Filterable(filterable => filterable
+                  .Extra(false)
+                  .Operators(operators => operators
+                      .ForString(str => str.Clear().Contains("Contains"))
+                  )
+              )
+              .DataSource(dataSource => dataSource
+                  .Ajax()
+                  .PageSize(20)
+                  .ServerOperation(false)
+                                  .Sort(sort => sort.Add("TangID").Descending())
+                  .Events(events => { events.Error("error_handler"); events.RequestEnd("onRequestEnd"); })
+                  .Model(model =>
+                  {
+                      model.Id(p => p.TangID);
+                      model.Field(p => p.MaTang).Editable(false);
+                  })
+                  .Read(read => read.Action("DMTang_Read", "HeThong")) 
+              )
+              )
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        function error_handler(e) {
+            if (e.errors) {
+                var message = "Errors:\n";
+                var grid = $('#grid').data('kendoGrid');
+                var gridElement = grid.editable.element;
+
+                var validationMessageTemplate = kendo.template(
+                    "<div id='#=field#_validationMessage' " +
+                        "class='k-widget k-tooltip k-tooltip-validation " +
+                            "k-invalid-msg field-validation-error' " +
+                        "style='margin: 0.5em;' data-for='#=field#' " +
+                        "data-val-msg-for='#=field#' role='alert'>" +
+                        "<span class='k-icon k-warning'></span>" +
+                        "#=message#" +
+                        "<div class='k-callout k-callout-n'></div>" +
+                    "</div>");
+                $.each(e.errors, function (key, value) {
+                    if (value.errors) {
+                        gridElement.find("[data-valmsg-for=" + key + "],[data-val-msg-for=" + key + "]")
+                            .replaceWith(validationMessageTemplate({ field: key, message: value.errors[0] }));
+                        gridElement.find("input[name=" + key + "]").focus();
+                    }
+                });
+                grid.one("dataBinding", function (e) {
+                    e.preventDefault();
+                });
+            }
+        }
+        function onRequestEnd(e) {
+            if (e.type == "create" && !e.response.Errors) alert("Đã thêm mới thành công");
+            else if (e.type == "update" && !e.response.Errors) alert("Cập nhật thông tin thành công");
+            else if (e.type == "destroy" && !e.response.Errors) alert("Xóa thông tin thành công");
+        }
+
+        $('#btnExport').click(function () {
+            var fromDate = $("#fromDate").data("kendoDatePicker");
+            var toDate = $("#toDate").data("kendoDatePicker");
+            var category = $("#slCategory").val();
+
+            var prorduct = $("#slProduct").val();
+            var serial = $("#txtSerial").val();
+            if (fromDate._oldText != "" && toDate._oldText != "" && fromDate._oldText > toDate._oldText) {
+                alert("From date must less than to date");
+                return false;
+            }
+            document.location = '/HeThong/ExportProfile?fromDate=' + fromDate._oldText + '&toDate=' + toDate._oldText + '&category=' + category + '&modelName=' + prorduct + '&serial=' + serial;
+        });
+    </script>
+}

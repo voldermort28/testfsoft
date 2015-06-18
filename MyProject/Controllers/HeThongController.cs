@@ -138,7 +138,7 @@ namespace MyProject.Controllers
             {
                 NguoiDungID = x.NguoiDungID,
                 MaNhomNguoiDung = x.MaNhomNguoiDung,
-         MaNguoiDung   = x.MaNguoiDung , 
+                 MaNguoiDung   = x.MaNguoiDung , 
                 TrangThai = x.TrangThai ? 1 : 0
             }).ToList();
             return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -550,6 +550,148 @@ namespace MyProject.Controllers
 
         #endregion
 
+
+        #region "DMTang"
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult DMTang()
+        {
+            ViewData["status"] = db.status.Select(x => new { status_id = x.status_id, name = x.name }).ToList();
+            return View();
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+         public ActionResult DMTang_Read([DataSourceRequest]DataSourceRequest request)
+         {
+             var objs = db.DMTangs.Select(x => new
+             {
+                 TangID = x.TangID,
+                 MaTang = x.MaTang,
+                 TenTang = x.TenTang,
+                 TrangThai = x.TrangThai ? 1 : 0 
+             }).ToList();
+             return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+         }
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult DMTangEditor(string ID = "0")
+        {
+            try
+            {
+                ViewData["status"] = db.status.Select(x => new { ID = x.status_id, Name = x.name }).ToList();
+
+                if (ID.Equals("0"))
+                {
+                    return View();
+                }
+                else
+                {
+                    var IDTang = int.Parse(ID);
+                    var obj = db.DMTangs.FirstOrDefault(x => x.TangID == IDTang);
+                    if (obj == null) return HttpNotFound();
+                    return View(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveDMTang(DMTang dmTang , string isDelete  ="")
+        {
+            try
+            {
+                // add a new item
+                if (dmTang.TangID == 0)
+                {
+                    if (db.DMTangs.FirstOrDefault(x => x.TangID == dmTang.TangID) == null)
+                    {
+                        dmTang.NgayTao = DateTime.Now;
+                        dmTang.NguoiTao = Session["admss"].ToString();
+                        dmTang.NgaySua = DateTime.Now;
+                        dmTang.NguoiSua = Session["admss"].ToString();
+                        dmTang.TrangThai = true;
+
+                        db.DMTangs.Add(dmTang);
+                        db.SaveChanges();
+                        // ghi log
+                        Common.NhatKiHeThong("Thêm tầng", "Thêm tầng", "Tầng", "Thêm tầng  " + dmTang.MaTang);
+                    }
+                    else
+                    {
+                        TempData["Notice"] = "Tầng "+dmTang.MaTang + " dùng này đã được đăng ký rồi";
+                        TempData["ShowPopup"] = true;
+                    }
+                }
+                else // modify item
+                {
+                    var existObj = db.DMTangs.FirstOrDefault(x => x.TangID == dmTang.TangID);
+                    if (existObj != null)
+                    {
+                        //existObj.email = admin.email;
+                        //existObj.MaTang = dmTang.MaTang;
+                        existObj.TenTang = dmTang.TenTang;
+                        existObj.TrangThai = true;
+                        existObj.NgaySua = DateTime.Now;
+                        existObj.NguoiSua = Session["admss"].ToString();
+                        db.SaveChanges();
+                        // ghi log
+                        Common.NhatKiHeThong("Sửa tầng", "Sửa tầng", "Tầng", "Sửa tầng  " + dmTang.MaTang + ":" + dmTang.MaTang);
+                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("DMTang");
+        }
+
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteDMTang(int tangID, string maTang)
+        {
+            try
+            {
+                var existObj = db.DMTangs.FirstOrDefault(x => x.TangID == tangID);
+                    if (existObj != null)
+                    {
+                        db.DMTangs.Remove(existObj);
+                        db.SaveChanges();
+                        Common.NhatKiHeThong("Xóa tầng", "Xóa tầng", "Tầng", "Xóa tầng  " + tangID.ToString() + ":" + maTang);
+                        // Show alert modal
+                        TempData["ShowPopup"] = true;
+                        TempData["Notice"] = "Đã xóa thành công";
+                    } 
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("DMTang");
+        }
+
+       
+        #endregion
         #region Log
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]

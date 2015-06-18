@@ -25,7 +25,7 @@
           <Property Name="MaMenu" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="TenMenu" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
-          <Property Name="MoTa" Type="text" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
           <Property Name="NguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ChucNang" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
@@ -286,6 +286,34 @@
           <Property Name="HeSo3" Type="float" />
           <Property Name="Min" Type="float" />
           <Property Name="Max" Type="float" />
+        </EntityType>
+        <EntityType Name="DMPhong">
+          <Key>
+            <PropertyRef Name="MaPhong" />
+          </Key>
+          <Property Name="PhongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaPhong" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenPhong" Type="nvarchar" MaxLength="255" />
+          <Property Name="MaTang" Type="nvarchar" MaxLength="50" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+          <Property Name="TrangThai" Type="bit" Nullable="false" />
+          <Property Name="NguoiTao" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayTao" Type="datetime" />
+          <Property Name="NguoiSua" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySua" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DMTang">
+          <Key>
+            <PropertyRef Name="MaTang" />
+          </Key>
+          <Property Name="TangID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaTang" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenTang" Type="nvarchar" MaxLength="255" />
+          <Property Name="TrangThai" Type="bit" Nullable="false" />
+          <Property Name="NguoiTao" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayTao" Type="datetime" />
+          <Property Name="NguoiSua" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySua" Type="datetime" />
         </EntityType>
         <EntityType Name="GiaBan">
           <Key>
@@ -813,6 +841,18 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
             </Principal>
             <Dependent Role="DMNVL">
               <PropertyRef Name="LoaiNVLID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DMPhong_DMTang">
+          <End Role="DMTang" Type="Self.DMTang" Multiplicity="0..1" />
+          <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DMTang">
+              <PropertyRef Name="MaTang" />
+            </Principal>
+            <Dependent Role="DMPhong">
+              <PropertyRef Name="MaTang" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1816,6 +1856,8 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <EntitySet Name="DMLoaiPhieu" EntityType="Self.DMLoaiPhieu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DMNhanVien" EntityType="Self.DMNhanVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DMNVL" EntityType="Self.DMNVL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMPhong" EntityType="Self.DMPhong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMTang" EntityType="Self.DMTang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GiaBan" EntityType="Self.GiaBan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon_Ban" EntityType="Self.HoaDon_Ban" Schema="dbo" store:Type="Tables" />
@@ -1959,6 +2001,10 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
             <End Role="DMLoaiNVL" EntitySet="DMLoaiNVL" />
             <End Role="DMNVL" EntitySet="DMNVL" />
           </AssociationSet>
+          <AssociationSet Name="FK_DMPhong_DMTang" Association="Self.FK_DMPhong_DMTang">
+            <End Role="DMTang" EntitySet="DMTang" />
+            <End Role="DMPhong" EntitySet="DMPhong" />
+          </AssociationSet>
           <AssociationSet Name="FK_GiaBan_DMHangHoa" Association="Self.FK_GiaBan_DMHangHoa">
             <End Role="DMHangHoa" EntitySet="DMHangHoa" />
             <End Role="GiaBan" EntitySet="GiaBan" />
@@ -2087,7 +2133,7 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <Property Name="MaMenu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenMenu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TrangThai" Type="Boolean" Nullable="false" />
-          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NguoiDung" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ChucNang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
@@ -4094,6 +4140,12 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <EntitySet Name="LogErrors" EntityType="MyDatabaseModel.LogError" />
           <EntitySet Name="GetDataSetNguoiDungs" EntityType="MyDatabaseModel.GetDataSetNguoiDung" />
           <EntitySet Name="phanQuyens" EntityType="MyDatabaseModel.phanQuyen" />
+          <EntitySet Name="DMPhongs" EntityType="MyDatabaseModel.DMPhong" />
+          <EntitySet Name="DMTangs" EntityType="MyDatabaseModel.DMTang" />
+          <AssociationSet Name="FK_DMPhong_DMTang" Association="MyDatabaseModel.FK_DMPhong_DMTang">
+            <End Role="DMTang" EntitySet="DMTangs" />
+            <End Role="DMPhong" EntitySet="DMPhongs" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="AMenu_SelectAll_Result">
           <Property Type="Int32" Name="MenuID" Nullable="false" />
@@ -4679,6 +4731,48 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <Property Name="CONTROL" Type="Boolean" Nullable="false" />
           <Property Name="TaiKhoan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="DMPhong">
+          <Key>
+            <PropertyRef Name="MaPhong" />
+          </Key>
+          <Property Name="PhongID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaPhong" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenPhong" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaTang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DMTang" Relationship="MyDatabaseModel.FK_DMPhong_DMTang" FromRole="DMPhong" ToRole="DMTang" />
+          <Property Name="NguoiTao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="NguoiSua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySua" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DMTang">
+          <Key>
+            <PropertyRef Name="MaTang" />
+          </Key>
+          <Property Name="TangID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaTang" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenTang" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DMPhongs" Relationship="MyDatabaseModel.FK_DMPhong_DMTang" FromRole="DMTang" ToRole="DMPhong" />
+          <Property Name="NguoiTao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="NguoiSua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySua" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_DMPhong_DMTang">
+          <End Type="MyDatabaseModel.DMTang" Role="DMTang" Multiplicity="0..1" />
+          <End Type="MyDatabaseModel.DMPhong" Role="DMPhong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DMTang">
+              <PropertyRef Name="MaTang" />
+            </Principal>
+            <Dependent Role="DMPhong">
+              <PropertyRef Name="MaTang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6058,6 +6152,36 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
                 <ScalarProperty Name="ADD" ColumnName="ADD" />
                 <ScalarProperty Name="VIEW" ColumnName="VIEW" />
                 <ScalarProperty Name="TenMenu" ColumnName="TenMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DMPhongs">
+            <EntityTypeMapping TypeName="MyDatabaseModel.DMPhong">
+              <MappingFragment StoreEntitySet="DMPhong">
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="NguoiSua" ColumnName="NguoiSua" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="MaTang" ColumnName="MaTang" />
+                <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="PhongID" ColumnName="PhongID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DMTangs">
+            <EntityTypeMapping TypeName="MyDatabaseModel.DMTang">
+              <MappingFragment StoreEntitySet="DMTang">
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="NguoiSua" ColumnName="NguoiSua" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="TenTang" ColumnName="TenTang" />
+                <ScalarProperty Name="MaTang" ColumnName="MaTang" />
+                <ScalarProperty Name="TangID" ColumnName="TangID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

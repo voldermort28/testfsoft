@@ -379,7 +379,14 @@ namespace MyProject.Functions
             status = true;
             return status;
         }
-
+        /// <summary>
+        /// Ghi log he thong
+        /// </summary>
+        /// <param name="ChucNang">Chuc nang</param>
+        /// <param name="HanhDong">Hanh Dong</param>
+        /// <param name="DoiTuong">Doi tuong</param>
+        /// <param name="NoiDung">Noi dung</param>
+        /// <returns></returns>
         public static bool NhatKiHeThong(string ChucNang, string HanhDong, string DoiTuong, string NoiDung)
         {
             bool status  = true ;

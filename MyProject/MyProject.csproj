@@ -343,6 +343,12 @@
     <Compile Include="Models\DMNVL_SelectByPrimaryKey_Result.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DMPhong.cs">
+      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DMTang.cs">
+      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetDataSetNguoiDung.cs">
       <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -1209,6 +1215,8 @@
     <Content Include="Views\HeThong\AdminTypeEditor.cshtml" />
     <Content Include="Views\HeThong\AMenu.cshtml" />
     <Content Include="Views\HeThong\AMenuEditor.cshtml" />
+    <Content Include="Views\HeThong\DMTang.cshtml" />
+    <Content Include="Views\HeThong\DMTangEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
