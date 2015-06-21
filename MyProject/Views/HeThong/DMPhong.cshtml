@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Danh Sách Các Tầng";
+    ViewBag.Title = "Danh Sách Các Phòng";
     Layout = "~/Views/Shared/_AdmLayout.cshtml";
 }
 <div class="container-fluid">
@@ -10,7 +10,7 @@
             <input type="text" id="itemSearch" class="form-control col-md-5" placeholder="Nhập tìm kiếm" />
         </div>
         <div class="col-md-3">
-            <button type="button" id="searchTang" class="btn btn-primary">Tìm kiếm</button>
+            <button type="button" id="searchPhong" class="btn btn-primary">Tìm kiếm</button>
         </div>           
            
         <div>
@@ -20,17 +20,18 @@
     </div>
     <div class="row">
         @Html.AntiForgeryToken()
-        @(Html.Kendo().Grid<MyProject.Models.DMTang>()
+        @(Html.Kendo().Grid<MyProject.Models.DMPhong>()
               .Name("grid")
               .Columns(columns =>
               {
-                  columns.Bound(p => p.MaTang).Title("Mã tầng");
-                  columns.Bound(p => p.TenTang).Title("Tên tầng").Width(80);
+                  columns.Bound(p => p.MaTang).Title("Mã Tầng").Width(100);
+                  columns.Bound(p => p.MaPhong).Title("Mã Phòng").Width(120);
+                  columns.Bound(p => p.TenPhong).Title("Tên Phòng");
                   columns.Bound(p => p.TrangThai).Title("Trạng thái").ClientTemplate("<span class='fa fa-2x #=TrangThai == 1 ? 'fa-check text-success' : 'fa-remove text-danger' #'></span>").Filterable(false).Width(80);
 
-                  columns.Bound(p => p.TangID).ClientTemplate("<a href='/HeThong/DMTangEditor?ID=" + "#=TangID#'>Chi tiết</a>").Filterable(false).Title("Cập nhật").Filterable(false).Width(60);                  
+                  columns.Bound(p => p.PhongID).ClientTemplate("<a href='/HeThong/DMPhongEditor?ID=" + "#=PhongID#'>Chi tiết</a>").Filterable(false).Title("Cập nhật").Filterable(false).Width(60);                  
               })
-              .ToolBar(toolbar => toolbar.Custom().Action("DMTangEditor","HeThong").Text("Thêm mới")) 
+              .ToolBar(toolbar => toolbar.Custom().Action("DMPhongEditor","HeThong").Text("Thêm mới")) 
               //.Editable(editable => editable.Mode(GridEditMode.InLine))
               .Sortable()
               .Resizable(resize => resize.Columns(true))
@@ -52,10 +53,10 @@
                   .Events(events => { events.Error("error_handler"); events.RequestEnd("onRequestEnd"); })
                   .Model(model =>
                   {
-                      model.Id(p => p.TangID);
+                      model.Id(p => p.PhongID);
                       model.Field(p => p.MaTang).Editable(false);
-                  })
-                                  .Read(read => read.Action("DMTang_Read", "HeThong").Data("sendSearch"))
+                  }) 
+                  .Read(read => read.Action("DMPhong_Read", "HeThong").Data("sendSearch"))
               )
               )
     </div>
@@ -103,7 +104,7 @@
             };
         };
 
-        $("#searchTang").click(function () {
+        $("#searchPhong").click(function () {
             $("#grid").data("kendoGrid").dataSource.read();
         });
         $('#btnExport').click(function () {

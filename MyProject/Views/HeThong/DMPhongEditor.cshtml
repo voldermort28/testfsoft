@@ -1,12 +1,12 @@
-﻿@model MyProject.Models.DMTang
+﻿@model MyProject.Models.DMPhong
 @{
     ViewBag.Title = "Tài khoản quản trị";
     Layout = "~/Views/Shared/_AdmLayout.cshtml";
 }
 <div class="container-fluid">
-    <form id="frm" action="/HeThong/SaveDMTang" method="post">
+    <form id="frm" action="/HeThong/SaveDMPhong" method="post">
         @Html.AntiForgeryToken()
-        @Html.HiddenFor(m => m.TangID, new { id = "txtTangId" })
+        @Html.HiddenFor(m => m.PhongID, new { id = "txtPhongID" })
         <div class="col-md-12">
             <div class="btn-group pull-right">
                 
@@ -17,9 +17,15 @@
             <table class="table table-condensed">
                 <tr>
                     <td class="col1"><label>Mã tầng</label></td>
-                    <td class="form-group">@Html.TextBoxFor(x => x.MaTang, new { id = "txtMaTang", @class = "form-control  viewOnly", required = "required", maxlength = 20 })</td>
+                    <td class="form-group">@Html.DropDownListFor(x => x.MaTang, new SelectList((System.Collections.ICollection)ViewData["maTang"], "TangID", "TenTang"), "Chọn tầng", new { id = "cboTang", @class = "form-control", required = "required" })</td>                    
                     <td class="col1"><label>Tên Tầng</label></td>
-                    <td class="form-group">@Html.TextBoxFor(x => x.TenTang, new { id = "txtTenTang", @class = "form-control", required = "required", maxlength = 250 })</td>
+                    
+                </tr>
+                <tr>
+                    <td class="col1"><label>Mã Phòng</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.MaPhong, new { id = "txtMaPhong", @class = "form-control  viewOnly", required = "required", maxlength = 20 })</td>
+                    <td class="col1"><label>Tên Phòng</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.TenPhong, new { id = "txtTenPhong", @class = "form-control", required = "required", maxlength = 250 })</td>
                 </tr>
                 <tr>                  
                     <td class="col1"><label>Trạng thái</label></td>
@@ -41,14 +47,14 @@
             // Turn off autocomplete
             $('form,input,select,textarea').attr("autocomplete", "off");
             
-            if ((typeof $('#txtMaTang').val() == 'undefined') || $('#txtMaTang').val() != 0) {
+            if ((typeof $('#txtPhongID').val() == 'undefined') || $('#txtPhongID').val() != 0) {
                 $('.viewOnly').each(function() {
                     $(this).attr('disabled',true);
                 });
             }
 
             $('#btnCancel').click(function () {
-                window.location.href = '/HeThong/DMTang';
+                window.location.href = '/HeThong/DMPhong';
             });
 
             $('#btnSave').click(function () {
@@ -57,25 +63,20 @@
 
             $('#btnDelete').click(function () {
                 if (confirm('Bạn có chắc không?')) {
-                    if ((typeof $('#txtTangId').val() == 'undefined') || $('#txtTangId').val() == "0") {
-                        alert(typeof $('#txtTangId').val());
-                        alert($('#txtTangId').val());
-                        //window.location.href = '/HeThong/DMTang';
+                    if ((typeof $('#txtPhongID').val() == 'undefined') || $('#txtPhongID').val() == "0") {                        
+                        window.location.href = '/HeThong/DMTang';
                         
                     }
                   
-                    $.post('/HeThong/DeleteDMTang', {
-                        tangID: $('#txtTangId').val(),
-                        maTang: $('#txtMaTang').val()
+                    $.post('/HeThong/DeleteDMPhong', {
+                        phongID: $('#txtPhongID').val() 
                     }, function () {
-                        window.location.href = '/HeThong/DMTang';
+                        window.location.href = '/HeThong/DMPhong';
                     });
                 }
             });
 
            
-        });
-
-        $("#showMenuTool").css("background-color", "#000055");
+        }); 
     </script>
 }
