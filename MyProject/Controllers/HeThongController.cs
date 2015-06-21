@@ -562,17 +562,33 @@ namespace MyProject.Controllers
 
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Post)]
-         public ActionResult DMTang_Read([DataSourceRequest]DataSourceRequest request)
-         {
-             var objs = db.DMTangs.Select(x => new
-             {
-                 TangID = x.TangID,
-                 MaTang = x.MaTang,
-                 TenTang = x.TenTang,
-                 TrangThai = x.TrangThai ? 1 : 0 
-             }).ToList();
-             return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-         }
+        public ActionResult DMTang_Read([DataSourceRequest]DataSourceRequest request, string itemSearch = "")
+        {
+
+            if (string.IsNullOrEmpty(itemSearch))
+            {
+                var objs = db.DMTangs.Select(x => new
+                {
+                    TangID = x.TangID,
+                    MaTang = x.MaTang,
+                    TenTang = x.TenTang,
+                    TrangThai = x.TrangThai ? 1 : 0
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var objs = db.DMTangs.Where(x => x.MaTang.Contains(itemSearch) || x.TenTang.Contains(itemSearch)).Select(x => new
+                {
+                    TangID = x.TangID,
+                    MaTang = x.MaTang,
+                    TenTang = x.TenTang,
+                    TrangThai = x.TrangThai ? 1 : 0
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+
+        }
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult DMTangEditor(string ID = "0")
@@ -607,7 +623,7 @@ namespace MyProject.Controllers
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
-        public ActionResult SaveDMTang(DMTang dmTang , string isDelete  ="")
+        public ActionResult SaveDMTang(DMTang dmTang, string isDelete = "")
         {
             try
             {
@@ -629,7 +645,7 @@ namespace MyProject.Controllers
                     }
                     else
                     {
-                        TempData["Notice"] = "Tầng "+dmTang.MaTang + " dùng này đã được đăng ký rồi";
+                        TempData["Notice"] = "Tầng " + dmTang.MaTang + " dùng này đã được đăng ký rồi";
                         TempData["ShowPopup"] = true;
                     }
                 }
@@ -647,7 +663,7 @@ namespace MyProject.Controllers
                         db.SaveChanges();
                         // ghi log
                         Common.NhatKiHeThong("Sửa tầng", "Sửa tầng", "Tầng", "Sửa tầng  " + dmTang.MaTang + ":" + dmTang.MaTang);
-                       
+
                     }
                 }
             }
@@ -670,15 +686,15 @@ namespace MyProject.Controllers
             try
             {
                 var existObj = db.DMTangs.FirstOrDefault(x => x.TangID == tangID);
-                    if (existObj != null)
-                    {
-                        db.DMTangs.Remove(existObj);
-                        db.SaveChanges();
-                        Common.NhatKiHeThong("Xóa tầng", "Xóa tầng", "Tầng", "Xóa tầng  " + tangID.ToString() + ":" + maTang);
-                        // Show alert modal
-                        TempData["ShowPopup"] = true;
-                        TempData["Notice"] = "Đã xóa thành công";
-                    } 
+                if (existObj != null)
+                {
+                    db.DMTangs.Remove(existObj);
+                    db.SaveChanges();
+                    Common.NhatKiHeThong("Xóa tầng", "Xóa tầng", "Tầng", "Xóa tầng  " + tangID.ToString() + ":" + maTang);
+                    // Show alert modal
+                    TempData["ShowPopup"] = true;
+                    TempData["Notice"] = "Đã xóa thành công";
+                }
             }
             catch (Exception ex)
             {
@@ -690,8 +706,175 @@ namespace MyProject.Controllers
             return RedirectToAction("DMTang");
         }
 
-       
+
         #endregion
+
+
+        #region "DMPhong"
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult DMPhong()
+        {
+            ViewData["status"] = db.status.Select(x => new { status_id = x.status_id, name = x.name }).ToList();
+            return View();
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DMPhong_Read([DataSourceRequest]DataSourceRequest request, string itemSearch = "")
+        {
+
+            if (string.IsNullOrEmpty(itemSearch))
+            {
+                var objs = db.DMPhongs.Select(x => new
+                {
+                    PhongID = x.PhongID,
+                    MaTang = x.MaTang,
+                    MaPhong  =x.MaPhong  , 
+                    TenPhong = x.TenPhong,
+                    TrangThai = x.TrangThai ? 1 : 0
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var objs = db.DMPhongs.Where(x => x.MaTang.Contains(itemSearch) || x.MaPhong.Contains(itemSearch) || x.TenPhong.Contains(itemSearch)).Select(x => new
+                {
+                    PhongID = x.PhongID,
+                    MaTang = x.MaTang,
+                    TenPhong = x.TenPhong,
+                    MaPhong = x.MaPhong, 
+                    TrangThai = x.TrangThai ? 1 : 0
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+
+        }
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult DMPhongEditor(string ID = "0")
+        {
+            try
+            {
+                ViewData["maTang"] = db.DMTangs.Select(x => new { TangID = x.TangID, TenTang = x.TenTang }).ToList();
+
+                if (ID.Equals("0") || string.IsNullOrEmpty(ID))
+                {
+                    return View();
+                }
+                else
+                {
+                    var IDPhong = int.Parse(ID);
+                    var obj = db.DMPhongs.FirstOrDefault(x => x.PhongID == IDPhong);
+                    if (obj == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveDMPhong(DMPhong dmPhong, string isDelete = "")
+        {
+            try
+            {
+                // add a new item
+                if (dmPhong.PhongID == 0)
+                {
+                    if (db.DMPhongs.FirstOrDefault(x => x.PhongID == dmPhong.PhongID) == null)
+                    {
+                        dmPhong.NgayTao = DateTime.Now;
+                        dmPhong.NguoiTao = Session["admss"].ToString();
+                        dmPhong.NgaySua = DateTime.Now;
+                        dmPhong.NguoiSua = Session["admss"].ToString();
+                        dmPhong.TrangThai = true;
+
+                        db.DMPhongs.Add(dmPhong);
+                        db.SaveChanges();
+                        // ghi log
+                        Common.NhatKiHeThong("Thêm phòng", "Thêm phòng", "Phòng", "Thêm phòng  " + dmPhong.MaPhong  +":"+ dmPhong.TenPhong);
+                    }
+                    else
+                    {
+                        TempData["Notice"] = "Tầng " + dmPhong.MaPhong + " dùng này đã được đăng ký rồi";
+                        TempData["ShowPopup"] = true;
+                    }
+                }
+                else // modify item
+                {
+                    var existObj = db.DMPhongs.FirstOrDefault(x => x.PhongID == dmPhong.PhongID);
+                    if (existObj != null)
+                    {
+                        //existObj.email = admin.email;
+                        //existObj.MaTang = dmTang.MaTang;
+                        existObj.MaTang = dmPhong.MaTang;
+                        existObj.TenPhong = dmPhong.TenPhong;
+                        existObj.TrangThai = true;
+                        existObj.NgaySua = DateTime.Now;
+                        existObj.NguoiSua = Session["admss"].ToString();
+                        db.SaveChanges();
+                        // ghi log
+                        Common.NhatKiHeThong("Sửa phòng", "Sửa phòng", "phòng", "Sửa phòng  " + dmPhong.MaPhong + ":" + dmPhong.TenPhong);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("DMPhong");
+        }
+
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteDMPhong(int phongID)
+        {
+            try
+            {
+                var existObj = db.DMPhongs.FirstOrDefault(x => x.PhongID == phongID);
+                if (existObj != null)
+                {
+                    db.DMPhongs.Remove(existObj);
+                    db.SaveChanges();
+                    Common.NhatKiHeThong("Xóa phòng", "Xóa phòng", "phòng", "Xóa phòng  " + existObj.PhongID.ToString() + ":" + existObj.TenPhong);
+                    // Show alert modal
+                    TempData["ShowPopup"] = true;
+                    TempData["Notice"] = "Đã xóa thành công";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("DMTang");
+        }
+
+
+        #endregion
+
+
         #region Log
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
