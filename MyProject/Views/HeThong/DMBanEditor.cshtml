@@ -1,12 +1,12 @@
-﻿@model MyProject.Models.DMPhong
+﻿@model MyProject.Models.DMBan
 @{
     ViewBag.Title = "Tài khoản quản trị";
     Layout = "~/Views/Shared/_AdmLayout.cshtml";
 }
 <div class="container-fluid">
-    <form id="frm" action="/HeThong/SaveDMPhong" method="post">
+    <form id="frm" action="/HeThong/SaveDMBan" method="post">
         @Html.AntiForgeryToken()
-        @Html.HiddenFor(m => m.PhongID, new { id = "txtPhongID" })
+        @Html.HiddenFor(m => m.BanID, new { id = "txtBanID" })
         <div class="col-md-12">
             <div class="btn-group pull-right">
                 
@@ -16,20 +16,25 @@
             </div>
             <table class="table table-condensed">
                 <tr>
-                    <td class="col1"><label>Mã tầng</label></td>
-                    <td class="form-group">@Html.DropDownListFor(x => x.MaTang, new SelectList((System.Collections.ICollection)ViewData["maTang"], "TangID", "TenTang"), "Chọn tầng", new { id = "cboTang", @class = "form-control", required = "required" })</td>                    
+                    <td class="col1"><label>Mã Phòng</label></td>
+                    <td class="form-group">@Html.DropDownListFor(x => x.PhongID, new SelectList((System.Collections.ICollection)ViewData["maPhong"], "PhongID", "TenPhong"), "Chọn tầng", new { id = "cboTang", @class = "form-control", required = "required" })</td>                    
                     <td class="col1"><label>Tên Tầng</label></td>
-                    
                 </tr>
                 <tr>
-                    <td class="col1"><label>Mã Phòng</label></td>
-                    <td class="form-group">@Html.TextBoxFor(x => x.MaPhong, new { id = "txtMaPhong", @class = "form-control  viewOnly", required = "required", maxlength = 20 })</td>
-                    <td class="col1"><label>Tên Phòng</label></td>
-                    <td class="form-group">@Html.TextBoxFor(x => x.TenPhong, new { id = "txtTenPhong", @class = "form-control", required = "required", maxlength = 250 })</td>
+                    <td class="col1"><label>Mã Bàn</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.MaBan, new { id = "txtMaBan", @class = "form-control  viewOnly", required = "required", maxlength = 5 })</td>
+                    <td class="col1"><label>Tên Bàn</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.TenBan, new { id = "txtTenBan", @class = "form-control", required = "required", maxlength = 50 })</td>
+                </tr>
+                <tr>
+                    <td class="col1"><label>Số lượng</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.SoLuong, new { id = "txtMaBan", @class = "form-control", required = "required", maxlength = 5 })</td>
+                    <td class="col1"><label>Loại bàn</label></td>
+                    <td class="form-group">@Html.TextBoxFor(x => x.LoaiBan, new { id = "txtTenBan", @class = "form-control", required = "required", maxlength = 50 })</td>
                 </tr>
                 <tr>                  
-                    <td class="col1"><label>Trạng thái</label></td>
-                    @*<td class="form-group">@Html.DropDownListFor(x => x.TrangThai, new SelectList((System.Collections.ICollection)ViewData["TrangThai"], "Value", "Text"), new { @class = "form-control" })</td>*@
+                    <td class="col1"><label>Mô tả</label></td>
+                    <td colspan="3" class="form-group">@Html.TextAreaFor(x => x.MoTa, new { id = "txtMoTa", @class = "form-control", required = "required", maxlength = 100 })</td>
                 </tr>
                  
             </table>
@@ -47,14 +52,14 @@
             // Turn off autocomplete
             $('form,input,select,textarea').attr("autocomplete", "off");
             
-            if ((typeof $('#txtPhongID').val() == 'undefined') || $('#txtPhongID').val() != 0) {
+            if ((typeof $('#txtBanID').val() == 'undefined') || $('#txtBanID').val() != 0) {
                 $('.viewOnly').each(function() {
                     $(this).attr('disabled',true);
                 });
             }
 
             $('#btnCancel').click(function () {
-                window.location.href = '/HeThong/DMPhong';
+                window.location.href = '/HeThong/DMBan';
             });
 
             $('#btnSave').click(function () {
@@ -63,15 +68,15 @@
 
             $('#btnDelete').click(function () {
                 if (confirm('Bạn có chắc không?')) {
-                    if ((typeof $('#txtPhongID').val() == 'undefined') || $('#txtPhongID').val() == "0") {                        
-                        window.location.href = '/HeThong/DMTang';
+                    if ((typeof $('#txtBanID').val() == 'undefined') || $('#txtBanID').val() == "0") {
+                        window.location.href = '/HeThong/DMBan';
                         
                     }
                   
-                    $.post('/HeThong/DeleteDMPhong', {
-                        phongID: $('#txtPhongID').val() 
+                    $.post('/HeThong/DeleteDMBan', {
+                        banID: $('#txtBanID').val()
                     }, function () {
-                        window.location.href = '/HeThong/DMPhong';
+                        window.location.href = '/HeThong/DMBan';
                     });
                 }
             });

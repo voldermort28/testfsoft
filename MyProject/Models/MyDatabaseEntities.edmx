@@ -156,11 +156,16 @@
             <PropertyRef Name="BanID" />
           </Key>
           <Property Name="BanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhongID" Type="int" />
           <Property Name="MaBan" Type="varchar" MaxLength="5" />
           <Property Name="TenBan" Type="nvarchar" MaxLength="50" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="LoaiBan" Type="int" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
+          <Property Name="NguoiTao" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayTao" Type="datetime" />
+          <Property Name="NguoiSua" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySua" Type="datetime" />
         </EntityType>
         <EntityType Name="DMCa">
           <Key>
@@ -2286,6 +2291,11 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <Property Name="LoaiBan" Type="Int32" />
           <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HoaDon_Ban" Relationship="Self.FK_HoaDon_Ban_DMBan" FromRole="DMBan" ToRole="HoaDon_Ban" />
+          <Property Name="PhongID" Type="Int32" />
+          <Property Name="NguoiTao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="NguoiSua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySua" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="DMCa">
           <Key>
@@ -4933,6 +4943,11 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <EntitySetMapping Name="DMBans">
             <EntityTypeMapping TypeName="MyDatabaseModel.DMBan">
               <MappingFragment StoreEntitySet="DMBan">
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="NguoiSua" ColumnName="NguoiSua" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="PhongID" ColumnName="PhongID" />
                 <ScalarProperty Name="BanID" ColumnName="BanID" />
                 <ScalarProperty Name="MaBan" ColumnName="MaBan" />
                 <ScalarProperty Name="TenBan" ColumnName="TenBan" />

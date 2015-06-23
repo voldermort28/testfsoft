@@ -61,6 +61,14 @@
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
                                   
+                                    <li class="dropdown showsuperAdmin">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="showCustomerCMS">Customer<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>@Html.ActionLink("Loại khách hàng", "CustomerType", "HeThong")</li>
+                                            <li>@Html.ActionLink("Khách hàng", "DMPhong", "HeThong")</li>
+                                        </ul>
+                                    </li>
+
                                     <li class="dropdown showsuperAdmin" >
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="showMenuCMS">CMS<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">

@@ -25,6 +25,11 @@ namespace MyProject.Models
         public Nullable<int> SoLuong { get; set; }
         public Nullable<int> LoaiBan { get; set; }
         public string MoTa { get; set; }
+        public Nullable<int> PhongID { get; set; }
+        public string NguoiTao { get; set; }
+        public Nullable<System.DateTime> NgayTao { get; set; }
+        public string NguoiSua { get; set; }
+        public Nullable<System.DateTime> NgaySua { get; set; }
     
         public virtual ICollection<HoaDon_Ban> HoaDon_Ban { get; set; }
     }

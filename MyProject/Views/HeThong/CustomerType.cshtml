@@ -6,13 +6,14 @@
 <div class="container-fluid">
     <div class="row">
         @Html.AntiForgeryToken()
-        @(Html.Kendo().Grid<MyProject.Models.customertype>()
+        @(Html.Kendo().Grid<MyProject.Models.DMLoaiKhachHang>()
         .Name("grid")
         .Columns(columns =>
         {
-            columns.Bound(p => p.customertype_id).Title("ID").Filterable(false).Width(40);
-            columns.Bound(p => p.name).Title("Nguồn đăng ký");
-            columns.ForeignKey(p => p.status_id, (System.Collections.IEnumerable)ViewData["status"], "status_id", "name").EditorTemplateName("StatusEditor").Title("Trạng thái").Filterable(false).Width(80);
+            columns.Bound(p => p.LoaiKhachHangID).Title("ID").Filterable(false).Width(40);
+            columns.Bound(p => p.MaLoaiKhachHang).Title("Mã loại khách hàng");
+            columns.Bound(p => p.TenLoaiKhachHang).Title("Tên loại khách hàng");
+         
             columns.Command(command => { command.Edit().Text(" ").UpdateText(" ").CancelText(" "); }).Width(110).Title("Cập nhật");
         })
         .ToolBar(toolbar => toolbar.Create().Text("Thêm mới"))
@@ -36,9 +37,9 @@
             .Events(events => { events.Error("error_handler");  })//events.RequestEnd("onRequestEnd"); })
             .Model(model =>
             {
-                model.Id(p => p.customertype_id);
-                model.Field(p => p.customertype_id).Editable(false);
-                model.Field(p => p.status_id).DefaultValue(0);
+                model.Id(p => p.LoaiKhachHangID);
+                model.Field(p => p.MaLoaiKhachHang).Editable(false);
+                model.Field(p => p.TenLoaiKhachHang);
             })
             .Read(read => read.Action("CustomerType_Read", "HeThong"))
             .Create(update => update.Action("CustomerType_Create", "HeThong"))

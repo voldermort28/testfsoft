@@ -117,10 +117,93 @@ namespace MyProject.Controllers
             ViewData["status"] = db.status.Select(x => new { status_id = x.status_id, name = x.name }).ToList();
             return View();
         }
-  
-        #endregion        
-         
-         
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult CustomerType_Read([DataSourceRequest]DataSourceRequest request)
+        {
+            var objs = db.DMLoaiKhachHangs.Select(x => new
+            {
+                LoaiKhachHangID = x.LoaiKhachHangID,
+                MaLoaiKhachHang = x.MaLoaiKhachHang,
+                TenLoaiKhachHang = x.TenLoaiKhachHang
+            }).ToList();
+            return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult CustomerType_Create([DataSourceRequest] DataSourceRequest request, DMLoaiKhachHang item)
+        {
+            //customertype obj = new customertype();
+            if (item != null && ModelState.IsValid)
+            {
+                try
+                {
+                   
+                    db.DMLoaiKhachHangs.Add(item);
+                    db.SaveChanges();
+                    // ghi log
+                    Common.NhatKiHeThong("Thêm loại khách hàng", "Thêm loại khách hàng", "loại khách hàng", "Thêm loại khách hàng  " + item.MaLoaiKhachHang + ":" + item.TenLoaiKhachHang);
+                }
+                catch (Exception ex)
+                {
+                    Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                }
+            }
+            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult CustomerType_Update([DataSourceRequest] DataSourceRequest request, DMLoaiKhachHang item)
+        {
+            //var obj = db.customertypes.FirstOrDefault(x => x.customertype_id == item.customertype_id);
+            //if (obj == null) return HttpNotFound();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    //obj.name = item.name;
+                    //if (item.status != null) obj.status_id = item.status.status_id;
+                    db.Entry(item).State = EntityState.Modified;
+                    db.SaveChanges();
+                    // ghi log
+                    Common.NhatKiHeThong("Sửa loại khách hàng", "sửa loại khách hàng", "loại khách hàng", "Sửa loại khách hàng  " + item.MaLoaiKhachHang + ":" + item.TenLoaiKhachHang);
+                }
+                catch (Exception ex)
+                {
+                    Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                }
+            }
+            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult CustomerType_Destroy([DataSourceRequest] DataSourceRequest request, DMLoaiKhachHang item)
+        {
+            var obj = db.DMLoaiKhachHangs.FirstOrDefault(x => x.LoaiKhachHangID == item.LoaiKhachHangID);
+            if (obj == null) return HttpNotFound();
+            try
+            {
+                db.DMLoaiKhachHangs.Remove(obj);
+                db.SaveChanges();
+                // ghi log
+                Common.NhatKiHeThong("Xóa loại khách hàng", "Xóa loại khách hàng", "loại khách hàng", "Xóa loại khách hàng  " + item.MaLoaiKhachHang + ":" + item.TenLoaiKhachHang);
+            }
+            catch (Exception ex)
+            {
+                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+            }
+            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
+        }
+        #endregion    
+
         #region NguoiDung
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -874,7 +957,173 @@ namespace MyProject.Controllers
 
         #endregion
 
+        #region "DMBan"
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult DMBan()
+        {
+          
+            return View();
+        }
 
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DMBan_Read([DataSourceRequest]DataSourceRequest request, string itemSearch = "")
+        {
+
+            if (string.IsNullOrEmpty(itemSearch))
+            {
+                var objs = db.DMBans.Select(x => new
+                {
+                    PhongID = x.PhongID,
+                    BanID = x.BanID,
+                    MaBan = x.MaBan,
+                    TenBan = x.TenBan,
+                    SoLuong = x.SoLuong,
+                    LoaiBan = x.LoaiBan,
+                    MoTa  = x.MoTa
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var objs = db.DMBans.Where(x => x.MaBan.Contains(itemSearch) || x.TenBan.Contains(itemSearch) || x.MoTa.Contains(itemSearch)).Select(x => new
+                {
+                    PhongID = x.PhongID,
+                    BanID = x.BanID,
+                    MaBan = x.MaBan,
+                    TenBan = x.TenBan,
+                    SoLuong = x.SoLuong,
+                    LoaiBan = x.LoaiBan,
+                    MoTa = x.MoTa
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+
+        }
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult DMBanEditor(string ID = "0")
+        {
+            try
+            {
+                ViewData["maPhong"] = db.DMPhongs.Select(x => new { PhongID = x.PhongID, TenPhong = x.TenPhong }).ToList();
+
+                if (ID.Equals("0") || string.IsNullOrEmpty(ID))
+                {
+                    return View();
+                }
+                else
+                {
+                    var IDBan = int.Parse(ID);
+                    var obj = db.DMBans.FirstOrDefault(x => x.BanID == IDBan);
+                    if (obj == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveDMBan(DMBan dmBan, string isDelete = "")
+        {
+            try
+            {
+                // add a new item
+                if (dmBan.BanID == 0)
+                {
+                    if (db.DMBans.FirstOrDefault(x => x.BanID == dmBan.BanID) == null)
+                    {
+                        dmBan.NgayTao = DateTime.Now;
+                        dmBan.NguoiTao = Session["admss"].ToString();
+                        dmBan.NgaySua = DateTime.Now;
+                        dmBan.NguoiSua = Session["admss"].ToString();
+
+                        db.DMBans.Add(dmBan);
+                        db.SaveChanges();
+                        // ghi log
+                        Common.NhatKiHeThong("Thêm bàn", "Thêm bàn", "Bàn", "Thêm bàn  " + dmBan.MaBan + ":" + dmBan.TenBan);
+                    }
+                    else
+                    {
+                        TempData["Notice"] = "Tầng " + dmBan.MaBan + " dùng này đã được đăng ký rồi";
+                        TempData["ShowPopup"] = true;
+                    }
+                }
+                else // modify item
+                {
+                    var existObj = db.DMBans.FirstOrDefault(x => x.BanID == dmBan.BanID );
+                    if (existObj != null)
+                    {
+                        existObj.PhongID = dmBan.PhongID;
+                        existObj.TenBan = dmBan.TenBan;
+                        existObj.SoLuong = dmBan.SoLuong;
+                        existObj.LoaiBan = dmBan.LoaiBan;
+                        existObj.MoTa = dmBan.MoTa;
+                        existObj.NgaySua = DateTime.Now;
+                        existObj.NguoiSua = Session["admss"].ToString();
+                        db.SaveChanges();
+                        // ghi log
+                        Common.NhatKiHeThong("Sửa bàn", "Sửa bàn", "bàn", "Sửa bàn  " + dmBan.MaBan + ":" + dmBan.TenBan);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("DMBan");
+        }
+
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteDMBan(int banID)
+        {
+            try
+            {
+                var existObj = db.DMBans.FirstOrDefault(x => x.BanID == banID);
+                if (existObj != null)
+                {
+                    db.DMBans.Remove(existObj);
+                    db.SaveChanges();
+                    Common.NhatKiHeThong("Xóa bàn", "Xóa bàn", "bàn", "Xóa bàn  " + existObj.MaBan.ToString() + ":" + existObj.TenBan);
+                    // Show alert modal
+                    TempData["ShowPopup"] = true;
+                    TempData["Notice"] = "Đã xóa thành công";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("DMTang");
+        }
+
+
+        #endregion
+         
         #region Log
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
