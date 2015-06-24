@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Danh sách khách hàng";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        @Html.AntiForgeryToken()
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-md-1">Tìm kiếm:</div>
+                 
+                <div class="col-md-2">
+                    <input type="text" id="txtCusotmer" class="form-control col-md-5" placeholder="Nhập tìm kiếm" />
+                </div>
+                <div class="col-md-3">
+                    <button type="button" id="btnSearch" class="btn btn-primary">Tìm</button>
+                </div>
+            </div>
+            <div class="row"> 
+                <div class="col-md-4 btn-addcustomer"><a href="/Hethong/ProfileEditor" class="btn btn-default pull-right">Thêm mới</a></div>
+            </div>
+        </div>
+        @(Html.Kendo().Grid<MyProject.Models.DMKhachHang>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.KhachHangID).Title("ID");
+            columns.Bound(p => p.MaKhachHang).Title("Mã KH");
+            columns.Bound(p => p.LoaiKhachHangID).Title("Loại khách hàng"); 
+            columns.Bound(p => p.TenKhachHang).Title("Tên");
+            columns.Bound(p => p.NgaySinh).Format("{0:dd/MM/yyyy}").Width(100).Title("Ngày sinh");
+            columns.Bound(p => p.DiemTich).Title("Điểm tích"); 
+            columns.Bound(p => p.Email).Title("Email");
+            columns.Bound(p => p.SDT).Title("Điện thoại"); 
+            columns.Bound(p => p.MaSoThue).Title("Mã số thuế"); 
+            columns.Bound(p => p.KhachHangID).ClientTemplate("<a href='/HeThong/CustomerEditor?ID=" + "#=KhachHangID#'>Chi tiết</a>").Title("Cập nhật").Width(80).Filterable(false);
+            //columns.Command(command => { command.Destroy().Text(" "); }).Width(60).Title("Thao tác");
+        })
+        .Editable(editable => editable.Mode(GridEditMode.InLine))
+                //.AutoBind(false)
+        .EnableCustomBinding(true)
+        .Sortable()
+        .Resizable(resize => resize.Columns(true))
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .Filterable(filterable => filterable
+            .Extra(true)
+            .Operators(operators => operators
+                .ForString(str => str.Clear().Contains("Contains"))
+            )
+        )
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+                    .Sort(sort => sort.Add("KhachHangID").Descending())
+            .ServerOperation(true)
+            .Events(events => events.Error("error_handler"))
+            .Model(model =>
+            {
+                model.Id(p => p.KhachHangID);
+                model.Field(p => p.MaKhachHang).Editable(false);
+                model.Field(p => p.TenKhachHang) ;
+            })
+                            .Read(read => read.Action("Customer_Read", "HeThong").Data("sendSearch"))
+                //.Destroy(update => update.Action("Profile_Destroy", "HeThong"))
+            )
+        )
+    </div>
+</div>
+@section scripts{ 
+    <script type="text/javascript">
+        $('#cboPending').change(function () {
+            $("#grid").data("kendoGrid").dataSource.read();
+        });
+        $('#btnSearch').click(function () {
+            $("#grid").data("kendoGrid").dataSource.read();
+        });
+        function sendSearch() {
+            return {
+                itemSearch: $('#itemSearch').val()
+            };
+        };
+        function error_handler(e) {
+            if (e.errors) {
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+
+            }
+        }
+        $('#btnExport').click(function () {
+            var fromDate = $("#fromDate").data("kendoDatePicker");
+            var toDate = $("#toDate").data("kendoDatePicker");
+            var category = $("#slCategory").val();
+
+            var prorduct = $("#slProduct").val();
+            var serial = $("#txtSerial").val();
+            if (fromDate._oldText != "" && toDate._oldText != "" && fromDate._oldText > toDate._oldText) {
+                alert("From date must less than to date");
+                return false;
+            }
+            document.location = '/HeThong/ExportProfile?fromDate=' + fromDate._oldText + '&toDate=' + toDate._oldText + '&category=' + category + '&modelName=' + prorduct + '&serial=' + serial;
+        });
+         
+
+        $("#showMenuCustomer").css("background-color", "#000055");
+         
+
+    </script>
+}

@@ -37,76 +37,176 @@ namespace MyProject.Controllers
 
         #region Customer
 
-        private List<FilterDescriptor> GetFilters(IEnumerable<IFilterDescriptor> filters)
+
+        public ActionResult Customer()
         {
-            List<FilterDescriptor> lstFilter = new List<FilterDescriptor>();
-            if (filters.Any())
-            {                
-                foreach (var filter in filters)
-                {
-                    var descriptor = filter as FilterDescriptor;
-                    if (descriptor != null)
-                    {
-                        lstFilter.Add(descriptor);
-                    }
-                    else if (filter is CompositeFilterDescriptor)
-                    {
-                        lstFilter.AddRange(GetFilters(((CompositeFilterDescriptor)filter).FilterDescriptors));
-                    }
-                }                
-            }
-            return lstFilter;
+            return View();
         }
-        
-        
-        
-      
+
+
+        [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
-        [CheckPermissionActionFilter]
-        public ActionResult UpdateCustomerProduct(int Id, int profileId, int productId, string serialNumber, string timePucharsed, int shopId, int cityId)
+        public ActionResult Customer_Read([DataSourceRequest]DataSourceRequest request, string itemSearch = "")
+        {
+            if (string.IsNullOrEmpty(itemSearch))
+            {
+                var objs = db.DMKhachHangs.Select(x => new
+                {
+                    KhachHangID = x.KhachHangID,
+                    MaKhachHang = x.MaKhachHang,
+                    TenKhachHang = x.TenKhachHang,
+                    NgaySinh = x.NgaySinh,
+                    SDT = x.SDT,
+                    Email = x.Email,
+                    LoaiKhachHangID = x.LoaiKhachHangID,
+                    DiemTich = x.DiemTich,
+                    MaSoThue = x.MaSoThue,
+                    DiaChi = x.DiaChi,
+                    CardID = x.CardID,
+                    NgayCap = x.NgayCap,
+                    DinhMucCongNo = x.DinhMucCongNo
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var objs = db.DMKhachHangs.Where(x =>   x.MaKhachHang.Contains(itemSearch) || x.TenKhachHang.Contains(itemSearch)).Select(x => new
+                {
+                    KhachHangID = x.KhachHangID,
+                    MaKhachHang = x.MaKhachHang,
+                    TenKhachHang = x.TenKhachHang,
+                    NgaySinh = x.NgaySinh,
+                    SDT = x.SDT,
+                    Email = x.Email,
+                    LoaiKhachHangID = x.LoaiKhachHangID,
+                    DiemTich = x.DiemTich,
+                    MaSoThue = x.MaSoThue,
+                    DiaChi = x.DiaChi,
+                    CardID = x.CardID,
+                    NgayCap = x.NgayCap,
+                    DinhMucCongNo = x.DinhMucCongNo
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+        public ActionResult DMKhachHangEditor(string ID = "0")
         {
             try
-            {
-                 
+            { 
+                if (ID.Equals("0"))
+                {
+                    return View();
+                }
+                else
+                {
+                    var IDCus = int.Parse(ID);
+                    var obj = db.DMKhachHangs.FirstOrDefault(x => x.KhachHangID == IDCus);
+                    if (obj == null) return HttpNotFound();
+                    return View(obj);
+                }
             }
             catch (Exception ex)
             {
                 // Show alert modal
                 TempData["ShowPopup"] = true;
-                TempData["Notice"] = "Có lỗi xảy ra, vui lòng xem log";
-                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                return null;
             }
-            return RedirectToAction("ProfileEditor", new { ID = profileId });
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateAntiForgeryToken]
-        [CheckPermissionActionFilter]
-        public ActionResult SaveCustomerProduct(int profileId, int categoryId, int productId, string serialNumber, string timePucharsed, int shopId, int cityId)
+        public ActionResult SaveDMKhachHang(DMKhachHang dmKhachHang )
         {
             try
             {
-                if (Common.GetAdminType() == 1 || Common.GetAdminType() == 2)
+                // add a new item
+                if (dmKhachHang.KhachHangID == 0)
                 {
-                   
+                    if (db.DMKhachHangs.FirstOrDefault(x => x.KhachHangID == dmKhachHang.KhachHangID) == null)
+                    {
+                        dmKhachHang.NgayTao = DateTime.Now;
+                        dmKhachHang.NguoiTao = Session["admss"].ToString();
+                        //dmKhachHang.NgaySua = DateTime.Now;
+                        dmKhachHang.NguoiSua = Session["admss"].ToString();
+                         
+                        db.DMKhachHangs.Add(dmKhachHang);
+                        db.SaveChanges();
+                        // ghi log
+                        Common.NhatKiHeThong("Thêm khách hàng", "Thêm khách hàng", "khách hàng", "Thêm khách hàng  " + dmKhachHang.MaKhachHang + ":"+ dmKhachHang.TenKhachHang);
+                    }
+                    else
+                    {
+                        TempData["Notice"] = "Tầng " + dmKhachHang.MaKhachHang + " dùng này đã được đăng ký rồi";
+                        TempData["ShowPopup"] = true;
+                    }
                 }
-                else
+                else // modify item
                 {
-                    TempData["Notice"] = "Bạn không có quyền tạo mới khách hàng. Hãy liên hệ với administrator";
-                    TempData["ShowPopup"] = true;
+                    var existObj = db.DMKhachHangs.FirstOrDefault(x => x.KhachHangID == dmKhachHang.KhachHangID);
+                    if (existObj != null)
+                    {
+                         
+                        existObj.TenKhachHang = dmKhachHang.TenKhachHang;
+                        existObj.NgaySinh = dmKhachHang.NgaySinh;
+                        existObj.SDT = dmKhachHang.SDT;
+                        existObj.Email = dmKhachHang.Email;
+                        existObj.LoaiKhachHangID = dmKhachHang.LoaiKhachHangID;
+                        existObj.DiemTich = dmKhachHang.DiemTich;
+                        existObj.MaSoThue = dmKhachHang.MaSoThue;
+                        existObj.DiaChi = dmKhachHang.DiaChi;
+                        existObj.CardID = dmKhachHang.CardID;
+                        existObj.NgayCap = dmKhachHang.NgayCap;
+                        existObj.DinhMucCongNo = dmKhachHang.DinhMucCongNo;
+                      //  existObj.NgaySua = DateTime.Now;
+                        existObj.NguoiSua = Session["admss"].ToString();
+                        db.SaveChanges();
+                        // ghi log
+                        Common.NhatKiHeThong("Sửa tầng", "Sửa tầng", "Tầng", "Sửa tầng  " + existObj.MaKhachHang + ":" + existObj.TenKhachHang);
+
+                    }
                 }
             }
             catch (Exception ex)
             {
+                // Show alert modal
                 TempData["ShowPopup"] = true;
-                TempData["Notice"] = "Có lỗi xảy ra, vui lòng xem log";
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
                 Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
-            }            
-            return RedirectToAction("ProfileEditor", new { ID = profileId });
+            }
+            return RedirectToAction("DMTang");
         }
 
-     
+  
+        public ActionResult DeleteDMKhachHang(int tangID, string maTang)
+        {
+            try
+            {
+                var existObj = db.DMTangs.FirstOrDefault(x => x.TangID == tangID);
+                if (existObj != null)
+                {
+                    db.DMTangs.Remove(existObj);
+                    db.SaveChanges();
+                    Common.NhatKiHeThong("Xóa tầng", "Xóa tầng", "Tầng", "Xóa tầng  " + tangID.ToString() + ":" + maTang);
+                    // Show alert modal
+                    TempData["ShowPopup"] = true;
+                    TempData["Notice"] = "Đã xóa thành công";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("DMTang");
+        }
+
+
+ 
          #endregion
 
         #region CustomerType
@@ -121,15 +221,28 @@ namespace MyProject.Controllers
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
-        public ActionResult CustomerType_Read([DataSourceRequest]DataSourceRequest request)
+        public ActionResult CustomerType_Read([DataSourceRequest]DataSourceRequest request, string itemSearch = "")
         {
-            var objs = db.DMLoaiKhachHangs.Select(x => new
+            if (string.IsNullOrEmpty(itemSearch))
             {
-                LoaiKhachHangID = x.LoaiKhachHangID,
-                MaLoaiKhachHang = x.MaLoaiKhachHang,
-                TenLoaiKhachHang = x.TenLoaiKhachHang
-            }).ToList();
-            return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+                var objs = db.DMLoaiKhachHangs.Select(x => new
+                {
+                    LoaiKhachHangID = x.LoaiKhachHangID,
+                    MaLoaiKhachHang = x.MaLoaiKhachHang,
+                    TenLoaiKhachHang = x.TenLoaiKhachHang
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var objs = db.DMLoaiKhachHangs.Where(x => x.MaLoaiKhachHang.Contains(itemSearch) || x.TenLoaiKhachHang.Contains(itemSearch)).Select(x => new
+                {
+                    LoaiKhachHangID = x.LoaiKhachHangID,
+                    MaLoaiKhachHang = x.MaLoaiKhachHang,
+                    TenLoaiKhachHang = x.TenLoaiKhachHang
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            } 
         }
 
         [SuperAdminAttributes.SuperAdmin]

@@ -36,6 +36,9 @@ namespace MyProject.Models
         public string CardID { get; set; }
         public Nullable<System.DateTime> NgayCap { get; set; }
         public Nullable<double> DinhMucCongNo { get; set; }
+        public string NguoiTao { get; set; }
+        public Nullable<System.DateTime> NgayTao { get; set; }
+        public string NguoiSua { get; set; }
     
         public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
         public virtual ICollection<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; }

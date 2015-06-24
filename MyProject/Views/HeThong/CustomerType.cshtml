@@ -5,6 +5,22 @@
 }
 <div class="container-fluid">
     <div class="row">
+        <div class="col-md-1">Tìm kiếm:</div>
+
+        <div class="col-md-2">
+            <input type="text" id="itemSearch" class="form-control col-md-5" placeholder="Nhập tìm kiếm" />
+        </div>
+        <div class="col-md-3">
+            <button type="button" id="searchLoaiKhachHang" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+
+        <div>
+            <a id="export" href="#modalContainer" role="button" class="btn btn-primary" data-toggle="modal">Export</a>
+        </div>
+
+    </div>
+
+    <div class="row">
         @Html.AntiForgeryToken()
         @(Html.Kendo().Grid<MyProject.Models.DMLoaiKhachHang>()
         .Name("grid")
@@ -13,8 +29,8 @@
             columns.Bound(p => p.LoaiKhachHangID).Title("ID").Filterable(false).Width(40);
             columns.Bound(p => p.MaLoaiKhachHang).Title("Mã loại khách hàng");
             columns.Bound(p => p.TenLoaiKhachHang).Title("Tên loại khách hàng");
-         
             columns.Command(command => { command.Edit().Text(" ").UpdateText(" ").CancelText(" "); }).Width(110).Title("Cập nhật");
+            columns.Command(command => { command.Destroy().Text(" ").Text(" "); }).Width(110).Title("Xóa");
         })
         .ToolBar(toolbar => toolbar.Create().Text("Thêm mới"))
         .Editable(editable => editable.Mode(GridEditMode.InLine))
@@ -34,23 +50,24 @@
             .Ajax()
             .PageSize(20)
             .ServerOperation(false)
-            .Events(events => { events.Error("error_handler");  })//events.RequestEnd("onRequestEnd"); })
+            .Events(events => { events.Error("error_handler"); events.RequestEnd("onRequestEnd"); })
             .Model(model =>
             {
                 model.Id(p => p.LoaiKhachHangID);
-                model.Field(p => p.MaLoaiKhachHang).Editable(false);
+                model.Field(p => p.MaLoaiKhachHang);
                 model.Field(p => p.TenLoaiKhachHang);
             })
-            .Read(read => read.Action("CustomerType_Read", "HeThong"))
+            .Read(read => read.Action("CustomerType_Read", "HeThong").Data("sendSearch"))
             .Create(update => update.Action("CustomerType_Create", "HeThong"))
             .Update(update => update.Action("CustomerType_Update", "HeThong"))
-            //.Destroy(update => update.Action("CustomerType_Destroy", "HeThong"))
+            .Destroy(update => update.Action("CustomerType_Destroy", "HeThong"))
             )
         )
     </div>
 </div>
 @section scripts{
     <script type="text/javascript">
+
     function error_handler(e) {
         if (e.errors) {
             var message = "Errors:\n";
@@ -64,10 +81,20 @@
             console.info(message);
         }
     }
-    //function onRequestEnd(e) {
-    //    if (e.type == "create" && !e.response.Errors) alert("Tạo mới thành công");
-    //    else if (e.type == "update" && !e.response.Errors) alert("Cập nhật thông tin thành công");
-    //    else if (e.type == "destroy" && !e.response.Errors) alert("Xóa thông tin thành công");
-    //}
+    $("#searchLoaiKhachHang").click(function () {
+        $("#grid").data("kendoGrid").dataSource.read();
+    });
+
+    function sendSearch() {
+        return {
+            itemSearch: $('#itemSearch').val()
+        };
+    };
+
+    function onRequestEnd(e) {
+        if (e.type == "create" && !e.response.Errors) alert("Tạo mới thành công");
+        else if (e.type == "update" && !e.response.Errors) alert("Cập nhật thông tin thành công");
+        else if (e.type == "destroy" && !e.response.Errors) alert("Xóa thông tin thành công");
+    }
     </script>
 }
