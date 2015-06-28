@@ -1,0 +1,163 @@
+﻿@model MyProject.Models.DMKhachHang
+@{
+    ViewBag.Title = "Thông tin khách hàng";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="row">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-md-1">Mã khách hàng:</div>
+
+            <div class="col-md-2">
+                <input type="text" id="txtCusotmerId" class="form-control col-md-5" placeholder="Nhập mã khách hàng" />
+            </div>
+            <div class="col-md-3">
+                <button type="button" id="btnSearch" class="btn btn-primary">Tìm</button>
+            </div>
+        </div>       
+    </div>
+</div>
+    <div class="container-fluid">
+        @using (Html.BeginForm("SaveDMKhachHang", "HeThong", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.KhachHangID, new { id = "txtKhachHangID" })
+            <input type="hidden" id="hidAddProduct" name="hidAddProduct" />
+
+            <div class="col-md-12">
+                <div class="btn-group pull-right btn-profile-customer">
+                    <input type="submit" class="btn btn-primary" id="btnSave" value="Hoàn tất" />
+                    <button type="button" class="btn btn-warning" id="btnCancel">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="btnDelete">Xóa</button>
+                </div>
+                <table class="table table-condensed">
+                    <tr>
+                        <td class="col1"><label>Mã khách hàng</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.MaKhachHang, new { id = "txtMaKhachHang", @class = "form-control viewOnly", required = "required", maxlength = 5 })</td>
+                        <td class="col1"><label>Tên khách hàng</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.TenKhachHang, new { id = "txtTenKhachHang", @class = "form-control", required = "required", maxlength = 50 })</td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><label>Giới tính</label></td>
+                        <td class="form-group">
+                            @Html.RadioButtonFor(x => x.GioTinh, true) Nam
+                            @Html.RadioButtonFor(x => x.GioTinh, false) Nữ
+                        </td>
+                        <td class="col1"><label>Ngày sinh</label></td>
+                        <td class="form-group">@Html.Kendo().DatePickerFor(x => x.NgaySinh).HtmlAttributes(new { id="txtNgaySinh" ,required = "required", style = "width:100%", onkeydown = "javascript:return false;" })</td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><label>Email</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.Email, new { id = "txtEmail", @class = "form-control", maxlength = 50 })</td>
+                        <td class="col1"><label>Di động</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.SDT, new { id = "txtMobile", @class = "form-control numberic" })</td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><label>Phân loại khách hàng</label></td>
+                        <td class="form-group">@Html.DropDownListFor(x => x.LoaiKhachHangID, new SelectList((System.Collections.ICollection)ViewData["loaiKhachHang"], "LoaiKhachHangID", "TenLoaiKhachHang"), "Chọn loại khách hàng", new { id = "cboLoaiKhachHang", @class = "form-control", required = "required" })</td>
+                        <td class="col1"><label>Mã số thuế</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.MaSoThue, new { id = "txtMaSoThue", @class = "form-control", maxlength = 30 })</td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><label>Công nợ</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.DinhMucCongNo, new { id = "txtDinhMucCongNo", @class = "form-control numberic", maxlength = 10 })</td>
+                        <td class="col1"><label>Điểm tích</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.DiemTich, new { id = "txtDiemTich", @class = "form-control numberic", maxlength = 30 })</td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><label>Chứng minh thư nhân dân</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.CardID, new { id = "txtCardID", @class = "form-control numberic", maxlength = 20 })</td>
+                        <td class="col1"><label>Ngày cấp</label></td>
+                        <td class="form-group">@Html.Kendo().DatePickerFor(x => x.NgayCap).HtmlAttributes(new {id="txtNgayCap" , style = "width:100%" })</td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><label>Địa chỉ</label></td>
+                        <td colspan="3" class="form-group">@Html.TextBoxFor(x => x.DiaChi, new { id = "txtAddress",  @class = "form-control", maxlength = 100 })</td>
+                    </tr> 
+                </table>
+            </div>
+        }
+        <div style="clear:both"></div>
+    </div>
+
+    @section scripts{
+        <script> 
+            $(function () {
+                // Disable button submit when submit form
+                $('form').submit(function () {
+                    $('#btnSave').attr('disabled', 'disabled'); 
+                }); 
+                // Allow only numberic input
+                $('.numberic').keypress(function (e) {
+                    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) return false;
+                });
+
+                // Turn off autocomplete
+                $('form,input,select,textarea').attr("autocomplete", "off");
+
+
+                if ((typeof $('#txtKhachHangID').val() == 'undefined') || $('#txtKhachHangID').val() != 0) {
+                    $('.viewOnly').each(function () {
+                        $(this).attr('disabled', true);
+                    });
+                }
+                
+                $('#btnCancel').click(function () {
+                    window.location.href = '/HeThong/Customer';
+                });
+
+                $('#btnDelete').click(function () {
+                    if (confirm('Bạn có chắc không?')) {
+                        if ($('#customer_id').val() == 0) window.location.href = '/HeThong/Profiles';
+                        $.post('/HeThong/DeleteProfile', {
+                            Id: $('#customer_id').val(),
+                            isDeletePhysical: false
+                        }, function () {
+                            window.location.href = '/HeThong/Profiles';
+                        });
+                    }
+                });
+                $('#btnSearch').click(function () { 
+                        $.post('/HeThong/SearchCustomer', {
+                            maKhachHang: $('#txtCusotmerId').val()
+                        }, function (res) {
+                            if (res.length > 0) {
+                                $('.viewOnly').each(function () {
+                                    $(this).attr('disabled', true);
+                                });
+                                $("#txtKhachHangID").val(res[0].KhachHangID);
+                                $("#txtMaKhachHang").val(res[0].MaKhachHang);
+                                $("#txtTenKhachHang").val(res[0].enKhachHang);
+                                $("#txtNgaySinh").val(res[0].NgaySinh);
+                                $("#txtMobile").val(res[0].SDT);
+                                $("#txtMaSoThue").val(res[0].MaSoThue);
+                                $("#txtDinhMucCongNo").val(res[0].DinhMucCongNo);
+                                $("#txtDiemTich").val(res[0].DiemTich);
+                                $("#txtCardID").val(res[0].CardID);
+                                $("#txtNgayCap").val(res[0].NgayCap);
+                                $("#txtAddress").val(res[0].DiaChi); 
+                            }else
+                            {
+                                $('.viewOnly').each(function () {
+                                    $(this).attr('disabled', false);
+                                });
+                                $("#txtKhachHangID").val(0);
+                                $("#txtMaKhachHang").val("");
+                                $("#txtTenKhachHang").val("");
+                                $("#txtNgaySinh").val("");
+                                $("#txtMobile").val("");
+                                $("#txtMaSoThue").val("");
+                                $("#txtDinhMucCongNo").val("");
+                                $("#txtDiemTich").val("");
+                                $("#txtCardID").val("");
+                                $("#txtNgayCap").val("");
+                                $("#txtAddress").val("");
+                            }
+                        }); 
+                });
+
+
+            });
+              
+        </script>
+    }

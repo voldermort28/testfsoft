@@ -1222,6 +1222,7 @@
     <Content Include="Views\HeThong\DMBan.cshtml" />
     <Content Include="Views\HeThong\DMBanEditor.cshtml" />
     <Content Include="Views\HeThong\Customer.cshtml" />
+    <Content Include="Views\HeThong\CustomerEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

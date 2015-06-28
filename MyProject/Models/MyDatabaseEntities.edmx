@@ -203,6 +203,7 @@
           <Property Name="KhachHangID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaKhachHang" Type="varchar" MaxLength="20" />
           <Property Name="TenKhachHang" Type="nvarchar" MaxLength="50" />
+          <Property Name="GioTinh" Type="bit" />
           <Property Name="NgaySinh" Type="datetime" />
           <Property Name="SDT" Type="varchar" MaxLength="15" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
@@ -216,6 +217,7 @@
           <Property Name="NguoiTao" Type="nvarchar" MaxLength="50" />
           <Property Name="NgayTao" Type="datetime" />
           <Property Name="NguoiSua" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySua" Type="datetime" />
         </EntityType>
         <EntityType Name="DMLoaiHang">
           <Key>
@@ -2364,6 +2366,8 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <Property Name="NguoiTao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgayTao" Type="DateTime" Precision="3" />
           <Property Name="NguoiSua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GioTinh" Type="Boolean" />
+          <Property Name="NgaySua" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="DMLoaiHang">
           <Key>
@@ -4998,6 +5002,8 @@ warning 6002: The table/view 'MyDatabase.dbo.phanQuyen' does not have a primary 
           <EntitySetMapping Name="DMKhachHangs">
             <EntityTypeMapping TypeName="MyDatabaseModel.DMKhachHang">
               <MappingFragment StoreEntitySet="DMKhachHang">
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="GioTinh" ColumnName="GioTinh" />
                 <ScalarProperty Name="NguoiSua" ColumnName="NguoiSua" />
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
                 <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />

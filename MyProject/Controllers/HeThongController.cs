@@ -92,10 +92,14 @@ namespace MyProject.Controllers
         }
 
 
-        public ActionResult DMKhachHangEditor(string ID = "0")
+        public ActionResult CustomerEditor(string ID = "0")
         {
             try
-            { 
+            {
+                ViewData["loaiKhachHang"] = db.DMLoaiKhachHangs
+                    .Select(x => new { LoaiKhachHangID = x.LoaiKhachHangID, TenLoaiKhachHang = x.TenLoaiKhachHang })
+                    .OrderByDescending(x => x.LoaiKhachHangID).ThenBy(x => x.LoaiKhachHangID).ToList();
+
                 if (ID.Equals("0"))
                 {
                     return View();
@@ -129,9 +133,8 @@ namespace MyProject.Controllers
                     {
                         dmKhachHang.NgayTao = DateTime.Now;
                         dmKhachHang.NguoiTao = Session["admss"].ToString();
-                        //dmKhachHang.NgaySua = DateTime.Now;
-                        dmKhachHang.NguoiSua = Session["admss"].ToString();
-                         
+                        dmKhachHang.NgaySua = DateTime.Now;
+                        dmKhachHang.NguoiSua = Session["admss"].ToString(); 
                         db.DMKhachHangs.Add(dmKhachHang);
                         db.SaveChanges();
                         // ghi log
@@ -160,7 +163,7 @@ namespace MyProject.Controllers
                         existObj.CardID = dmKhachHang.CardID;
                         existObj.NgayCap = dmKhachHang.NgayCap;
                         existObj.DinhMucCongNo = dmKhachHang.DinhMucCongNo;
-                      //  existObj.NgaySua = DateTime.Now;
+                        existObj.NgaySua = DateTime.Now;
                         existObj.NguoiSua = Session["admss"].ToString();
                         db.SaveChanges();
                         // ghi log
@@ -176,39 +179,34 @@ namespace MyProject.Controllers
                 TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
                 Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
             }
-            return RedirectToAction("DMTang");
+            return RedirectToAction("DMKhachHang");
         }
 
-  
-        public ActionResult DeleteDMKhachHang(int tangID, string maTang)
+
+        [HttpPost]
+        public ActionResult SearchCustomer(string maKhachHang)
         {
-            try
+           // var threadList = db.DMKhachHangs.Where(s => s.MaKhachHang == maKhachHang);
+            var threadList = db.DMKhachHangs.Where(s => s.MaKhachHang == maKhachHang).Select(x => new
             {
-                var existObj = db.DMTangs.FirstOrDefault(x => x.TangID == tangID);
-                if (existObj != null)
-                {
-                    db.DMTangs.Remove(existObj);
-                    db.SaveChanges();
-                    Common.NhatKiHeThong("Xóa tầng", "Xóa tầng", "Tầng", "Xóa tầng  " + tangID.ToString() + ":" + maTang);
-                    // Show alert modal
-                    TempData["ShowPopup"] = true;
-                    TempData["Notice"] = "Đã xóa thành công";
-                }
-            }
-            catch (Exception ex)
-            {
-                // Show alert modal
-                TempData["ShowPopup"] = true;
-                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
-                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
-            }
-            return RedirectToAction("DMTang");
+                KhachHangID = x.KhachHangID,
+                MaKhachHang = x.MaKhachHang,
+                TenKhachHang = x.TenKhachHang,
+                NgaySinh  = x.NgaySinh ,
+                Email = x.Email,
+                MaSoThue = x.MaSoThue,
+                DinhMucCongNo = x.DinhMucCongNo,
+                DiemTich = x.DiemTich,
+                CardID = x.CardID,
+                NgayCap = x.NgayCap,
+                DiaChi = x.DiaChi,
+                SDT = x.SDT
+            }).ToList();
+
+            return Json(threadList, JsonRequestBehavior.AllowGet);
         }
-
-
- 
          #endregion
-
+         
         #region CustomerType
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -904,8 +902,7 @@ namespace MyProject.Controllers
 
 
         #endregion
-
-
+         
         #region "DMPhong"
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]

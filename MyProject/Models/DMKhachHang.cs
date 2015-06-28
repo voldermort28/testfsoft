@@ -39,6 +39,8 @@ namespace MyProject.Models
         public string NguoiTao { get; set; }
         public Nullable<System.DateTime> NgayTao { get; set; }
         public string NguoiSua { get; set; }
+        public Nullable<bool> GioTinh { get; set; }
+        public Nullable<System.DateTime> NgaySua { get; set; }
     
         public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
         public virtual ICollection<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; }
