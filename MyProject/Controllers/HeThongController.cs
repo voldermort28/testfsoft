@@ -179,7 +179,7 @@ namespace MyProject.Controllers
                 TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
                 Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
             }
-            return RedirectToAction("DMKhachHang");
+            return RedirectToAction("Customer");
         }
 
 
@@ -205,8 +205,42 @@ namespace MyProject.Controllers
 
             return Json(threadList, JsonRequestBehavior.AllowGet);
         }
+
+
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteCustomer(int customerId)
+        {
+            try
+            {
+                var existObj = db.DMKhachHangs.FirstOrDefault(x => x.KhachHangID == customerId);
+                if (existObj != null)
+                {
+                    db.DMKhachHangs.Remove(existObj);
+                    db.SaveChanges();
+                    Common.NhatKiHeThong("Xóa khách hàng", "Xóa khách hàng", "Khách hàng", "Xóa khách hàng  " + existObj.KhachHangID.ToString() + ":" + existObj.MaKhachHang + ":" + existObj.TenKhachHang);
+                    // Show alert modal
+                    TempData["ShowPopup"] = true;
+                    TempData["Notice"] = "Đã xóa thành công";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("Customer");
+        }
+
+
+
+
          #endregion
-         
+
         #region CustomerType
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -240,7 +274,7 @@ namespace MyProject.Controllers
                     TenLoaiKhachHang = x.TenLoaiKhachHang
                 }).ToList();
                 return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-            } 
+            }
         }
 
         [SuperAdminAttributes.SuperAdmin]
@@ -253,7 +287,7 @@ namespace MyProject.Controllers
             {
                 try
                 {
-                   
+
                     db.DMLoaiKhachHangs.Add(item);
                     db.SaveChanges();
                     // ghi log
@@ -315,6 +349,298 @@ namespace MyProject.Controllers
         }
         #endregion    
 
+        #region DMNhanVienType
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult DMNhanVienType()
+        {
+            ViewData["status"] = db.status.Select(x => new { status_id = x.status_id, name = x.name }).ToList();
+            return View();
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DMNhanVienType_Read([DataSourceRequest]DataSourceRequest request, string itemSearch = "")
+        {
+            if (string.IsNullOrEmpty(itemSearch))
+            {
+                var objs = db.DMLoaiNhanViens.Select(x => new
+                {
+                    LoaiNhanVienID = x.LoaiNhanVienID,
+                    MaLoaiNhanVien = x.MaLoaiNhanVien,
+                    TenLoaiNhanVien = x.TenLoaiNhanVien
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var objs = db.DMLoaiNhanViens.Where(x => x.MaLoaiNhanVien.Contains(itemSearch) || x.TenLoaiNhanVien.Contains(itemSearch)).Select(x => new
+                {
+                    LoaiNhanVienID = x.LoaiNhanVienID,
+                    MaLoaiNhanVien = x.MaLoaiNhanVien,
+                    TenLoaiNhanVien = x.TenLoaiNhanVien
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DMNhanVienType_Create([DataSourceRequest] DataSourceRequest request, DMLoaiNhanVien item)
+        {
+            //customertype obj = new customertype();
+            if (item != null && ModelState.IsValid)
+            {
+                try
+                {
+                    db.DMLoaiNhanViens.Add(item);
+                    db.SaveChanges();
+                    // ghi log
+                    Common.NhatKiHeThong("Thêm loại nhân viên", "Thêm loại nhân viên", "loại nhân viên", "Thêm loại nhân viên  " + item.MaLoaiNhanVien + ":" + item.TenLoaiNhanVien);
+                }
+                catch (Exception ex)
+                {
+                    Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                }
+            }
+            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DMNhanVienType_Update([DataSourceRequest] DataSourceRequest request, DMLoaiKhachHang item)
+        {
+            //var obj = db.customertypes.FirstOrDefault(x => x.customertype_id == item.customertype_id);
+            //if (obj == null) return HttpNotFound();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    //obj.name = item.name;
+                    //if (item.status != null) obj.status_id = item.status.status_id;
+                    db.Entry(item).State = EntityState.Modified;
+                    db.SaveChanges();
+                    // ghi log
+                    Common.NhatKiHeThong("Sửa loại khách hàng", "sửa loại khách hàng", "loại khách hàng", "Sửa loại khách hàng  " + item.MaLoaiKhachHang + ":" + item.TenLoaiKhachHang);
+                }
+                catch (Exception ex)
+                {
+                    Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                }
+            }
+            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
+        }
+
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DMNhanVienType_Destroy([DataSourceRequest] DataSourceRequest request, DMLoaiKhachHang item)
+        {
+            var obj = db.DMLoaiKhachHangs.FirstOrDefault(x => x.LoaiKhachHangID == item.LoaiKhachHangID);
+            if (obj == null) return HttpNotFound();
+            try
+            {
+                db.DMLoaiKhachHangs.Remove(obj);
+                db.SaveChanges();
+                // ghi log
+                Common.NhatKiHeThong("Xóa loại khách hàng", "Xóa loại khách hàng", "loại khách hàng", "Xóa loại khách hàng  " + item.MaLoaiKhachHang + ":" + item.TenLoaiKhachHang);
+            }
+            catch (Exception ex)
+            {
+                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+            }
+            return Json(new[] { item }.ToDataSourceResult(request, ModelState));
+        }
+        #endregion    
+
+        #region NhanVien
+
+        public ActionResult DMNhanVien()
+        {
+            return View();
+        }
+         
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DMNhanVien_Read([DataSourceRequest]DataSourceRequest request, string itemSearch = "")
+        {
+            if (string.IsNullOrEmpty(itemSearch))
+            {
+                var objs = db.DMNhanViens.Select(x => new
+                {
+                    NhanVienID = x.NhanVienID,
+                    MaNhanVien = x.MaNhanVien,
+                    LoaiNhanVienID = x.LoaiNhanVienID,
+                    TenNhanVien = x.TenNhanVien,
+                    NgaySinh = x.NgaySinh,
+                    QueQuan = x.QueQuan,
+                    DiaChi = x.DiaChi,
+                    CMT = x.CMT,
+                    DienThoai = x.DienThoai,
+                    Email = x.Email,
+                    MoTa = x.MoTa 
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var objs = db.DMNhanViens.Where(x => x.MaNhanVien.Contains(itemSearch) || x.TenNhanVien.Contains(itemSearch)).Select(x => new
+                {
+                    NhanVienID = x.NhanVienID,
+                    MaNhanVien = x.MaNhanVien,
+                    LoaiNhanVienID = x.LoaiNhanVienID,
+                    TenNhanVien = x.TenNhanVien,
+                    NgaySinh = x.NgaySinh,
+                    QueQuan = x.QueQuan,
+                    DiaChi = x.DiaChi,
+                    CMT = x.CMT,
+                    DienThoai = x.DienThoai,
+                    Email = x.Email,
+                    MoTa = x.MoTa 
+                }).ToList();
+                return Json(objs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+            }
+        }
+         
+        public ActionResult DMNhanVienEditor(string ID = "0")
+        {
+            try
+            {
+                ViewData["loaiNhanVien"] = db.DMLoaiNhanViens
+                    .Select(x => new { LoaiKhachHangID = x.LoaiNhanVienID, TenLoaiKhachHang = x.TenLoaiNhanVien }).ToList();
+
+                if (ID.Equals("0"))
+                {
+                    return View();
+                }
+                else
+                {
+                    var IDNhaVien = int.Parse(ID);
+                    var obj = db.DMNhanViens.FirstOrDefault(x => x.NhanVienID == IDNhaVien);
+                    if (obj == null) return HttpNotFound();
+                    return View(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+
+        public ActionResult SaveDMNhanVien(DMNhanVien dmNhanVien)
+        {
+            try
+            {
+                // add a new item
+                if (dmNhanVien.NhanVienID == 0)
+                {
+                    if (db.DMNhanViens.FirstOrDefault(x => x.NhanVienID == dmNhanVien.NhanVienID) == null)
+                    {
+                        db.DMNhanViens.Add(dmNhanVien);
+                        db.SaveChanges();
+                        // ghi log
+                        Common.NhatKiHeThong("Thêm nhân viên", "Thêm nhân viên", "Nhân viên", "Thêm nhân viên  " + dmNhanVien.NhanVienID + ":" + dmNhanVien.TenNhanVien);
+                    }
+                    else
+                    {
+                        TempData["Notice"] = "Nhân viên " + dmNhanVien.MaNhanVien + " dùng này đã được đăng ký rồi";
+                        TempData["ShowPopup"] = true;
+                    }
+                }
+                else // modify item
+                {
+                    var existObj = db.DMNhanViens.FirstOrDefault(x => x.NhanVienID == dmNhanVien.NhanVienID);
+                    if (existObj != null)
+                    {
+
+                        existObj.LoaiNhanVienID = dmNhanVien.LoaiNhanVienID;
+                        existObj.TenNhanVien = dmNhanVien.TenNhanVien;
+                        existObj.NgaySinh = dmNhanVien.NgaySinh;
+                        existObj.Email = dmNhanVien.Email;
+                        existObj.QueQuan = dmNhanVien.QueQuan;
+                        existObj.DiaChi = dmNhanVien.DiaChi;
+                        existObj.CMT = dmNhanVien.CMT;
+                        existObj.DienThoai = dmNhanVien.DienThoai;
+                        existObj.Email = dmNhanVien.Email;
+                        existObj.MoTa = dmNhanVien.MoTa;                       
+                        db.SaveChanges();
+                        // ghi log
+                        Common.NhatKiHeThong("sửa nhân viên", "Thêm nhân viên", "Nhân viên", "Thêm nhân viên  " + dmNhanVien.NhanVienID + ":" + dmNhanVien.TenNhanVien);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("DMNhanVien");
+        }
+         
+        [HttpPost]
+        public ActionResult SearchDMNhanVien(string maNhanVien)
+        {
+            // var threadList = db.DMKhachHangs.Where(s => s.MaKhachHang == maKhachHang);
+            var threadList = db.DMNhanViens.Where(s => s.MaNhanVien == maNhanVien).Select(x => new
+            {
+                NhanVienID = x.NhanVienID,
+                MaNhanVien = x.MaNhanVien,
+                LoaiNhanVienID = x.LoaiNhanVienID,
+                TenNhanVien = x.TenNhanVien,
+                NgaySinh = x.NgaySinh,
+                QueQuan = x.QueQuan,
+                DiaChi = x.DiaChi,
+                CMT = x.CMT,
+                DienThoai = x.DienThoai,
+                Email = x.Email,
+                MoTa = x.MoTa 
+            }).ToList();
+
+            return Json(threadList, JsonRequestBehavior.AllowGet);
+        }
+         
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteDMNhanVien(int nhanVienId)
+        {
+            try
+            {
+                var existObj = db.DMNhanViens.FirstOrDefault(x => x.NhanVienID == nhanVienId);
+                if (existObj != null)
+                {
+                    db.DMNhanViens.Remove(existObj);
+                    db.SaveChanges();
+                    Common.NhatKiHeThong("xóa nhân viên", "Thêm nhân viên", "Nhân viên", "Thêm nhân viên  " + existObj.NhanVienID + ":" + existObj.TenNhanVien);
+                    // Show alert modal
+                    TempData["ShowPopup"] = true;
+                    TempData["Notice"] = "Đã xóa thành công";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show alert modal
+                TempData["ShowPopup"] = true;
+                TempData["Notice"] = "Có lỗi xảy ra, vui lòng kiểm tra log";
+                Common.WriteLog(ex.Message + "\n" + ex.InnerException + "\n" + ex.StackTrace);
+            }
+            return RedirectToAction("DMNhanVien");
+        }
+         
+
+        #endregion
+         
         #region NguoiDung
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]

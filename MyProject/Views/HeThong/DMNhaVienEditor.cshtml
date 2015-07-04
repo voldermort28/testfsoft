@@ -1,4 +1,4 @@
-﻿@model MyProject.Models.DMKhachHang
+﻿@model MyProject.Models.DMNhanVien
 @{
     ViewBag.Title = "Thông tin khách hàng";
     Layout = "~/Views/Shared/_AdmLayout.cshtml";
@@ -18,12 +18,10 @@
     </div>
 </div>
     <div class="container-fluid">
-        @using (Html.BeginForm("SaveDMKhachHang", "HeThong", FormMethod.Post))
+        @using (Html.BeginForm("SaveDMNhanVien", "HeThong", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
-            @Html.HiddenFor(m => m.KhachHangID, new { id = "txtKhachHangID" })
-            <input type="hidden" id="hidAddProduct" name="hidAddProduct" />
-
+            @Html.HiddenFor(m => m.NhanVienID, new { id = "txtNhanVienID" })
             <div class="col-md-12">
                 <div class="btn-group pull-right btn-profile-customer">
                     <input type="submit" class="btn btn-primary" id="btnSave" value="Hoàn tất" />
@@ -33,9 +31,9 @@
                 <table class="table table-condensed">
                     <tr>
                         <td class="col1"><label>Mã khách hàng</label></td>
-                        <td class="form-group">@Html.TextBoxFor(x => x.MaKhachHang, new { id = "txtMaKhachHang", @class = "form-control viewOnly", required = "required", maxlength = 5 })</td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.MaNhanVien, new { id = "txtMaKhachHang", @class = "form-control viewOnly", required = "required", maxlength = 5 })</td>
                         <td class="col1"><label>Tên khách hàng</label></td>
-                        <td class="form-group">@Html.TextBoxFor(x => x.TenKhachHang, new { id = "txtTenKhachHang", @class = "form-control", required = "required", maxlength = 50 })</td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.TenNhanVien, new { id = "txtTenKhachHang", @class = "form-control", required = "required", maxlength = 50 })</td>
                     </tr>
                     <tr>
                         <td class="col1"><label>Giới tính</label></td>

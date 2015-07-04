@@ -1,0 +1,100 @@
+﻿@using MyProject.Functions
+@{
+    ViewBag.Title = "Danh mục loại nhân viên";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1">Tìm kiếm:</div>
+
+        <div class="col-md-2">
+            <input type="text" id="itemSearch" class="form-control col-md-5" placeholder="Nhập tìm kiếm" />
+        </div>
+        <div class="col-md-3">
+            <button type="button" id="searchLoaiNhanVien" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+
+        <div>
+            <a id="export" href="#modalContainer" role="button" class="btn btn-primary" data-toggle="modal">Export</a>
+        </div>
+
+    </div>
+
+    <div class="row">
+        @Html.AntiForgeryToken()
+        @(Html.Kendo().Grid<MyProject.Models.DMLoaiNhanVien>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.LoaiNhanVienID).Title("ID").Filterable(false).Width(40);
+            columns.Bound(p => p.MaLoaiNhanVien).Title("Mã loại nhân viên");
+            columns.Bound(p => p.TenLoaiNhanVien).Title("Tên loại nhân viên");
+            columns.Command(command => { command.Edit().Text(" ").UpdateText(" ").CancelText(" "); }).Width(110).Title("Cập nhật");
+            columns.Command(command => { command.Destroy().Text(" ").Text(" "); }).Width(110).Title("Xóa");
+        })
+        .ToolBar(toolbar => toolbar.Create().Text("Thêm mới"))
+        .Editable(editable => editable.Mode(GridEditMode.InLine))
+        .Sortable()
+        .Resizable(resize => resize.Columns(true))
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .Filterable(filterable => filterable
+            .Extra(false)
+            .Operators(operators => operators
+                .ForString(str => str.Clear().Contains("Contains"))
+            )
+        )
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .ServerOperation(false)
+            .Events(events => { events.Error("error_handler"); events.RequestEnd("onRequestEnd"); })
+            .Model(model =>
+            {
+                model.Id(p => p.LoaiNhanVienID);
+                model.Field(p => p.MaLoaiNhanVien);
+                model.Field(p => p.TenLoaiNhanVien);
+            })
+            .Read(read => read.Action("DMNhanVienType_Read", "HeThong").Data("sendSearch"))
+                    .Create(update => update.Action("DMNhanVienType_Create", "HeThong"))
+                    .Update(update => update.Action("DMNhanVienType_Update", "HeThong"))
+                    .Destroy(update => update.Action("DMNhanVienType_Destroy", "HeThong"))
+            )
+        )
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            console.info(message);
+        }
+    }
+    $("#searchLoaiNhanVien").click(function () {
+        $("#grid").data("kendoGrid").dataSource.read();
+    });
+
+    function sendSearch() {
+        return {
+            itemSearch: $('#itemSearch').val()
+        };
+    };
+
+    function onRequestEnd(e) {
+        if (e.type == "create" && !e.response.Errors) alert("Tạo mới thành công");
+        else if (e.type == "update" && !e.response.Errors) alert("Cập nhật thông tin thành công");
+        else if (e.type == "destroy" && !e.response.Errors) alert("Xóa thông tin thành công");
+    }
+    </script>
+}
