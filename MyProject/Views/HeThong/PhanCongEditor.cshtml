@@ -1,0 +1,150 @@
+﻿@model MyProject.Models.DMNhanVien
+@{
+    ViewBag.Title = "Thông tin khách hàng";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+<div class="row">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-md-1">Mã khách hàng:</div>
+
+            <div class="col-md-2">
+                <input type="text" id="txtCusotmerId" class="form-control col-md-5" placeholder="Nhập mã khách hàng" />
+            </div>
+            <div class="col-md-3">
+                <button type="button" id="btnSearch" class="btn btn-primary">Tìm</button>
+            </div>
+        </div>       
+    </div>
+</div>
+    <div class="container-fluid">
+        @using (Html.BeginForm("SaveDMNhanVien", "HeThong", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.NhanVienID, new { id = "txtNhanVienID" })
+            <div class="col-md-12">
+                <div class="btn-group pull-right btn-profile-customer">
+                    <input type="submit" class="btn btn-primary" id="btnSave" value="Hoàn tất" />
+                    <button type="button" class="btn btn-warning" id="btnCancel">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="btnDelete">Xóa</button>
+                </div>
+                <table class="table table-condensed">
+                    <tr>
+                        <td class="col1"><label>Mã Nhân viên</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.MaNhanVien, new { id = "txtMaNhanVien", @class = "form-control viewOnly", required = "required", maxlength = 5 })</td>
+                        <td class="col1"><label>Tên nhân viên</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.TenNhanVien, new { id = "txtTenNhanVien", @class = "form-control", required = "required", maxlength = 50 })</td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><label>Địa chỉ</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.DiaChi, new { id = "txtDiaChi", @class = "form-control ", required = "required", maxlength = 100 })</td>
+                        <td class="col1"><label>Ngày sinh</label></td>
+                        <td class="form-group">@Html.Kendo().DatePickerFor(x => x.NgaySinh).HtmlAttributes(new { id="txtNgaySinh" ,required = "required", style = "width:100%", onkeydown = "javascript:return false;" })</td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><label>Email</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.Email, new { id = "txtEmail", @class = "form-control", maxlength = 50 })</td>
+                        <td class="col1"><label>Di động</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.DienThoai, new { id = "txtMobile", @class = "form-control numberic" })</td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><label>Phân loại nhân viên</label></td>
+                        <td class="form-group">@Html.DropDownListFor(x => x.LoaiNhanVienID, new SelectList((System.Collections.ICollection)ViewData["loaiNhanVien"], "LoaiNhanVienID", "TenLoaiNhanVien"), "Chọn loại nhân viên", new { id = "cboLoaiNhanVien", @class = "form-control", required = "required" })</td>
+                        <td class="col1"><label>Số chứng minh</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.CMT, new { id = "txtCMT", @class = "form-control", maxlength = 30 })</td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><label>Mô tả</label></td>
+                        <td colspan="3" class="form-group">@Html.TextBoxFor(x => x.MoTa, new { id = "txtDiaChi", @class = "form-control", maxlength = 100 })</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="col1"><label>Quê Quán</label></td>
+                        <td colspan="3" class="form-group">@Html.TextBoxFor(x => x.QueQuan, new { id = "txtQueQuan", @class = "form-control", maxlength = 100 })</td>
+                    </tr> 
+                </table>
+            </div>
+        }
+        <div style="clear:both"></div>
+    </div>
+
+    @section scripts{
+        <script> 
+            $(function () {
+                // Disable button submit when submit form
+                $('form').submit(function () {
+                    $('#btnSave').attr('disabled', 'disabled'); 
+                }); 
+                // Allow only numberic input
+                $('.numberic').keypress(function (e) {
+                    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) return false;
+                });
+
+                // Turn off autocomplete
+                $('form,input,select,textarea').attr("autocomplete", "off");
+
+
+                if ((typeof $('#txtNhanVienID').val() == 'undefined') || $('#txtNhanVienID').val() != 0) {
+                    $('.viewOnly').each(function () {
+                        $(this).attr('disabled', true);
+                    });
+                }
+                
+                $('#btnCancel').click(function () {
+                    window.location.href = '/HeThong/Customer';
+                });
+
+                $('#btnDelete').click(function () {
+                    if (confirm('Bạn có chắc không?')) {
+                        if ($('#txtNhanVienID').val() == 0) window.location.href = '/HeThong/DMNhanVien';
+                        $.post('/HeThong/DeleteDMNhanVien', {
+                            nhanVienId: $('#txtNhanVienID').val()
+                        }, function () {
+                            window.location.href = '/HeThong/DMNhanVien';
+                        });
+                    }
+                });
+                $('#btnSearch').click(function () { 
+                        $.post('/HeThong/SearchDMNhanVien', {
+                            maKhachHang: $('#txtNhanVienID').val()
+                        }, function (res) {
+                            if (res.length > 0) {
+                                $('.viewOnly').each(function () {
+                                    $(this).attr('disabled', true);
+                                });
+                                $("#txtKhachHangID").val(res[0].KhachHangID);
+                                $("#txtMaKhachHang").val(res[0].MaKhachHang);
+                                $("#txtTenKhachHang").val(res[0].enKhachHang);
+                                $("#txtNgaySinh").val(res[0].NgaySinh);
+                                $("#txtMobile").val(res[0].SDT);
+                                $("#txtMaSoThue").val(res[0].MaSoThue);
+                                $("#txtDinhMucCongNo").val(res[0].DinhMucCongNo);
+                                $("#txtDiemTich").val(res[0].DiemTich);
+                                $("#txtCardID").val(res[0].CardID);
+                                $("#txtNgayCap").val(res[0].NgayCap);
+                                $("#txtAddress").val(res[0].DiaChi); 
+                            }else
+                            {
+                                $('.viewOnly').each(function () {
+                                    $(this).attr('disabled', false);
+                                });
+                                $("#txtKhachHangID").val(0);
+                                $("#txtMaKhachHang").val("");
+                                $("#txtTenKhachHang").val("");
+                                $("#txtNgaySinh").val("");
+                                $("#txtMobile").val("");
+                                $("#txtMaSoThue").val("");
+                                $("#txtDinhMucCongNo").val("");
+                                $("#txtDiemTich").val("");
+                                $("#txtCardID").val("");
+                                $("#txtNgayCap").val("");
+                                $("#txtAddress").val("");
+                            }
+                        }); 
+                });
+
+
+            });
+              
+        </script>
+    }

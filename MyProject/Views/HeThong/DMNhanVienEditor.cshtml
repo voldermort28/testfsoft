@@ -30,17 +30,14 @@
                 </div>
                 <table class="table table-condensed">
                     <tr>
-                        <td class="col1"><label>Mã khách hàng</label></td>
-                        <td class="form-group">@Html.TextBoxFor(x => x.MaNhanVien, new { id = "txtMaKhachHang", @class = "form-control viewOnly", required = "required", maxlength = 5 })</td>
-                        <td class="col1"><label>Tên khách hàng</label></td>
-                        <td class="form-group">@Html.TextBoxFor(x => x.TenNhanVien, new { id = "txtTenKhachHang", @class = "form-control", required = "required", maxlength = 50 })</td>
+                        <td class="col1"><label>Mã Nhân viên</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.MaNhanVien, new { id = "txtMaNhanVien", @class = "form-control viewOnly", required = "required", maxlength = 5 })</td>
+                        <td class="col1"><label>Tên nhân viên</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.TenNhanVien, new { id = "txtTenNhanVien", @class = "form-control", required = "required", maxlength = 50 })</td>
                     </tr>
                     <tr>
-                        <td class="col1"><label>Giới tính</label></td>
-                        <td class="form-group">
-                            @Html.RadioButtonFor(x => x.GioTinh, true) Nam
-                            @Html.RadioButtonFor(x => x.GioTinh, false) Nữ
-                        </td>
+                        <td class="col1"><label>Địa chỉ</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.DiaChi, new { id = "txtDiaChi", @class = "form-control ", required = "required", maxlength = 100 })</td>
                         <td class="col1"><label>Ngày sinh</label></td>
                         <td class="form-group">@Html.Kendo().DatePickerFor(x => x.NgaySinh).HtmlAttributes(new { id="txtNgaySinh" ,required = "required", style = "width:100%", onkeydown = "javascript:return false;" })</td>
                     </tr>
@@ -48,29 +45,22 @@
                         <td class="col1"><label>Email</label></td>
                         <td class="form-group">@Html.TextBoxFor(x => x.Email, new { id = "txtEmail", @class = "form-control", maxlength = 50 })</td>
                         <td class="col1"><label>Di động</label></td>
-                        <td class="form-group">@Html.TextBoxFor(x => x.SDT, new { id = "txtMobile", @class = "form-control numberic" })</td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.DienThoai, new { id = "txtMobile", @class = "form-control numberic" })</td>
                     </tr>
                     <tr>
-                        <td class="col1"><label>Phân loại khách hàng</label></td>
-                        <td class="form-group">@Html.DropDownListFor(x => x.LoaiKhachHangID, new SelectList((System.Collections.ICollection)ViewData["loaiKhachHang"], "LoaiKhachHangID", "TenLoaiKhachHang"), "Chọn loại khách hàng", new { id = "cboLoaiKhachHang", @class = "form-control", required = "required" })</td>
-                        <td class="col1"><label>Mã số thuế</label></td>
-                        <td class="form-group">@Html.TextBoxFor(x => x.MaSoThue, new { id = "txtMaSoThue", @class = "form-control", maxlength = 30 })</td>
+                        <td class="col1"><label>Phân loại nhân viên</label></td>
+                        <td class="form-group">@Html.DropDownListFor(x => x.LoaiNhanVienID, new SelectList((System.Collections.ICollection)ViewData["loaiNhanVien"], "LoaiNhanVienID", "TenLoaiNhanVien"), "Chọn loại nhân viên", new { id = "cboLoaiNhanVien", @class = "form-control", required = "required" })</td>
+                        <td class="col1"><label>Số chứng minh</label></td>
+                        <td class="form-group">@Html.TextBoxFor(x => x.CMT, new { id = "txtCMT", @class = "form-control", maxlength = 30 })</td>
                     </tr>
                     <tr>
-                        <td class="col1"><label>Công nợ</label></td>
-                        <td class="form-group">@Html.TextBoxFor(x => x.DinhMucCongNo, new { id = "txtDinhMucCongNo", @class = "form-control numberic", maxlength = 10 })</td>
-                        <td class="col1"><label>Điểm tích</label></td>
-                        <td class="form-group">@Html.TextBoxFor(x => x.DiemTich, new { id = "txtDiemTich", @class = "form-control numberic", maxlength = 30 })</td>
+                        <td class="col1"><label>Mô tả</label></td>
+                        <td colspan="3" class="form-group">@Html.TextBoxFor(x => x.MoTa, new { id = "txtDiaChi", @class = "form-control", maxlength = 100 })</td>
                     </tr>
+                    
                     <tr>
-                        <td class="col1"><label>Chứng minh thư nhân dân</label></td>
-                        <td class="form-group">@Html.TextBoxFor(x => x.CardID, new { id = "txtCardID", @class = "form-control numberic", maxlength = 20 })</td>
-                        <td class="col1"><label>Ngày cấp</label></td>
-                        <td class="form-group">@Html.Kendo().DatePickerFor(x => x.NgayCap).HtmlAttributes(new {id="txtNgayCap" , style = "width:100%" })</td>
-                    </tr>
-                    <tr>
-                        <td class="col1"><label>Địa chỉ</label></td>
-                        <td colspan="3" class="form-group">@Html.TextBoxFor(x => x.DiaChi, new { id = "txtAddress",  @class = "form-control", maxlength = 100 })</td>
+                        <td class="col1"><label>Quê Quán</label></td>
+                        <td colspan="3" class="form-group">@Html.TextBoxFor(x => x.QueQuan, new { id = "txtQueQuan", @class = "form-control", maxlength = 100 })</td>
                     </tr> 
                 </table>
             </div>
@@ -94,7 +84,7 @@
                 $('form,input,select,textarea').attr("autocomplete", "off");
 
 
-                if ((typeof $('#txtKhachHangID').val() == 'undefined') || $('#txtKhachHangID').val() != 0) {
+                if ((typeof $('#txtNhanVienID').val() == 'undefined') || $('#txtNhanVienID').val() != 0) {
                     $('.viewOnly').each(function () {
                         $(this).attr('disabled', true);
                     });
@@ -106,17 +96,17 @@
 
                 $('#btnDelete').click(function () {
                     if (confirm('Bạn có chắc không?')) {
-                        if ($('#txtKhachHangID').val() == 0) window.location.href = '/HeThong/Customer';
-                        $.post('/HeThong/DeleteCustomer', {
-                            customerId: $('#txtKhachHangID').val()
+                        if ($('#txtNhanVienID').val() == 0) window.location.href = '/HeThong/DMNhanVien';
+                        $.post('/HeThong/DeleteDMNhanVien', {
+                            nhanVienId: $('#txtNhanVienID').val()
                         }, function () {
-                            window.location.href = '/HeThong/Customer';
+                            window.location.href = '/HeThong/DMNhanVien';
                         });
                     }
                 });
                 $('#btnSearch').click(function () { 
-                        $.post('/HeThong/SearchCustomer', {
-                            maKhachHang: $('#txtCusotmerId').val()
+                        $.post('/HeThong/SearchDMNhanVien', {
+                            maKhachHang: $('#txtNhanVienID').val()
                         }, function (res) {
                             if (res.length > 0) {
                                 $('.viewOnly').each(function () {

@@ -511,7 +511,7 @@ namespace MyProject.Controllers
             try
             {
                 ViewData["loaiNhanVien"] = db.DMLoaiNhanViens
-                    .Select(x => new { LoaiKhachHangID = x.LoaiNhanVienID, TenLoaiKhachHang = x.TenLoaiNhanVien }).ToList();
+                    .Select(x => new { LoaiNhanVienID = x.LoaiNhanVienID, TenLoaiNhanVien = x.TenLoaiNhanVien }).ToList();
 
                 if (ID.Equals("0"))
                 {
@@ -640,7 +640,19 @@ namespace MyProject.Controllers
          
 
         #endregion
-         
+
+        #region Ca truc
+        [SuperAdminAttributes.SuperAdmin]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult DMCaTruc()
+        {
+            ViewData["status"] = db.status.Select(x => new { status_id = x.status_id, name = x.name }).ToList();
+            return View();
+        }
+
+        #endregion
+
+        
         #region NguoiDung
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -1069,8 +1081,7 @@ namespace MyProject.Controllers
 
 
         #endregion
-
-
+         
         #region "DMTang"
         [SuperAdminAttributes.SuperAdmin]
         [AcceptVerbs(HttpVerbs.Get)]

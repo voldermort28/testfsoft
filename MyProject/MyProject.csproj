@@ -1224,8 +1224,11 @@
     <Content Include="Views\HeThong\Customer.cshtml" />
     <Content Include="Views\HeThong\CustomerEditor.cshtml" />
     <Content Include="Views\HeThong\DMNhanVien.cshtml" />
-    <Content Include="Views\HeThong\DMNhaVienEditor.cshtml" />
+    <Content Include="Views\HeThong\DMNhanVienEditor.cshtml" />
     <Content Include="Views\HeThong\DMNhanVienType.cshtml" />
+    <Content Include="Views\HeThong\PhanCong.cshtml" />
+    <Content Include="Views\HeThong\PhanCongEditor.cshtml" />
+    <Content Include="Views\HeThong\DMCaTruc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
