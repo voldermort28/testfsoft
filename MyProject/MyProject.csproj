@@ -50,6 +50,9 @@
     <Reference Include="BotDetect.Web.UI.Mvc">
       <HintPath>C:\Users\ANS741\Downloads\BotDetect.Web.UI.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="DayPilot.Web.Mvc">
+      <HintPath>..\Lib\DayPilot.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -59,8 +62,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp">
-      <HintPath>..\packages\iTextSharp.5.0.5\lib\itextsharp.dll</HintPath>
+    <Reference Include="FastMember, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.1.0.0.11\lib\net40\FastMember.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Kendo.Mvc">
       <HintPath>..\..\..\..\dll\Kendo.Mvc.dll</HintPath>
@@ -87,9 +91,6 @@
     </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="RazorPDF">
-      <HintPath>..\packages\RazorPDF.1.0.0\lib\net45\RazorPDF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -157,320 +158,162 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Galleries\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HeThongController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageBrowserController.cs" />
     <Compile Include="Controllers\LoginCPController.cs" />
+    <Compile Include="Controllers\BookTableController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
+    <Compile Include="Controllers\SchedulerController.cs" />
     <Compile Include="Filters\CheckPermissionActionFilter.cs" />
     <Compile Include="Filters\SuperAdminAttributes.cs" />
     <Compile Include="Filters\LoginRequriedAttribute.cs" />
     <Compile Include="Functions\Common.cs" />
     <Compile Include="Functions\Constant.cs" />
     <Compile Include="Functions\CreateExcelFile.cs" />
+    <Compile Include="Functions\DbHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\admin.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AMenu.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AMenu_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AMenu_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ANguoiDung.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ANguoiDung_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ANguoiDung_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ANhatKyHeThong.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ANhatKyHeThong_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ANhatKyHeThong_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ANhomMenu.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ANhomMenu_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ANhomMenu_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ANhomNguoiDung.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ANhomNguoiDung_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ANhomNguoiDung_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+    <Compile Include="Models\Assignment.cs">
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietHoaDon.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietPhieuNhap.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietPhieuXuat.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DinhMuc.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMBan.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMBan_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMBan_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMCa.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMCa_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMCa_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMDonViTinh.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMDonViTinh_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMDonViTinh_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMHangHoa.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMHangHoa_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMHangHoa_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMKhachHang.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMKhachHang_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMKhachHang_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMLoaiHang.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMLoaiHang_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMLoaiHang_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMLoaiKhachHang.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMLoaiKhachHang_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMLoaiKhachHang_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMLoaiNhanVien.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMLoaiNhanVien_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMLoaiNhanVien_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMLoaiNVL.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMLoaiNVL_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMLoaiNVL_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMLoaiPhieu.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMLoaiPhieu_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMLoaiPhieu_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMNhanVien.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMNhanVien_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMNhanVien_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMNVL.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMNVL_SelectAll_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DMNVL_SelectByPrimaryKey_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMPhong.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DMTang.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GetDataSetNguoiDung.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GiaBan.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon_Ban.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Location.cs">
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LogError.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MyDatabaseEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyDatabaseEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MyDatabaseEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MyDatabaseEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyDatabaseEntities.edmx</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PassChange.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhanCong.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\phanQuyen.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhieuChi.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhieuNhap.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhieuThu.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhieuXuat.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLNH.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLNH.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLNH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLNH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLNH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLNH.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reservation.cs">
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RS_Menu.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\status.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UuDaiThanhVien.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetBan_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetCa_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetDonViTinh_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetHangHoa_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetKhachHang_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetLoaiHang_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetLoaiKhachHang_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetLoaiNhanVien_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetLoaiNVL_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetLoaiPhieu_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetMenu_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetNguoiDung_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetNhanVien_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetNhatKyHeThong_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetNhomMenu_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetNhomNguoiDung_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZGetDataSetNVL_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ZPhanQuyen_Result.cs">
-      <DependentUpon>MyDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -721,6 +564,22 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\kendo\images\kendoui.ttf" />
     <Content Include="Content\kendo\images\kendoui.woff" />
+    <Content Include="Media\layout.css" />
+    <Content Include="Media\layout\header-in.png" />
+    <Content Include="Media\layout\header.png" />
+    <Content Include="Media\layout\li.png" />
+    <Content Include="Media\layout\main.png" />
+    <Content Include="Media\layout\shadow.png" />
+    <Content Include="Models\QLNH.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLNH.edmx</DependentUpon>
+      <LastGenOutput>QLNH.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\QLNH.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLNH.edmx</DependentUpon>
+      <LastGenOutput>QLNH.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cultures\kendo.culture.en-GB.min.js" />
@@ -731,7 +590,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\DayPilot\daypilot-all.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\kendo\jquery.min.js" />
     <Content Include="Scripts\kendo\kendo.all.min.js" />
@@ -1036,22 +897,12 @@
     <Content Include="static\js\wysiwyg\bootstrap-wysiwyg.js" />
     <Content Include="static\js\wysiwyg\demo.js" />
     <Content Include="static\js\wysiwyg\jquery.hotkeys.js" />
-    <EntityDeploy Include="Models\MyDatabaseEntities.edmx">
+    <EntityDeploy Include="Models\QLNH.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MyDatabaseEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>QLNH.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\MyDatabaseEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyDatabaseEntities.edmx</DependentUpon>
-      <LastGenOutput>MyDatabaseEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\MyDatabaseEntities.edmx.diagram">
-      <DependentUpon>MyDatabaseEntities.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\MyDatabaseEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyDatabaseEntities.edmx</DependentUpon>
-      <LastGenOutput>MyDatabaseEntities.cs</LastGenOutput>
+    <Content Include="Models\QLNH.edmx.diagram">
+      <DependentUpon>QLNH.edmx</DependentUpon>
     </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1229,6 +1080,10 @@
     <Content Include="Views\HeThong\PhanCong.cshtml" />
     <Content Include="Views\HeThong\PhanCongEditor.cshtml" />
     <Content Include="Views\HeThong\DMCaTruc.cshtml" />
+    <Content Include="Views\Reservation\Create.cshtml" />
+    <Content Include="Views\Reservation\Edit.cshtml" />
+    <Content Include="Views\BookTable\Create.cshtml" />
+    <Content Include="Views\BookTable\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
