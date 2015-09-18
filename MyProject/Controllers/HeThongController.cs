@@ -23,7 +23,7 @@ namespace MyProject.Controllers
     [CheckPermissionActionFilter] 
     public class HeThongController : Controller
     {
-        MyDatabaseEntities db = new MyDatabaseEntities();
+        QLNHEntities db = new QLNHEntities();
         private static readonly string[] validImageTypes = new string[] { "image/png", "image/jpg", "image/jpeg", "image/gif" };
         private static readonly string[] valideImageExt = new string[] { ".jpg", ".jpeg", ".png", ".gif" };
         [CheckPermissionActionFilter]
@@ -1422,7 +1422,7 @@ namespace MyProject.Controllers
             {
                 var objs = db.DMBans.Select(x => new
                 {
-                    PhongID = x.PhongID,
+                    MaPhong = x.MaPhong,
                     BanID = x.BanID,
                     MaBan = x.MaBan,
                     TenBan = x.TenBan,
@@ -1436,7 +1436,7 @@ namespace MyProject.Controllers
             {
                 var objs = db.DMBans.Where(x => x.MaBan.Contains(itemSearch) || x.TenBan.Contains(itemSearch) || x.MoTa.Contains(itemSearch)).Select(x => new
                 {
-                    PhongID = x.PhongID,
+                    MaPhong = x.MaPhong,
                     BanID = x.BanID,
                     MaBan = x.MaBan,
                     TenBan = x.TenBan,
@@ -1515,7 +1515,7 @@ namespace MyProject.Controllers
                     var existObj = db.DMBans.FirstOrDefault(x => x.BanID == dmBan.BanID );
                     if (existObj != null)
                     {
-                        existObj.PhongID = dmBan.PhongID;
+                        existObj.MaPhong = dmBan.MaPhong;
                         existObj.TenBan = dmBan.TenBan;
                         existObj.SoLuong = dmBan.SoLuong;
                         existObj.LoaiBan = dmBan.LoaiBan;

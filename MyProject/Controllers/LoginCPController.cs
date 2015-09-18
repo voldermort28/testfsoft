@@ -23,7 +23,7 @@ namespace MyProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(string txtUsername, string txtPassword, string returnUrl = "/HeThong")
         {
-            using (var db = new MyDatabaseEntities())
+            using (var db = new QLNHEntities())
             {
                 string username = txtUsername.Trim().ToLower();
                 var obj = db.admins.FirstOrDefault(x => x.email.ToLower() == username);
