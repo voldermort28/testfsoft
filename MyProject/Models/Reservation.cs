@@ -10,14 +10,17 @@
 namespace MyProject.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class ZGetDataSetCa_Result
+    public partial class Reservation
     {
-        public Nullable<long> STT { get; set; }
-        public string MaCa { get; set; }
-        public string TenCa { get; set; }
-        public Nullable<int> TuGio { get; set; }
-        public Nullable<int> DenGio { get; set; }
-        public string MoTa { get; set; }
+        public int ReservationId { get; set; }
+        public string ReservationName { get; set; }
+        public Nullable<int> ReservationPaid { get; set; }
+        public int ReservationStatus { get; set; }
+        public System.DateTime ReservationStart { get; set; }
+        public System.DateTime ReservationEnd { get; set; }
+        public bool Status { get; set; }
+        public int BanID { get; set; }
     }
 }

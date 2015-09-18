@@ -10,12 +10,13 @@
 namespace MyProject.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class DMLoaiPhieu_SelectByPrimaryKey_Result
+    public partial class Location
     {
-        public int LoaiPhieuID { get; set; }
-        public string MaLoaiPhieu { get; set; }
-        public string TenLoaiPhieu { get; set; }
-        public string MoTa { get; set; }
+        public long LocationId { get; set; }
+        public string LocationName { get; set; }
+        public Nullable<long> ParentId { get; set; }
+        public Nullable<int> LocationSeats { get; set; }
     }
 }

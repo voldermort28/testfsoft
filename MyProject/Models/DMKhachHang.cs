@@ -26,6 +26,7 @@ namespace MyProject.Models
         public long KhachHangID { get; set; }
         public string MaKhachHang { get; set; }
         public string TenKhachHang { get; set; }
+        public Nullable<bool> GioTinh { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string SDT { get; set; }
         public string Email { get; set; }
@@ -39,7 +40,6 @@ namespace MyProject.Models
         public string NguoiTao { get; set; }
         public Nullable<System.DateTime> NgayTao { get; set; }
         public string NguoiSua { get; set; }
-        public Nullable<bool> GioTinh { get; set; }
         public Nullable<System.DateTime> NgaySua { get; set; }
     
         public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }

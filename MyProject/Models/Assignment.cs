@@ -10,12 +10,15 @@
 namespace MyProject.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class DMLoaiHang_SelectByPrimaryKey_Result
+    public partial class Assignment
     {
-        public int LoaiHangID { get; set; }
-        public string MaLoaiHang { get; set; }
-        public string TenLoaiHang { get; set; }
-        public string MoTa { get; set; }
+        public long AssignmentId { get; set; }
+        public long LocationId { get; set; }
+        public string AssignmentNote { get; set; }
+        public System.DateTime AssignmentStart { get; set; }
+        public System.DateTime AssignmentEnd { get; set; }
+        public System.DateTime AssignmentPriority { get; set; }
     }
 }
