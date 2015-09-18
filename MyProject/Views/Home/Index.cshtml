@@ -1,228 +1,161 @@
-﻿@using MyProject.Functions
+﻿@using System.ServiceModel
+@using DayPilot.Web.Mvc;
+@using DayPilot.Web.Mvc.Enums
+@using DayPilot.Web.Mvc.Events.Scheduler
+
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "ASP.NET MVC Hotel Room Booking";
 }
 
-<section class="vbox bg-white">
-    <section class="scrollable">
-        <div class="site-message">
-            <div class="user">@Common.GetUserName()</div>
-            <div class="message">Hãy kiểm tra Thư điện tử thường xuyên để được cập nhật những thông tin mới nhất của chúng tôi.</div>
-        </div>
-        <div class="post-media site-highlighted">
-            <section class="m-b-none">
-                <div class="carousel auto slide" id="c-fade">
-                    @if (Model.lstImageHome != null)
-                    {
-                        var cnt = (Model.lstImageHome).Count;
-                        int count = 1;
-                        string classactive = "active";
-                        <ol class="carousel-indicators out">                                                     
-                            @for (int i = 0; i < cnt; i++)
-                            {
-                                if (i == 1)
-                                {
-                                    <li data-target="#c-fade" data-slide-to="0" class="active"  ></li>    
-                                }
-                                else
-                                {
-  
-                                    <li data-target="#c-fade" data-slide-to="0" class=''></li>
-                                }
-                                
-                            }
-                        </ol>
-                        <div class="carousel-inner">
-                            @foreach (var item in Model.lstImageHome)
-                            {
-                                classactive = count == 1 ? "active" : "";
-                                <div class="item bg-light dker @classactive text-center">
-                                    <div class="figure-wrapper">
-                                        <div class="figure-image red">
-                                            <a href="@item.Url" target="_blank">
-                                                <img src="@item.Thumbnail" alt="slide @count">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    @*<div class="post-details">
-                                        <div class="post-title">mùa hè</div>
-                                        <div class="post-desc">tận hưởng</div>
-                                    </div>*@
-                                </div>
-                                count ++;
-                            }
-                        </div>
-                            
-                            } 
-                            <a class="left carousel-control" href="#c-fade" data-slide="prev"> <i class="i i-arrow-left4 "></i> </a>
-                            <a class="right carousel-control" href="#c-fade" data-slide="next"> <i class="i i-arrow-right4 "></i> </a>
-                        </div>
-            </section>
-        </div>
-        <!--End slider-->
-        <section class="hot-article-wrapper">
-            <div class="filter-hot-article">
-                <div class="filter-list">
-                    <div class="filter-item active"><a href="#view-hot-promotions" class="active">Tin tức & <br /> khuyến mãi</a></div>
-                    <div class="filter-item"><a href="#view-hot-services">Quà tặng & <br /> dịch vụ</a></div>
-                    <div class="filter-item"><a href="#view-hot-entertainment">Video <br /> giới thiệu sản phẩm</a></div>
-                    @*<div class="filter-item"><a href="#view-hot-trainning">Khóa <br /> huấn luyện</a></div>*@
-                </div>
-            </div>
-            <div class="view-hot-article-wrapper">
-                <div class="hot-article-row">
-                    <div id="view-hot-promotions" class="view-hot-article">
-                        <div class="row-sm">
-                            @if (Model.lstCategory != null)
-                            {
-                                foreach (var item in Model.lstCategory)
-                                {
-                                    <div class="col-xs-12 col-sm-6 col-md-3">
-                                        <div class="figure-wrapper">
-                                            <div class="figure-image red mobile-up">
-                                                <a href='/Tintuc/xem/@item.ID/@item.Slug'><img src='@item.Thumbnail' alt=""></a>
-                                            </div>
-                                            <div class="caption">
-                                                <div class="post-title">
-                                                    <a href='/Tintuc/xem/@item.ID/@item.Slug'>@item.Title</a>
-                                                </div>
-                                                <div class="post-date">
-                                                    @item.Date.ToString("dd/MM/yyyy")
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            }
-                             
-                           
-                        </div>
-                        <div class="text-center site-pager">
-                             
-                        </div>
-                        <!--End articles pager-->
-                    </div>
-                    <div id="view-hot-services" class="view-hot-article">
-                        <div class="row-sm">
-                            @if (Model.lstQuaTang != null)
-                            {
-                                foreach (var item in Model.lstQuaTang)
-                                {
-                                    <div class="col-xs-12 col-sm-6 col-md-3">
-                                        <div class="figure-wrapper">
-                                            <div class="figure-image red mobile-up">
-                                                <a href='/Tintuc/xem/@item.ID/@item.Slug'><img src='@item.Thumbnail' alt=""></a>
-                                            </div>
-                                            <div class="caption">
-                                                <div class="post-title">
-                                                    <a href='/Tintuc/xem/@item.ID/@item.Slug'>@item.Title</a>
-                                                </div>
-                                                <div class="post-date">
-                                                    @if (item.Date != null)
-                                                    {
-                                                        @item.Date.ToString("dd/MM/yyyy")
-                                                    }
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            }
- 
-                            
-                        </div>
-                        <div class="text-center site-pager">
-                           
-                        </div>
-                        <!--End articles pager-->
-                    </div>
-                    <div id="view-hot-entertainment" class="view-hot-article">
-                         
+<meta charset="utf-8">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-                        <div class="row-sm">
-                            @if (Model.lstGame != null)
-                            {
-                                foreach (var item in Model.lstGame)
-                                {
-                                    <div class="col-xs-12 col-sm-6 col-md-3">
-                                        <div class="exams-item-large hidden-xs page-exams-list">
-                                            <div class="figure-wrapper">
-                                                <div class="">                                                    
-                                                    <a class="video" title="@item.Title" href="@item.Source"><img src='@item.Thumb' alt=""></a>
-                                                </div>
-                                                
+<style type="text/css">
+    .scheduler_default_rowheader_inner {
+        border-right: 1px solid #ccc;
+    }
 
-                                                <div class="caption">
-                                                    <div class="post-title">
-                                                        <a class="video" href="@item.Source">@item.Title</a>
-                                                    </div>
-                                                    <div class="post-date">
-                                                        @if (item.Created != null)
-                                                        {
-                                                            @item.Created.ToString("dd/MM/yyyy")
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                                                                                      
-                                }
-                            }
-  
-                            
-                        </div>
-                        <div class="text-center site-pager">
-                            
-                        </div>
-                        <!--End articles pager-->
-                    </div>
-                    <div id="view-hot-trainning" class="view-hot-article">
-                        <div class="row-sm">
-                            @if (Model.lstTraning != null)
-                            {
-                                foreach (var item in Model.lstTraning)
-                                {
-                                    <div class="col-xs-12 col-sm-6 col-md-3">
-                                        <div class="figure-wrapper">
-                                            <div class="figure-image red mobile-up">                                                
-                                                <a href="/Training/Review/@item.ID"><img src='@item.Thumbnail' alt=""></a>
-                                            </div>
-                                            <div class="caption">
-                                                <div class="post-title">
-                                                    <a href="/Training/Review/@item.ID">@item.Title</a>
-                                                </div>
-                                                <div class="post-date">
-                                                    @if (item.Date != null)
-                                                    {
-                                                        @item.Date.ToString("dd/MM/yyyy")
-                                                    }
+    .scheduler_default_rowheadercol2 {
+        background: White;
+    }
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            } 
-                             
-                        </div>
-                        <div class="text-center site-pager">
-                            
-                        </div>
-                        <!--End articles pager-->
-                    </div>
-                </div>
-            </div>
-            <!--End articles list-->
-        </section>
-        <!--End articles-->
-    </section>
-</section>
+        .scheduler_default_rowheadercol2 .scheduler_default_rowheader_inner {
+            top: 2px;
+            bottom: 2px;
+            left: 2px;
+            background-color: transparent;
+            border-left: 5px solid #1a9d13; /* green */
+            border-right: 0px none;
+        }
 
-@section scripts{
-    
-<script src="/static/js/home.js"></script>
-}
+    .status_dirty.scheduler_default_rowheadercol2 .scheduler_default_rowheader_inner {
+        border-left: 5px solid #ea3624; /* red */
+    }
+
+    .status_cleanup.scheduler_default_rowheadercol2 .scheduler_default_rowheader_inner {
+        border-left: 5px solid #f9ba25; /* orange */
+    }
+</style>
+<p>Date: <input type="text" id="datepicker"></p>
+<button id="changeDate">Change</button>
+
+<div style="margin-bottom: 20px;">
+    Show rooms:
+    @Html.DropDownList("Filter", new SelectListItem[]
+        {
+            new SelectListItem() { Text = "All", Value = "0" },
+            new SelectListItem() { Text = "Single", Value = "1" },
+            new SelectListItem() { Text = "Double", Value = "2" },
+            new SelectListItem() { Text = "Triple", Value = "3" },
+            new SelectListItem() { Text = "Family", Value = "4" },
+        },
+        new { @onchange = "filter('room', this.value)" }
+    )
+</div>
 
 
+@Html.DayPilotScheduler("dp", new DayPilotSchedulerConfig
+{
+    BackendUrl = Url.Action("Backend", "Scheduler"),
+    //Scale = TimeScale.Manual,
+
+    EventHeight = 60,
+
+    TimeRangeSelectedHandling = TimeRangeSelectedHandlingType.JavaScript,
+    TimeRangeSelectedJavaScript = "create(start, end, resource);",
+    TimeRangeSelectingJavaScript = "selecting(args)",
+
+    EventClickHandling = EventClickHandlingType.JavaScript,
+    EventClickJavaScript = "edit(e);",
+
+    EventMoveHandling = EventMoveHandlingType.CallBack,
+    EventResizeHandling = EventResizeHandlingType.CallBack,
+    Days = 7,
+    TreeEnabled = true,
+    TreePreventParentUsage = true,
+    //CellDuration=15,
+    //TimeHeaders = new TimeHeaderCollection()
+    //{
+    //    new TimeHeader(GroupBy.Week, "dddd, d MMMM yyyy"),
+    //    new TimeHeader(GroupBy.Hour),
+    //    new TimeHeader(GroupBy.Cell)
+    //},
+    CellDuration = 15,
+    TimeHeaders = new TimeHeaderCollection()
+    {
+        new TimeHeader(GroupBy.Day, "dddd, d MMMM yyyy"),
+        new TimeHeader(GroupBy.Hour),
+        new TimeHeader(GroupBy.Cell)
+    },
 
 
+    HeaderColumns = new RowHeaderColumnCollection()
+    {
+        new RowHeaderColumn("Room", 80),
+        new RowHeaderColumn("Size", 80),
+        new RowHeaderColumn("Status", 80)
+    }
+})
+
+<script>
+    function modal() {
+        var m = new DayPilot.Modal();
+        m.closed = function () {
+            dp.clearSelection();
+            var data = this.result;
+            if (data == "OK") {
+                dp.commandCallBack("refresh");
+            }
+
+        };
+        return m;
+    }
+
+    function create(start, end, resource) {
+        modal().showUrl('@Url.Action("Create", "Reservation")?start=' + start + "&end=" + end + "&resource=" + resource);
+    }
+    function edit(e) {
+        modal().showUrl('@Url.Action("Edit", "Reservation")?id=' + e.id());
+    }
+
+    function filter(property, value) {
+        if (!dp.clientState.filter) {
+            dp.clientState.filter = {};
+        }
+        if (dp.clientState.filter[property] != value) { // only refresh when the value has changed
+            dp.clientState.filter[property] = value;
+            dp.commandCallBack('filter');
+        }
+    }
+
+    function selecting(args) {
+        console.log(args.end.getTime());
+        console.log(args.start.getTime());
+        var duration = Math.floor(new DayPilot.TimeSpan(args.end.getTime() - args.start.getTime()).totalMinutes());
+        //duration = args.start.getTime() - args.end.getTime();
+
+        args.left.enabled = true;
+        args.left.html = "Bắt đầu:<br/>" + args.start.toString("M/d/yyyy");
+        args.right.enabled = true;
+        args.right.html = "Kết thúc:<br/>" + args.end.toString("M/d/yyyy") + "<br/>" + duration + " phút" ;
+    }
+
+</script>
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+
+    $('#changeDate').click(function () {
+        $.post('/Scheduler/ChangeDate/',
+            {
+                'date': $("#datepicker").val()
+            },
+            function (a) {
+                dp.clearSelection();
+                dp.commandCallBack("changeDate");
+            });
+    });
+</script>
