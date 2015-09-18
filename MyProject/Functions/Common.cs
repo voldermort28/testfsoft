@@ -184,8 +184,8 @@ namespace MyProject.Functions
 
         public static String GetCurrentUserName()
         {
-            var userid = Convert.ToInt32(HttpContext.Current.Session["UserID"]); 
-            using (MyProject.Models.MyDatabaseEntities db  = new MyDatabaseEntities())
+            var userid = Convert.ToInt32(HttpContext.Current.Session["UserID"]);
+            using (MyProject.Models.QLNHEntities db = new QLNHEntities())
             {
                 return "Nguoi dung";
             }
@@ -193,7 +193,7 @@ namespace MyProject.Functions
         public static String GetUserName()
         {
             var userid = Convert.ToInt32(HttpContext.Current.Session["UserID"]);
-            using (var db = new MyDatabaseEntities())
+            using (var db = new QLNHEntities())
             {
                 
                 return "";
@@ -209,7 +209,7 @@ namespace MyProject.Functions
         /// <param name="content">Log content</param>
         public static void WriteLog(string content)
         {
-            using (MyDatabaseEntities db = new MyDatabaseEntities())
+            using (QLNHEntities db = new QLNHEntities())
             {
                 db.LogErrors.Add(new LogError()
                 {
@@ -319,7 +319,7 @@ namespace MyProject.Functions
             return b;
         }
 
-        public static bool CheckCity(MyDatabaseEntities db, int cityId)
+        public static bool CheckCity(QLNHEntities db, int cityId)
         {
             bool b = false;
             try
@@ -355,7 +355,7 @@ namespace MyProject.Functions
             bool status;
             try
             {
-                using (var db = new MyDatabaseEntities())
+                using (var db = new QLNHEntities())
                 {
                     var adminId = (int)HttpContext.Current.Session["admss"];
                     var adminEmail = (string)HttpContext.Current.Session["admssemail"];
@@ -392,7 +392,7 @@ namespace MyProject.Functions
             bool status  = true ;
             try
             {
-                using (var db = new MyDatabaseEntities())
+                using (var db = new QLNHEntities())
                 {
                     var adminId = (int)HttpContext.Current.Session["admss"];
                     var adminEmail = (string)HttpContext.Current.Session["admssemail"];
