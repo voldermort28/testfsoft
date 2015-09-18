@@ -67,13 +67,13 @@ namespace MyProject.Controllers
 
             private void LoadReservations()
             {
-                Events = Db.GetReservations().Rows;
+                Events = DbHelper.GetReservations().Rows;
 
                 DataStartField = "ReservationStart";
                 DataEndField = "ReservationEnd";
                 DataIdField = "ReservationId";
                 DataTextField = "ReservationName";
-                DataResourceField = "RoomId";
+                DataResourceField = "BanID";
 
                 DataTagFields = "ReservationStatus";
 
@@ -82,15 +82,15 @@ namespace MyProject.Controllers
             private void LoadRooms()
             {
                 Resources.Clear();
-                DataTable parent = Db.getParent();
+                DataTable parent = DbHelper.getParent();
                 foreach (DataRow r in parent.Rows)
                 {
-                    Resource res = new Resource((string)r["RoomName"],null , false);
+                    var res = new Resource((string)r["TenPhong"], null, false);
                     res.Expanded = true;
                     Resources.Add(res);
 
                     // get childer
-                    DataTable dtChilder = Db.GetRoomsByChilder(Convert.ToInt32(r["RoomId"]));
+                    DataTable dtChilder = DbHelper.GetRoomsByParrent((string)(r["MaPhong"]));
                     foreach (DataRow rows in dtChilder.Rows)
                     {
                         //Resource resChilder = new Resource((string) r["RoomName"], Convert.ToString(r["RoomId"]), true);
@@ -101,7 +101,7 @@ namespace MyProject.Controllers
                         //resChilder.Columns.Add(new ResourceColumn(bedsFormatted));
                         //resChilder.Columns.Add(new ResourceColumn(status));
 
-                        res.Children.Add((string)rows["RoomName"], Convert.ToString(rows["RoomId"]));                        
+                        res.Children.Add((string)rows["TenBan"], Convert.ToString(rows["BanID"]));                        
                     }
 
                 }
@@ -111,7 +111,7 @@ namespace MyProject.Controllers
                 //    roomFilter = (string)ClientState["filter"]["room"];
                 //}
 
-                //DataTable dt = Db.GetRoomsFiltered(roomFilter);
+                //DataTable dt = DbHelper.GetRoomsFiltered(roomFilter);
 
                 //foreach (DataRow r in dt.Rows)
                 //{
@@ -140,7 +140,7 @@ namespace MyProject.Controllers
                 string resource = e.NewResource;
 
                 string message = null;
-                if (!Db.IsFree(id, start, end, resource))
+                if (!DbHelper.IsFree(Convert.ToInt32(id), start, end, Convert.ToInt32(resource)))
                 {
                     message = "The reservation cannot overlap with an existing reservation.";
                 }
@@ -154,7 +154,7 @@ namespace MyProject.Controllers
                 }
                 else
                 {
-                    Db.MoveReservation(e.Id, e.NewStart, e.NewEnd, e.NewResource);
+                    DbHelper.MoveReservation(Convert.ToInt32(e.Id), e.NewStart, e.NewEnd, Convert.ToInt32(e.NewResource));
                 }
                 
                 LoadReservations();
@@ -163,7 +163,7 @@ namespace MyProject.Controllers
 
             protected override void OnEventResize(EventResizeArgs e)
             {
-                Db.MoveReservation(e.Id, e.NewStart, e.NewEnd, e.Resource);
+                DbHelper.MoveReservation(Convert.ToInt32(e.Id), e.NewStart, e.NewEnd,Convert.ToInt32( e.Resource));
                 LoadReservations();
                 Update();
             }

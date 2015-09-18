@@ -8,9 +8,9 @@ namespace MyProject.Controllers
 {
     public class ReservationController : Controller
     {
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            DataRow dr = Db.GetReservation(id);
+            DataRow dr = DbHelper.GetReservation(id);
 
             if (dr == null)
             {
@@ -36,29 +36,29 @@ namespace MyProject.Controllers
                     new SelectListItem { Text = "50%", Value = "50"},
                     new SelectListItem { Text = "100%", Value = "100"},
                 }, "Value", "Text", dr["ReservationPaid"]),
-                Resource = new SelectList(Db.GetRoomSelectList(), "Value", "Text", dr["RoomId"])
+                Resource = new SelectList(DbHelper.GetRoomSelectList(), "Value", "Text", dr["BanID"])
             });
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(FormCollection form)
         {
-            string id = form["Id"];
+            int id = Convert.ToInt32( form["Id"]);
             string name = form["Text"];
             DateTime start = Convert.ToDateTime(form["Start"]);
             DateTime end = Convert.ToDateTime(form["End"]);
-            string resource = form["Resource"];
+            int resource = Convert.ToInt32( form["Resource"]);
             int paid = Convert.ToInt32(form["Paid"]);
             int status = Convert.ToInt32(form["Status"]);
 
-            DataRow dr = Db.GetReservation(id);
+            DataRow dr = DbHelper.GetReservation(id);
 
             if (dr == null)
             {
                 throw new Exception("The task was not found");
             }
 
-            Db.UpdateReservation(id, name, start, end, resource, status, paid);
+            DbHelper.UpdateReservation(id, name, start, end, resource, status, paid);
 
             return JavaScript(SimpleJsonSerializer.Serialize("OK"));
         }
@@ -71,7 +71,7 @@ namespace MyProject.Controllers
                 //End = Convert.ToDateTime(Request.QueryString["end"]).ToString("dd/MM/yyyy HH:mm"),
                 Start = Convert.ToDateTime(Request.QueryString["start"]),
                 End = Convert.ToDateTime(Request.QueryString["end"]),
-                Resource = new SelectList(Db.GetRoomSelectList(), "Value", "Text", Request.QueryString["resource"])
+                Resource = new SelectList(DbHelper.GetRoomSelectList(), "Value", "Text", Request.QueryString["resource"])
             });
         }
 
@@ -81,16 +81,16 @@ namespace MyProject.Controllers
             DateTime start = Convert.ToDateTime(form["Start"]);
             DateTime end = Convert.ToDateTime(form["End"]);
             string text = form["Text"];
-            string resource = form["Resource"];
+            int resource = Convert.ToInt32(form["Resource"]);
 
-            Db.CreateReservation(start, end, resource, text);
+            DbHelper.CreateReservation(start, end, resource, text);
             return JavaScript(SimpleJsonSerializer.Serialize("OK"));
         }
 
         [HttpPost]
         public ActionResult Delete(int  id)
         {
-            Db.Delete(id);
+            DbHelper.Delete(id);
             return Json(new { result = "OK", msg = "" });
         }
 
