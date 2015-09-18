@@ -19,7 +19,7 @@ namespace MyProject
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}/{slug}",
-                defaults: new { controller = "Hethong", action = "Index",category = UrlParameter.Optional, id = UrlParameter.Optional, slug = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index",category = UrlParameter.Optional, id = UrlParameter.Optional, slug = UrlParameter.Optional }
             );
         }
     }
